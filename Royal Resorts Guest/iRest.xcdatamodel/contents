@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11G63b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Clasificacion" representedClassName="Clasificacion" syncable="YES">
+        <attribute name="fcDescripcion" attributeType="String" syncable="YES"/>
+        <attribute name="fnClasificacion" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="ynMealPlan" attributeType="Integer 16" syncable="YES"/>
+    </entity>
+    <entity name="Configuration" syncable="YES">
+        <attribute name="key" attributeType="String" syncable="YES"/>
+        <attribute name="value" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Platillo" representedClassName="Platillo" syncable="YES">
+        <attribute name="fcCode" attributeType="String" syncable="YES"/>
+        <attribute name="fcDesc" attributeType="String" syncable="YES"/>
+        <attribute name="fcIVA" attributeType="String" syncable="YES"/>
+        <attribute name="ffNeto" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="fnClasificacion" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="iOpenItem" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Clasificacion" positionX="-17723" positionY="34344" width="128" height="90"/>
+        <element name="Platillo" positionX="-17723" positionY="34443" width="128" height="135"/>
+        <element name="Configuration" positionX="-17874" positionY="34362" width="128" height="75"/>
+    </elements>
+</model>

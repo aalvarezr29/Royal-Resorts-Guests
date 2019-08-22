@@ -1,0 +1,297 @@
+
+/* Class = "UILabel"; text = "In case you need assistance, please ask in your resort front desk or call us at:"; ObjectID = "0CN-E8-dqF"; */
+"0CN-E8-dqF.text" = "In case you need assistance, please ask in your resort front desk or call us at:";
+
+/* Class = "UITextField"; placeholder = "Second Last Name"; ObjectID = "18I-3D-QN1"; */
+"18I-3D-QN1.placeholder" = "Second Last Name";
+
+/* Class = "UIButton"; normalTitle = "Sign in "; ObjectID = "1No-De-RKp"; */
+"1No-De-RKp.normalTitle" = "Sign in ";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "1QG-iA-YJS"; */
+"1QG-iA-YJS.text" = "Detail";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "1cW-AK-Ipb"; */
+"1cW-AK-Ipb.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "View"; ObjectID = "1dG-kf-RDb"; */
+"1dG-kf-RDb.text" = "View";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "2gU-1I-ARj"; */
+"2gU-1I-ARj.normalTitle" = "Back";
+
+/* Class = "UIViewController"; title = "PRE ARRIVAL"; ObjectID = "3GQ-eF-S2S"; */
+"3GQ-eF-S2S.title" = "PRE ARRIVAL";
+
+/* Class = "UITextField"; placeholder = "Expiration Year"; ObjectID = "4ZG-2V-8D1"; */
+"4ZG-2V-8D1.placeholder" = "Expiration Year";
+
+/* Class = "UIViewController"; title = "Voucher"; ObjectID = "4if-dk-hJG"; */
+"4if-dk-hJG.title" = "Voucher";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "56Z-o3-e8s"; */
+"56Z-o3-e8s.text" = "Location";
+
+/* Class = "UILabel"; text = "$108.00 USD"; ObjectID = "6AX-d8-dWu"; */
+"6AX-d8-dWu.text" = "$108.00 USD";
+
+/* Class = "UILabel"; text = "Nov 10 - 17, 2014"; ObjectID = "6c4-hL-CsQ"; */
+"6c4-hL-CsQ.text" = "Nov 10 - 17, 2014";
+
+/* Class = "UIBarButtonItem"; title = "Account"; ObjectID = "735-uB-IV0"; */
+"735-uB-IV0.title" = "Account";
+
+/* Class = "UILabel"; text = "from Mexico: 001-8009305050"; ObjectID = "7RQ-t8-gHH"; */
+"7RQ-t8-gHH.text" = "from Mexico: 001-8009305050";
+
+/* Class = "UITabBarItem"; title = "Restaurant"; ObjectID = "7kn-N8-EEJ"; */
+"7kn-N8-EEJ.title" = "Restaurant";
+
+/* Class = "UILabel"; text = "Your payment in MXN pesos:"; ObjectID = "9dZ-7O-HMr"; */
+"9dZ-7O-HMr.text" = "Your payment in MXN pesos:";
+
+/* Class = "UILabel"; text = "JOSEPH SMITH, MARTHA SMITH, JOHN SMITH"; ObjectID = "A5G-ew-rit"; */
+"A5G-ew-rit.text" = "JOSEPH SMITH, MARTHA SMITH, JOHN SMITH";
+
+/* Class = "UIViewController"; title = "Grocery"; ObjectID = "AKg-3Z-bfI"; */
+"AKg-3Z-bfI.title" = "Grocery";
+
+/* Class = "UIBarButtonItem"; title = "LOG IN"; ObjectID = "Av0-dc-r43"; */
+"Av0-dc-r43.title" = "LOG IN";
+
+/* Class = "UILabel"; text = "Primary people"; ObjectID = "AwK-kc-iyL"; */
+"AwK-kc-iyL.text" = "Primary people";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "CTS-S6-Yty"; */
+"CTS-S6-Yty.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Pay $1,320.45 MXN"; ObjectID = "DX5-uT-M56"; */
+"DX5-uT-M56.normalTitle" = "Pay $1,320.45 MXN";
+
+/* Class = "UINavigationItem"; title = "Restaurants"; ObjectID = "Gig-fJ-4fl"; */
+"Gig-fJ-4fl.title" = "Restaurants";
+
+/* Class = "UILabel"; text = "Resort"; ObjectID = "HqD-3H-rAR"; */
+"HqD-3H-rAR.text" = "Resort";
+
+/* Class = "UILabel"; text = "THE ROYAL MARKET RS"; ObjectID = "KPp-zy-i9f"; */
+"KPp-zy-i9f.text" = "THE ROYAL MARKET RS";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Khc-Qj-Rvl"; */
+"Khc-Qj-Rvl.text" = "Title";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "Kl8-es-qzC"; */
+"Kl8-es-qzC.text" = "Subtitle";
+
+/* Class = "UITextField"; placeholder = "CVV"; ObjectID = "M8S-Gb-KgD"; */
+"M8S-Gb-KgD.placeholder" = "CVV";
+
+/* Class = "UILabel"; text = "Tips"; ObjectID = "Mok-ZZ-3al"; */
+"Mok-ZZ-3al.text" = "Tips";
+
+/* Class = "UITextField"; placeholder = "email"; ObjectID = "NCs-ge-poc"; */
+"NCs-ge-poc.placeholder" = "email";
+
+/* Class = "UIViewController"; title = "Login"; ObjectID = "NF3-JV-Rdv"; */
+"NF3-JV-Rdv.title" = "Login";
+
+/* Class = "UIBarButtonItem"; title = "Guests"; ObjectID = "NuX-Kp-0cL"; */
+"NuX-Kp-0cL.title" = "Guests";
+
+/* Class = "UITextField"; placeholder = "Expiration Month"; ObjectID = "Ogh-u9-vx5"; */
+"Ogh-u9-vx5.placeholder" = "Expiration Month";
+
+/* Class = "UILabel"; text = "Stay from 5, Nov 2014 to 9, Nov 2014"; ObjectID = "PBk-a0-tHf"; */
+"PBk-a0-tHf.text" = "Stay from 5, Nov 2014 to 9, Nov 2014";
+
+/* Class = "UILabel"; text = "+1-954-930-5050"; ObjectID = "PKp-bd-EkH"; */
+"PKp-bd-EkH.text" = "+1-954-930-5050";
+
+/* Class = "UILabel"; text = "Subtotal"; ObjectID = "Q9h-Q9-ElY"; */
+"Q9h-Q9-ElY.text" = "Subtotal";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "QTg-eP-AoD"; */
+"QTg-eP-AoD.text" = "Amount";
+
+/* Class = "UIBarButtonItem"; title = "Account"; ObjectID = "Rp6-Tz-NpI"; */
+"Rp6-Tz-NpI.title" = "Account";
+
+/* Class = "UILabel"; text = "$320.00"; ObjectID = "S0w-cx-f0B"; */
+"S0w-cx-f0B.text" = "$320.00";
+
+/* Class = "UITabBarItem"; title = "Royal Market"; ObjectID = "Sab-lK-M6o"; */
+"Sab-lK-M6o.title" = "Royal Market";
+
+/* Class = "UIButton"; normalTitle = "Click here"; ObjectID = "Ty1-x4-JqF"; */
+"Ty1-x4-JqF.normalTitle" = "Click here";
+
+/* Class = "UITabBarItem"; title = "Services"; ObjectID = "UWr-4x-0ZO"; */
+"UWr-4x-0ZO.title" = "Services";
+
+/* Class = "UINavigationItem"; title = "The Royal Market"; ObjectID = "UmC-jx-KOF"; */
+"UmC-jx-KOF.title" = "The Royal Market";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "VN4-Z2-4Jv"; */
+"VN4-Z2-4Jv.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "VSz-lF-76W"; */
+"VSz-lF-76W.text" = "Date";
+
+/* Class = "UITextField"; placeholder = "Age"; ObjectID = "Zbd-7J-DAZ"; */
+"Zbd-7J-DAZ.placeholder" = "Age";
+
+/* Class = "UIButton"; normalTitle = "1,200 Royal Resorts Points"; ObjectID = "ZuE-wz-mzg"; */
+"ZuE-wz-mzg.normalTitle" = "1,200 Royal Resorts Points";
+
+/* Class = "UILabel"; text = "13.40 MXN x 1 USD"; ObjectID = "aWc-Df-nfY"; */
+"aWc-Df-nfY.text" = "13.40 MXN x 1 USD";
+
+/* Class = "UILabel"; text = "Please, provide the email registered with your reservation or contract. You will receive in this email the PIN associated with your personal account."; ObjectID = "bdo-2r-Y6o"; */
+"bdo-2r-Y6o.text" = "Please, provide the email registered with your reservation or contract. You will receive in this email the PIN associated with your personal account.";
+
+/* Class = "UILabel"; text = "Dates"; ObjectID = "bgN-Tj-ep5"; */
+"bgN-Tj-ep5.text" = "Dates";
+
+/* Class = "UITabBarItem"; title = "Stays"; ObjectID = "cNU-B9-2IK"; */
+"cNU-B9-2IK.title" = "Stays";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "cea-Px-KIO"; */
+"cea-Px-KIO.text" = "Title";
+
+/* Class = "UILabel"; text = "Key Card"; ObjectID = "dCq-CR-sqr"; */
+"dCq-CR-sqr.text" = "Key Card";
+
+/* Class = "UIButton"; normalTitle = "Request PIN"; ObjectID = "dT5-mI-tcV"; */
+"dT5-mI-tcV.normalTitle" = "Request PIN";
+
+/* Class = "UITextField"; placeholder = "Middle Name"; ObjectID = "dVe-AM-cgW"; */
+"dVe-AM-cgW.placeholder" = "Middle Name";
+
+/* Class = "UIViewController"; title = "Acount"; ObjectID = "eOe-y1-3Eq"; */
+"eOe-y1-3Eq.title" = "Acount";
+
+/* Class = "UILabel"; text = "Please provide your email address or Personal ID and PIN:"; ObjectID = "fVg-Ri-CZu"; */
+"fVg-Ri-CZu.text" = "Please provide your email address or Personal ID and PIN:";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "fiG-43-Q0C"; */
+"fiG-43-Q0C.text" = "Amount";
+
+/* Class = "UILabel"; text = "Ocean View"; ObjectID = "gIT-MI-ABk"; */
+"gIT-MI-ABk.text" = "Ocean View";
+
+/* Class = "UILabel"; text = "Age"; ObjectID = "gT0-Vf-cga"; */
+"gT0-Vf-cga.text" = "Age";
+
+/* Class = "UILabel"; text = "+1-954-485-5400"; ObjectID = "jby-fF-jDC"; */
+"jby-fF-jDC.text" = "+1-954-485-5400";
+
+/* Class = "UITextField"; placeholder = "PIN"; ObjectID = "jcU-3r-jPV"; */
+"jcU-3r-jPV.placeholder" = "PIN";
+
+/* Class = "UILabel"; text = "Middle Name"; ObjectID = "jhf-5L-uX0"; */
+"jhf-5L-uX0.text" = "Middle Name";
+
+/* Class = "UILabel"; text = "Joseph Smith"; ObjectID = "jz3-5q-hCi"; */
+"jz3-5q-hCi.text" = "Joseph Smith";
+
+/* Class = "UITextField"; placeholder = "Amount to pay in MXN"; ObjectID = "kLk-a3-Y3g"; */
+"kLk-a3-Y3g.placeholder" = "Amount to pay in MXN";
+
+/* Class = "UILabel"; text = "11/05/2014 21:59:01"; ObjectID = "kV4-El-2sr"; */
+"kV4-El-2sr.text" = "11/05/2014 21:59:01";
+
+/* Class = "UILabel"; text = "Balance"; ObjectID = "khC-cD-Eyp"; */
+"khC-cD-Eyp.text" = "Balance";
+
+/* Class = "UILabel"; text = "Keys"; ObjectID = "l2e-vT-50u"; */
+"l2e-vT-50u.text" = "Keys";
+
+/* Class = "UIBarButtonItem"; title = "Account"; ObjectID = "lBf-ng-iwu"; */
+"lBf-ng-iwu.title" = "Account";
+
+/* Class = "UIBarButtonItem"; title = "Refresh"; ObjectID = "lt5-VF-ZGA"; */
+"lt5-VF-ZGA.title" = "Refresh";
+
+/* Class = "UITextField"; placeholder = "Search"; ObjectID = "mMw-Oj-T5D"; */
+"mMw-Oj-T5D.placeholder" = "Search";
+
+/* Class = "UILabel"; text = "Royal Islander"; ObjectID = "myk-Gu-DS9"; */
+"myk-Gu-DS9.text" = "Royal Islander";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "nKG-DD-p5z"; */
+"nKG-DD-p5z.placeholder" = "Last Name";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "naT-rM-nah"; */
+"naT-rM-nah.text" = "Title";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "neJ-SL-HGK"; */
+"neJ-SL-HGK.text" = "Email";
+
+/* Class = "UINavigationItem"; title = "Pre Arrival"; ObjectID = "nfa-PL-zhJ"; */
+"nfa-PL-zhJ.title" = "Pre Arrival";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "nh7-Jv-BE6"; */
+"nh7-Jv-BE6.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Credit card number"; ObjectID = "pA6-tG-9id"; */
+"pA6-tG-9id.placeholder" = "Credit card number";
+
+/* Class = "UIButton"; normalTitle = "Apply"; ObjectID = "q53-BQ-ly4"; */
+"q53-BQ-ly4.normalTitle" = "Apply";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "q7T-9N-csq"; */
+"q7T-9N-csq.text" = "Amount";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "qCA-Xv-39D"; */
+"qCA-Xv-39D.placeholder" = "First Name";
+
+/* Class = "UILabel"; text = "Second L. Name"; ObjectID = "qPJ-VS-rC7"; */
+"qPJ-VS-rC7.text" = "Second L. Name";
+
+/* Class = "UILabel"; text = "Need or forgot your PIN (Personal Identification Number)? "; ObjectID = "qRe-eb-fok"; */
+"qRe-eb-fok.text" = "Need or forgot your PIN (Personal Identification Number)? ";
+
+/* Class = "UILabel"; text = "Please provide details of the people who will be occupying the unit. This will expedite the checkin process."; ObjectID = "qWG-63-Cc5"; */
+"qWG-63-Cc5.text" = "Please provide details of the people who will be occupying the unit. This will expedite the checkin process.";
+
+/* Class = "UITextField"; placeholder = "email"; ObjectID = "r5j-AH-qH9"; */
+"r5j-AH-qH9.placeholder" = "email";
+
+/* Class = "UILabel"; text = "$1,320.45 MXN"; ObjectID = "u28-wR-SbM"; */
+"u28-wR-SbM.text" = "$1,320.45 MXN";
+
+/* Class = "UIButton"; normalTitle = "Ready for Check In"; ObjectID = "uhm-FB-02s"; */
+"uhm-FB-02s.normalTitle" = "Ready for Check In";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "v2W-nq-gPM"; */
+"v2W-nq-gPM.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "IN HOUSE"; ObjectID = "vCm-lB-OyE"; */
+"vCm-lB-OyE.text" = "IN HOUSE";
+
+/* Class = "UILabel"; text = "First Name"; ObjectID = "vOU-uk-Ybe"; */
+"vOU-uk-Ybe.text" = "First Name";
+
+/* Class = "UITextField"; placeholder = "Email or Personal ID"; ObjectID = "vv9-JF-ZF0"; */
+"vv9-JF-ZF0.placeholder" = "Email or Personal ID";
+
+/* Class = "UILabel"; text = "Last Name"; ObjectID = "w7J-XB-ZQi"; */
+"w7J-XB-ZQi.text" = "Last Name";
+
+/* Class = "UIBarButtonItem"; title = "Home"; ObjectID = "wAn-qS-4wA"; */
+"wAn-qS-4wA.title" = "Home";
+
+/* Class = "UILabel"; text = "Joseph Smith"; ObjectID = "xAz-m6-qpa"; */
+"xAz-m6-qpa.text" = "Joseph Smith";
+
+/* Class = "UILabel"; text = "4112"; ObjectID = "xck-wC-a1B"; */
+"xck-wC-a1B.text" = "4112";
+
+/* Class = "UINavigationItem"; title = "Requests"; ObjectID = "yzX-HB-ZEf"; */
+"yzX-HB-ZEf.title" = "Requests";
+
+/* Class = "UILabel"; text = "Unit"; ObjectID = "z0n-Y7-lam"; */
+"z0n-Y7-lam.text" = "Unit";
+
+/* Class = "UIButton"; normalTitle = "Get consumption details"; ObjectID = "zxX-QI-Nae"; */
+"zxX-QI-Nae.normalTitle" = "Get consumption details";

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Royal_Resorts_Guest.vcGuestAccount.clickPayment (Royal_Resorts_Guest.vcGuestAccount)(Swift.AnyObject) -&gt; ():vcGuestAccount.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Royal_Resorts_Guest.vcGuestAccountTrxViewController.viewDidLoad (Royal_Resorts_Guest.vcGuestAccountTrxViewController)() -&gt; ():vcGuestAccountTrxViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Royal_Resorts_Guest.vcGuestInHouseMain.CargarInfoView (Royal_Resorts_Guest.vcGuestInHouseMain)() -&gt; ():vcGuestInHouseMain.swift">
+      </ContextState>
+      <ContextState
+         contextName = "+[RRRestaurantService spGetGuestStay:PersonalID:AppCode:]:RRRestaurantService.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

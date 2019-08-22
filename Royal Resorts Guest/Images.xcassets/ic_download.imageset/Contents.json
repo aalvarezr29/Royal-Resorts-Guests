@@ -1,0 +1,48 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "baseline_cloud_download_black_24.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "baseline_cloud_download_black_48pt.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "baseline_cloud_download_black_48pt-1.png",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "baseline_cloud_download_black_24-1.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "baseline_cloud_download_black_48pt-2.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "baseline_cloud_download_black_48pt-3.png",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "ipad",
+      "filename" : "baseline_cloud_download_black_24-2.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "filename" : "baseline_cloud_download_black_48pt-4.png",
+      "scale" : "2x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

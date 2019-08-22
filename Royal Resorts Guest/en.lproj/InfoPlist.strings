@@ -1,0 +1,25 @@
+/* 
+  InfoPlist.strings
+  Royal Resorts Guest
+
+  Created by Alan Alvarez Ramirez on 6/19/19.
+  Copyright © 2019 Marco Cocom. All rights reserved.
+*/
+
+NSCameraUsageDescription = "Allow Royal Resorts access to your camera to take photos and assign your profile photo.";
+NSPhotoLibraryUsageDescription = "Allow Royal Resorts access to your camera roll to assign your profile photo.";
+NSAppleMusicUsageDescription = "Allows Royal Resorts access to Apple Music on this device.";
+NSBluetoothPeripheralUsageDescription = "Allows Royal Resorts access to Bluetooth connection on this device.";
+NSCalendarsUsageDescription = "Allows Royal Resorts access to view events on Calendar.";
+NSContactsUsageDescription = "Allows Royal Resorts access to manage your Contacts.";
+NSHealthShareUsageDescription = "Allows Royal Resorts access to your Health data.";
+NSHealthUpdateUsageDescription = "Allows Royal Resorts edit your Health data.";
+NSHomeKitUsageDescription = "Allows Royal Resorts to control Homekit enabled devices.";
+NSLocationAlwaysUsageDescription = "This will use information about your location to enhance the experience during your stay at Royal Resorts, and will notify you about the services and events you can enjoy.";
+NSLocationWhenInUseUsageDescription = "This will use information about your location to enhance the experience during your stay at Royal Resorts, and will notify you about the services and events you can enjoy.";
+NSLocationUsageDescription = "This will use information about your location to enhance the experience during your stay at Royal Resorts, and will notify you about the services and events you can enjoy.";
+NSMicrophoneUsageDescription = "Allows Royal Resorts access to the microphone.";
+NSMotionUsageDescription = "Allows Royal Resorts access to Motion & Fitness.";
+NSRemindersUsageDescription = "Allows Royal Resorts write in Reminders.";
+NSSiriUsageDescription = "Allows Royal Resorts send data to Siri.";
+NSSpeechRecognitionUsageDescription = "Allows Royal Resorts access to Speech Recognition.";
