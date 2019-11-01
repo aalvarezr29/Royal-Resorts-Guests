@@ -23,10 +23,10 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
     var PeopleFDeskID: String = ""
     var Stays: Dictionary<String, String>!
     var AccCode: String = ""
-    var myArray: NSArray = [NSLocalizedString("strCreditCard",comment:""),NSLocalizedString("strPreAuth",comment:""),NSLocalizedString("strResortCred",comment:"")]
+    var myArray: NSArray = [NSLocalizedString("strCreditCard",comment:""),NSLocalizedString("strPreAuth",comment:""),NSLocalizedString("strResortCred",comment:""), NSLocalizedString("strRewards",comment:"")]
     var tblFormaPago: UITableView!
     var fDollar: Double = 0.0
-    var fAmount: Double = 0
+    var fAmount: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -243,7 +243,7 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
         itemsView.addSubview(lblTipoCambio)
         itemsView.addSubview(lblFormaPago)
         
-        tblFormaPago = UITableView(frame: CGRect(x: 0.05*width, y: 0.42*height, width: 0.9*width, height: 0.25*height));
+        tblFormaPago = UITableView(frame: CGRect(x: 0.05*width, y: 0.42*height, width: 0.9*width, height: 0.3*height));
         tblFormaPago.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         tblFormaPago.dataSource = self
         tblFormaPago.delegate = self
@@ -252,16 +252,16 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         let lblFooterMsg = UILabel(frame: CGRect(x: 0.05*width, y: 0.7*height, width: 0.9*width, height: 0.1*height));
         lblFooterMsg.backgroundColor = UIColor.clear;
-        lblFooterMsg.textAlignment = NSTextAlignment.center;
+        lblFooterMsg.textAlignment = NSTextAlignment.left;
         lblFooterMsg.textColor = colorWithHexString("a6a6a6")
         lblFooterMsg.numberOfLines = 0;
         lblFooterMsg.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
-        lblFooterMsg.text = NSLocalizedString("strTextResCred",comment:"");
+        lblFooterMsg.text = NSLocalizedString("strRewardsMsj",comment:"");
         lblFooterMsg.adjustsFontSizeToFitWidth = true
         
         bodyView.addSubview(itemsView)
         bodyView.addSubview(tblFormaPago)
-        bodyView.addSubview(lblFooterMsg)
+        //bodyView.addSubview(lblFooterMsg)
         
         self.view.addSubview(bodyView)
         
@@ -329,7 +329,18 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
                 tercerViewController.PeopleFDeskID = self.PeopleFDeskID
                 self.navigationController?.pushViewController(tercerViewController, animated: true)
             }
-
+            
+        case NSLocalizedString("strRewards",comment:""):
+            
+            if appDelegate.gblRRRewards > 0
+            {
+                let tercerViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcRRRewards") as! vcRRRewards
+                tercerViewController.StayInfoID = self.StayInfoID
+                tercerViewController.PeopleID = self.PeopleID
+                tercerViewController.PeopleFDeskID = self.PeopleFDeskID
+                self.navigationController?.pushViewController(tercerViewController, animated: true)
+            }
+            
         default:
             if (fAmount > 0.1)
             {
@@ -391,6 +402,13 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
         case NSLocalizedString("strPreAuth",comment:""):
             if appDelegate.gblynPreAuth == true
+            {
+                cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+            }else{
+                cell.accessoryType = UITableViewCell.AccessoryType.none
+            }
+        case NSLocalizedString("strRewards",comment:""):
+            if appDelegate.gblRRRewards > 0
             {
                 cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             }else{

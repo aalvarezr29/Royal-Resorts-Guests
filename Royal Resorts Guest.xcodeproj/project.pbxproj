@@ -66,6 +66,10 @@
 		5CDC3AB71AA0E0670083E718 /* TimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDC3AB11AA0E0670083E718 /* TimeUnit.swift */; };
 		5CDF92DE1A82BDCB00992D49 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF92DD1A82BDCB00992D49 /* Util.swift */; };
 		5CDF92E01A82BEE300992D49 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF92DF1A82BEE300992D49 /* ModelManager.swift */; };
+		6821AB6E235E097F00D66D3A /* vcServicesNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6821AB6D235E097F00D66D3A /* vcServicesNav.swift */; };
+		682BA5E7234E39AB00729F99 /* vcRRRewards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682BA5E6234E39AB00729F99 /* vcRRRewards.swift */; };
+		682E1564236397E00042CE07 /* tvcTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682E1563236397E00042CE07 /* tvcTransfer.swift */; };
+		6839AB96235A19AF00B7A324 /* vcServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6839AB95235A19AF00B7A324 /* vcServices.swift */; };
 		84105BB31D50E5A4008CD1AD /* MyData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84105BB11D50E5A4008CD1AD /* MyData.plist */; };
 		84105BB41D50E5A4008CD1AD /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84105BB21D50E5A4008CD1AD /* PlistManager.swift */; };
 		8421FC6E1CA46EBC00B3E649 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8421FC641CA46EBC00B3E649 /* FMDatabase.m */; };
@@ -274,7 +278,11 @@
 		5CDC3AB11AA0E0670083E718 /* TimeUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUnit.swift; sourceTree = "<group>"; };
 		5CDF92DD1A82BDCB00992D49 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		5CDF92DF1A82BEE300992D49 /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
+		6821AB6D235E097F00D66D3A /* vcServicesNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcServicesNav.swift; sourceTree = "<group>"; };
 		682B3264FA3A5193D0F4BBE0 /* Pods-Royal Resorts Guest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Royal Resorts Guest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Royal Resorts Guest/Pods-Royal Resorts Guest.debug.xcconfig"; sourceTree = "<group>"; };
+		682BA5E6234E39AB00729F99 /* vcRRRewards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcRRRewards.swift; sourceTree = "<group>"; };
+		682E1563236397E00042CE07 /* tvcTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tvcTransfer.swift; sourceTree = "<group>"; };
+		6839AB95235A19AF00B7A324 /* vcServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcServices.swift; sourceTree = "<group>"; };
 		84105BB11D50E5A4008CD1AD /* MyData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyData.plist; sourceTree = "<group>"; };
 		84105BB21D50E5A4008CD1AD /* PlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistManager.swift; sourceTree = "<group>"; };
 		8421FC631CA46EBC00B3E649 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -581,6 +589,10 @@
 				4D16052D22838E060050606B /* vcDigitalTicket.swift */,
 				4D0E399B22DD2A48003F5F18 /* vcSelectPayment.swift */,
 				4D0E399D22DD2A86003F5F18 /* vcResortCred.swift */,
+				682BA5E6234E39AB00729F99 /* vcRRRewards.swift */,
+				6839AB95235A19AF00B7A324 /* vcServices.swift */,
+				6821AB6D235E097F00D66D3A /* vcServicesNav.swift */,
+				682E1563236397E00042CE07 /* tvcTransfer.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -1016,6 +1028,7 @@
 				5C4A733A1A643F8200A86493 /* RRRestaurantService.m in Sources */,
 				5CDF92E01A82BEE300992D49 /* ModelManager.swift in Sources */,
 				8421FC701CA46EBC00B3E649 /* FMDatabasePool.m in Sources */,
+				6821AB6E235E097F00D66D3A /* vcServicesNav.swift in Sources */,
 				842EE62E1E84233C00AAB3F0 /* vcRestReservList.swift in Sources */,
 				845C601D1EF1905200FB79B4 /* AKMaskField.swift in Sources */,
 				84105BB41D50E5A4008CD1AD /* PlistManager.swift in Sources */,
@@ -1032,14 +1045,17 @@
 				5CDF92DE1A82BDCB00992D49 /* Util.swift in Sources */,
 				848AF24D1E709E1C0068EDE5 /* vcRestaurantList.swift in Sources */,
 				8421FC721CA46EBC00B3E649 /* FMResultSet.m in Sources */,
+				682E1564236397E00042CE07 /* tvcTransfer.swift in Sources */,
 				5CDC3AB51AA0E0670083E718 /* Moment.swift in Sources */,
 				8D3579321A1BCF6B009D27ED /* vcGuestLogin.swift in Sources */,
 				5CDC3AB71AA0E0670083E718 /* TimeUnit.swift in Sources */,
+				6839AB96235A19AF00B7A324 /* vcServices.swift in Sources */,
 				8D35790D1A1BBD3C009D27ED /* AppDelegate.swift in Sources */,
 				8D3579341A1BE952009D27ED /* vcLoginEmailRequest.swift in Sources */,
 				8421FC6E1CA46EBC00B3E649 /* FMDatabase.m in Sources */,
 				845C601E1EF1905200FB79B4 /* AKMaskFieldBlock.swift in Sources */,
 				845C60211EF1905200FB79B4 /* AKMaskFieldEvent.swift in Sources */,
+				682BA5E7234E39AB00729F99 /* vcRRRewards.swift in Sources */,
 				84599EEC1BED092600384C1F /* Range.swift in Sources */,
 				845C60201EF1905200FB79B4 /* AKMaskFieldBrackets.swift in Sources */,
 				8DE31A061A1E519800D67933 /* vcGuestAccountPayment.swift in Sources */,

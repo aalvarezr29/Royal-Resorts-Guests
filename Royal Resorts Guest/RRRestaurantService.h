@@ -49,7 +49,7 @@
 
 -(NSString *) wmCallPostAuthMobile:(NSString*) iType strDataBase:(NSString*) strDataBase intAccTrxId:(NSString*) intAccTrxId dblAmount:(NSString*) dblAmount strTrxCode:(NSString*) strTrxCode strTrxTest:(NSString*) strTrxTest strMail:(NSString*) strMail strLenguageCode:(NSString*) strLenguageCode PersonalID:(NSString*) PersonalID strDocumentCode:(NSString*) strDocumentCode;
 
--(RRDataSet *) spGetMobileFollowUpVw:(NSString*) iType AppCode:(NSString *)AppCode peopleID:(NSString *)peopleID FollowUpId:(NSString *)FollowUpId DataBase:(NSString*) DataBase;
+-(RRDataSet *) spGetMobileFollowUpVw:(NSString*) iType AppCode:(NSString *)AppCode peopleID:(NSString *)peopleID FollowUpId:(NSString *)FollowUpId DataBase:(NSString*) DataBase sLanguage:(NSString*) sLanguage;
 
 -(NSString *) wmCallAddFollowUp:(NSString*) strDataBase unitcode:(NSString*) unitcode stayinfoID:(NSString*) stayinfoID iPeopleID:(NSString*) iPeopleID fTypeID:(NSString*) fTypeID reqShort:(NSString*) reqShort reqlong:(NSString*) reqlong Solution:(NSString*) Solution expect:(NSString*) expect finish:(NSString*) finish statusID:(NSString*) statusID strLenguageCode:(NSString*) strLenguageCode strDocumentCode:(NSString*) strDocumentCode;
 
@@ -68,5 +68,10 @@
 -(RRDataSet *) spSetAppPeopleChannel:(NSString*) iType AppCode:(NSString*) AppCode PeopleID:(NSString*) PeopleID pkChannelID:(NSString*) pkChannelID DataBase:(NSString*) DataBase;
 
 -(RRDataSet *) spAddFdeskAccTrx:(NSString*) DataBase iAccid:(NSString*) iAccid sTrxTypeCode:(NSString *)sTrxTypeCode iKeycardid:(NSString *)iKeycardid sPlacecode:(NSString *)sPlacecode sDocument:(NSString *)sDocument sRemark:(NSString *)sRemark dTrxdate:(NSString *)dTrxdate mSubTotal:(NSString *)mSubTotal mTax1:(NSString *)mTax1 mTax2:(NSString *)mTax2 mTax3:(NSString *)mTax3 mSubtotalExento:(NSString *)mSubtotalExento mSubtotalBaseCero:(NSString *)mSubtotalBaseCero mTip1:(NSString*) mTip1 mTip2:(NSString*) mTip2 mTotal:(NSString*) mTotal sFolioType:(NSString*) sFolioType iAccFolioID:(NSString*) iAccFolioID iCompleted:(NSString*) iCompleted sMsg:(NSString*) sMsg sUserLogin:(NSString*) sUserLogin sOperation:(NSString*) sOperation ynSkipConsumptionLimit:(NSString*) ynSkipConsumptionLimit;
+
+-(RRDataSet *) wmGetRewardBalance:(NSString*) strDataBase strPersonalID:(NSString*) strPersonalID ynDecryCred:(NSString*) ynDecryCred;
+
+-(RRDataSet *) wmApplyRewardCharge:(NSString*) strDataBase strAccId:(NSString*) strAccId strTypeCode:(NSString*) strTypeCode iPersonaId:(NSString*) iPersonaId iKeycardID:(NSString*) iKeycardID strPlaceCode:(NSString*) strPlaceCode mAmount:(NSString*) mAmount iStoreId:(NSString*) iStoreId sCurrencyCode:(NSString*) sCurrencyCode sDocument:(NSString*) sDocument sRemark:(NSString*) sRemark dTrxDate:(NSString*) dTrxDate sUserLogin:(NSString*) sUserLogin;
+    
 @end
 

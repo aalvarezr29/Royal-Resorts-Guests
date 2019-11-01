@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3</string>
+	<string>1.4</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
@@ -35,40 +35,20 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>Music for app</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Bluetooth for app</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Calendar for app</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Perfil Photo</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Contacts for app</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>HealthShare</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>HealthUpdate</string>
-	<key>NSHomeKitUsageDescription</key>
-	<string>HomeKit</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Esta App utilizará información de tu ubicación para enriquecer la experiencia durante tu estancia en Royal Resorts, ademas te notificara sobre los servicios y eventos que podrás disfrutar</string>
 	<key>NSLocationUsageDescription</key>
 	<string>Esta App utilizará información de tu ubicación para enriquecer la experiencia durante tu estancia en Royal Resorts, ademas te notificara sobre los servicios y eventos que podrás disfrutar</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Esta App utilizará información de tu ubicación para enriquecer la experiencia durante tu estancia en Royal Resorts, ademas te notificara sobre los servicios y eventos que podrás disfrutar</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Use Microphone</string>
-	<key>NSMotionUsageDescription</key>
-	<string>Motion for app</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Use Photo Library</string>
-	<key>NSRemindersUsageDescription</key>
-	<string>Use Reminder</string>
-	<key>NSSiriUsageDescription</key>
-	<string>Use Siri</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Use Speech Recognition</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

@@ -50,8 +50,11 @@
     
     RRDataSet *dtsDatos = [[RRDataSet alloc] init];
     
-    for (NSString *JSONToken in JSONTokens) {        
-        [dtsDatos addNewTable: [self getDataTable:JSONToken]];
+    for (NSString *JSONToken in JSONTokens) {
+        //if (![JSONToken isEqual:@"[]"])
+        //{
+            [dtsDatos addNewTable: [self getDataTable:JSONToken]];
+        //}
     }
     
     return dtsDatos;

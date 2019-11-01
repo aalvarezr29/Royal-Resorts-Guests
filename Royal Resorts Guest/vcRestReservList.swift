@@ -190,11 +190,11 @@ class vcRestReservList: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         let lblFooterMsg = UILabel(frame: CGRect(x: 0.05*width, y: 0.8*height, width: 0.9*width, height: 0.1*height));
         lblFooterMsg.backgroundColor = UIColor.clear;
-        lblFooterMsg.textAlignment = NSTextAlignment.center;
+        lblFooterMsg.textAlignment = NSTextAlignment.left;
         lblFooterMsg.textColor = colorWithHexString("a6a6a6")
         lblFooterMsg.numberOfLines = 0;
         lblFooterMsg.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
-        lblFooterMsg.text = NSLocalizedString("strTextResCred",comment:"");
+        lblFooterMsg.text = NSLocalizedString("strRestaurantCNX",comment:"");
         lblFooterMsg.adjustsFontSizeToFitWidth = true
         
         self.view.addSubview(lblFooterMsg)
@@ -284,7 +284,7 @@ class vcRestReservList: UIViewController, UITableViewDelegate, UITableViewDataSo
             queueFM?.inDatabase() {
                 db in
                 
-                let resultCount = db.intForQuery("SELECT COUNT(*) FROM tblRestaurantReservation rs INNER JOIN tblStay st ON st.StayInfoID = rs.StayInfoID WHERE st.StayInfoID = " + self.appDelegate.strRestStayInfoID + " and DateReservation < strftime('%Y-%m-%d', 'now') and DateReservation between date('now','start of month','-3 month','-1 day') and date('now','start of month','+3 month','-1 day')" as String, "" as AnyObject)
+                let resultCount = db.intForQuery("SELECT COUNT(*) FROM tblRestaurantReservation rs INNER JOIN tblStay st ON st.StayInfoID = rs.StayInfoID WHERE st.StayInfoID in (" + self.appDelegate.strRestStayInfoID + ") and DateReservation <= strftime('%Y-%m-%d', 'now') and DateReservation between date('now','start of month','-3 month','-1 day') and date('now','start of month','+3 month','-1 day')" as String, "" as AnyObject)
                 
                 if (resultCount == nil){
                     resultStayID = 0
@@ -309,7 +309,7 @@ class vcRestReservList: UIViewController, UITableViewDelegate, UITableViewDataSo
                         RestaurantReservationsTemp.append([:])
                     }
                     
-                    if let rs = db.executeQuery("SELECT rs.StayInfoID, rs.UnitCode, rs.RestaurantName, rs.ZoneDescripcion, rs.Name, rs.Adults, rs.Childrens, rs.DateReservation, rs.TimeReservation, rs.ConfirmacionNumber, rs.Comments FROM tblRestaurantReservation rs INNER JOIN tblStay st ON st.StayInfoID = rs.StayInfoID WHERE st.StayInfoID = " + self.appDelegate.strRestStayInfoID + " and DateReservation < strftime('%Y-%m-%d', 'now') and DateReserva@objc tion between date('now','start of month','-3 month','-1 day') and date('now','start of month','+3 month','-1 day')", withArgumentsIn: []){
+                    if let rs = db.executeQuery("SELECT rs.StayInfoID, rs.UnitCode, rs.RestaurantName, rs.ZoneDescripcion, rs.Name, rs.Adults, rs.Childrens, rs.DateReservation, rs.TimeReservation, rs.ConfirmacionNumber, rs.Comments FROM tblRestaurantReservation rs INNER JOIN tblStay st ON st.StayInfoID = rs.StayInfoID WHERE st.StayInfoID in (" + self.appDelegate.strRestStayInfoID + ") and DateReservation <= strftime('%Y-%m-%d', 'now') and DateReservation between date('now','start of month','-3 month','-1 day') and date('now','start of month','+3 month','-1 day')", withArgumentsIn: []){
                     while rs.next() {
                             DataRestaurantReservation["StayInfoID"] = String(describing: rs.string(forColumn: "StayInfoID")!)
                             DataRestaurantReservation["UnitCode"] = String(describing: rs.string(forColumn: "UnitCode")!)
@@ -341,7 +341,7 @@ class vcRestReservList: UIViewController, UITableViewDelegate, UITableViewDataSo
             queueFM?.inDatabase() {
                 db in
                 
-                let resultCount = db.intForQuery("SELECT COUNT(*) FROM tblRestaurantReservation rs WHERE rs.StayInfoID = " + self.appDelegate.strRestStayInfoID as String, "" as AnyObject)
+                let resultCount = db.intForQuery("SELECT COUNT(*) FROM tblRestaurantReservation rs WHERE rs.StayInfoID in (" + self.appDelegate.strRestStayInfoID as String + ")", "" as AnyObject)
                 
                 if (resultCount == nil){
                     resultStayID = 0
@@ -366,7 +366,7 @@ class vcRestReservList: UIViewController, UITableViewDelegate, UITableViewDataSo
                         RestaurantReservationsTemp.append([:])
                     }
                     
-                    if let rs = db.executeQuery("SELECT rs.StayInfoID, rs.UnitCode, rs.RestaurantName, rs.ZoneDescripcion, rs.Name, rs.Adults, rs.Childrens, rs.DateReservation, rs.TimeReservation, rs.ConfirmacionNumber, rs.Comments FROM tblRestaurantReservation rs WHERE rs.StayInfoID = " + self.appDelegate.strRestStayInfoID, withArgumentsIn: []){
+                    if let rs = db.executeQuery("SELECT rs.StayInfoID, rs.UnitCode, rs.RestaurantName, rs.ZoneDescripcion, rs.Name, rs.Adults, rs.Childrens, rs.DateReservation, rs.TimeReservation, rs.ConfirmacionNumber, rs.Comments FROM tblRestaurantReservation rs WHERE rs.StayInfoID in (" + self.appDelegate.strRestStayInfoID + ")", withArgumentsIn: []){
                         while rs.next() {
                             DataRestaurantReservation["StayInfoID"] = String(describing: rs.string(forColumn: "StayInfoID")!)
                             DataRestaurantReservation["UnitCode"] = String(describing: rs.string(forColumn: "UnitCode")!)

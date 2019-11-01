@@ -192,7 +192,7 @@ class vcSelectRequestType: UIViewController, UITableViewDelegate, UITableViewDat
                 UIApplication.shared.isNetworkActivityIndicatorVisible = true
                 
                 let service=RRRestaurantService(url: self.appDelegate.URLService as String, host: self.appDelegate.Host as String, userNameMobile : self.appDelegate.UserName, passwordMobile: self.appDelegate.Password);
-                tableItems = (service?.spGetMobileFollowUpVw(val, appCode: self.appDelegate.gstrAppName, peopleID: self.appDelegate.gstrLoginPeopleID, followUpId: "0", dataBase: self.appDelegate.strDataBaseByStay))!
+                tableItems = (service?.spGetMobileFollowUpVw(val, appCode: self.appDelegate.gstrAppName, peopleID: self.appDelegate.gstrLoginPeopleID, followUpId: "0", dataBase: self.appDelegate.strDataBaseByStay, sLanguage: self.appDelegate.strLenguaje))!
                 
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
@@ -322,7 +322,7 @@ class vcSelectRequestType: UIViewController, UITableViewDelegate, UITableViewDat
                     UIApplication.shared.isNetworkActivityIndicatorVisible = true
                     
                     let service=RRRestaurantService(url: self.appDelegate.URLService as String, host: self.appDelegate.Host as String, userNameMobile : self.appDelegate.UserName, passwordMobile: self.appDelegate.Password);
-                    tableItems = (service?.spGetMobileFollowUpVw(val, appCode: self.appDelegate.gstrAppName, peopleID: self.appDelegate.gstrLoginPeopleID, followUpId: "0", dataBase: self.appDelegate.strDataBaseByStay))!
+                    tableItems = (service?.spGetMobileFollowUpVw(val, appCode: self.appDelegate.gstrAppName, peopleID: self.appDelegate.gstrLoginPeopleID, followUpId: "0", dataBase: self.appDelegate.strDataBaseByStay, sLanguage: self.appDelegate.strLenguaje))!
                     
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }

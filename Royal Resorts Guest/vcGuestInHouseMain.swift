@@ -504,6 +504,14 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
             self.tabBarController?.tabBar.items?[4].isEnabled = appDelegate.ynTabsEnabled
             self.tabBarController?.tabBar.items?[4].title = NSLocalizedString("tabNotification",comment:"")
             
+            /*let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "vcGuestMain") as! vcGuestInHouseMain
+            let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "vcServices") as! vcServices
+            let vc3 = self.storyboard?.instantiateViewController(withIdentifier: "vcActivity") as! vcActivity
+            let vc4 = self.storyboard?.instantiateViewController(withIdentifier: "vcRestaurantList") as! vcRestaurantList
+            let vc5 = self.storyboard?.instantiateViewController(withIdentifier: "vcNotification") as! vcNotification
+            
+            self.tabBarController?.navigationController?.viewControllers = [vc1, vc2, vc3, vc4, vc5]*/
+            
             /*if (Gender=="FEMALE"){
                 image = UIImage(named:"female_avatar.png")!
             }else{
@@ -1769,6 +1777,8 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                                                     DataStays["PlaceCode"] = String(describing: rs.string(forColumn: "PlaceCode")!)
                                                     Stays[Index] = DataStays
                                                     
+                                                    self.appDelegate.strCheckOutTimeAux = ""
+                                                    
                                                     Index = Index + 1
                                                 }
                                             } else {
@@ -1854,10 +1864,14 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                                         self.appDelegate.gStaysStatus = StaysStatus
                                         self.StaysStatus = StaysStatus
                                         
+                                        
+                                        
                                         if self.appDelegate.iCountStayF == 1{
                                             self.appDelegate.strUnitStay = String(self.StaysStatus[0][0]["PropertyCode"]!) + "/" + String(self.StaysStatus[0][0]["UnitCode"]!)
                                             self.appDelegate.strUnitStayInfoID = String(self.StaysStatus[0][0]["StayInfoID"]!)
                                             self.appDelegate.strUnitCode = String(self.StaysStatus[0][0]["UnitCode"]!)
+                                            self.appDelegate.strStayInfoStatus = String(self.StaysStatus[0][0]["StatusCode"]!)
+                                            self.appDelegate.strUnitArrivalDate = String(self.StaysStatus[0][0]["ArrivalDate"]!)
                                         }
                                         
                                         queueFM?.inDatabase() {
@@ -1996,6 +2010,8 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                             DataStays["PlaceCode"] = String(describing: rs.string(forColumn: "PlaceCode")!)
                             Stays[Index] = DataStays
                             
+                            self.appDelegate.strCheckOutTimeAux = ""
+                            
                             Index = Index + 1
                         }
                     } else {
@@ -2084,6 +2100,8 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                     self.appDelegate.strUnitStay = String(self.StaysStatus[0][0]["PropertyCode"]!) + "/" + String(self.StaysStatus[0][0]["UnitCode"]!)
                     self.appDelegate.strUnitStayInfoID = String(self.StaysStatus[0][0]["StayInfoID"]!)
                     self.appDelegate.strUnitCode = String(self.StaysStatus[0][0]["UnitCode"]!)
+                    self.appDelegate.strStayInfoStatus = String(self.StaysStatus[0][0]["StatusCode"]!)
+                    self.appDelegate.strUnitArrivalDate = String(self.StaysStatus[0][0]["ArrivalDate"]!)
                 }
                 
             }

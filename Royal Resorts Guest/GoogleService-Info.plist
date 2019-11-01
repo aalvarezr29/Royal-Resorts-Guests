@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>524662282598-1d4oc2rl5egf6ojkg8a530r3ocp8lrab.apps.googleusercontent.com</string>
+	<string>524662282598-ge4j03ao916058b39j8kalgepsluoubr.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.524662282598-1d4oc2rl5egf6ojkg8a530r3ocp8lrab</string>
+	<string>com.googleusercontent.apps.524662282598-ge4j03ao916058b39j8kalgepsluoubr</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCz2CMTTPo7SqIQhP2TP-V_d8qbqVG9NB8</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.royalresorts.guestservicesgrm</string>
+	<string>com.royalresorts.guestservices</string>
 	<key>PROJECT_ID</key>
 	<string>royalresortsguest</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:524662282598:ios:eeb711c364a3b441</string>
+	<string>1:524662282598:ios:c3e4d2eb7717b5cb</string>
 	<key>DATABASE_URL</key>
 	<string>https://royalresortsguest.firebaseio.com</string>
 </dict>

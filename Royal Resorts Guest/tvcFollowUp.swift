@@ -10,12 +10,17 @@ import UIKit
 
 open class tvcFollowUp: UITableViewCell {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    @IBOutlet weak var lblComent: UILabel!
-    @IBOutlet weak var lblStatus: UILabel!
-    @IBOutlet weak var lblAccCode: UILabel!
-    @IBOutlet weak var lblDate: UILabel!
-    @IBOutlet weak var img: UIImageView!
-    open func SetValues(_ Coment: String?, Status: String?, AccCode: String?, Date: String?, width: CGFloat?, height: CGFloat?) {
+    public var lblComent = UILabel()
+    public var lblStatus = UILabel()
+    public var lblAccCode = UILabel()
+    public var lblDate = UILabel()
+    public var img = UIImageView()
+    //@IBOutlet weak var lblComent: UILabel!
+    //@IBOutlet weak var lblStatus: UILabel!
+    //@IBOutlet weak var lblAccCode: UILabel!
+    //@IBOutlet weak var lblDate: UILabel!
+    //@IBOutlet weak var img: UIImageView!
+    public func SetValues(_ Coment: String?, Status: String?, AccCode: String?, Date: String?, width: CGFloat?, height: CGFloat?) {
         
         if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
             
@@ -87,6 +92,12 @@ open class tvcFollowUp: UITableViewCell {
         lblDate.frame = CGRect(x: 0.2*width!, y: 0.041*height!, width: 0.3*width!, height: 0.025*height!);
 
         img.frame = CGRect(x: 0.05*width!, y: 0.014*height!, width: img.image!.size.width, height: img.image!.size.height);
+        
+        self.addSubview(lblComent)
+        self.addSubview(lblStatus)
+        self.addSubview(lblAccCode)
+        self.addSubview(lblDate)
+        self.addSubview(img)
         
     }
     

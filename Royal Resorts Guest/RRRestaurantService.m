@@ -605,6 +605,137 @@
     
 }
 
+    -(RRDataSet *) wmGetRewardBalance:(NSString*) strDataBase strPersonalID:(NSString*) strPersonalID ynDecryCred:(NSString*) ynDecryCred
+    {
+        NSString *strResult = @"";
+        RRDataSet *datos;
+        
+        //first create the soap envelope
+        soapMessage = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                       "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+                       "<soap:Body>"
+                       "<wmGetRewardBalance xmlns=\"MobileService\">"
+                       "<sDBName>%@</sDBName>"
+                       "<iPersonaId>%@</iPersonaId>"
+                       "<ynDecryCred>%@</ynDecryCred>"
+                       "</wmGetRewardBalance>"
+                       "</soap:Body>"
+                       "</soap:Envelope>", strDataBase, strPersonalID, ynDecryCred];
+        
+        //Now create a request to the URL
+        NSURL *url = [NSURL URLWithString:_webServiceURL];
+        NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+        NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
+        
+        //ad required headers to the request
+        [theRequest addValue:_Host forHTTPHeaderField:@"Host"];
+        [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        [theRequest addValue: @"MobileService/wmGetRewardBalance" forHTTPHeaderField:@"SOAPAction"];
+        [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+        [theRequest setHTTPMethod:@"POST"];
+        [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        NSData *responseData = [NSURLConnection sendSynchronousRequest: theRequest returningResponse:nil error: nil];
+        
+        NSString *responseString;
+        
+        if (responseData == nil)
+        {
+            return strResult;
+            
+        }
+        else
+        {
+            
+            responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+            
+            //No hay error por lo que parseamos el xml para obtener el resultado de la ejecucion del web service.
+            RRWebServiceParser * parser = [[RRWebServiceParser alloc] initWithTokenResult:@"wmGetRewardBalanceResult"];
+            
+            [parser startParse:responseString];
+            
+            strResult = parser.json;
+            
+            datos = [[RRDataSet alloc] initWithJSONString:parser.json];
+            
+        }
+        
+        
+        return datos;
+        
+        
+    }
+
+-(RRDataSet *) wmApplyRewardCharge:(NSString*) strDataBase strAccId:(NSString*) strAccId strTypeCode:(NSString*) strTypeCode iPersonaId:(NSString*) iPersonaId iKeycardID:(NSString*) iKeycardID strPlaceCode:(NSString*) strPlaceCode mAmount:(NSString*) mAmount iStoreId:(NSString*) iStoreId sCurrencyCode:(NSString*) sCurrencyCode sDocument:(NSString*) sDocument sRemark:(NSString*) sRemark dTrxDate:(NSString*) dTrxDate sUserLogin:(NSString*) sUserLogin
+{
+    NSString *strResult = @"";
+    RRDataSet *datos;
+    
+    //first create the soap envelope
+    soapMessage = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+                   "<soap:Body>"
+                   "<wmApplyRewardCharge xmlns=\"MobileService\">"
+                   "<sDBName>%@</sDBName>"
+                   "<strAccId>%@</strAccId>"
+                   "<strTypeCode>%@</strTypeCode>"
+                   "<iPersonaId>%@</iPersonaId>"
+                   "<iKeycardID>%@</iKeycardID>"
+                   "<strPlaceCode>%@</strPlaceCode>"
+                   "<mAmount>%@</mAmount>"
+                   "<iStoreId>%@</iStoreId>"
+                   "<sCurrencyCode>%@</sCurrencyCode>"
+                   "<sDocument>%@</sDocument>"
+                   "<sRemark>%@</sRemark>"
+                   "<dTrxDate>%@</dTrxDate>"
+                   "</wmApplyRewardCharge>"
+                   "</soap:Body>"
+                   "</soap:Envelope>", strDataBase, strAccId, strTypeCode, iPersonaId, iKeycardID, strPlaceCode, mAmount, iStoreId, sCurrencyCode, sDocument, sRemark, dTrxDate, sUserLogin];
+    
+    //Now create a request to the URL
+    NSURL *url = [NSURL URLWithString:_webServiceURL];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
+    
+    //ad required headers to the request
+    [theRequest addValue:_Host forHTTPHeaderField:@"Host"];
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest addValue: @"MobileService/wmApplyRewardCharge" forHTTPHeaderField:@"SOAPAction"];
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSData *responseData = [NSURLConnection sendSynchronousRequest: theRequest returningResponse:nil error: nil];
+    
+    NSString *responseString;
+    
+    if (responseData == nil)
+    {
+        return strResult;
+        
+    }
+    else
+    {
+        
+        responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+        
+        //No hay error por lo que parseamos el xml para obtener el resultado de la ejecucion del web service.
+        RRWebServiceParser * parser = [[RRWebServiceParser alloc] initWithTokenResult:@"wmApplyRewardChargeResult"];
+        
+        [parser startParse:responseString];
+        
+        strResult = parser.json;
+        
+        datos = [[RRDataSet alloc] initWithJSONString:parser.json];
+        
+    }
+    
+    
+    return datos;
+    
+    
+}
+
 -(NSString *) wmGetCCExchangeVwPCI:(NSString*) strDataBase strCc:(NSString*) strCc strAccID:(NSString*) strAccID
 {
     NSString *strResult = @"";
@@ -694,7 +825,7 @@
     
 }
 
--(RRDataSet *) spGetMobileFollowUpVw:(NSString*) iType AppCode:(NSString *)AppCode peopleID:(NSString *)peopleID FollowUpId:(NSString *)FollowUpId DataBase:(NSString*) DataBase
+-(RRDataSet *) spGetMobileFollowUpVw:(NSString*) iType AppCode:(NSString *)AppCode peopleID:(NSString *)peopleID FollowUpId:(NSString *)FollowUpId DataBase:(NSString*) DataBase sLanguage:(NSString*) sLanguage
 
 {
     
@@ -706,6 +837,7 @@
     [sp addParameterWithName:@"peopleID" Direction:IN Type:INT Value:peopleID];
     [sp addParameterWithName:@"FollowUpId" Direction:IN Type:INT Value:FollowUpId];
     [sp addParameterWithName:@"AppCode" Direction:IN Type:VARCHAR Value:AppCode Precision:@"10"];
+    [sp addParameterWithName:@"sLanguage" Direction:IN Type:VARCHAR Value:sLanguage Precision:@"3"];
     
     return [sp execMobileWithResult:&result];
     

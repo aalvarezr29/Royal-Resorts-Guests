@@ -35,7 +35,7 @@ class GoogleWearAlertView: UIView, UIGestureRecognizerDelegate {
     var imageViewSize:CGFloat = 0.4 //4 0% of AlertViews width
     var imageViewOffsetFromCentre:CGFloat = 0.25 // Offset of image along Y axis
     var titleLabelWidth:CGFloat = 0.7 // 70% of AlertViews width
-    var titleLabelHeight:CGFloat = 30
+    var titleLabelHeight:CGFloat = 40
     var navControllerHeight:CGFloat = 44
     
     /** The displayed title of this message */
@@ -221,12 +221,12 @@ class GoogleWearAlertView: UIView, UIGestureRecognizerDelegate {
                 Analytics.setScreenName("Event Check Out Successful", screenClass: appDelegate.gstrAppName)
                 
                 if appDelegate.ynIPad {
-                    titleLabel.font = UIFont.systemFont(ofSize: 16)
+                    titleLabel.font = UIFont.systemFont(ofSize: 13)
                     titleLabel.numberOfLines = 0
                     titleLabelWidth = 0.8
-                    titleLabelHeight = 60
+                    titleLabelHeight = 70
                 }else{
-                    titleLabel.font = UIFont.systemFont(ofSize: 8)
+                    titleLabel.font = UIFont.systemFont(ofSize: 9)
                     titleLabel.numberOfLines = 0
                     titleLabelWidth = 0.8
                     titleLabelHeight = 60
@@ -333,12 +333,12 @@ class GoogleWearAlertView: UIView, UIGestureRecognizerDelegate {
         iconImageView.image = iconImage
         iconImageView.frame = CGRect(x: 0, y: 0, width: frame.size.width * imageViewSize, height: frame.size.width * imageViewSize)
         iconImageView.center = center
-        iconImageView.center.y -= iconImageView.frame.size.height * imageViewOffsetFromCentre
+        iconImageView.center.y -= (iconImageView.frame.size.height * imageViewOffsetFromCentre) * 1.5
         self.addSubview(iconImageView)
         
         // Setup Text Label
         titleLabel.text = title
-        titleLabel.frame = CGRect(x: self.center.x - (frame.size.width * titleLabelWidth) / 2, y: iconImageView.frame.origin.y + iconImageView.frame.size.height - 5, width: frame.size.width * titleLabelWidth, height: titleLabelHeight)
+        titleLabel.frame = CGRect(x: self.center.x - (frame.size.width * titleLabelWidth) / 2, y: (iconImageView.frame.origin.y + iconImageView.frame.size.height - 5), width: frame.size.width * titleLabelWidth, height: titleLabelHeight * 1.2)
         titleLabel.textColor = UIColor.white
         titleLabel.textAlignment = NSTextAlignment.center
         

@@ -94,8 +94,6 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
     var btnCheckOutSlip = UIButton()
     var strArrivalDate: String = ""
     var strDepartureDate: String = ""
-    var strCheckOutTime: String = ""
-    var strCheckOutDate: String = ""
     var ynActualiza: Bool = false
     var ynClickPay: Bool = false
     var hdrlabel2 = UILabel()
@@ -106,6 +104,7 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
     var lastIndex = IndexPath()
     var ynForceDelete: Bool = false
     var iKeycardid: Int = 0
+    var RewardPerDollar: Double = 0
     
     @IBOutlet weak var btnPayment: UIButton!
     @IBOutlet weak var lblStayStatus: UILabel!
@@ -313,20 +312,24 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
         
         strArrivalDate = strdateFormatter.string(from: ArrivalDate!.date)
         strDepartureDate = strdateFormatter.string(from: DepartureDate!.date)
-        strCheckOutDate = strdateFormatter.string(from: moment(Stays["DepartureDateCheckOut"]!)!.date)
         
         let timeFormatter: DateFormatter = DateFormatter()
         timeFormatter.dateFormat = "hh:mm a"
         timeFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        if CheckOutDate != nil{
-            let dateFormatter = DateFormatter();
-            dateFormatter.dateFormat = "M/dd/yyyy hh:mm:ss a Z";
-            dateFormatter.locale = Locale(identifier: "US_en")
-            CheckOutDate = CheckOutDate + " UTC"
-            let date = dateFormatter.date(from: String(CheckOutDate));
-            let timeStr = timeFormatter.string(from: date!);
-            strCheckOutTime = timeStr
-        }
+
+            if CheckOutDate != nil{
+                let dateFormatter = DateFormatter();
+                dateFormatter.dateFormat = "M/dd/yyyy hh:mm:ss a Z";
+                dateFormatter.locale = Locale(identifier: "US_en")
+                CheckOutDate = CheckOutDate + " UTC"
+                let date = dateFormatter.date(from: String(CheckOutDate));
+                let dtCheckOut = dateFormatter.date(from: String(CheckOutDate));
+                let timeStr = timeFormatter.string(from: date!);
+                appDelegate.strCheckOutTime = timeStr
+                appDelegate.strCheckOutDate = strdateFormatter.string(from: dtCheckOut!)
+            }
+
+        
         FullName = ""
         
         LastAccountUpdate = Stays["LastAccountUpdate"]!
@@ -1203,6 +1206,23 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                                 
                             }
                             
+                            var tableRewardPerDollar = RRDataTable()
+                            tableRewardPerDollar = tableItems.tables.object(at: 6) as! RRDataTable
+
+                            if tableRewardPerDollar.getTotalRows() > 0
+                            {
+                                
+                                var rRewardPerDollar = RRDataRow()
+                                rRewardPerDollar = tableRewardPerDollar.rows.object(at: 0) as! RRDataRow
+                                
+                                for rRewardPerDollar in tableRewardPerDollar.rows{
+                                    
+                                    self.appDelegate.RewardPerDollar = Double(String(format: "%.2f", (((rRewardPerDollar as AnyObject).getColumnByName("RewardPerDollar").content as? NSString)!).floatValue))!
+                                    
+                                }
+
+                            }
+                            
                         queueFM?.inTransaction() {
                             db, rollback in
                             
@@ -1937,6 +1957,8 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                                 
                                 if (self.fTotalAmount>0.1){
                                     
+                                    self.appDelegate.gblRRRewards = Double((self.lblRRBalanceTxt.text as! NSString).floatValue)
+
                                     self.ViewItem.rightBarButtonItem?.isEnabled = true
                                     self.ViewItem.leftBarButtonItem?.isEnabled = true
                                     self.btnApply.isEnabled = true
@@ -1947,7 +1969,7 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                                     
                                     SwiftLoader.hide()
                                     
-                                    if self.appDelegate.gblynPreAuth == false && self.appDelegate.gblynResortCredits == false{
+                                    if self.appDelegate.gblynPreAuth == false && self.appDelegate.gblynResortCredits == false && self.appDelegate.gblRRRewards == 0{
                                         let tercerViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcGuestAccountPayment") as! vcGuestAccountPayment
                                         tercerViewController.StayInfoID = self.StayInfoID
                                         tercerViewController.PeopleID = self.PeopleID
@@ -2815,7 +2837,7 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
             RKDropdownAlert.title(NSLocalizedString("MsgError6",comment:""), backgroundColor: self.colorWithHexString ("5C9FCC"), textColor: UIColor.black)
         }else{
         if (appDelegate.gblPay == true) || (self.appDelegate.gblCheckOutVw == true) {
-
+            ynActualiza = true
             recargarTablas()
 
         }
@@ -4010,9 +4032,16 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
             numPerson = tblPerson.count.description
         }
         
+        if appDelegate.strCheckOutTimeAux != ""{
+
+            appDelegate.strCheckOutTime = appDelegate.strCheckOutTimeAux
+            appDelegate.strCheckOutDate = appDelegate.strCheckOutDateAux
+            
+        }
+        
         let viewController: vcCheckOutSlip = vcCheckOutSlip()
-        viewController.strDate = strCheckOutDate
-        viewController.strOutDate = strCheckOutTime
+        viewController.strDate = appDelegate.strCheckOutDate
+        viewController.strOutDate = appDelegate.strCheckOutTime
         viewController.strUnitCode = Stays["UnitCode"]!
         viewController.strName = FullName
         viewController.strNumPerson = numPerson

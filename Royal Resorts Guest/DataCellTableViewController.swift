@@ -421,11 +421,15 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
                 if strCheckOutDate == ""{
                     targetedDatePicker.setDate(dtDepartureDatebb, animated: false)
                 }else{
-                    let dateFormatterck: DateFormatter = DateFormatter()
-                    dateFormatterck.dateFormat = "yyyy-MM-dd hh:mm a"
-                    dateFormatterck.timeZone = TimeZone(secondsFromGMT: 0)
+                    
+                    var dateFormatterck: DateFormatter = DateFormatter()
 
                     if ynBandp{
+                        dateFormatterck.dateFormat = "yyyy-MM-dd hh:mm a"
+                        dateFormatterck.timeZone = TimeZone(secondsFromGMT: 0)
+                        dateFormatterck.timeZone = TimeZone(identifier: "UTC")
+                        dateFormatterck.locale = Locale(identifier: "en_US")
+                        
                         strCheckOutDate2 = dateFormatterck.date(from: strCheckOutDate)!
                         
                         var strBellBoyDate2: String = ""
@@ -465,6 +469,12 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
                         cell?.detailTextLabel?.adjustsFontSizeToFitWidth = true
                         
                     }else{
+                        
+                        dateFormatterck.dateFormat = "yyyy-MM-dd hh:mm a"
+                        dateFormatterck.timeZone = TimeZone(secondsFromGMT: 0)
+                        dateFormatterck.timeZone = TimeZone(identifier: "UTC")
+                        dateFormatterck.locale = Locale(identifier: "en_US")
+                        
                         if strBellBoyDate == ""{
                             strCheckOutDate2 = dateFormatterck.date(from: strDepartureDatebb)!
                         }else{
@@ -1357,17 +1367,24 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
             
             strDepartureDate = dateStrWST + " " + timeStrWS1
             strCheckOutDate = dateStrWST + " " + timeStrWS1
+
+            appDelegate.strCheckOutTimeAux = timeStrWS1
+            appDelegate.strCheckOutDateAux = dateStrWST
             
         }
         if IndexRow == 4 {
             
             let dateFormatterWS2: DateFormatter = DateFormatter()
             dateFormatterWS2.dateFormat = "yyyy-MM-dd"
+            dateFormatterWS2.timeZone = TimeZone(identifier: "UTC")
+            dateFormatterWS2.locale = Locale(identifier: "en_US")
             dateFormatterWS2.timeZone = TimeZone(secondsFromGMT: 0)
             let dateStrWS2 = dateFormatterWS2.string(from: targetedDatePicker.date)
             
             let timeFormatterWS2: DateFormatter = DateFormatter()
             timeFormatterWS2.dateFormat = "hh:mm a"
+            timeFormatterWS2.timeZone = TimeZone(identifier: "UTC")
+            timeFormatterWS2.locale = Locale(identifier: "en_US")
             timeFormatterWS2.timeZone = TimeZone(secondsFromGMT: 0)
             let timeStrWS2 = timeFormatterWS2.string(from: targetedDatePicker.date)
 

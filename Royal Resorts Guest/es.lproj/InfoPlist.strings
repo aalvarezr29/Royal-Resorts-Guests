@@ -8,18 +8,8 @@
 
 NSCameraUsageDescription = "Permita que Royal Resorts acceda a su cámara para tomar fotos y asignar su foto de perfil.";
 NSPhotoLibraryUsageDescription = "Permita que Royal Resorts acceda a sus fotos para asignar su foto de perfil.";
-NSAppleMusicUsageDescription = "Permite que Royal Resorts acceda a Apple Music en este dispositivo.";
-NSBluetoothPeripheralUsageDescription = "Permite el acceso de Royal Resorts a la conexión Bluetooth en este dispositivo.";
 NSCalendarsUsageDescription = "Permite el acceso de Royal Resorts para ver eventos en el Calendario.";
 NSContactsUsageDescription = "Permite el acceso de Royal Resorts para gestionar tus contactos.";
-NSHealthShareUsageDescription = "Permite que Royal Resorts acceda a sus datos de Salud.";
-NSHealthUpdateUsageDescription = "Permite a Royal Resorts editar sus datos de Salud.";
-NSHomeKitUsageDescription = "Permite que Royal Resorts controle los dispositivos habilitados para Homekit.";
 NSLocationAlwaysUsageDescription = "Esta utilizará información de tu ubicación para enriquecer la experiencia durante tu estancia en Royal Resorts, ademas te notificará sobre los servicios y eventos que podrás disfrutar.";
 NSLocationWhenInUseUsageDescription = "Esta utilizará información de tu ubicación para enriquecer la experiencia durante tu estancia en Royal Resorts, ademas te notificará sobre los servicios y eventos que podrás disfrutar.";
 NSLocationUsageDescription = "Esta utilizará información de tu ubicación para enriquecer la experiencia durante tu estancia en Royal Resorts, ademas te notificará sobre los servicios y eventos que podrás disfrutar.";
-NSMicrophoneUsageDescription = "Permite que Royal Resorts acceda al micrófono.";
-NSMotionUsageDescription = "Permite que Royal Resorts acceda a Condición y Actividad Física.";
-NSRemindersUsageDescription = "Permite que Royal Resorts acceda a Recordatorios.";
-NSSiriUsageDescription = "Permite a Royal Resorts enviar datos a Siri.";
-NSSpeechRecognitionUsageDescription = "Permite que Royal Resorts acceda al Reconocimiento de Voz.";

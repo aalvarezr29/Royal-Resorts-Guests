@@ -466,7 +466,11 @@ class vcAddFolloUp: UIViewController, UITableViewDelegate, UITextViewDelegate, U
                 if(aRes[0]=="1"){
                     GoogleWearAlert.showAlert(title: NSLocalizedString("SaveRequest",comment:""), type: .success, duration: 4, iAction: 2, form:"Request Edit New")
                     self.appDelegate.gblAddFollow = true
-                    self.navigationController?.popViewController(animated: false)
+                    //self.navigationController?.popViewController(animated: false)
+                    
+                    let NextViewController = self.navigationController?.viewControllers[0]
+                    self.navigationController?.popToViewController(NextViewController!, animated: false)
+                    
                 }else{
                     
                     RKDropdownAlert.title(NSLocalizedString("NoSaveRequest",comment:""), backgroundColor: UIColor.red, textColor: UIColor.black)
@@ -493,15 +497,29 @@ class vcAddFolloUp: UIViewController, UITableViewDelegate, UITextViewDelegate, U
         strDocumentCode = "GFollowUp"
 
         if Reachability.isConnectedToNetwork(){
-            
-            let todaysDate:Date = Date()
-            let dtdateFormatter:DateFormatter = DateFormatter()
-            dtdateFormatter.dateFormat = "yyyy-MM-dd hh:mm"
-            let DateInFormat:String = dtdateFormatter.string(from: todaysDate)
 
-            let service=RRRestaurantService(url: appDelegate.URLService as String, host: appDelegate.Host as String, userNameMobile:appDelegate.UserName, passwordMobile:appDelegate.Password);
-            prepareOrderResult = service!.wmCallAddFollowUp(self.appDelegate.strDataBaseByStay, unitcode: appDelegate.strUnitCode, stayinfoID: appDelegate.strUnitStayInfoID, iPeopleID: appDelegate.gstrLoginPeopleID, fTypeID: appDelegate.strFollowUpTypeID, reqShort: txtShortDesc.text, reqlong: txtCommentRequest.text, solution: "", expect: DateInFormat, finish: DateInFormat, statusID: "3", strLenguageCode: self.appDelegate.strLenguaje, strDocumentCode: strDocumentCode)! as NSString
-            
+            if (self.appDelegate.strStayInfoStatus == "RESERVED" || self.appDelegate.strStayInfoStatus == "ASSIGNED"){
+                
+                let strdateFormatter = DateFormatter()
+                strdateFormatter.dateFormat = "yyyy-MM-dd";
+                let ArrivalDate = moment(self.appDelegate.strUnitArrivalDate)
+                let strArrivalDate = strdateFormatter.string(from: ArrivalDate!.date)
+                
+                let service=RRRestaurantService(url: appDelegate.URLService as String, host: appDelegate.Host as String, userNameMobile:appDelegate.UserName, passwordMobile:appDelegate.Password);
+                prepareOrderResult = service!.wmCallAddFollowUp(self.appDelegate.strDataBaseByStay, unitcode: appDelegate.strUnitCode, stayinfoID: appDelegate.strUnitStayInfoID, iPeopleID: appDelegate.gstrLoginPeopleID, fTypeID: appDelegate.strFollowUpTypeID, reqShort: txtShortDesc.text, reqlong: txtCommentRequest.text, solution: "", expect: strArrivalDate, finish: strArrivalDate, statusID: "3", strLenguageCode: self.appDelegate.strLenguaje, strDocumentCode: strDocumentCode)! as NSString
+                
+            }else{
+                
+                let todaysDate:Date = Date()
+                let dtdateFormatter:DateFormatter = DateFormatter()
+                dtdateFormatter.dateFormat = "yyyy-MM-dd hh:mm"
+                let DateInFormat:String = dtdateFormatter.string(from: todaysDate)
+                
+                let service=RRRestaurantService(url: appDelegate.URLService as String, host: appDelegate.Host as String, userNameMobile:appDelegate.UserName, passwordMobile:appDelegate.Password);
+                prepareOrderResult = service!.wmCallAddFollowUp(self.appDelegate.strDataBaseByStay, unitcode: appDelegate.strUnitCode, stayinfoID: appDelegate.strUnitStayInfoID, iPeopleID: appDelegate.gstrLoginPeopleID, fTypeID: appDelegate.strFollowUpTypeID, reqShort: txtShortDesc.text, reqlong: txtCommentRequest.text, solution: "", expect: DateInFormat, finish: DateInFormat, statusID: "3", strLenguageCode: self.appDelegate.strLenguaje, strDocumentCode: strDocumentCode)! as NSString
+                
+            }
+
         }
         
         return prepareOrderResult

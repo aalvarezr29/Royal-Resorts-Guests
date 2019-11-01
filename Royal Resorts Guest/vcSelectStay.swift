@@ -621,6 +621,8 @@ class vcSelectStay: UIViewController, UITableViewDelegate, UITableViewDataSource
         appDelegate.strUnitStay = String(StaysStatus[indexPath.section][indexPath.row]["PropertyCode"]!) + "/" + String(StaysStatus[indexPath.section][indexPath.row]["UnitCode"]!)
         appDelegate.strUnitStayInfoID = String(StaysStatus[indexPath.section][indexPath.row]["StayInfoID"]!)
         appDelegate.strUnitCode = String(StaysStatus[indexPath.section][indexPath.row]["UnitCode"]!)
+        appDelegate.strStayInfoStatus = String(StaysStatus[indexPath.section][indexPath.row]["StatusCode"]!)
+        appDelegate.strUnitArrivalDate = String(StaysStatus[indexPath.section][indexPath.row]["ArrivalDate"]!) 
         self.navigationController?.popViewController(animated: true)
         
     }

@@ -360,11 +360,11 @@ class vcResortCred: UIViewController {
         
         let lblFooterMsg = UILabel(frame: CGRect(x: 0.01*width, y: 0.31*height, width: 0.9*width, height: 0.1*height));
         lblFooterMsg.backgroundColor = UIColor.clear;
-        lblFooterMsg.textAlignment = NSTextAlignment.center;
+        lblFooterMsg.textAlignment = NSTextAlignment.left;
         lblFooterMsg.textColor = colorWithHexString("a6a6a6")
         lblFooterMsg.numberOfLines = 0;
         lblFooterMsg.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
-        lblFooterMsg.text = NSLocalizedString("strTextResCred",comment:"");
+        lblFooterMsg.text = NSLocalizedString("strResortCreditRestrictionsMsj",comment:"");
         lblFooterMsg.adjustsFontSizeToFitWidth = true
         
         btnResCredApply.frame = CGRect(x: 0.01*width, y: 0.42*height, width: 0.9*width, height: 0.05*height);

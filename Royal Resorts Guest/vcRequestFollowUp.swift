@@ -14,7 +14,7 @@ import FirebaseMessaging
 import DGRunkeeperSwitch
 
 class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var width: CGFloat!
@@ -23,6 +23,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
     var btnNext = UIButton()
     var tblFollowUp: [Dictionary<String, String>]!
     var tblFollowUpType: [Dictionary<String, String>]!
+    var tblTransfer: [Dictionary<String, String>]!
     
     var StayInfoID: String = ""
     var PeopleID: String = ""
@@ -34,7 +35,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
     var ynShowHistory: Bool = false
     var swTypePay = UISwitch()
     var tableViewContentOffset = CGPoint()
-
+    
     var Voucher: String!
     var fSizeFont: CGFloat = 0
     var ynConn:Bool=false
@@ -47,12 +48,14 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
     var strFont: String = ""
     var imgCell = UIImage()
     var imgvwCell = UIImageView()
+    var tableView = UITableView()
+    var tableTransfer = UITableView()
     
-    @IBOutlet weak var tableView: UITableView!
+    //@IBOutlet weak var tableView: UITableView!
     @IBOutlet var ViewItem: UINavigationItem!
     @IBOutlet weak var BodyView: UIView!
     @IBOutlet weak var AccView: UIView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,20 +71,10 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         
         //Titulo de la vista
         ViewItem.title = NSLocalizedString("lblRequestFollowUp",comment:"");
-
+        
         LastName = appDelegate.gtblLogin["LastName"]!
         
         self.ynActualiza = true
-        
-        
-        // (optional) include this line if you want to remove the extra empty cell divider lines
-        // self.tableView.tableFooterView = UIView()
-        
-        // This view controller itself will provide the delegate methods and row data for the table view.
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        recargarTablas()
 
         runkeeperSwitch = DGRunkeeperSwitch(titles: [NSLocalizedString("lblRecent",comment:""),NSLocalizedString("lblHistory",comment:"")])
         runkeeperSwitch.backgroundColor = colorWithHexString ("5C9FCC")
@@ -93,9 +86,15 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         runkeeperSwitch.addTarget(self, action: #selector(vcRequestFollowUp.switchValueDidChange(_:)), for: .valueChanged)
         AccView.addSubview(runkeeperSwitch)
         
+        tableView.tag = 1
+        tableTransfer.tag = 2
+        
+        //tableTransfer.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.4*height);
+
         if appDelegate.ynIPad {
             switch appDelegate.Model {
             case "iPad 2":
+                //tableView.frame = CGRect(x: 0.05*width, y: 0.45*height, width: 0.9*width, height: 0.4*height);
                 tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.75*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
             case "iPad Air":
@@ -117,6 +116,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         }else{
             switch appDelegate.Model {
             case "iPhone":
+                //tableView.frame = CGRect(x: 0.05*width, y: 0.45*height, width: 0.9*width, height: 0.4*height);
                 tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
             case "iPhone 4":
@@ -126,28 +126,28 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                 tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
             case "iPhone 5":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.7*height);
+                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.08*height, width: 0.9*width, height: 0.07*height);
             case "iPhone 5c":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.7*height);
+                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
             case "iPhone 5s":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.7*height);
+                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
             case "iPhone 6":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.72*height);
+                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
             case "iPhone 6 Plus":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.72*height);
+                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
             case "iPhone 6s":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.72*height);
+                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
             case "iPhone 6s Plus":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.72*height);
+                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
             default:
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.8*height);
+                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
             }
         }
@@ -159,7 +159,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         ViewItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("btnHome",comment:""), style: .plain, target: self, action: #selector(vcRequestFollowUp.clickHome(_:)))
         
         let TabTitleFont = UIFont(name: "HelveticaNeue", size: appDelegate.gblFont10 + appDelegate.gblDeviceFont2)!
-
+        
         if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
             strFont = "Helvetica"
             self.navigationController?.navigationBar.tintColor = colorWithHexString("0D94FC")
@@ -167,7 +167,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
             
             ViewItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: colorWithHexString("0D94FC")], for: UIControl.State())
-
+            
             
         }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
             
@@ -262,12 +262,40 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
             ViewItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State())
             
         }
+
+        // (optional) include this line if you want to remove the extra empty cell divider lines
+        // self.tableView.tableFooterView = UIView()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        //tableTransfer.dataSource = self
+        
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor.clear
+        
+        //tableTransfer.separatorStyle = .none
+        //tableTransfer.backgroundColor = UIColor.clear
+        
+        //tableView.tableFooterView = UIView()
         
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "")
         refreshControl.addTarget(self, action: #selector(vcRequestFollowUp.refresh(_:)), for: UIControl.Event.valueChanged)
         tableView.addSubview(refreshControl) // not
         
+        self.tableView.register(tvcFollowUp.self, forCellReuseIdentifier: "tvcFollowUp")
+        //self.tableTransfer.register(tvcTransfer.self, forCellReuseIdentifier: "tvcTransfer")
+        
+        self.view.addSubview(tableView)
+        //self.view.addSubview(tableTransfer)
+        
+        if self.appDelegate.gtblStay != nil{
+            if self.appDelegate.gtblStay.count > 0{
+                recargarTablas()
+            }
+        }
+
     }
     
     @objc func clickHome(_ sender: AnyObject) {
@@ -294,7 +322,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         
         refreshControl.endRefreshing()
     }
-
+    
     @objc func switchValueDidChange(_ sender: DGRunkeeperSwitch!) {
         
         if sender.selectedIndex == 1 {
@@ -306,7 +334,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         self.ynActualiza = true
         
         recargarTablas()
-
+        
     }
     
     func recargarTablas(){
@@ -316,6 +344,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         var iRes: String = ""
         var tblFollow: Dictionary<String, String>!
         var tblFollowType: Dictionary<String, String>!
+        var tblTrans: Dictionary<String, String>!
         
         if ynShowHistory {
             val = "1"
@@ -325,6 +354,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         
         tblFollowUp = []
         tblFollowUpType = []
+        tblTransfer = []
         
         var config : SwiftLoader.Config = SwiftLoader.Config()
         config.size = 100
@@ -344,9 +374,9 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                 //print("A1")
                 if Reachability.isConnectedToNetwork(){
                     UIApplication.shared.isNetworkActivityIndicatorVisible = true
-
+                    
                     let service=RRRestaurantService(url: self.appDelegate.URLService as String, host: self.appDelegate.Host as String, userNameMobile : self.appDelegate.UserName, passwordMobile: self.appDelegate.Password);
-                    tableItems = (service?.spGetMobileFollowUpVw(val, appCode: self.appDelegate.gstrAppName, peopleID: self.appDelegate.gstrLoginPeopleID, followUpId: "0", dataBase: self.appDelegate.strDataBaseByStay))!
+                    tableItems = (service?.spGetMobileFollowUpVw(val, appCode: self.appDelegate.gstrAppName, peopleID: self.appDelegate.gstrLoginPeopleID, followUpId: "0", dataBase: self.appDelegate.strDataBaseByStay, sLanguage: ""))!
                     
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
@@ -390,7 +420,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                                 var table = RRDataTable()
                                 table = tableItems.tables.object(at: 2) as! RRDataTable
                                 
-                                if table.rows != nil{
+                                if table.rows != nil && table.getTotalRows() > 0 {
                                     var r = RRDataRow()
                                     r = table.rows.object(at: 0) as! RRDataRow
                                     
@@ -417,10 +447,31 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                                     self.appDelegate.gtblFollowUp = self.tblFollowUp
                                 }
                                 
+                                /*if (tableItems.getTotalTables() > 4 ){
+                                    var tableTransfer = RRDataTable()
+                                    tableTransfer = tableItems.tables.object(at: 4) as! RRDataTable
+                                    
+                                    if tableTransfer.rows != nil{
+                                        var r = RRDataRow()
+                                        r = tableTransfer.rows.object(at: 0) as! RRDataRow
+                                        
+                                        
+                                        for r in tableTransfer.rows{
+                                            tblTrans = [:]
+                                            tblTrans["Arrivaldate"] = (r as AnyObject).getColumnByName("Arrivaldate").content as? String
+                                            tblTrans["resConfCode"] = (r as AnyObject).getColumnByName("resConfCode").content as? String
+                                            tblTrans["ConfirmationNo"] = (r as AnyObject).getColumnByName("ConfirmationNo").content as? String
+                                            self.tblTransfer.append(tblTrans)
+                                            
+                                        }
+                                        
+                                    }
+                                }*/
+
                             }
                             
                         }
-                            
+                        
                         OperationQueue.main.addOperation() {
                             //accion
                             if !Reachability.isConnectedToNetwork(){
@@ -428,6 +479,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                             }
                             
                             self.tableView.reloadData()
+                            //self.tableTransfer.reloadData()
                             
                             SwiftLoader.hide()
                         }
@@ -454,7 +506,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         
         var tableItems = RRDataSet()
         let service=RRRestaurantService(url: appDelegate.URLService as String, host: appDelegate.Host as String, userNameMobile : appDelegate.UserName, passwordMobile: appDelegate.Password);
-        tableItems = (service?.spGetMobileFollowUpVw(val, appCode: self.appDelegate.gstrAppName, peopleID: appDelegate.gstrLoginPeopleID, followUpId: "0", dataBase: self.appDelegate.strDataBaseByStay))!
+        tableItems = (service?.spGetMobileFollowUpVw(val, appCode: self.appDelegate.gstrAppName, peopleID: appDelegate.gstrLoginPeopleID, followUpId: "0", dataBase: self.appDelegate.strDataBaseByStay, sLanguage: appDelegate.strLenguaje))!
         
         if (tableItems.getTotalTables() > 0 ){
             
@@ -516,9 +568,9 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                     
                     appDelegate.gtblFollowUp = tblFollowUp
                 }
-  
+                
             }
-
+            
         }
     }
     
@@ -547,153 +599,298 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     /*func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tblFollowUp.count;
-    }
+     return tblFollowUp.count;
+     }
+     
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     let cell = tableView.dequeueReusableCell(withIdentifier: "CellFollowUp") as! tvcFollowUp
+     
+     cell.SetValues(String(tblFollowUp[indexPath.row]["Reqshort"]!), Status: String(tblFollowUp[indexPath.row]["Status"]!), AccCode: String(tblFollowUp[indexPath.row]["AccCode"]!), Date: String(tblFollowUp[indexPath.row]["CrDt"]!), width: width, height: height)
+     
+     cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+     
+     lastIndex = IndexPath.init()
+     
+     return cell
+     }*/
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellFollowUp") as! tvcFollowUp
+    /*func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+
+        if tableView.tag == 1{
+            return NSLocalizedString("lbltblRequest",comment:"");
+        }else{
+            return NSLocalizedString("lbltblTransfer",comment:"");
+        }
         
-        cell.SetValues(String(tblFollowUp[indexPath.row]["Reqshort"]!), Status: String(tblFollowUp[indexPath.row]["Status"]!), AccCode: String(tblFollowUp[indexPath.row]["AccCode"]!), Date: String(tblFollowUp[indexPath.row]["CrDt"]!), width: width, height: height)
-        
-        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-        
-        lastIndex = IndexPath.init()
-        
-        return cell
     }*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return tblFollowUp.count;
-        
-    }
+        /*if tableView.tag == 1{*/
+            return tblFollowUp.count;
+        /*}else{
+            return tblTransfer.count;
+        }*/
 
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 0.07*height
+        //if tableView.tag == 1{
+            return 0.07*height
+        /*}else{
+            return 0.07*height
+        }*/
         
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellFollowUp") as! tvcFollowUp
         
-        if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
+        //if tableView.tag == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "tvcFollowUp", for: indexPath) as! tvcFollowUp
             
-            // Initialize a gradient view
-            let gradientView = GradientView(frame: CGRect(x: 0, y: 0, width: 0.9*width, height: 0.12*height))
-            
-            // Set the gradient colors 8DE3F5 5C9F00
-            gradientView.colors = [UIColor.white, colorWithHexString ("F2F2F2")]
-            
-            // Optionally set some locations
-            gradientView.locations = [0.4, 1.0]
-            
-            // Optionally change the direction. The default is vertical.
-            gradientView.direction = .vertical
-            
-            // Add some borders too if you want
-            gradientView.topBorderColor = UIColor.lightGray
-            
-            gradientView.bottomBorderColor = colorWithHexString ("C7C7CD")
-            
-            cell.backgroundView = gradientView
-        }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
-            
-            cell.backgroundColor = UIColor.clear
-            cell.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("e4c29c"))
-            
-            if indexPath.row == 0{
-                imgCell = UIImage(named:"tblacchdr.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.backgroundView = imgvwCell
+            if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
                 
-                imgCell = UIImage(named:"tblacchdrSel.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.selectedBackgroundView = imgvwCell
-            }else if (tblFollowUp.count-1) == indexPath.row{
-                imgCell = UIImage(named:"tblaccfooter.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.backgroundView = imgvwCell
+                // Initialize a gradient view
+                let gradientView = GradientView(frame: CGRect(x: 0, y: 0, width: 0.9*width, height: 0.12*height))
                 
-                imgCell = UIImage(named:"tblaccfooterSel.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.selectedBackgroundView = imgvwCell
-            } else {
+                // Set the gradient colors 8DE3F5 5C9F00
+                gradientView.colors = [UIColor.white, colorWithHexString ("F2F2F2")]
                 
-                imgCell = UIImage(named:"tblaccrow.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.backgroundView = imgvwCell
+                // Optionally set some locations
+                gradientView.locations = [0.4, 1.0]
                 
-                imgCell = UIImage(named:"tblaccrowSel.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.selectedBackgroundView = imgvwCell
+                // Optionally change the direction. The default is vertical.
+                gradientView.direction = .vertical
+                
+                // Add some borders too if you want
+                gradientView.topBorderColor = UIColor.lightGray
+                
+                gradientView.bottomBorderColor = colorWithHexString ("C7C7CD")
+                
+                cell.backgroundView = gradientView
+            }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+                
+                cell.backgroundColor = UIColor.clear
+                cell.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("e4c29c"))
+                
+                if indexPath.row == 0{
+                    imgCell = UIImage(named:"tblacchdr.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblacchdrSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                }else if (tblFollowUp.count-1) == indexPath.row{
+                    imgCell = UIImage(named:"tblaccfooter.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblaccfooterSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                } else {
+                    
+                    imgCell = UIImage(named:"tblaccrow.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblaccrowSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                }
+                
+                if (tblFollowUp.count) == 1
+                {
+                    imgCell = UIImage(named:"tblaccrowsingle.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblaccrowsingleSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                    
+                }
+                
+            }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
+                
+                cell.backgroundColor = UIColor.clear
+                cell.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("94cce5"))
+                
+                if indexPath.row == 0{
+                    imgCell = UIImage(named:"tblacchdr.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblacchdrSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                }else if (tblFollowUp.count-1) == indexPath.row{
+                    imgCell = UIImage(named:"tblaccfooter.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblaccfooterSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                } else {
+                    
+                    imgCell = UIImage(named:"tblaccrow.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblaccrowSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                }
+                
+                if (tblFollowUp.count) == 1
+                {
+                    imgCell = UIImage(named:"tblaccrowsingle.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblaccrowsingleSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                    
+                }
             }
             
-            if (tblFollowUp.count) == 1
-            {
-                imgCell = UIImage(named:"tblaccrowsingle.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.backgroundView = imgvwCell
+            cell.SetValues(String(tblFollowUp[indexPath.row]["Reqshort"]!), Status: String(tblFollowUp[indexPath.row]["Status"]!), AccCode: String(tblFollowUp[indexPath.row]["AccCode"]!), Date: String(tblFollowUp[indexPath.row]["CrDt"]!), width: width, height: height)
+            
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+            
+            lastIndex = IndexPath.init()
+            
+            return cell
+            
+        /*}else{
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "tvcTransfer", for: indexPath) as! tvcTransfer
+            
+            if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
                 
-                imgCell = UIImage(named:"tblaccrowsingleSel.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.selectedBackgroundView = imgvwCell
+                // Initialize a gradient view
+                let gradientView = GradientView(frame: CGRect(x: 0, y: 0, width: 0.9*width, height: 0.12*height))
                 
+                // Set the gradient colors 8DE3F5 5C9F00
+                gradientView.colors = [UIColor.white, colorWithHexString ("F2F2F2")]
+                
+                // Optionally set some locations
+                gradientView.locations = [0.4, 1.0]
+                
+                // Optionally change the direction. The default is vertical.
+                gradientView.direction = .vertical
+                
+                // Add some borders too if you want
+                gradientView.topBorderColor = UIColor.lightGray
+                
+                gradientView.bottomBorderColor = colorWithHexString ("C7C7CD")
+                
+                cell.backgroundView = gradientView
+            }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+                
+                cell.backgroundColor = UIColor.clear
+                cell.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("e4c29c"))
+                
+                if indexPath.row == 0{
+                    imgCell = UIImage(named:"tblacchdr.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblacchdrSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                }else if (tblFollowUp.count-1) == indexPath.row{
+                    imgCell = UIImage(named:"tblaccfooter.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblaccfooterSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                } else {
+                    
+                    imgCell = UIImage(named:"tblaccrow.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblaccrowSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                }
+                
+                if (tblFollowUp.count) == 1
+                {
+                    imgCell = UIImage(named:"tblaccrowsingle.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblaccrowsingleSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                    
+                }
+                
+            }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
+                
+                cell.backgroundColor = UIColor.clear
+                cell.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("94cce5"))
+                
+                if indexPath.row == 0{
+                    imgCell = UIImage(named:"tblacchdr.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblacchdrSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                }else if (tblFollowUp.count-1) == indexPath.row{
+                    imgCell = UIImage(named:"tblaccfooter.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblaccfooterSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                } else {
+                    
+                    imgCell = UIImage(named:"tblaccrow.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblaccrowSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                }
+                
+                if (tblFollowUp.count) == 1
+                {
+                    imgCell = UIImage(named:"tblaccrowsingle.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.backgroundView = imgvwCell
+                    
+                    imgCell = UIImage(named:"tblaccrowsingleSel.png")!
+                    imgvwCell = UIImageView(image: imgCell)
+                    cell.selectedBackgroundView = imgvwCell
+                    
+                }
             }
             
-        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
+            cell.SetValues(String(tblTransfer[indexPath.row]["ConfirmationNo"]!), ArrivalDate: String(tblTransfer[indexPath.row]["Arrivaldate"]!), width: width, height: height)
             
-            cell.backgroundColor = UIColor.clear
-            cell.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("94cce5"))
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             
-            if indexPath.row == 0{
-                imgCell = UIImage(named:"tblacchdr.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.backgroundView = imgvwCell
-                
-                imgCell = UIImage(named:"tblacchdrSel.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.selectedBackgroundView = imgvwCell
-            }else if (tblFollowUp.count-1) == indexPath.row{
-                imgCell = UIImage(named:"tblaccfooter.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.backgroundView = imgvwCell
-                
-                imgCell = UIImage(named:"tblaccfooterSel.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.selectedBackgroundView = imgvwCell
-            } else {
+            lastIndex = IndexPath.init()
+            
+            return cell
+            
+        }*/
 
-                imgCell = UIImage(named:"tblaccrow.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.backgroundView = imgvwCell
-                
-                imgCell = UIImage(named:"tblaccrowSel.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.selectedBackgroundView = imgvwCell
-            }
-            
-            if (tblFollowUp.count) == 1
-            {
-                imgCell = UIImage(named:"tblaccrowsingle.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.backgroundView = imgvwCell
-                
-                imgCell = UIImage(named:"tblaccrowsingleSel.png")!
-                imgvwCell = UIImageView(image: imgCell)
-                cell.selectedBackgroundView = imgvwCell
-                
-            }
-        }
-        
-        cell.SetValues(String(tblFollowUp[indexPath.row]["Reqshort"]!), Status: String(tblFollowUp[indexPath.row]["Status"]!), AccCode: String(tblFollowUp[indexPath.row]["AccCode"]!), Date: String(tblFollowUp[indexPath.row]["CrDt"]!), width: width, height: height)
-        
-        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-        
-        lastIndex = IndexPath.init()
-        
-        return cell
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -808,10 +1005,13 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         Analytics.setScreenName("Request", screenClass: appDelegate.gstrAppName)
         
     }
-
+    
     @objc func clickAdd(_ sender: AnyObject){
         
-        let tercerViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcAddFolloUp") as! vcAddFolloUp
+        //let tercerViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcAddFolloUp") as! vcAddFolloUp
+        //self.navigationController?.pushViewController(tercerViewController, animated: true)
+
+        let tercerViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcServices") as! vcServices
         self.navigationController?.pushViewController(tercerViewController, animated: true)
         
     }
@@ -825,7 +1025,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
             appDelegate.strFollowUpTypeID = ""
             appDelegate.strDescriptionForExternal = ""
         }
-
+        
         if appDelegate.gblAddFollow == true{
             CargaFollowUp()
             self.tableView.reloadData()
@@ -833,5 +1033,5 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         
     }
-
+    
 }

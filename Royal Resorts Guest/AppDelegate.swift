@@ -76,7 +76,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     var ynTabsEnabled: Bool = true
     var strUnitStay: String = ""
     var strUnitStayInfoID: String = ""
+    var strStayInfoStatus: String = ""
     var strUnitCode: String = ""
+    var strUnitArrivalDate: String = ""
     var strFollowUpTypeID: String = ""
     var strDescriptionForExternal: String = ""
     var gblAddFollow: Bool = false
@@ -102,6 +104,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     var gstrBorderColorImg: String = ""
     var urlActiv: String = ""
     var strRestStayInfoID: String = ""
+    var strCheckOutTime: String = ""
+    var strCheckOutDate: String = ""
+    var strCheckOutTimeAux: String = ""
+    var strCheckOutDateAux: String = ""
     
     //Variables de configuracion
     var URLService: NSString = ""
@@ -139,7 +145,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     
     var UserName: String = "cqsCMUTp8V8wld6dDBoBTw=="
     var Password: String = "Rhw267Y5Pfkk1SOtnGpwZA=="
-    var AppAmb: Int = 3
+    var AppAmb: Int = 1
     
     //Arreglos
     var gtblLogin: Dictionary<String, String>! //tabla de Login
@@ -160,6 +166,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     var gblynResCredApply: String = ""
     var gblStayInfoCatProductID: String = ""
     var gblChargesApplied: Double = 0.0
+    var gblRRRewards: Double = 0.0
+    var RewardPerDollar: Double = 0
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -183,8 +191,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
             gstrAppName = "APPSTAY"
             strDataBaseByStay = "FDESK_CANCUN"
-            urlHome = "http://royalresorts.mobi/guest-services/"
-            urlActiv = "http://royalresorts.mobi/guest-services/activities.html"
+            //urlHome = "http://royalresorts.mobi/guest-services/"
+            //urlActiv = "http://royalresorts.mobi/guest-services/activities.html"
+            urlHome = "https://www.royalresorts.com/guest-services-app/"
+            urlActiv = "https://www.royalresorts.com/guest-services-app/activities.html"
             //gstrNavImg = "NavigationBar.png"
             
             switch AppAmb {
@@ -204,8 +214,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
                 Host = "wqasweb.royalresorts.com"
                 HostLogin = "wqasweb.royalresorts.com"
             case 4:
-                URLService = "https://wprdinternet.servicesrr.com:444/mobileservice/MobileService.asmx/"
-                URLServiceLogin = "https://wprdinternet.servicesrr.com:444/mobileservice/MobileService.asmx/"
+                URLService = "https://wprdinternet.servicesrr.com:444/mobileservice/MobileService.asmx"
+                URLServiceLogin = "https://wprdinternet.servicesrr.com:444/mobileservice/MobileService.asmx"
                 Host = "wprdinternet.servicesrr.com"
                 HostLogin = "wprdinternet.servicesrr.com"
             default:
@@ -241,8 +251,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
                 Host = "wqasweb.royalresorts.com"
                 HostLogin = "wqasweb.royalresorts.com"
             case 4:
-                URLService = "https://wprdinternet.servicesrr.com:444/mobileservice/MobileService.asmx/"
-                URLServiceLogin = "https://wprdinternet.servicesrr.com:444/mobileservice/MobileService.asmx/"
+                URLService = "https://wprdinternet.servicesrr.com:444/mobileservice/MobileService.asmx"
+                URLServiceLogin = "https://wprdinternet.servicesrr.com:444/mobileservice/MobileService.asmx"
                 Host = "wprdinternet.servicesrr.com"
                 HostLogin = "wprdinternet.servicesrr.com"
             default:
@@ -278,8 +288,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
                 Host = "wqasweb.royalresorts.com"
                 HostLogin = "wqasweb.royalresorts.com"
             case 4:
-                URLService = "https://wprdinternet.servicesrr.com:444/mobileservice/MobileService.asmx/"
-                URLServiceLogin = "https://wprdinternet.servicesrr.com:444/mobileservice/MobileService.asmx/"
+                URLService = "https://wprdinternet.servicesrr.com:444/mobileservice/MobileService.asmx"
+                URLServiceLogin = "https://wprdinternet.servicesrr.com:444/mobileservice/MobileService.asmx"
                 Host = "wprdinternet.simpsonbayresort.com"
                 HostLogin = "wprdinternet.servicesrr.com"
             default:

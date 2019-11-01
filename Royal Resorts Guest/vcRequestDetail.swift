@@ -833,7 +833,7 @@ class vcRequestDetail: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         var tableItems = RRDataSet()
         let service=RRRestaurantService(url: appDelegate.URLService as String, host: appDelegate.Host as String, userNameMobile : appDelegate.UserName, passwordMobile: appDelegate.Password);
-        tableItems = (service?.spGetMobileFollowUpVw("2", appCode: self.appDelegate.gstrAppName, peopleID: appDelegate.gstrLoginPeopleID, followUpId: FollowUpId, dataBase: self.appDelegate.strDataBaseByStay))!
+        tableItems = (service?.spGetMobileFollowUpVw("2", appCode: self.appDelegate.gstrAppName, peopleID: appDelegate.gstrLoginPeopleID, followUpId: FollowUpId, dataBase: self.appDelegate.strDataBaseByStay, sLanguage: self.appDelegate.strLenguaje))!
         
         if (tableItems.getTotalTables() > 0 ){
             
