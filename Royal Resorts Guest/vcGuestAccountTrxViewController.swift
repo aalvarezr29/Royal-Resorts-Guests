@@ -732,15 +732,217 @@ class vcGuestAccountTrxViewController: UIViewController  , UITableViewDelegate, 
                 }
             }
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            AccView.backgroundColor = UIColor.clear
+            AccView.frame = CGRect(x: 0.05*width, y: 0.1*height, width: 0.9*width, height: 0.2*height);
+            
+            self.view.backgroundColor = UIColor.white
+            tableView.backgroundColor = UIColor.white
+            
+            var imgHdr = UIImage()
+            var imgHdrVw = UIImageView()
+            
+            imgHdr = UIImage(named:"Titlehdr.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.0, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.6
+            AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.03*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.58
+            AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.06*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.56
+            AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.09*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.54
+            AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.12*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.52
+            AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlefooter.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.15*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.5
+            AccView.addSubview(imgHdrVw)
+            
+            var strFontTitle: String = "Futura-CondensedExtraBold"
+            var Color: UIColor = colorWithHexString("004c50")
+            
+            lblLocation.textColor = Color
+            lblDate.textColor = Color
+            lblKeycard.textColor = Color
+            lblSubTot.textColor = Color
+            lblTip.textColor = Color
+            lblAmount.textColor = Color
+            lblLocation.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblDate.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblKeycard.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblSubTot.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblTip.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblAmount.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            strFontTitle = "Futura-CondensedMedium"
+            Color = colorWithHexString("2e3634")
+            
+            lblPlaceTrx.textColor = Color
+            lblDateTrx.textColor = Color
+            lblNameTrx.textColor = Color
+            lblSubTotTrx.textColor = Color
+            lblTipTrx.textColor = Color
+            lblAmountTrx.textColor = Color
+            lblPlaceTrx.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblDateTrx.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblNameTrx.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblSubTotTrx.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblTipTrx.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblAmountTrx.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            
+            lblLocation.textAlignment = NSTextAlignment.left
+            lblLocation.frame = CGRect(x: 0.02*width, y: 0.00001*height, width: 0.2*width, height: 0.03*height);
+            lblDate.textAlignment = NSTextAlignment.left
+            lblDate.frame = CGRect(x: 0.02*width, y: 0.029*height, width: 0.2*width, height: 0.03*height);
+            lblKeycard.textAlignment = NSTextAlignment.left
+            lblKeycard.frame = CGRect(x: 0.02*width, y: 0.058*height, width: 0.2*width, height: 0.03*height);
+            lblSubTot.textAlignment = NSTextAlignment.left
+            lblSubTot.frame = CGRect(x: 0.02*width, y: 0.087*height, width: 0.2*width, height: 0.03*height);
+            lblTip.textAlignment = NSTextAlignment.left
+            lblTip.frame = CGRect(x: 0.02*width, y: 0.116*height, width: 0.2*width, height: 0.03*height);
+            lblAmount.textAlignment = NSTextAlignment.left
+            lblAmount.frame = CGRect(x: 0.02*width, y: 0.146*height, width: 0.2*width, height: 0.03*height);
+            
+            lblPlaceTrx.numberOfLines = 0
+            lblPlaceTrx.frame = CGRect(x: 0.24*width, y: 0.0001*height, width: 0.45*width, height: 0.03*height);
+            lblDateTrx.numberOfLines = 0
+            lblDateTrx.frame = CGRect(x: 0.24*width, y: 0.0297*height, width: 0.45*width, height: 0.03*height);
+            lblNameTrx.numberOfLines = 0
+            lblNameTrx.frame = CGRect(x: 0.24*width, y: 0.059*height, width: 0.45*width, height: 0.03*height);
+            lblSubTotTrx.numberOfLines = 0
+            lblSubTotTrx.frame = CGRect(x: 0.24*width, y: 0.0885*height, width: 0.6*width, height: 0.03*height);
+            lblTipTrx.numberOfLines = 0
+            lblTipTrx.frame = CGRect(x: 0.24*width, y: 0.117*height, width: 0.6*width, height: 0.03*height);
+            lblAmountTrx.numberOfLines = 0
+            lblAmountTrx.frame = CGRect(x: 0.24*width, y: 0.147*height, width: 0.6*width, height: 0.03*height);
+            
+            btnApply.frame = CGRect(x: 0.1*width, y: 0.313*height, width: 0.8*width, height: 0.06*height);
+            
+            AccView.addSubview(lblLocation)
+            AccView.addSubview(lblPlaceTrx)
+            AccView.addSubview(lblDate)
+            AccView.addSubview(lblDateTrx)
+            AccView.addSubview(lblKeycard)
+            AccView.addSubview(lblNameTrx)
+            AccView.addSubview(lblSubTot)
+            AccView.addSubview(lblSubTotTrx)
+            AccView.addSubview(lblTip)
+            AccView.addSubview(lblTipTrx)
+            AccView.addSubview(lblAmount)
+            AccView.addSubview(lblAmountTrx)
+            
+            self.view.addSubview(btnApply)
+            
+            self.view.addSubview(AccView)
+            
+            btnApply.isHidden = true
+            
+            tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+            
+            mas = NSMutableAttributedString(string: NSLocalizedString("btnConsumption",comment:""), attributes: [
+                NSAttributedString.Key.font: UIFont(name:strFontTitle, size:appDelegate.gblFont7 + appDelegate.gblDeviceFont3)!
+                ])
+            btnApply.setAttributedTitle(mas, for: UIControl.State())
+            btnApply.titleLabel?.textAlignment = NSTextAlignment.center
+            btnApply.titleLabel?.adjustsFontSizeToFitWidth = true
+            //btnApply.backgroundColor = self.colorWithHexString("ddf4ff")
+            //btnApply.layer.borderColor = self.colorWithHexString("94cce5").CGColor
+            //btnApply.layer.borderWidth = 3
+            
+            self.btnApply.setTitleColor(self.colorWithHexString("2e3634"), for: UIControl.State())
+            //self.btnApply.layer.borderWidth = 4
+            //self.btnApply.layer.borderColor = self.colorWithHexString("7c6a56").cgColor
+            self.btnApply.backgroundColor = self.colorWithHexString("f7941e")
+            
+            if (VoucherDetail.count>0)
+            {
+                btnApply.isEnabled = false
+                btnApply.tintColor = UIColor.gray
+                self.tableView.reloadData()
+            }else{
+                //btnApply.tintColor = colorWithHexString("00467f")
+                btnApply.tintColor = colorWithHexString("2e3634")
+                btnApply.isEnabled = true
+            }
+            
+            if appDelegate.ynIPad {
+                switch appDelegate.Model {
+                case "iPad 2":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.53*height);
+                case "iPad Air":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.53*height);
+                case "iPad Air 2":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.53*height);
+                case "iPad Pro":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.53*height);
+                case "iPad Retina":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.53*height);
+                default:
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.53*height);
+                }
+            }else{
+                switch appDelegate.Model {
+                case "iPhone":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.45*height);
+                case "iPhone 4":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.45*height);
+                case "iPhone 4s":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.45*height);
+                case "iPhone 5":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.47*height);
+                case "iPhone 5c":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.47*height);
+                case "iPhone 5s":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.47*height);
+                case "iPhone 6":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.49*height);
+                case "iPhone 6 Plus":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.49*height);
+                case "iPhone 6s":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.49*height);
+                case "iPhone 6s Plus":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.49*height);
+                default:
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.4*height, width: 0.9*width, height: 0.45*height);
+                }
+            }
+            
         }
         
-        let downIco  = UIImage(named: "ic_download")!
+        /*let downIco  = UIImage(named: "ic_download")!
         
         ViewItem.rightBarButtonItem = UIBarButtonItem(image: downIco,  style: UIBarButtonItem.Style.plain, target: self, action: #selector(vcGuestAccountTrxViewController.barButtonItemOpenPDF))
         
         if self.URLTicket == ""{
             ViewItem.rightBarButtonItem?.isEnabled = false
-        }
+        }*/
         
     }
 

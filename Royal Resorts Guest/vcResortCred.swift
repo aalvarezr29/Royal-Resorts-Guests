@@ -193,7 +193,6 @@ class vcResortCred: UIViewController {
         let lblHuesped = UILabel(frame: CGRect(x: 0.01*width, y: 0.01*height, width: 0.25*width, height: 0.04*height));
         lblHuesped.backgroundColor = UIColor.clear;
         lblHuesped.textAlignment = NSTextAlignment.left;
-        lblHuesped.textColor = colorWithHexString("206ec6")
         lblHuesped.numberOfLines = 1;
         lblHuesped.font = UIFont(name: "Verdana-Bold", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblHuesped.text = NSLocalizedString("lblKeys",comment:"") + ":";
@@ -202,7 +201,6 @@ class vcResortCred: UIViewController {
         let lblHuespedNames = UILabel(frame: CGRect(x: 0.27*width, y: 0, width: 0.65*width, height: 0.08*height));
         lblHuespedNames.backgroundColor = UIColor.clear;
         lblHuespedNames.textAlignment = NSTextAlignment.left;
-        lblHuespedNames.textColor = colorWithHexString("465261")
         lblHuespedNames.numberOfLines = 0;
         lblHuespedNames.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblHuespedNames.text = strPeopleName;
@@ -218,7 +216,6 @@ class vcResortCred: UIViewController {
         let lblBalance = UILabel(frame: CGRect(x: 0.3*width, y: 0.09*height, width: 0.3*width, height: 0.03*height));
         lblBalance.backgroundColor = UIColor.clear;
         lblBalance.textAlignment = NSTextAlignment.center;
-        lblBalance.textColor = colorWithHexString("a6a6a6")
         lblBalance.numberOfLines = 1;
         lblBalance.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblBalance.text = NSLocalizedString("strBalance",comment:"");
@@ -227,7 +224,6 @@ class vcResortCred: UIViewController {
         let lblMontoPesos = UILabel(frame: CGRect(x: 0.0, y: 0.12*height, width: 0.4*width, height: 0.06*height));
         lblMontoPesos.backgroundColor = UIColor.clear;
         lblMontoPesos.textAlignment = NSTextAlignment.center;
-        lblMontoPesos.textColor = colorWithHexString("011125")
         lblMontoPesos.numberOfLines = 1;
         lblMontoPesos.font = UIFont(name: "Verdana", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
         lblMontoPesos.text = "$" + String(format: "%.2f", (String(format: "%.2f0", ((fAmount).description as NSString).floatValue) as NSString).floatValue);
@@ -236,7 +232,6 @@ class vcResortCred: UIViewController {
         let lblMontoDolares = UILabel(frame: CGRect(x: 0.5*width, y: 0.12*height, width: 0.4*width, height: 0.06*height));
         lblMontoDolares.backgroundColor = UIColor.clear;
         lblMontoDolares.textAlignment = NSTextAlignment.center;
-        lblMontoDolares.textColor = colorWithHexString("011125")
         lblMontoDolares.numberOfLines = 1;
         lblMontoDolares.font = UIFont(name: "Verdana", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
         lblMontoDolares.text = "$" + String(format: "%.2f", (String(format: "%.2f0", ((fAmount/fDollar).description as NSString).floatValue) as NSString).floatValue);
@@ -245,7 +240,6 @@ class vcResortCred: UIViewController {
         let lblPesos = UILabel(frame: CGRect(x: 0.0, y: 0.16*height, width: 0.4*width, height: 0.06*height));
         lblPesos.backgroundColor = UIColor.clear;
         lblPesos.textAlignment = NSTextAlignment.center;
-        lblPesos.textColor = colorWithHexString("011125")
         lblPesos.numberOfLines = 1;
         lblPesos.font = UIFont(name: "Verdana", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
         lblPesos.text = "MXN";
@@ -254,7 +248,6 @@ class vcResortCred: UIViewController {
         let lblDolares = UILabel(frame: CGRect(x: 0.5*width, y: 0.16*height, width: 0.4*width, height: 0.06*height));
         lblDolares.backgroundColor = UIColor.clear;
         lblDolares.textAlignment = NSTextAlignment.center;
-        lblDolares.textColor = colorWithHexString("011125")
         lblDolares.numberOfLines = 1;
         lblDolares.font = UIFont(name: "Verdana", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
         lblDolares.text = "USD";
@@ -263,7 +256,6 @@ class vcResortCred: UIViewController {
         let lblTipoCambio = UILabel(frame: CGRect(x: 0.0, y: 0.25*height, width: 0.9*width, height: 0.03*height));
         lblTipoCambio.backgroundColor = UIColor.clear;
         lblTipoCambio.textAlignment = NSTextAlignment.center;
-        lblTipoCambio.textColor = colorWithHexString("a6a6a6")
         lblTipoCambio.numberOfLines = 1;
         lblTipoCambio.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblTipoCambio.text = "$" + String(format: "%.2f", (String(format: "%.2f0", ((fDollar).description as NSString).floatValue) as NSString).floatValue) + " MXN = 1 USD";
@@ -272,7 +264,6 @@ class vcResortCred: UIViewController {
         let lblFormaPago = UILabel(frame: CGRect(x: 0.0, y: 0.28*height, width: 0.9*width, height: 0.04*height));
         lblFormaPago.backgroundColor = UIColor.clear;
         lblFormaPago.textAlignment = NSTextAlignment.center;
-        lblFormaPago.textColor = colorWithHexString("a6a6a6")
         lblFormaPago.numberOfLines = 1;
         lblFormaPago.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblFormaPago.text = NSLocalizedString("strPayment",comment:"") + ":";
@@ -283,12 +274,10 @@ class vcResortCred: UIViewController {
         imgvw = UIImageView(image: imgResCred)
         imgvw.frame = CGRect(x: 0.17*width, y: 0.01*height, width: imgvw.image!.size.width, height: imgvw.image!.size.height);
         imgvw.image = imgvw.image?.withRenderingMode(.alwaysTemplate)
-        imgvw.tintColor = colorWithHexString("206ec6")
-        
+
         let lblResortCred = UILabel(frame: CGRect(x: 0.25*width, y: 0.01*height, width: 0.5*width, height: 0.03*height));
         lblResortCred.backgroundColor = UIColor.clear;
         lblResortCred.textAlignment = NSTextAlignment.left;
-        lblResortCred.textColor = colorWithHexString("465261")
         lblResortCred.numberOfLines = 1;
         lblResortCred.font = UIFont(name: "Verdana", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
         lblResortCred.text = "RESORT CREDITS";
@@ -297,7 +286,6 @@ class vcResortCred: UIViewController {
         let lblCredMax = UILabel(frame: CGRect(x: 0.01*width, y: 0.06*height, width: 0.5*width, height: 0.03*height));
         lblCredMax.backgroundColor = UIColor.clear;
         lblCredMax.textAlignment = NSTextAlignment.left;
-        lblCredMax.textColor = colorWithHexString("206ec6")
         lblCredMax.numberOfLines = 1;
         lblCredMax.font = UIFont(name: "Verdana", size: appDelegate.gblFont7 + appDelegate.gblDeviceFont7)
         lblCredMax.text = NSLocalizedString("strMaxCred",comment:"");
@@ -306,7 +294,6 @@ class vcResortCred: UIViewController {
         let lblCredMaxAmount = UILabel(frame: CGRect(x: 0.6*width, y: 0.06*height, width: 0.2*width, height: 0.03*height));
         lblCredMaxAmount.backgroundColor = UIColor.clear;
         lblCredMaxAmount.textAlignment = NSTextAlignment.left;
-        lblCredMaxAmount.textColor = colorWithHexString("465261")
         lblCredMaxAmount.numberOfLines = 1;
         lblCredMaxAmount.font = UIFont(name: "Verdana", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
         lblCredMaxAmount.text = "$" + String(format: "%.2f", (String(format: "%.2f0", ((appDelegate.gblResCredMax).description as NSString).floatValue) as NSString).floatValue) + " USD";
@@ -315,7 +302,6 @@ class vcResortCred: UIViewController {
         let lblDispAcc = UILabel(frame: CGRect(x: 0.01*width, y: 0.1*height, width: 0.5*width, height: 0.03*height));
         lblDispAcc.backgroundColor = UIColor.clear;
         lblDispAcc.textAlignment = NSTextAlignment.left;
-        lblDispAcc.textColor = colorWithHexString("206ec6")
         lblDispAcc.numberOfLines = 1;
         lblDispAcc.font = UIFont(name: "Verdana", size: appDelegate.gblFont7 + appDelegate.gblDeviceFont7)
         lblDispAcc.text = NSLocalizedString("strAvailAcc",comment:"");
@@ -324,17 +310,14 @@ class vcResortCred: UIViewController {
         let lblDispAccAmount = UILabel(frame: CGRect(x: 0.6*width, y: 0.1*height, width: 0.2*width, height: 0.03*height));
         lblDispAccAmount.backgroundColor = UIColor.clear;
         lblDispAccAmount.textAlignment = NSTextAlignment.left;
-        lblDispAccAmount.textColor = colorWithHexString("465261")
         lblDispAccAmount.numberOfLines = 1;
         lblDispAccAmount.font = UIFont(name: "Verdana", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
         lblDispAccAmount.text = "$" + String(format: "%.2f", (String(format: "%.2f0", ((appDelegate.gblResCredAmount).description as NSString).floatValue) as NSString).floatValue) + " USD";
         lblDispAccAmount.adjustsFontSizeToFitWidth = true
-        
-        
+         
         let lblSaldoApp = UILabel(frame: CGRect(x: 0.01*width, y: 0.14*height, width: 0.5*width, height: 0.03*height));
         lblSaldoApp.backgroundColor = UIColor.clear;
         lblSaldoApp.textAlignment = NSTextAlignment.left;
-        lblSaldoApp.textColor = colorWithHexString("206ec6")
         lblSaldoApp.numberOfLines = 1;
         lblSaldoApp.font = UIFont(name: "Verdana", size: appDelegate.gblFont7 + appDelegate.gblDeviceFont7)
         lblSaldoApp.text = NSLocalizedString("strCredApply",comment:"")
@@ -343,7 +326,6 @@ class vcResortCred: UIViewController {
         let lblSaldoAppAmount = UILabel(frame: CGRect(x: 0.6*width, y: 0.14*height, width: 0.2*width, height: 0.03*height));
         lblSaldoAppAmount.backgroundColor = UIColor.clear;
         lblSaldoAppAmount.textAlignment = NSTextAlignment.left;
-        lblSaldoAppAmount.textColor = colorWithHexString("465261")
         lblSaldoAppAmount.numberOfLines = 1;
         lblSaldoAppAmount.font = UIFont(name: "Verdana", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
         lblSaldoAppAmount.text = "$" + String(format: "%.2f", (String(format: "%.2f0", ((((fAmount/fDollar) - appDelegate.gblResCredAmount)).description as NSString).floatValue) as NSString).floatValue) + " USD";
@@ -352,7 +334,6 @@ class vcResortCred: UIViewController {
         let lblResCredNota = UILabel(frame: CGRect(x: 0.01*width, y: 0.2*height, width: 0.9*width, height: 0.1*height));
         lblResCredNota.backgroundColor = UIColor.clear;
         lblResCredNota.textAlignment = NSTextAlignment.left;
-        lblResCredNota.textColor = colorWithHexString("465261")
         lblResCredNota.numberOfLines = 0;
         lblResCredNota.font = UIFont(name: "Verdana", size: appDelegate.gblFont7 + appDelegate.gblDeviceFont7)
         lblResCredNota.text = NSLocalizedString("strTextResCred",comment:"");
@@ -361,7 +342,6 @@ class vcResortCred: UIViewController {
         let lblFooterMsg = UILabel(frame: CGRect(x: 0.01*width, y: 0.31*height, width: 0.9*width, height: 0.1*height));
         lblFooterMsg.backgroundColor = UIColor.clear;
         lblFooterMsg.textAlignment = NSTextAlignment.left;
-        lblFooterMsg.textColor = colorWithHexString("a6a6a6")
         lblFooterMsg.numberOfLines = 0;
         lblFooterMsg.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblFooterMsg.text = NSLocalizedString("strResortCreditRestrictionsMsj",comment:"");
@@ -370,9 +350,7 @@ class vcResortCred: UIViewController {
         btnResCredApply.frame = CGRect(x: 0.01*width, y: 0.42*height, width: 0.9*width, height: 0.05*height);
         btnResCredApply.setTitle(NSLocalizedString("strPagar",comment:""), for: UIControl.State())
         btnResCredApply.titleLabel?.font = UIFont(name: "Helvetica", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont4)
-        btnResCredApply.backgroundColor = colorWithHexString("206ec6")
         btnResCredApply.layer.borderWidth = 0.8
-        btnResCredApply.setTitleColor(UIColor.white, for: UIControl.State())
         btnResCredApply.titleLabel?.textAlignment = NSTextAlignment.center
         
         itemsView.addSubview(lblHuesped)
@@ -396,6 +374,57 @@ class vcResortCred: UIViewController {
         ResCredView.addSubview(lblResCredNota)
         ResCredView.addSubview(lblFooterMsg)
         ResCredView.addSubview(btnResCredApply)
+
+        if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
+            
+            lblHuesped.textColor = colorWithHexString("206ec6")
+            lblHuespedNames.textColor = colorWithHexString("465261")
+            lblBalance.textColor = colorWithHexString("a6a6a6")
+            lblMontoPesos.textColor = colorWithHexString("011125")
+            lblMontoDolares.textColor = colorWithHexString("011125")
+            lblPesos.textColor = colorWithHexString("011125")
+            lblDolares.textColor = colorWithHexString("011125")
+            lblTipoCambio.textColor = colorWithHexString("a6a6a6")
+            lblFormaPago.textColor = colorWithHexString("a6a6a6")
+            lblResortCred.textColor = colorWithHexString("465261")
+            lblCredMax.textColor = colorWithHexString("206ec6")
+            lblCredMaxAmount.textColor = colorWithHexString("465261")
+            lblDispAcc.textColor = colorWithHexString("206ec6")
+            lblDispAccAmount.textColor = colorWithHexString("465261")
+            lblSaldoApp.textColor = colorWithHexString("206ec6")
+            lblSaldoAppAmount.textColor = colorWithHexString("465261")
+            lblResCredNota.textColor = colorWithHexString("465261")
+            lblFooterMsg.textColor = colorWithHexString("a6a6a6")
+            imgvw.tintColor = colorWithHexString("206ec6")
+            btnResCredApply.backgroundColor = colorWithHexString("206ec6")
+            btnResCredApply.setTitleColor(UIColor.white, for: UIControl.State())
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+            
+            lblHuesped.textColor = colorWithHexString("ba8748")
+            lblHuespedNames.textColor = colorWithHexString("ba8748")
+            lblBalance.textColor = colorWithHexString("ba8748")
+            lblMontoPesos.textColor = colorWithHexString("ba8748")
+            lblMontoDolares.textColor = colorWithHexString("ba8748")
+            lblPesos.textColor = colorWithHexString("ba8748")
+            lblDolares.textColor = colorWithHexString("ba8748")
+            lblTipoCambio.textColor = colorWithHexString("ba8748")
+            lblFormaPago.textColor = colorWithHexString("ba8748")
+            lblResortCred.textColor = colorWithHexString("ba8748")
+            lblCredMax.textColor = colorWithHexString("ba8748")
+            lblCredMaxAmount.textColor = colorWithHexString("ba8748")
+            lblDispAcc.textColor = colorWithHexString("ba8748")
+            lblDispAccAmount.textColor = colorWithHexString("ba8748")
+            lblSaldoApp.textColor = colorWithHexString("ba8748")
+            lblSaldoAppAmount.textColor = colorWithHexString("ba8748")
+            lblResCredNota.textColor = colorWithHexString("ba8748")
+            lblFooterMsg.textColor = colorWithHexString("ba8748")
+            imgvw.tintColor = colorWithHexString("ba8748")
+            btnResCredApply.setTitleColor(self.colorWithHexString("ba8748"), for: UIControl.State())
+            btnResCredApply.layer.borderWidth = 4
+            btnResCredApply.layer.borderColor = self.colorWithHexString("7c6a56").cgColor
+            btnResCredApply.backgroundColor = self.colorWithHexString("eee7dd")
+        }
 
         bodyView.addSubview(itemsView)
         bodyView.addSubview(ResCredView)

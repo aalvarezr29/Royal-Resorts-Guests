@@ -103,10 +103,35 @@ class vcCheckOutSlip: UIViewController {
         footerView.frame = CGRect(x: 0.0, y: 0.78*height, width: width, height: 0.1*height);
         headerView.frame = CGRect(x: 0.0, y: 0.01*height, width: width, height: 0.1*height);
         
+        var colorprim: UIColor = UIColor.black
+        var colorprim2: UIColor = UIColor.black
+        
+        if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
+            
+            colorprim = colorWithHexString("011125")
+            colorprim2 = colorWithHexString("465261")
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+            
+            colorprim = colorWithHexString("011125")
+            colorprim2 = colorWithHexString("465261")
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
+            
+            colorprim = colorWithHexString("011125")
+            colorprim2 = colorWithHexString("465261")
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            colorprim = colorWithHexString("2e3634")
+            colorprim2 = colorWithHexString("2e3634")
+            
+        }
+        
         let lblProperty = UILabel(frame: CGRect(x: 0.0, y: 0.1*height, width: width, height: 0.08*height));
         lblProperty.backgroundColor = UIColor.clear;
         lblProperty.textAlignment = NSTextAlignment.center;
-        lblProperty.textColor = colorWithHexString("011125")
+        lblProperty.textColor = colorprim
         lblProperty.numberOfLines = 1;
         lblProperty.font = UIFont(name: "Verdana-Bold", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
         lblProperty.text = Stays["PropertyName"]! + " - " + Stays["UnitCode"]!;
@@ -115,7 +140,7 @@ class vcCheckOutSlip: UIViewController {
         let lblstrDate = UILabel(frame: CGRect(x: 0.0, y: 0.08*height, width: width, height: 0.06*height));
         lblstrDate.backgroundColor = UIColor.clear;
         lblstrDate.textAlignment = NSTextAlignment.center;
-        lblstrDate.textColor = colorWithHexString("011125")
+        lblstrDate.textColor = colorprim
         lblstrDate.numberOfLines = 1;
         lblstrDate.font = UIFont(name: "Verdana-Bold", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont6)
         lblstrDate.text = strDate;
@@ -123,7 +148,7 @@ class vcCheckOutSlip: UIViewController {
         let lblstrTime = UILabel(frame: CGRect(x: 0.0, y: 0.08*height, width: width, height: 0.06*height));
         lblstrTime.backgroundColor = UIColor.clear;
         lblstrTime.textAlignment = NSTextAlignment.center;
-        lblstrTime.textColor = colorWithHexString("011125")
+        lblstrTime.textColor = colorprim
         lblstrTime.numberOfLines = 1;
         lblstrTime.font = UIFont(name: "Verdana-Bold", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont6)
         lblstrTime.text = "CHECK OUT TIME: " + strOutDate;
@@ -133,7 +158,7 @@ class vcCheckOutSlip: UIViewController {
         let lblstrName = UILabel(frame: CGRect(x: 0.05*width, y: 0.18*height, width: 0.9*width, height: 0.15*height));
         lblstrName.backgroundColor = UIColor.clear;
         lblstrName.textAlignment = NSTextAlignment.left;
-        lblstrName.textColor = colorWithHexString("011125");
+        lblstrName.textColor = colorprim
         lblstrName.numberOfLines = 0;
         lblstrName.font = UIFont(name: "Verdana-Bold", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7);
         lblstrName.lineBreakMode = .byWordWrapping
@@ -161,7 +186,7 @@ class vcCheckOutSlip: UIViewController {
         let lblMsgCheck = UILabel(frame: CGRect(x: 0.0, y: 0.04*height, width: width, height: 0.1*height));
         lblMsgCheck.backgroundColor = UIColor.clear;
         lblMsgCheck.textAlignment = NSTextAlignment.center;
-        lblMsgCheck.textColor = colorWithHexString("465261");
+        lblMsgCheck.textColor = colorprim2
         lblMsgCheck.numberOfLines = 0;
         lblMsgCheck.font = UIFont(name: "Verdana-Bold", size: appDelegate.gblFont9 + appDelegate.gblDeviceFont8)
         lblMsgCheck.text = NSLocalizedString("lblCheckOutSlip",comment:"");
@@ -173,7 +198,7 @@ class vcCheckOutSlip: UIViewController {
         let lblMsg = UILabel(frame: CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.33*height));
         lblMsg.backgroundColor = UIColor.clear;
         lblMsg.textAlignment = NSTextAlignment.center;
-        lblMsg.textColor = colorWithHexString("465261");
+        lblMsg.textColor = colorprim2
         lblMsg.numberOfLines = 0;
         lblMsg.font = UIFont(name: "Verdana-Bold", size: appDelegate.gblFont9 + appDelegate.gblDeviceFont4)
         lblMsg.text = NSLocalizedString("lblMsgCheckOutSlip",comment:"");
@@ -182,7 +207,7 @@ class vcCheckOutSlip: UIViewController {
         let lblMsg2 = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: width, height: 0.1*height));
         lblMsg2.backgroundColor = UIColor.clear;
         lblMsg2.textAlignment = NSTextAlignment.center;
-        lblMsg2.textColor = colorWithHexString("465261");
+        lblMsg2.textColor = colorprim2
         lblMsg2.numberOfLines = 0;
         lblMsg2.font = UIFont(name: "Verdana-Bold", size: appDelegate.gblFont9 + appDelegate.gblDeviceFont7)
         lblMsg2.text = NSLocalizedString("lblTimeCheckOutSlip",comment:"");

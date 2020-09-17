@@ -198,6 +198,40 @@ class vcAddFolloUp: UIViewController, UITableViewDelegate, UITextViewDelegate, U
             
             txtShortDesc.textColor = colorWithHexString("00467f")
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            strFont = "HelveticaNeue"
+            
+            var imgBack = UIImage()
+            var imgvwBack = UIImageView()
+            
+            AccView.backgroundColor = UIColor.clear
+            
+            //self.view.backgroundColor = colorWithHexString ("DDF4FF")
+            //tableView.backgroundColor = colorWithHexString ("DDF4FF")
+            //AccView.backgroundColor = colorWithHexString ("DDF4FF")
+            
+            AccView.backgroundColor = UIColor.white
+            tableView.backgroundColor = UIColor.white
+            self.view.backgroundColor = UIColor.white
+            
+            imgBack = UIImage(named:"bg.png")!
+            imgvwBack = UIImageView(image: imgBack)
+            imgvwBack.frame = CGRect(x: 0.0, y: -0.05*height, width: width, height: height+(0.05*height));
+            imgvwBack.alpha = 0.3
+            imgvwBack.contentMode = UIView.ContentMode.scaleAspectFill
+            //self.view.addSubview(imgvwBack)
+            
+            AccView.addSubview(txtShortDesc)
+            AccView.addSubview(txtCommentRequest)
+            
+            tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+            tableView.separatorColor = UIColor.clear
+            
+            tableView.backgroundColor = UIColor.clear
+            
+            txtShortDesc.textColor = colorWithHexString("2e3634")
+            //txtCommentRequest.textColor = colorWithHexString ("2e3634")
+            
         }
         
         tableView.reloadData()
@@ -219,6 +253,10 @@ class vcAddFolloUp: UIViewController, UITableViewDelegate, UITextViewDelegate, U
             }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
                 
                 txtCommentRequest.textColor = colorWithHexString("00467f")
+                
+            }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+                
+                txtCommentRequest.textColor = colorWithHexString("2e3634")
                 
             }
         }
@@ -376,6 +414,30 @@ class vcAddFolloUp: UIViewController, UITableViewDelegate, UITextViewDelegate, U
             cell?.textLabel?.textColor = colorWithHexString("00467f")
             cell?.detailTextLabel?.textColor = colorWithHexString("00467f")
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            
+            cell!.backgroundColor = UIColor.clear
+            
+            cell!.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("004c50"))
+            
+            cell!.layer.masksToBounds = true
+            cell!.layer.cornerRadius = 5
+            cell!.layer.borderWidth = 1
+            cell!.layer.shadowOffset = CGSize(width: -1, height: 1)
+            cell!.layer.borderColor = UIColor.black.cgColor
+            
+            /*imgCell = UIImage(named:"tblrowsingle.png")!
+            imgvwCell = UIImageView(image: imgCell)
+            cell!.backgroundView = imgvwCell
+            
+            imgCell = UIImage(named:"tblrowsingleSel.png")!
+            imgvwCell = UIImageView(image: imgCell)
+            cell!.selectedBackgroundView = imgvwCell*/
+            
+            cell?.textLabel?.textColor = colorWithHexString("2e3634")
+            cell?.detailTextLabel?.textColor = colorWithHexString("2e3634")
+            
         }
 
         cell!.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
@@ -495,8 +557,32 @@ class vcAddFolloUp: UIViewController, UITableViewDelegate, UITextViewDelegate, U
         var strDocumentCode: String = ""
         
         strDocumentCode = "GFollowUp"
+        
+        if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            strDocumentCode = "APP_GUESTREQMAILCL"
+        }
 
-        if Reachability.isConnectedToNetwork(){
+        appDelegate.strEmailList = ""
+        
+        var countEmails: Int = 0
+        
+        countEmails = appDelegate.gtblFollowUpTypeEmail.count
+        
+        if countEmails > 0{
+            for yIndex in 0...countEmails-1 {
+
+                if (appDelegate.gtblFollowUpTypeEmail[yIndex]["fkPropertyID"] == appDelegate.strUnitPropertyID && appDelegate.gtblFollowUpTypeEmail[yIndex]["pkFollowUpTypeID"] == appDelegate.strFollowUpTypeID){
+                    
+                    appDelegate.strEmailList = appDelegate.gtblFollowUpTypeEmail[yIndex]["emailList"]!
+
+                }
+                
+            }
+        }
+
+        print(appDelegate.strEmailList)
+        
+        if Reachability.isConnectedToNetwork() && appDelegate.strEmailList != ""{
 
             if (self.appDelegate.strStayInfoStatus == "RESERVED" || self.appDelegate.strStayInfoStatus == "ASSIGNED"){
                 
@@ -506,7 +592,7 @@ class vcAddFolloUp: UIViewController, UITableViewDelegate, UITextViewDelegate, U
                 let strArrivalDate = strdateFormatter.string(from: ArrivalDate!.date)
                 
                 let service=RRRestaurantService(url: appDelegate.URLService as String, host: appDelegate.Host as String, userNameMobile:appDelegate.UserName, passwordMobile:appDelegate.Password);
-                prepareOrderResult = service!.wmCallAddFollowUp(self.appDelegate.strDataBaseByStay, unitcode: appDelegate.strUnitCode, stayinfoID: appDelegate.strUnitStayInfoID, iPeopleID: appDelegate.gstrLoginPeopleID, fTypeID: appDelegate.strFollowUpTypeID, reqShort: txtShortDesc.text, reqlong: txtCommentRequest.text, solution: "", expect: strArrivalDate, finish: strArrivalDate, statusID: "3", strLenguageCode: self.appDelegate.strLenguaje, strDocumentCode: strDocumentCode)! as NSString
+                prepareOrderResult = service!.wmCallAddFollowUp(self.appDelegate.strDataBaseByStay, unitcode: appDelegate.strUnitCode, stayinfoID: appDelegate.strUnitStayInfoID, iPeopleID: appDelegate.gstrLoginPeopleID, fTypeID: appDelegate.strFollowUpTypeID, reqShort: txtShortDesc.text, reqlong: txtCommentRequest.text, solution: "", expect: strArrivalDate, finish: strArrivalDate, statusID: "3", strLenguageCode: self.appDelegate.strLenguaje, strDocumentCode: strDocumentCode, strPeopleEmail: appDelegate.strEmailList)! as NSString
                 
             }else{
                 
@@ -516,7 +602,7 @@ class vcAddFolloUp: UIViewController, UITableViewDelegate, UITextViewDelegate, U
                 let DateInFormat:String = dtdateFormatter.string(from: todaysDate)
                 
                 let service=RRRestaurantService(url: appDelegate.URLService as String, host: appDelegate.Host as String, userNameMobile:appDelegate.UserName, passwordMobile:appDelegate.Password);
-                prepareOrderResult = service!.wmCallAddFollowUp(self.appDelegate.strDataBaseByStay, unitcode: appDelegate.strUnitCode, stayinfoID: appDelegate.strUnitStayInfoID, iPeopleID: appDelegate.gstrLoginPeopleID, fTypeID: appDelegate.strFollowUpTypeID, reqShort: txtShortDesc.text, reqlong: txtCommentRequest.text, solution: "", expect: DateInFormat, finish: DateInFormat, statusID: "3", strLenguageCode: self.appDelegate.strLenguaje, strDocumentCode: strDocumentCode)! as NSString
+                prepareOrderResult = service!.wmCallAddFollowUp(self.appDelegate.strDataBaseByStay, unitcode: appDelegate.strUnitCode, stayinfoID: appDelegate.strUnitStayInfoID, iPeopleID: appDelegate.gstrLoginPeopleID, fTypeID: appDelegate.strFollowUpTypeID, reqShort: txtShortDesc.text, reqlong: txtCommentRequest.text, solution: "", expect: DateInFormat, finish: DateInFormat, statusID: "3", strLenguageCode: self.appDelegate.strLenguaje, strDocumentCode: strDocumentCode, strPeopleEmail: appDelegate.strEmailList)! as NSString
                 
             }
 

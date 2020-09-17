@@ -79,6 +79,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
     var ynPreAuthCreditCard: Bool = false
     var fkPlaceID: String!
     var ynFocusCVV: Bool = false
+    var PersonalInfovw = UIView()
     
     private var cardProgrammatically: AKMaskField!
     
@@ -97,7 +98,36 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
     var ynRecargaCC: Bool = false
     var ynUSD: Bool = false
     var strDocumentCode: String = ""
-
+    var strFirstName: String = ""
+    var strLastName: String = ""
+    var labelAmount = UILabel()
+    var txtFirstName = UITextField()
+    var txtLastName = UITextField()
+    var txtAddress = UITextField()
+    var txtCity = UITextField()
+    var btnCountry: UIButton = UIButton()
+    var txtTel = UITextField()
+    var txtEmail = UITextField()
+    var txtState = UITextField()
+    var txtZipCode = UITextField()
+    var mas: NSMutableAttributedString = NSMutableAttributedString()
+    
+    var ynCC: Bool = false
+    var ynExpM: Bool = false
+    var ynExpY: Bool = false
+    var ynCvv: Bool = false
+    var ynAmount: Bool = false
+    var ynFirstName: Bool = false
+    var ynLastName: Bool = false
+    var ynAddress: Bool = false
+    var ynCity: Bool = false
+    var ynCountry: Bool = false
+    var ynTel: Bool = false
+    var ynEmail: Bool = false
+    var ynState: Bool = false
+    var ynZipCode: Bool = false
+    var strTokenCLBRPay: String = ""
+    
     private var card: AKMaskField {
         return cardProgrammatically ?? cardStoryboard
     }
@@ -135,7 +165,8 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         //txtAmountToPay.maskDelegate = self
-
+        //self.tblLogin["FirstName"] = rs.string(forColumn: "FirstName")!
+        //self.tblLogin["LastName"] = rs.string(forColumn: "LastName")!
         width = appDelegate.width
         height = appDelegate.height
 
@@ -154,6 +185,12 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
 
         self.navigationController?.navigationBar.isHidden = false;
         
+        strFirstName = appDelegate.gtblLogin["FirstName"]!
+        strLastName = appDelegate.gtblLogin["LastName"]!
+        strTokenCLBRPay = appDelegate.gtblLogin["TokenCLBRPay"]!
+        
+        print(strTokenCLBRPay)
+                
         //Titulo de la vista
         ViewItem.titleView = label
         
@@ -257,7 +294,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
         viewCredit.layer.borderColor = UIColor.black.cgColor
         viewCredit.layer.cornerRadius = 5
 
-        let labelAmount = UILabel(frame: CGRect(x: 0.04*width, y: 0.25*height, width: 0.37*width, height: 0.05*height));
+        labelAmount = UILabel(frame: CGRect(x: 0.04*width, y: 0.25*height, width: 0.37*width, height: 0.05*height));
         labelAmount.backgroundColor = UIColor.clear;
         labelAmount.textAlignment = NSTextAlignment.left;
         labelAmount.textColor = UIColor.black;
@@ -287,7 +324,12 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
 
         txtAmountToPay.delegate = self
         txtCVV.delegate = self
-
+        
+        //txtCVV.addTarget(self, action: #selector(txtClick), for: .touchUpInside)
+        //txtCVV.addTarget(self, action: #selector(vcGuestAccountPayment.txtClick(_:)), for: .allTouchEvents)
+        //txtCVV.addTarget(self, action: #selector(vcGuestAccountPayment.txtClick(_:)), for: .allEditingEvents)
+        //txtCVV.addTarget(self, action: #selector(vcGuestAccountPayment.txtClick(_:)), for: .allEvents)
+        
         lblKeys.text = NSLocalizedString("lblKeys",comment:"")
         lblKeys.textColor = UIColor.black
         lblKeys.font = UIFont(name:"HelveticaNeue-Bold", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
@@ -315,8 +357,8 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
         labelccNumber.adjustsFontSizeToFitWidth = true;
         viewCredit.addSubview(labelccNumber)
 
-        card.maskExpression = "{dddd}-{dddd}-{dddd}-{dddd}"
-        card.maskTemplate = " - - - "
+        card.maskExpression = "{dddd} {dddd} {dddd} {dddd}"
+        card.maskTemplate = ""
         card.maskDelegate = self
         card.layer.borderColor = UIColor.black.cgColor
         card.borderStyle = UITextField.BorderStyle.roundedRect
@@ -346,7 +388,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
         viewCredit.addSubview(labelExpMonth)
         
         txtExpMonth.maskExpression = "{qr}"
-        txtExpMonth.maskTemplate = " "
+        txtExpMonth.maskTemplate = ""
         txtExpMonth.maskDelegate = self
         txtExpMonth.layer.borderColor = UIColor.black.cgColor
         txtExpMonth.borderStyle = UITextField.BorderStyle.roundedRect
@@ -366,7 +408,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
         viewCredit.addSubview(labelExpYear)
         
         txtExpYear.maskExpression = "{dd}"
-        txtExpYear.maskTemplate = " "
+        txtExpYear.maskTemplate = ""
         txtExpYear.maskDelegate = self
         txtExpYear.layer.borderColor = UIColor.black.cgColor
         txtExpYear.borderStyle = UITextField.BorderStyle.roundedRect
@@ -387,21 +429,13 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
         
         let ImageVisa = UIImageView()
         let ImageMaster = UIImageView()
-        
-        ImageVisa.frame = CGRect(x: 0.64*width, y: 0.008*height, width: 30, height: 20);
-        ImageMaster.frame = CGRect(x: 0.74*width, y: 0.008*height, width: 30, height: 20);
+        let ImageDiscovery = UIImageView()
+        let ImageAmex = UIImageView()
         
         var imageVisa = UIImage()
-        imageVisa = UIImage(named:"visa_37x25.png")!
-        
         var imageMaster = UIImage()
-        imageMaster = UIImage(named:"master_37x25.png")!
-        
-        ImageVisa.image = imageVisa
-        ImageMaster.image = imageMaster
-        
-        viewCredit.addSubview(ImageVisa)
-        viewCredit.addSubview(ImageMaster)
+        var imageDiscovery = UIImage()
+        var imageAmex = UIImage()
         
         fPreAmount = Double(PreAmount as String)!
 
@@ -450,7 +484,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             var range = start..<end
             var mySubstring = strpre[range]
             
-            card.maskTemplate = "xxxx-xxxx-xxxx-" + String(mySubstring)
+            card.maskTemplate = "xxxx xxxx xxxx " + String(mySubstring)
             
             strpre = ExpDate
             start = strpre.index(strpre.startIndex, offsetBy: 0)
@@ -486,6 +520,18 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
         
         if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
             
+            ImageVisa.frame = CGRect(x: 0.64*width, y: 0.008*height, width: 30, height: 20);
+            ImageMaster.frame = CGRect(x: 0.74*width, y: 0.008*height, width: 30, height: 20);
+            
+            imageVisa = UIImage(named:"brand-visa.png")!
+            imageMaster = UIImage(named:"brand-mastercard.png")!
+            
+            ImageVisa.image = imageVisa
+            ImageMaster.image = imageMaster
+            
+            viewCredit.addSubview(ImageVisa)
+            viewCredit.addSubview(ImageMaster)
+            
             viewCredit.addSubview(runkeeperSwitchForce)
             viewAccount.addSubview(runkeeperSwitch)
             
@@ -505,6 +551,18 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             }
             
         }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+            
+            ImageVisa.frame = CGRect(x: 0.64*width, y: 0.008*height, width: 30, height: 20);
+            ImageMaster.frame = CGRect(x: 0.74*width, y: 0.008*height, width: 30, height: 20);
+            
+            imageVisa = UIImage(named:"brand-visa.png")!
+            imageMaster = UIImage(named:"brand-mastercard.png")!
+            
+            ImageVisa.image = imageVisa
+            ImageMaster.image = imageMaster
+            
+            viewCredit.addSubview(ImageVisa)
+            viewCredit.addSubview(ImageMaster)
             
             runkeeperSwitch.frame = CGRect(x: 0.14*width, y: 0.2*height, width: 0.6*width, height: 0.04*height)
             
@@ -696,6 +754,19 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
 
             
         }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
+            
+            ImageVisa.frame = CGRect(x: 0.64*width, y: 0.008*height, width: 30, height: 20);
+            ImageMaster.frame = CGRect(x: 0.74*width, y: 0.008*height, width: 30, height: 20);
+
+            imageVisa = UIImage(named:"brand-visa.png")!
+            imageMaster = UIImage(named:"brand-mastercard.png")!
+            
+            ImageVisa.image = imageVisa
+            ImageMaster.image = imageMaster
+            
+            viewCredit.addSubview(ImageVisa)
+            viewCredit.addSubview(ImageMaster)
+            
             strDocumentCode = "APP_PAYTICKET_SBR"
             
             if(PeopleFDeskID=="0"){
@@ -872,9 +943,589 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             labelUSD.isHidden = true
             lblExchange.isHidden = true
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+
+            ImageDiscovery.frame = CGRect(x: 0.44*width, y: 0.008*height, width: 30, height: 20);
+            ImageAmex.frame = CGRect(x: 0.54*width, y: 0.008*height, width: 30, height: 20);
+            ImageMaster.frame = CGRect(x: 0.64*width, y: 0.008*height, width: 30, height: 20);
+            ImageVisa.frame = CGRect(x: 0.74*width, y: 0.008*height, width: 30, height: 20);
+            
+            imageVisa = UIImage(named:"brand-visa.png")!
+            imageMaster = UIImage(named:"brand-mastercard.png")!
+            imageDiscovery = UIImage(named:"brand-discover.png")!
+            imageAmex = UIImage(named:"brand-amex.png")!
+            
+            ImageVisa.image = imageVisa
+            ImageMaster.image = imageMaster
+            ImageDiscovery.image = imageDiscovery
+            ImageAmex.image = imageAmex
+            
+            viewCredit.addSubview(ImageVisa)
+            viewCredit.addSubview(ImageMaster)
+            viewCredit.addSubview(ImageDiscovery)
+            viewCredit.addSubview(ImageAmex)
+            
+            runkeeperSwitch.frame = CGRect(x: 0.14*width, y: 0.2*height, width: 0.6*width, height: 0.04*height)
+            
+            runkeeperSwitch.backgroundColor = colorWithHexString ("004c50")
+            runkeeperSwitch.selectedTitleColor = colorWithHexString ("004c50")
+            
+            viewAccount.addSubview(runkeeperSwitch)
+            viewCredit.addSubview(runkeeperSwitchForce)
+            
+            strDocumentCode = "APP_PAYTICKET_CL"
+            
+            if(PeopleFDeskID=="0"){
+                runkeeperSwitch.setSelectedIndex(1, animated: false)
+                txtAmountToPay.isEnabled = false
+                strPeoplePay = appDelegate.gstrLoginFDESKPeopleID
+            }else{
+                runkeeperSwitch.setSelectedIndex(0, animated: false)
+                txtAmountToPay.isEnabled = true
+                strPeoplePay = PeopleFDeskID
+                runkeeperSwitch.isEnabled = false
+                runkeeperSwitch.backgroundColor = UIColor.clear
+                runkeeperSwitch.selectedTitleColor = UIColor.clear
+                runkeeperSwitch.backgroundColor = colorWithHexString ("C7C7CD")
+                runkeeperSwitch.selectedTitleColor = colorWithHexString ("C7C7CD")
+            }
+
+            var imgBack = UIImage()
+            var imgvwBack = UIImageView()
+            
+            viewAccount.backgroundColor = UIColor.clear
+            //viewAccount.frame = CGRectMake(0.05*width, 0.1*height, 0.9*width, 0.17*height);
+            
+            //self.view.backgroundColor = colorWithHexString ("DDF4FF")
+            self.view.backgroundColor = UIColor.white
+            
+            imgBack = UIImage(named:"bg.png")!
+            imgvwBack = UIImageView(image: imgBack)
+            imgvwBack.frame = CGRect(x: 0.0, y: -0.05*height, width: width, height: height+(0.05*height));
+            imgvwBack.alpha = 0.3
+            imgvwBack.contentMode = UIView.ContentMode.scaleAspectFill
+            //self.view.addSubview(imgvwBack)
+            
+            var imgHdr = UIImage()
+            var imgHdrVw = UIImageView()
+            
+            imgHdr = UIImage(named:"Titlehdr.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.0, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.6
+            //viewAccount.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.03*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.58
+            //viewAccount.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.06*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.56
+            //viewAccount.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.09*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.54
+            //viewAccount.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.12*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.52
+            //viewAccount.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlefooter.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.15*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.5
+            //viewAccount.addSubview(imgHdrVw)
+            
+            var strFontTitle: String = "Futura-CondensedExtraBold"
+            var Color: UIColor = colorWithHexString("004c50")
+            
+            lblKeys.textColor = Color
+            lblBalance.textColor = Color
+            lblKeys.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblBalance.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            strFontTitle = "Futura-CondensedMedium"
+            Color = colorWithHexString("2e3634")
+            
+            lblNames.textColor = Color
+            lblamount.textColor = Color
+            labelUSD.textColor = Color
+            lblExchange.textColor = Color
+            lblNames.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblamount.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            labelUSD.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblExchange.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            
+            lblKeys.textAlignment = NSTextAlignment.left
+            lblKeys.frame = CGRect(x: 0.02*width, y: 0.00001*height, width: 0.2*width, height: 0.03*height);
+            lblBalance.textAlignment = NSTextAlignment.left
+            lblBalance.frame = CGRect(x: 0.02*width, y: 0.1*height, width: 0.2*width, height: 0.03*height);
+            
+            lblNames.numberOfLines = 0
+            lblNames.frame = CGRect(x: 0.24*width, y: 0.0001*height, width: 0.45*width, height: 0.03*height);
+            lblNames.textAlignment = NSTextAlignment.left;
+            lblNames.numberOfLines = 0
+            lblamount.numberOfLines = 0
+            lblamount.frame = CGRect(x: 0.24*width, y: 0.101*height, width: 0.25*width, height: 0.03*height);
+            labelUSD.numberOfLines = 0
+            labelUSD.frame = CGRect(x: 0.55*width, y: 0.101*height, width: 0.25*width, height: 0.03*height);
+            labelUSD.textAlignment = NSTextAlignment.left;
+            labelUSD.numberOfLines = 1;
+            lblExchange.numberOfLines = 0
+            lblExchange.frame = CGRect(x: 0.24*width, y: 0.131*height, width: 0.6*width, height: 0.03*height);
+            lblExchange.textAlignment = NSTextAlignment.left;
+            
+            lblNames.text = ""
+            lblamount.text = ""
+            
+            viewAccount.addSubview(lblKeys)
+            viewAccount.addSubview(lblBalance)
+            viewAccount.addSubview(lblNames)
+            viewAccount.addSubview(lblamount)
+            //viewAccount.addSubview(labelUSD)
+            //viewAccount.addSubview(lblExchange)
+            lblExchange.isHidden = true
+            
+            labelUSD.isHidden = true
+            lblExchange.isHidden = true
+            runkeeperSwitchForce.isHidden = true
+            
+            //self.view.addSubview(viewAccount)
+            
+            //runkeeperSwitch.frame = CGRectMake(0.14*width, 0.19*height, 0.6*width, 0.04*height)
+            
+            strFontTitle = "Futura-CondensedExtraBold"
+            Color = colorWithHexString("004c50")
+            
+            labelccNumber.backgroundColor = UIColor.clear;
+            labelccNumber.textColor = Color
+            labelccNumber.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            card.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            labelExpdate.backgroundColor = UIColor.clear;
+            labelExpdate.textColor = Color
+            labelExpdate.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            labelExpMonth.backgroundColor = UIColor.clear;
+            labelExpMonth.textColor = Color
+            labelExpMonth.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            txtExpMonth.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            labelExpYear.backgroundColor = UIColor.clear;
+            labelExpYear.textColor = Color
+            labelExpYear.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            txtExpYear.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            labelcvv.backgroundColor = UIColor.clear;
+            labelcvv.textColor = Color
+            labelcvv.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            labelAmount.backgroundColor = UIColor.clear;
+            labelAmount.textColor = Color
+            labelAmount.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            txtAmountToPay.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            strFontTitle = "HelveticaNeue"
+            
+            label.textColor = UIColor.white
+            label.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
+            
+            scrollView.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height);
+            scrollView.contentSize = CGSize(width: width, height: height)
+            
+            labelAmount.frame = CGRect(x: 0.04*width, y: 0.2*height, width: 0.37*width, height: 0.05*height)
+            txtAmountToPay.frame = CGRect(x: 0.04*width, y: 0.25*height, width: 0.8*width, height: 0.05*height);
+            
+            txtFirstName.frame = CGRect(x: 0.0, y: 0.01*height, width: 0.4*width, height: 0.05*height);
+            txtLastName.frame = CGRect(x: 0.45*width, y: 0.01*height, width: 0.4*width, height: 0.05*height);
+            txtAddress.frame = CGRect(x: 0.0, y: 0.07*height, width: 0.85*width, height: 0.05*height);
+            txtCity.frame = CGRect(x: 0.0, y: 0.13*height, width: 0.4*width, height: 0.05*height);
+            btnCountry.frame = CGRect(x: 0.45*width, y: 0.13*height, width: 0.4*width, height: 0.05*height);
+            txtState.frame = CGRect(x: 0.0, y: 0.19*height, width: 0.4*width, height: 0.05*height);
+            txtZipCode.frame = CGRect(x: 0.45*width, y: 0.19*height, width: 0.4*width, height: 0.05*height);
+            txtTel.frame = CGRect(x: 0.0, y: 0.25*height, width: 0.4*width, height: 0.05*height);
+            txtEmail.frame = CGRect(x: 0.45*width, y: 0.25*height, width: 0.4*width, height: 0.05*height);
+            
+            /*if appDelegate.ynIPad {
+                PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+            }else{
+                PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.71*height, width: 0.9*width, height: 0.4*height)
+            }*/
+            
+            //PersonalInfovw.backgroundColor = UIColor.red
+
+            txtFirstName.backgroundColor = UIColor.clear;
+            txtFirstName.textAlignment = NSTextAlignment.left;
+            txtFirstName.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtFirstName.layer.borderColor = UIColor.black.cgColor
+            txtFirstName.borderStyle = UITextField.BorderStyle.roundedRect
+            txtFirstName.keyboardType = UIKeyboardType.alphabet
+            txtFirstName.placeholder = NSLocalizedString("lblFirstName",comment:"")
+            txtFirstName.delegate = self
+            
+            txtFirstName.text = strFirstName
+            
+            txtLastName.backgroundColor = UIColor.clear;
+            txtLastName.textAlignment = NSTextAlignment.left;
+            txtLastName.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtLastName.layer.borderColor = UIColor.black.cgColor
+            txtLastName.borderStyle = UITextField.BorderStyle.roundedRect
+            txtLastName.keyboardType = UIKeyboardType.alphabet
+            txtLastName.placeholder = NSLocalizedString("lblLastName",comment:"")
+            txtLastName.delegate = self
+            
+            txtLastName.text = strLastName
+            
+            txtAddress.backgroundColor = UIColor.clear;
+            txtAddress.textAlignment = NSTextAlignment.left;
+            txtAddress.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtAddress.layer.borderColor = UIColor.black.cgColor
+            txtAddress.borderStyle = UITextField.BorderStyle.roundedRect
+            txtAddress.keyboardType = UIKeyboardType.alphabet
+            txtAddress.placeholder = NSLocalizedString("lblAddress",comment:"")
+            txtAddress.delegate = self
+            
+            txtAddress.text = appDelegate.gtblLogin["Address"]!
+            
+            txtCity.backgroundColor = UIColor.clear;
+            txtCity.textAlignment = NSTextAlignment.left;
+            txtCity.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtCity.layer.borderColor = UIColor.black.cgColor
+            txtCity.borderStyle = UITextField.BorderStyle.roundedRect
+            txtCity.keyboardType = UIKeyboardType.alphabet
+            txtCity.placeholder = NSLocalizedString("lblCity",comment:"")
+            txtCity.delegate = self
+
+            txtCity.text = appDelegate.gtblLogin["City"]!
+            
+            appDelegate.gstrCountry = appDelegate.gtblLogin["Country"]!
+            
+            if appDelegate.gstrCountry == ""{
+                mas = NSMutableAttributedString(string: NSLocalizedString("lblCountry",comment:""), attributes: [
+                    NSAttributedString.Key.font: UIFont(name:"Futura-CondensedMedium", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont7)!,
+                    NSAttributedString.Key.foregroundColor: colorWithHexString ("000000")
+                    ])
+            }else{
+                mas = NSMutableAttributedString(string: appDelegate.gstrCountry, attributes: [
+                    NSAttributedString.Key.font: UIFont(name:"Futura-CondensedMedium", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont7)!,
+                    NSAttributedString.Key.foregroundColor: colorWithHexString ("000000")
+                    ])
+            }
+            
+
+            btnCountry.setAttributedTitle(mas, for: UIControl.State())
+            btnCountry.layer.borderColor = colorWithHexString ("e1e1e1").cgColor
+            btnCountry.layer.borderWidth = 1
+            btnCountry.addTarget(self, action: #selector(vcGuestAccountPayment.clickCountry(_:)), for: UIControl.Event.touchUpInside)
+            btnCountry.backgroundColor = colorWithHexString ("ffffff")
+            btnCountry.layer.cornerRadius = 5
+            btnCountry.contentHorizontalAlignment = .left
+            btnCountry.contentEdgeInsets = UIEdgeInsets(top: 0,left: 5,bottom: 0,right: 0)
+            btnCountry.titleLabel!.numberOfLines = 1
+            btnCountry.titleLabel!.adjustsFontSizeToFitWidth = true
+            btnCountry.titleLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
+            
+            txtState.backgroundColor = UIColor.clear;
+            txtState.textAlignment = NSTextAlignment.left;
+            txtState.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtState.layer.borderColor = UIColor.black.cgColor
+            txtState.borderStyle = UITextField.BorderStyle.roundedRect
+            txtState.keyboardType = UIKeyboardType.alphabet
+            txtState.placeholder = NSLocalizedString("lblState",comment:"")
+            txtState.delegate = self
+            
+            txtState.text = appDelegate.gtblLogin["State"]!
+            
+            txtZipCode.backgroundColor = UIColor.clear;
+            txtZipCode.textAlignment = NSTextAlignment.left;
+            txtZipCode.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtZipCode.layer.borderColor = UIColor.black.cgColor
+            txtZipCode.borderStyle = UITextField.BorderStyle.roundedRect
+            txtZipCode.keyboardType = UIKeyboardType.alphabet
+            txtZipCode.placeholder = NSLocalizedString("lblZipCode",comment:"")
+            txtZipCode.delegate = self
+            
+            txtZipCode.text = appDelegate.gtblLogin["ZipCode"]!
+            
+            txtTel.backgroundColor = UIColor.clear;
+            txtTel.textAlignment = NSTextAlignment.left;
+            txtTel.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtTel.layer.borderColor = UIColor.black.cgColor
+            txtTel.borderStyle = UITextField.BorderStyle.roundedRect
+            txtTel.keyboardType = UIKeyboardType.alphabet
+            txtTel.placeholder = NSLocalizedString("lblTelephone",comment:"")
+            txtTel.delegate = self
+            
+            txtTel.text = appDelegate.gtblLogin["Phone"]!
+            
+            txtEmail.backgroundColor = UIColor.clear;
+            txtEmail.textAlignment = NSTextAlignment.left;
+            txtEmail.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtEmail.layer.borderColor = UIColor.black.cgColor
+            txtEmail.borderStyle = UITextField.BorderStyle.roundedRect
+            txtEmail.keyboardType = UIKeyboardType.alphabet
+            txtEmail.placeholder = NSLocalizedString("lblEmail",comment:"")
+            txtEmail.delegate = self
+            
+            txtEmail.text = appDelegate.gtblLogin["Email"]!
+            
+            PersonalInfovw.addSubview(txtFirstName)
+            PersonalInfovw.addSubview(txtLastName)
+            PersonalInfovw.addSubview(txtAddress)
+            PersonalInfovw.addSubview(txtCity)
+            PersonalInfovw.addSubview(btnCountry)
+            PersonalInfovw.addSubview(txtTel)
+            PersonalInfovw.addSubview(txtEmail)
+            PersonalInfovw.addSubview(txtState)
+            PersonalInfovw.addSubview(txtZipCode)
+            
+            scrollView.addSubview(viewAccount)
+            scrollView.addSubview(viewCredit)
+            scrollView.addSubview(PersonalInfovw)
+            
+            scrollView.addGestureRecognizer(tapGesture)
+            
+            if appDelegate.ynIPad {
+                switch appDelegate.Model {
+                case "iPad 2":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 40), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                case "iPad Air":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 40), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                case "iPad Air 2":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 40), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                case "iPad Pro":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 60), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                case "iPad Retina":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 60), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                default:
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 60), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                }
+            }else{
+                switch appDelegate.Model {
+                case "iPhone":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 40), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                case "iPhone 4":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 40), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                case "iPhone 4s":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 40), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                case "iPhone 5":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 40), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                case "iPhone 5c":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 40), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                case "iPhone 5s":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 40), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                case "iPhone 6":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 40), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                case "iPhone 6 Plus":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 40), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                case "iPhone 6s":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 40), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.4*height)
+                case "iPhone 6s Plus":
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 40), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.65*height, width: 0.9*width, height: 0.4*height)
+                default:
+                    self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 60), animated: true)
+                    PersonalInfovw.frame = CGRect(x: 0.05*width, y: 0.71*height, width: 0.9*width, height: 0.4*height)
+                }
+            }
+            
+            viewCredit.backgroundColor = colorWithHexString ("ffffff")
+            
+            spGetCmbCountryForApp()
+            
+            self.appDelegate.gstrISOCountryCode = appDelegate.gtblLogin["ISOCode"]!
+            
         }
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(vcGuestAccountPayment.txtClickCCNumber))
+        tap.numberOfTapsRequired = 1
+        card.addGestureRecognizer(tap)
+        
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(vcGuestAccountPayment.txtClickExpMonth))
+        tap2.numberOfTapsRequired = 1
+        txtExpMonth.addGestureRecognizer(tap2)
+        
+        let tap3 = UITapGestureRecognizer(target: self, action: #selector(vcGuestAccountPayment.txtClickExpYear))
+        tap3.numberOfTapsRequired = 1
+        txtExpYear.addGestureRecognizer(tap3)
         
         recargarTablaStay()
+
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        /*if txtCountry == textField{
+            return false
+        }*/
+        return true
+    }
+    
+    @objc func spGetCmbCountryForApp() {
+        //[dbo].[spGetCmbCountryForApp]
+        
+        var iRes: String = ""
+
+        var queueFM: FMDatabaseQueue?
+        
+        queueFM = FMDatabaseQueue(path: Util.getPath("GuestStay.sqlite"))
+        
+        var tableItems = RRDataSet()
+        let service=RRRestaurantService(url: self.appDelegate.URLService as String, host: self.appDelegate.Host as String, userNameMobile : self.appDelegate.UserName, passwordMobile: self.appDelegate.Password);
+        tableItems = (service?.spGetCmbCountry(self.appDelegate.strDataBaseByStay))!
+        
+        if (tableItems.getTotalTables() > 0 ){
+            
+            var tableResult = RRDataTable()
+            tableResult = tableItems.tables.object(at: 0) as! RRDataTable
+            
+            var rowResult = RRDataRow()
+            rowResult = tableResult.rows.object(at: 0) as! RRDataRow
+            
+            if rowResult.getColumnByName("iResult") != nil{
+                iRes = rowResult.getColumnByName("iResult").content as! String
+            }else{
+                iRes = "-1"
+            }
+            
+            if ( (iRes != "0") && (iRes != "-1")){
+                
+                var table = RRDataTable()
+                table = tableItems.tables.object(at: 1) as! RRDataTable
+                
+                var r = RRDataRow()
+                r = table.rows.object(at: 0) as! RRDataRow
+                
+                if (table.getTotalRows() > 0){
+                    
+                    var gtblCountryAux: Dictionary<String, String>!
+                    
+                    gtblCountryAux = [:]
+                    self.appDelegate.gtblCountry = []
+                    
+                    queueFM?.inTransaction { db, rollback in
+                        do {
+                            
+                            for r in table.rows{
+
+                                try db.executeUpdate("INSERT INTO tblCountry(ISOCode, Description, SeqNo) VALUES (?, ?, ?)", withArgumentsIn: [((r as AnyObject).getColumnByName("ISOCode").content as? String)!, ((r as AnyObject).getColumnByName("Description").content as? String)!, ((r as AnyObject).getColumnByName("SeqNo").content as? String)!])
+                                
+                            }
+
+
+                        } catch {
+                            rollback.pointee = true
+                            print(error)
+                        }
+                    }
+                    
+                    queueFM?.inDatabase() {
+                        db in
+                        
+                        if let rs = db.executeQuery("SELECT * FROM tblCountry", withArgumentsIn:[]) {
+                            while rs.next() {
+                                
+                                gtblCountryAux["ISOCode"] = rs.string(forColumn: "ISOCode")!
+                                gtblCountryAux["Description"] = rs.string(forColumn: "Description")!
+                                gtblCountryAux["SeqNo"] = rs.string(forColumn: "SeqNo")!
+                                
+                                self.appDelegate.gtblCountry.append(gtblCountryAux)
+                                
+                            }
+                        } else {
+                            print("select failure: \(db.lastErrorMessage())")
+                        }
+                    }
+                    
+                }else{
+                    self.appDelegate.gblynPreAuth = false
+                    self.appDelegate.gtblAccPreAuth = nil
+                }
+                
+            }
+        }
+        
+    }
+    
+    @objc func clickCountry(_ sender: AnyObject) {
+        
+        let tercerViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcSelectStay") as! vcSelectStay
+        tercerViewController.strMode = "Country"
+        self.navigationController?.pushViewController(tercerViewController, animated: true)
+        
+    }
+    @objc func txtClickCCNumber() {
+        
+        ynCC = true
+
+        let ccNumber = card.text!.trimmingCharacters(in: .whitespaces)
+        if ccNumber == ""{
+            let newPosition = card.beginningOfDocument
+            card.selectedTextRange = card.textRange(from: newPosition, to: newPosition)
+        }
+
+        card.becomeFirstResponder()
+
+    }
+    
+    @objc func txtClickExpMonth() {
+        
+        ynExpM = true
+        
+        let ExpMonth = txtExpMonth.text!.trimmingCharacters(in: .whitespaces)
+        if ExpMonth == ""{
+            let newPosition = txtExpMonth.beginningOfDocument
+            txtExpMonth.selectedTextRange = txtExpMonth.textRange(from: newPosition, to: newPosition)
+        }
+
+        txtExpMonth.becomeFirstResponder()
+
+    }
+    
+    @objc func txtClickExpYear() {
+        
+        ynExpY = true
+        
+        let ExpYear = txtExpYear.text!.trimmingCharacters(in: .whitespaces)
+        if ExpYear == ""{
+            let newPosition = txtExpYear.beginningOfDocument
+            txtExpYear.selectedTextRange = txtExpYear.textRange(from: newPosition, to: newPosition)
+        }
+
+        txtExpYear.becomeFirstResponder()
 
     }
     
@@ -1064,7 +1715,9 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
     }
     
     @objc func switchForceMXN(_ sender: DGRunkeeperSwitch!) {
-
+        
+        ynCC = true
+        
         if sender.selectedIndex == 0 {
             if ynUSD {
                 strForceMexicanCc = "1"
@@ -1108,6 +1761,20 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
         self.registerForKeyboardNotifications()
         self.navigationController?.toolbar.isHidden = true
         
+       if appDelegate.gstrCountry == ""{
+           mas = NSMutableAttributedString(string: NSLocalizedString("lblCountry",comment:""), attributes: [
+               NSAttributedString.Key.font: UIFont(name:"Futura-CondensedMedium", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont7)!,
+               NSAttributedString.Key.foregroundColor: colorWithHexString ("000000")
+               ])
+       }else{
+           mas = NSMutableAttributedString(string: appDelegate.gstrCountry, attributes: [
+               NSAttributedString.Key.font: UIFont(name:"Futura-CondensedMedium", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont7)!,
+               NSAttributedString.Key.foregroundColor: colorWithHexString ("000000")
+               ])
+       }
+        
+        btnCountry.setAttributedTitle(mas, for: UIControl.State())
+
         Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
             AnalyticsParameterItemID: "id-Account_Payment",
             AnalyticsParameterItemName: "Account Payment",
@@ -1129,34 +1796,23 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWasShown(_ notification: Notification) {
         var scrollPoint: CGPoint = CGPoint()
-        if appDelegate.ynIPad {
+        
+        if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
             scrollPoint = CGPoint(x: 0.0, y: 110)
-        }else{
-            switch appDelegate.Model {
-            case "iPhone":
-                scrollPoint = CGPoint(x: 0.0, y: 120)
-            case "iPhone 4":
-                scrollPoint = CGPoint(x: 0.0, y: 120)
-            case "iPhone 4s":
-                scrollPoint = CGPoint(x: 0.0, y: 120)
-            case "iPhone 5":
-                scrollPoint = CGPoint(x: 0.0, y: 110)
-            case "iPhone 5c":
-                scrollPoint = CGPoint(x: 0.0, y: 110)
-            case "iPhone 5s":
-                scrollPoint = CGPoint(x: 0.0, y: 110)
-            case "iPhone 6":
-                scrollPoint = CGPoint(x: 0.0, y: 110)
-            case "iPhone 6 Plus":
-                scrollPoint = CGPoint(x: 0.0, y: 110)
-            case "iPhone 6s":
-                scrollPoint = CGPoint(x: 0.0, y: 110)
-            case "iPhone 6s Plus":
-                scrollPoint = CGPoint(x: 0.0, y: 110)
-            default:
-                scrollPoint = CGPoint(x: 0.0, y: 110)
+        }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+            scrollPoint = CGPoint(x: 0.0, y: 110)
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
+            scrollPoint = CGPoint(x: 0.0, y: 110)
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            if ynCC || ynAmount || ynCvv || ynExpM ||  ynExpY || ynFirstName || ynLastName {
+                scrollPoint = CGPoint(x: 0.0, y: 180)
+            }else if ynAddress || ynCity || ynCountry || ynTel || ynEmail || ynState || ynZipCode {
+                scrollPoint = CGPoint(x: 0.0, y: 300)
+            }else{
+                scrollPoint = CGPoint(x: 0.0, y: 180)
             }
         }
+
         self.scrollView.setContentOffset(scrollPoint, animated: true)
 
     }
@@ -1167,7 +1823,31 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
         txtExpYear.resignFirstResponder()
         card.resignFirstResponder()
         txtAmountToPay.resignFirstResponder()
-        self.scrollView.setContentOffset(CGPoint.zero, animated: true)
+        txtFirstName.resignFirstResponder()
+        txtLastName.resignFirstResponder()
+        txtAddress.resignFirstResponder()
+        txtCity.resignFirstResponder()
+        txtTel.resignFirstResponder()
+        txtEmail.resignFirstResponder()
+        txtState.resignFirstResponder()
+        txtZipCode.resignFirstResponder()
+        
+        self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 80), animated: true)
+
+        ynCC = false
+        ynExpM = false
+        ynExpY = false
+        ynCvv = false
+        ynAmount = false
+        ynFirstName = false
+        ynLastName = false
+        ynAddress = false
+        ynCity = false
+        ynCountry = false
+        ynTel = false
+        ynEmail = false
+        ynState = false
+        ynZipCode = false
     }
     
     func recargarTablaStay(){
@@ -1690,17 +2370,58 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
-        if textField == txtCVV {
+        ynCC = false
+        ynExpM = false
+        ynExpY = false
+        ynCvv = false
+        ynAmount = false
+        ynFirstName = false
+        ynLastName = false
+        ynAddress = false
+        ynCity = false
+        ynCountry = false
+        ynTel = false
+        ynEmail = false
+        ynState = false
+        ynZipCode = false
+        
+        if textField == txtAmountToPay {
+            ynAmount = true
+        }else if textField == txtCVV {
             ynFocusCVV = true
+        }else if textField == txtExpMonth {
+            ynExpM = true
+        }else if textField == txtExpYear {
+            ynExpY = true
+        }else if textField == txtFirstName {
+            ynFirstName = true
+        }else if textField == txtLastName {
+            ynLastName = true
+        }else if textField == txtAddress {
+            ynAddress = true
+        }else if textField == txtCity {
+            ynCity = true
+        }else if textField == txtTel {
+            ynTel = true
+        }else if textField == txtEmail {
+            ynEmail = true
+        }else if textField == txtState {
+            ynState = true
+        }else if textField == txtZipCode {
+            ynZipCode = true
         }
+
+        //registerForKeyboardNotifications()
+        
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
             var result = true
             var ireturn: Int = 100
-        
+
         if textField == txtAmountToPay {
+
                 if string.characters.count > 0 {
                     let disallowedCharacterSet = CharacterSet(charactersIn: "0123456789.").inverted
                     let replacementStringIsLegal = string.rangeOfCharacter(from: disallowedCharacterSet) == nil
@@ -1708,6 +2429,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
                 }
 
         }else if textField == txtCVV {
+
             ireturn = 4
             let newLength = textField.text!.utf16.count + string.utf16.count - range.length
             result = (newLength <= ireturn)
@@ -1719,7 +2441,8 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             }
         }
 
-
+        //registerForKeyboardNotifications()
+        
         return result // Bool
     }
 
@@ -1746,11 +2469,48 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
         scanner.scanHexInt32(&hexInt)
         return hexInt
     }
+    
+    func AESCrypt(data:Data, keyData:Data, ivData:Data, operation:Int) -> NSData? {
+        let cryptLength  = size_t(data.count + kCCBlockSizeAES128)
+        var cryptData = Data(count:cryptLength)
 
+        let keyLength             = size_t(kCCKeySizeAES128)
+        let options   = CCOptions(kCCOptionPKCS7Padding)
+
+
+        var numBytesEncrypted :size_t = 0
+
+        let cryptStatus = cryptData.withUnsafeMutableBytes {cryptBytes in
+            data.withUnsafeBytes {dataBytes in
+                ivData.withUnsafeBytes {ivBytes in
+                    keyData.withUnsafeBytes {keyBytes in
+                        CCCrypt(CCOperation(operation),
+                                  CCAlgorithm(kCCAlgorithmAES),
+                                  options,
+                                  keyBytes, keyLength,
+                                  ivBytes,
+                                  dataBytes, data.count,
+                                  cryptBytes, cryptLength,
+                                  &numBytesEncrypted)
+                    }
+                }
+            }
+        }
+
+        if UInt32(cryptStatus) == UInt32(kCCSuccess) {
+            cryptData.removeSubrange(numBytesEncrypted..<cryptData.count)
+
+        } else {
+            print("Error: \(cryptStatus)")
+        }
+
+        return cryptData as NSData;
+    }
+    
     @IBAction func clickPayment(_ sender: AnyObject) {
         
         var strAmount: String = ""
-        
+        var strResultJSON: NSString = ""
         ViewItem.rightBarButtonItem?.isEnabled = false
         ViewItem.leftBarButtonItem?.isEnabled = false
         self.btnApply.isEnabled = false
@@ -1793,7 +2553,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
         var prepareOrderResult:NSString="";
         let service=RRRestaurantService(url: self.appDelegate.URLService as String, host: self.appDelegate.Host as String, userNameMobile:self.appDelegate.UserName, passwordMobile:self.appDelegate.Password);
         
-        let ccNumber = card.text!.replacingOccurrences(of: "-", with: "", options: NSString.CompareOptions.literal, range: nil)
+        let ccNumber = card.text!.replacingOccurrences(of: " ", with: "", options: NSString.CompareOptions.literal, range: nil)
 
         if self.ynPreAuth == false
         {
@@ -1821,71 +2581,189 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             
             ynApply = true
         }
-        
+
         if (ynApply == true){
             
-            var config : SwiftLoader.Config = SwiftLoader.Config()
-            config.size = 100
-            config.backgroundColor = UIColor(white: 1, alpha: 0.5)
-            config.spinnerColor = UIColor(red:0.36, green:0.62, blue:0.8, alpha:1)
-            config.titleTextColor = UIColor(red:0.36, green:0.62, blue:0.8, alpha:1)
-            config.spinnerLineWidth = 2.0
-            SwiftLoader.setConfig(config)
-            SwiftLoader.show(animated: true)
-            SwiftLoader.show(title: NSLocalizedString("msjApply",comment:""), animated: true)
-
-            let queue = OperationQueue()
-        
-            queue.addOperation() {
-
-                if Reachability.isConnectedToNetwork(){
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = true
-                    if self.ynPreAuth == true
-                    {
-                        prepareOrderResult = service!.wmCallPostAuthMobile("1", strDataBase: self.appDelegate.strDataBaseByStay, intAccTrxId: self.AccTrxID, dblAmount: self.txtAmountToPay.text, strTrxCode: "POSTAUTHBAN", strTrxTest: "Y", strMail: strEmail, strLenguageCode: self.appDelegate.strLenguaje, personalID: self.strPeoplePay, strDocumentCode: self.strDocumentCode) as! NSString
-                    }else{
-                        prepareOrderResult = service!.wmPaymentCC("1", appCode: self.appDelegate.gstrAppName, dataBase: self.appDelegate.strDataBaseByStay, stayInfoID: self.StayInfoID, personalID: self.strPeoplePay, amount: strAmount, strCc: ccNumber, strExpDate: strExpDate, strCvc2: self.txtCVV.text, intAccId: self.fkAccID, intTrxType: self.fkTrxTypeID, strTrxDate: DateInFormat, strReference: self.AccCode, strMail: strEmail, strLenguageCode: self.appDelegate.strLenguaje, placeID: self.fkPlaceID, strForceMexicanCc: self.strForceMexicanCc, strDocumentCode: self.strDocumentCode) as! NSString
-                    }
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                }else{
-                    RKDropdownAlert.title(NSLocalizedString("MsgError6",comment:""), backgroundColor: self.colorWithHexString ("5C9FCC"), textColor: UIColor.black)
-                }
             
-                OperationQueue.main.addOperation() {
-                    
-                    let separators = CharacterSet(charactersIn: ",")
-                    var aRes = prepareOrderResult.components(separatedBy: separators)
-                    if(aRes[0]=="1")||(aRes[0]=="0"){
-                        GoogleWearAlert.showAlert(title: aRes[1], type: .success, duration: 4, iAction: 1, form: "Account Payment")
-                        self.appDelegate.gblPay = true
-                        
-                        if self.ynPreAuth == true || self.ynPreAuthCreditCard == true
-                        {
-                            self.appDelegate.gblExitPreAuth = true
-                        }
-                        
-                        self.navigationController?.popViewController(animated: false)
-                    }else{
-                        if self.ynPreAuth == true
-                        {
-                            RKDropdownAlert.title(NSLocalizedString("msgTracDec",comment:""), backgroundColor: UIColor.red, textColor: UIColor.black)
-                        }else{
-                            if aRes[0] != ""{
-                                RKDropdownAlert.title(aRes[1], backgroundColor: UIColor.red, textColor: UIColor.black)
-                            }
-                        }
-                    }
-                    
-                    self.ViewItem.rightBarButtonItem?.isEnabled = true
-                    self.ViewItem.leftBarButtonItem?.isEnabled = true
-                    self.btnApply.isEnabled = true
-                    self.app.endIgnoringInteractionEvents()
-                    
-                    SwiftLoader.hide()
+            self.ViewItem.rightBarButtonItem?.isEnabled = true
+            self.ViewItem.leftBarButtonItem?.isEnabled = true
+            self.btnApply.isEnabled = true
+            self.app.endIgnoringInteractionEvents()
+            
+            if self.appDelegate.strDataBaseByStay == "FDESK_CLBR"{
                 
+                /*if txtEmail.text == ""{
+                    strEmail = self.People["Email"]!
+                }else{
+                    strEmail = txtEmail.text!
+                }*/
+                
+                let Billing = ["Phone": self.txtTel.text!,
+                               "Country": self.appDelegate.gstrISOCountryCode,
+                               "ZipCode": self.txtZipCode.text!,
+                               "State": self.txtState.text!,
+                               "City": self.txtCity.text!,
+                               "Address1": self.txtAddress.text!,
+                               "Last_name": self.txtLastName.text!,
+                               "First_name": self.txtFirstName.text!,
+                               "Email": txtEmail.text!
+                ]
+                let Sale = ["Amount": strAmount,
+                "Currency": self.fkCurrencyID,
+                "Order_description": self.AccCode + "/" + self.StayInfoID
+                ]
+                let Transaction = ["TrxTypeID": self.fkTrxTypeID,
+                "AccountID": self.fkAccID,
+                "PeopleFDeskID": self.strPeoplePay,
+                "PlaceID": self.fkPlaceID,
+                "Document": "",
+                "Remark": "Posted from CLBR App",
+                "UserLogin": "usrGuestApp",
+                "Token1": "",
+                "Token2": self.appDelegate.UserName,
+                "Token3": "",
+                "Token4": self.appDelegate.Password,
+                "Token5": self.appDelegate.strDataBaseByStay,
+                "TrxDate": DateInFormat,
+                "Reference": self.AccCode,
+                "UrlReturn": "CLPaymentResult.aspx"
+                ]
+                let CreditCard = ["Cvv": self.txtCVV.text!,
+                "Cc_exp": strExpDate,
+                "Cc_number": ccNumber
+                ]
+                let webDoc = ["Code": self.strDocumentCode,
+                "Email": strEmail,
+                "Lang": self.appDelegate.strLenguaje
+                ]
+                
+                let jsonObject: [String: Any] = [
+                    
+                    "CreditCard": CreditCard,
+                    "Transaction": Transaction,
+                    "Sale": Sale,
+                    "Billing": Billing,
+                    "WebDocument": webDoc
+                ]
+
+                let valid = JSONSerialization.isValidJSONObject(jsonObject)
+                
+                if valid{
+                    let jsonData = try! JSONSerialization.data(withJSONObject: jsonObject )
+                    let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)
+                    strResultJSON = jsonString!
                 }
+
+                let data: NSData! = (strResultJSON as NSString).data(using: String.Encoding.utf8.rawValue) as NSData!
+                
+                let utf8str = AESCrypt(data: data as Data, keyData: (self.appDelegate.strCLBRTokenPay as NSString).data(using: String.Encoding.utf8.rawValue)!, ivData: (self.appDelegate.strCLBRTokenPay as NSString).data(using: String.Encoding.utf8.rawValue)!, operation: kCCEncrypt)
+                
+                let base64Encoded = utf8str?.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
+                
+                let viewController: vcCLPaymentGateway = vcCLPaymentGateway()
+                viewController.strJSONParams = base64Encoded as! NSString
+                viewController.width = appDelegate.width
+                viewController.height = appDelegate.height
+                viewController.strAppName = appDelegate.gstrAppName
+                self.navigationController?.pushViewController(viewController, animated: false)
+                
+            }else{
+                
+                var config : SwiftLoader.Config = SwiftLoader.Config()
+                    config.size = 100
+                    config.backgroundColor = UIColor(white: 1, alpha: 0.5)
+                    config.spinnerColor = UIColor(red:0.36, green:0.62, blue:0.8, alpha:1)
+                    config.titleTextColor = UIColor(red:0.36, green:0.62, blue:0.8, alpha:1)
+                    config.spinnerLineWidth = 2.0
+                    SwiftLoader.setConfig(config)
+                    SwiftLoader.show(animated: true)
+                    SwiftLoader.show(title: NSLocalizedString("msjApply",comment:""), animated: true)
+
+                    let queue = OperationQueue()
+                
+                    queue.addOperation() {
+
+                        if Reachability.isConnectedToNetwork(){
+                            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+                            if self.ynPreAuth == true
+                            {
+                                prepareOrderResult = service!.wmCallPostAuthMobile("1", strDataBase: self.appDelegate.strDataBaseByStay, intAccTrxId: self.AccTrxID, dblAmount: self.txtAmountToPay.text, strTrxCode: "POSTAUTHBAN", strTrxTest: "Y", strMail: strEmail, strLenguageCode: self.appDelegate.strLenguaje, personalID: self.strPeoplePay, strDocumentCode: self.strDocumentCode) as! NSString
+                            }else{
+                                
+                                /*print(self.appDelegate.gstrAppName)
+                                print(self.appDelegate.strDataBaseByStay)
+                                print(self.StayInfoID)
+                                print(self.strPeoplePay)
+                                print(strAmount)
+                                print(ccNumber)
+                                print(strExpDate)
+                                print(self.txtCVV.text)
+                                print(self.fkAccID)
+                                print(self.fkTrxTypeID)
+                                print(DateInFormat)
+                                print(self.AccCode)
+                                print(strEmail)
+                                print(self.appDelegate.strLenguaje)
+                                print(self.fkPlaceID)
+                                print(self.strForceMexicanCc)
+                                print(self.strDocumentCode)
+                                print(self.fkCurrencyID)
+                                print(self.strFirstName)
+                                print(self.strLastName)*/
+
+                                
+
+                                prepareOrderResult = service!.wmPaymentCC("1", appCode: self.appDelegate.gstrAppName, dataBase: self.appDelegate.strDataBaseByStay, stayInfoID: self.StayInfoID, personalID: self.strPeoplePay, amount: strAmount, strCc: ccNumber, strExpDate: strExpDate, strCvc2: self.txtCVV.text, intAccId: self.fkAccID, intTrxType: self.fkTrxTypeID, strTrxDate: DateInFormat, strReference: self.AccCode, strMail: strEmail, strLenguageCode: self.appDelegate.strLenguaje, placeID: self.fkPlaceID, strForceMexicanCc: self.strForceMexicanCc, strDocumentCode: self.strDocumentCode, strFName: self.strFirstName, strLname: self.strLastName, strCurrency: self.Stays["fkCurrencyID"]!) as! NSString
+
+                            }
+                            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                        }else{
+                            RKDropdownAlert.title(NSLocalizedString("MsgError6",comment:""), backgroundColor: self.colorWithHexString ("5C9FCC"), textColor: UIColor.black)
+                        }
+                    
+                        OperationQueue.main.addOperation() {
+                            
+                            let separators = CharacterSet(charactersIn: ",")
+                            var aRes = prepareOrderResult.components(separatedBy: separators)
+                            if(aRes[0]=="1")||(aRes[0]=="0"){
+                                GoogleWearAlert.showAlert(title: aRes[1], type: .success, duration: 4, iAction: 1, form: "Account Payment")
+                                self.appDelegate.gblPay = true
+                                
+                                if self.ynPreAuth == true || self.ynPreAuthCreditCard == true
+                                {
+                                    self.appDelegate.gblExitPreAuth = true
+                                }
+                                
+                                //let NextViewController = self.navigationController?.viewControllers[1]
+                                //self.navigationController?.popToViewController(NextViewController!, animated: false)
+                                
+                                self.navigationController?.popViewController(animated: false)
+                                
+                            }else{
+                                if self.ynPreAuth == true
+                                {
+                                    RKDropdownAlert.title(NSLocalizedString("msgTracDec",comment:""), backgroundColor: UIColor.red, textColor: UIColor.black)
+                                }else{
+                                    if aRes[0] != ""{
+                                        RKDropdownAlert.title(aRes[1], backgroundColor: UIColor.red, textColor: UIColor.black)
+                                    }
+                                }
+                            }
+                            
+                            self.ViewItem.rightBarButtonItem?.isEnabled = true
+                            self.ViewItem.leftBarButtonItem?.isEnabled = true
+                            self.btnApply.isEnabled = true
+                            self.app.endIgnoringInteractionEvents()
+                            
+                            SwiftLoader.hide()
+                        
+                        }
+                        
+                    }
                 
             }
+            
+            
 
         
         }else{
@@ -1901,7 +2779,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
 
         
     }
-    
+
     func PaymentValidate()->Bool{
         var queueFM: FMDatabaseQueue?
         
@@ -2010,7 +2888,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
                 return false
             }
             
-            if trimmedString.characters.count < 16{
+            if trimmedString.characters.count < 15{
                 strValidError = NSLocalizedString("msgInvCredCar",comment:"")
                 return false
             }
@@ -2115,6 +2993,51 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             }
         }
         
+        if txtFirstName.text == ""{
+            strValidError = "First Name is required"
+            return false;
+        }
+        
+        if txtLastName.text == ""{
+            strValidError = "Last Name is required"
+            return false;
+        }
+        
+        if txtAddress.text == ""{
+            strValidError = "Address is required"
+            return false;
+        }
+        
+        if txtCity.text == ""{
+            strValidError = "City is required"
+            return false;
+        }
+        
+        if appDelegate.gstrCountry == ""{
+            strValidError = "Country is required"
+            return false;
+        }
+        
+        if txtState.text == ""{
+            strValidError = "State is required"
+            return false;
+        }
+        
+        if txtZipCode.text == ""{
+            strValidError = "Zip Code is required"
+            return false;
+        }
+        
+        if txtTel.text == ""{
+            strValidError = "Telephone is required"
+            return false;
+        }
+        
+        if txtEmail.text == ""{
+            strValidError = "Email is required"
+            return false;
+        }
+
         return true;
     }
 
@@ -2147,6 +3070,8 @@ extension vcGuestAccountPayment: AKMaskFieldDelegate {
         
         // Status
         
+        //ynCC = true
+        
         switch maskField.maskStatus {
         case .clear:
             statusColor = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1.0)
@@ -2168,26 +3093,6 @@ extension vcGuestAccountPayment: AKMaskFieldDelegate {
                 }
             }
         }
-        
-        /*UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseIn,
-                       animations: { () -> Void in
-                        
-                        self.indicators[maskField.tag].backgroundColor = statusColor
-                        
-        },
-                       completion: nil
-        )*/
-        
-        // Event
-        
-        /*switch event {
-        case .insert  : eventColor = UIColor.lightGray
-        case .replace : eventColor = UIColor.brown
-        case .delete  : eventColor = UIColor.orange
-        case .error   : eventColor = UIColor.red
-        }*/
-        
-        //var eventColor =  UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 0.5)
         
         UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn,
                        animations: { () -> Void in
@@ -2219,5 +3124,4 @@ extension vcGuestAccountPayment: AKMaskFieldDelegate {
         }
     }
 }
-
 

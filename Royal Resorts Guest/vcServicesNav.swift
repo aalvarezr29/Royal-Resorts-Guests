@@ -11,12 +11,13 @@ import Firebase
 import FirebaseInstanceID
 import UserNotifications
 import FirebaseMessaging
+import WebKit
 
 class vcServicesNav: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var strFont: String = ""
-    var myWebView = UIWebView()
+    var myWebView = WKWebView()
     var urlHome: String = ""
     var btnPageBack = UIButton()
     var btnMenu = UIButton()
@@ -54,11 +55,11 @@ class vcServicesNav: UIViewController {
             //UIWebView
             //urlHome = appDelegate.urlActiv
             if appDelegate.ynIPad == true{
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: -10, width: width, height: height+10))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: -10, width: width, height: height+10))
             }else{
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: -10, width: width, height: height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: -10, width: width, height: height))
             }
-            myWebView.loadRequest(URLRequest(url: URL(string: urlHome)!))
+            myWebView.load(URLRequest(url: URL(string: urlHome)!))
             myWebView.clipsToBounds = true
             self.view.addSubview(myWebView)
             
@@ -140,11 +141,11 @@ class vcServicesNav: UIViewController {
             //UIWebView
             urlHome = appDelegate.urlActiv
             if appDelegate.ynIPad == true{
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: -10, width: width, height: height+10))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: -10, width: width, height: height+10))
             }else{
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: -10, width: width, height: height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: -10, width: width, height: height))
             }
-            myWebView.loadRequest(URLRequest(url: URL(string: urlHome)!))
+            myWebView.load(URLRequest(url: URL(string: urlHome)!))
             myWebView.clipsToBounds = true
             self.view.addSubview(myWebView)
             
@@ -155,37 +156,37 @@ class vcServicesNav: UIViewController {
         if appDelegate.ynIPad {
             switch appDelegate.Model {
             case "iPad 2":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.1*height, width: width, height: 0.83*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.1*height, width: width, height: 0.83*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.03*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.02*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.02*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.47*width, y: 0.015*height, width: 0.07*width, height: 0.05*height);
             case "iPad Air":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.1*height, width: width, height: 0.83*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.1*height, width: width, height: 0.83*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.03*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.02*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.02*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.47*width, y: 0.015*height, width: 0.07*width, height: 0.05*height);
             case "iPad Air 2":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.1*height, width: width, height: 0.83*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.1*height, width: width, height: 0.83*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.03*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.02*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.02*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.47*width, y: 0.015*height, width: 0.07*width, height: 0.05*height);
             case "iPad Pro":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.1*height, width: width, height: 0.83*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.1*height, width: width, height: 0.83*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.03*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.02*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.02*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.47*width, y: 0.015*height, width: 0.07*width, height: 0.05*height);
             case "iPad Retina":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.1*height, width: width, height: 0.83*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.1*height, width: width, height: 0.83*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.03*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.02*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.02*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.47*width, y: 0.015*height, width: 0.07*width, height: 0.05*height);
             default:
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.1*height, width: width, height: 0.83*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.1*height, width: width, height: 0.83*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.03*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.02*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.02*height, width: 0.07*width, height: 0.04*height);
@@ -194,67 +195,67 @@ class vcServicesNav: UIViewController {
         }else{
             switch appDelegate.Model {
             case "iPhone":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.04*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
             case "iPhone 4":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.04*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
             case "iPhone 4s":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.04*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
             case "iPhone 5":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.04*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
             case "iPhone 5c":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.04*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
             case "iPhone 5s":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.04*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
             case "iPhone 6":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.04*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
             case "iPhone 6 Plus":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.77*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.77*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.04*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
             case "iPhone 6s":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.04*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
             case "iPhone 6s Plus":
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.04*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
             default:
-                myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
+                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.14*height, width: width, height: 0.73*height))
                 viewBar.frame = CGRect(x: 0.0, y: 0.04*height, width: width, height: 0.1*height);
                 btnPageBack.frame = CGRect(x: 0.0, y: 0.05*height, width: 0.07*width, height: 0.04*height);
                 btnMenu.frame = CGRect(x: 0.9*width, y: 0.05*height, width: 0.07*width, height: 0.04*height);
@@ -262,8 +263,8 @@ class vcServicesNav: UIViewController {
             }
         }
         
-        myWebView.loadRequest(URLRequest(url: URL(string: urlHome)!))
-        myWebView.scalesPageToFit = true
+        myWebView.load(URLRequest(url: URL(string: urlHome)!))
+        //myWebView.scalesPageToFit = true
         
         var image = UIImage()
         image = UIImage(named:"ic_navigate_before")!
@@ -306,7 +307,7 @@ class vcServicesNav: UIViewController {
     }
     
     @objc func GoPagMenu(_ sender: UIButton) {
-        myWebView.loadRequest(URLRequest(url: URL(string: urlHome)!))
+        myWebView.load(URLRequest(url: URL(string: urlHome)!))
     }
     
     @objc func clickHome(_ sender: AnyObject) {

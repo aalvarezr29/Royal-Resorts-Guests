@@ -54,8 +54,6 @@
 -(RRDataSet *) spGetLoginBy:(NSString*) iType Param1:(NSString*) Param1 Param2:(NSString*) Param2 Param3:(NSString*) Param3
 {
     NSString *result;
-    //Estamos creando la instancia de RRStoredProcedure para ejecutar el llamado a spGetTableForInvoice que es eL procedimiento encargado de obtener
-    //las sillas que se van a facturar
     
     //Para los procedimientos de SQL SERVER, usamos el webservice urlMovileService
     RRStoredProcedure *sp = [[RRStoredProcedure alloc] initWithName:@"spGetLoginBy" Schema:@"dbo" DataBase:@"CDRPRD" WebServiceURL:_webServiceURL userNameMobile:_userNameMobile passwordMobile:_passwordMobile];
@@ -64,6 +62,20 @@
     [sp addParameterWithName:@"Param1" Direction:IN Type:VARCHAR Value:Param1 Precision:@"60"];
     [sp addParameterWithName:@"Param2" Direction:IN Type:VARCHAR Value:Param2 Precision:@"60"];
     [sp addParameterWithName:@"Param3" Direction:IN Type:VARCHAR Value:Param3 Precision:@"60"];
+    
+    return [sp execMobileWithResult:&result];
+    
+}
+
+-(RRDataSet *) spGetPeople:(NSString*) iType PeopleID:(NSString*) PeopleID
+{
+    NSString *result;
+
+    //Para los procedimientos de SQL SERVER, usamos el webservice urlMovileService
+    RRStoredProcedure *sp = [[RRStoredProcedure alloc] initWithName:@"spGetPeopleForApp" Schema:@"dbo" DataBase:@"CDRPRD" WebServiceURL:_webServiceURL userNameMobile:_userNameMobile passwordMobile:_passwordMobile];
+    
+    [sp addParameterWithName:@"iType" Direction:IN Type:INT Value:iType ];
+    [sp addParameterWithName:@"PeopleID" Direction:IN Type:INT Value:PeopleID ];
     
     return [sp execMobileWithResult:&result];
     
@@ -279,7 +291,7 @@
 }
 
 
--(NSString *) wmCallAddFollowUp:(NSString*) strDataBase unitcode:(NSString*) unitcode stayinfoID:(NSString*) stayinfoID iPeopleID:(NSString*) iPeopleID fTypeID:(NSString*) fTypeID reqShort:(NSString*) reqShort reqlong:(NSString*) reqlong Solution:(NSString*) Solution expect:(NSString*) expect finish:(NSString*) finish statusID:(NSString*) statusID strLenguageCode:(NSString*) strLenguageCode strDocumentCode:(NSString*) strDocumentCode
+-(NSString *) wmCallAddFollowUp:(NSString*) strDataBase unitcode:(NSString*) unitcode stayinfoID:(NSString*) stayinfoID iPeopleID:(NSString*) iPeopleID fTypeID:(NSString*) fTypeID reqShort:(NSString*) reqShort reqlong:(NSString*) reqlong Solution:(NSString*) Solution expect:(NSString*) expect finish:(NSString*) finish statusID:(NSString*) statusID strLenguageCode:(NSString*) strLenguageCode strDocumentCode:(NSString*) strDocumentCode strPeopleEmail:(NSString*) strPeopleEmail
 {
     NSString *strResult = @"";
     
@@ -303,9 +315,10 @@
                    "<strDocumentCode>%@</strDocumentCode>"
                    "<strUserNameWM>%@</strUserNameWM>"
                    "<strUserPassWord>%@</strUserPassWord>"
+                   "<strPeopleEmail>%@</strPeopleEmail>"
                    "</wmCallAddFollowUp>"
                    "</soap:Body>"
-                   "</soap:Envelope>",strDataBase,unitcode,stayinfoID,iPeopleID,fTypeID,reqShort,reqlong,Solution,expect,finish,statusID,strLenguageCode,strDocumentCode,_userNameMobile,_passwordMobile];
+                   "</soap:Envelope>",strDataBase,unitcode,stayinfoID,iPeopleID,fTypeID,reqShort,reqlong,Solution,expect,finish,statusID,strLenguageCode,strDocumentCode,_userNameMobile,_passwordMobile,strPeopleEmail];
     
     //Now create a request to the URL
     NSURL *url = [NSURL URLWithString:_webServiceURL];
@@ -380,7 +393,25 @@
     
 }
 
--(NSString *) wmPaymentCC:(NSString*) iType AppCode:(NSString*) AppCode DataBase:(NSString*) DataBase StayInfoID:(NSString*) StayInfoID PersonalID:(NSString*) PersonalID Amount:(NSString*) Amount strCc:(NSString*) strCc strExpDate:(NSString*) strExpDate strCvc2:(NSString*) strCvc2 intAccId:(NSString*) intAccId intTrxType:(NSString*) intTrxType strTrxDate:(NSString*) strTrxDate strReference:(NSString*) strReference strMail:(NSString*) strMail strLenguageCode:(NSString*) strLenguageCode PlaceID:(NSString*) PlaceID strForceMexicanCc:(NSString*) strForceMexicanCc strDocumentCode:(NSString*) strDocumentCode
+-(RRDataSet *) spGetPreRegReservation:(NSString*) iType iPeopleID:(NSString*) iPeopleID ConfirmationCode:(NSString*) ConfirmationCode Fname:(NSString*) Fname LName:(NSString*) LName CheckinDt:(NSString*) CheckinDt ResortCode:(NSString*) ResortCode DataBase:(NSString*) DataBase
+{
+    NSString *result;
+
+    RRStoredProcedure *sp = [[RRStoredProcedure alloc] initWithName:@"spGetPreRegReservation" Schema:@"Res" DataBase:DataBase WebServiceURL: _webServiceURL userNameMobile:_userNameMobile passwordMobile:_passwordMobile];
+    
+    [sp addParameterWithName:@"iType" Direction:IN Type:INT Value:iType ];
+    [sp addParameterWithName:@"iPeopleID" Direction:IN Type:INT Value:iPeopleID];
+    [sp addParameterWithName:@"ConfirmationCode" Direction:IN Type:VARCHAR Value:ConfirmationCode Precision:@"40"];
+    [sp addParameterWithName:@"Fname" Direction:IN Type:VARCHAR Value:Fname Precision:@"60"];
+    [sp addParameterWithName:@"LName" Direction:IN Type:VARCHAR Value:LName Precision:@"60"];
+    [sp addParameterWithName:@"CheckinDt" Direction:IN Type:VARCHAR Value:CheckinDt Precision:@"8"];
+    [sp addParameterWithName:@"ResortCode" Direction:IN Type:VARCHAR Value:ResortCode Precision:@"10"];
+    
+    return [sp execMobileWithResult:&result];
+
+}
+
+-(NSString *) wmPaymentCC:(NSString*) iType AppCode:(NSString*) AppCode DataBase:(NSString*) DataBase StayInfoID:(NSString*) StayInfoID PersonalID:(NSString*) PersonalID Amount:(NSString*) Amount strCc:(NSString*) strCc strExpDate:(NSString*) strExpDate strCvc2:(NSString*) strCvc2 intAccId:(NSString*) intAccId intTrxType:(NSString*) intTrxType strTrxDate:(NSString*) strTrxDate strReference:(NSString*) strReference strMail:(NSString*) strMail strLenguageCode:(NSString*) strLenguageCode PlaceID:(NSString*) PlaceID strForceMexicanCc:(NSString*) strForceMexicanCc strDocumentCode:(NSString*) strDocumentCode strFName:(NSString*) strFName strLname:(NSString*) strLname strCurrency:(NSString*) strCurrency
 {
     NSString *strResult = @"";
     
@@ -407,9 +438,12 @@
                    "<strUserNameWM>%@</strUserNameWM>"
                    "<strUserPassWord>%@</strUserPassWord>"
                    "<strDocumentCode>%@</strDocumentCode>"
+                   "<strFName>%@</strFName>"
+                   "<strLname>%@</strLname>"
+                   "<strCurrency>%@</strCurrency>"
                    "</wmPaymentCC>"
                    "</soap:Body>"
-                   "</soap:Envelope>",DataBase, StayInfoID, PersonalID, Amount, strCc, strExpDate, strCvc2, intAccId, intTrxType, strTrxDate, strReference, strMail, strLenguageCode, PlaceID, strForceMexicanCc, _userNameMobile, _passwordMobile, strDocumentCode];
+                   "</soap:Envelope>",DataBase, StayInfoID, PersonalID, Amount, strCc, strExpDate, strCvc2, intAccId, intTrxType, strTrxDate, strReference, strMail, strLenguageCode, PlaceID, strForceMexicanCc, _userNameMobile, _passwordMobile, strDocumentCode, strFName, strLname, strCurrency];
 
     //Now create a request to the URL
     NSURL *url = [NSURL URLWithString:_webServiceURL];
@@ -688,6 +722,7 @@
                    "<sDocument>%@</sDocument>"
                    "<sRemark>%@</sRemark>"
                    "<dTrxDate>%@</dTrxDate>"
+                   "<sUserLogin>%@</sUserLogin>"
                    "</wmApplyRewardCharge>"
                    "</soap:Body>"
                    "</soap:Envelope>", strDataBase, strAccId, strTypeCode, iPersonaId, iKeycardID, strPlaceCode, mAmount, iStoreId, sCurrencyCode, sDocument, sRemark, dTrxDate, sUserLogin];
@@ -733,6 +768,312 @@
     
     return datos;
     
+    
+}
+
+-(RRDataSet *) wmGetCalagoHoteles:(NSString*) sClientToken sAppToken:(NSString*) sAppToken sleguage:(NSString*) sleguage iModo:(NSString*) iModo strToken1:(NSString*) strToken1 strToken2:(NSString*) strToken2 strToken3:(NSString*) strToken3 strToken4:(NSString*) strToken4 strToken5:(NSString*) strToken5
+{
+    NSString *strResult = @"";
+    RRDataSet *datos;
+    
+    //first create the soap envelope
+    soapMessage = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+                   "<soap:Body>"
+                   "<wmGetCalagoHoteles xmlns=\"MobileService\">"
+                   "<sClientToken>%@</sClientToken>"
+                   "<sAppToken>%@</sAppToken>"
+                   "<sleguage>%@</sleguage>"
+                   "<iModo>%@</iModo>"
+                   "<strToken1>%@</strToken1>"
+                   "<strToken2>%@</strToken2>"
+                   "<strToken3>%@</strToken3>"
+                   "<strToken4>%@</strToken4>"
+                   "<strToken5>%@</strToken5>"
+                   "</wmGetCalagoHoteles>"
+                   "</soap:Body>"
+                   "</soap:Envelope>", sClientToken, sAppToken, sleguage, iModo, strToken1, strToken2, strToken3, strToken4, strToken5];
+    
+    //Now create a request to the URL
+    NSURL *url = [NSURL URLWithString:_webServiceURL];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
+    
+    //ad required headers to the request
+    [theRequest addValue:_Host forHTTPHeaderField:@"Host"];
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest addValue: @"MobileService/wmGetCalagoHoteles" forHTTPHeaderField:@"SOAPAction"];
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSData *responseData = [NSURLConnection sendSynchronousRequest: theRequest returningResponse:nil error: nil];
+    
+    NSString *responseString;
+    
+    if (responseData == nil)
+    {
+        return strResult;
+        
+    }
+    else
+    {
+        
+        responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+        
+        //No hay error por lo que parseamos el xml para obtener el resultado de la ejecucion del web service.
+        RRWebServiceParser * parser = [[RRWebServiceParser alloc] initWithTokenResult:@"wmGetCalagoHotelesResult"];
+        
+        [parser startParse:responseString];
+        
+        strResult = parser.json;
+        
+        datos = [[RRDataSet alloc] initWithJSONString:parser.json];
+        
+    }
+    
+    
+    return datos;
+    
+    
+}
+
+-(RRDataSet *) wmGetCatalogItemsVtm:(NSString*) sLanguageCode sItemCode:(NSString*) sItemCode sAttributeCodes:(NSString*) sAttributeCodes iTransferTypeID:(NSString*) iTransferTypeID sItemTypeCodes:(NSString*) sItemTypeCodes sHotelArrivalCode:(NSString*) sHotelArrivalCode sHotelDeparturCode:(NSString*) sHotelDeparturCode iNumPax:(NSString*) iNumPax sClientToken:(NSString*) sClientToken sAppToken:(NSString*) sAppToken strToken1:(NSString*) strToken1 strToken2:(NSString*) strToken2 strToken3:(NSString*) strToken3 strToken4:(NSString*) strToken4 strToken5:(NSString*) strToken5
+{
+    NSString *strResult = @"";
+    RRDataSet *datos;
+    
+    //first create the soap envelope
+    soapMessage = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+                   "<soap:Body>"
+                   "<wmGetCatalogItemsVtm xmlns=\"MobileService\">"
+                   "<sLanguageCode>%@</sLanguageCode>"
+                   "<sItemCode>%@</sItemCode>"
+                   "<sAttributeCodes>%@</sAttributeCodes>"
+                   "<iTransferTypeID>%@</iTransferTypeID>"
+                   "<sItemTypeCodes>%@</sItemTypeCodes>"
+                   "<sHotelArrivalCode>%@</sHotelArrivalCode>"
+                   "<sHotelDeparturCode>%@</sHotelDeparturCode>"
+                   "<iNumPax>%@</iNumPax>"
+                   "<sClientToken>%@</sClientToken>"
+                   "<sAppToken>%@</sAppToken>"
+                    "<strToken1>%@</strToken1>"
+                    "<strToken2>%@</strToken2>"
+                    "<strToken3>%@</strToken3>"
+                    "<strToken4>%@</strToken4>"
+                   "<strToken5>%@</strToken5>"
+                   "</wmGetCatalogItemsVtm>"
+                   "</soap:Body>"
+                   "</soap:Envelope>", sLanguageCode, sItemCode, sAttributeCodes, iTransferTypeID, sItemTypeCodes, sHotelArrivalCode, sHotelDeparturCode, iNumPax, sClientToken, sAppToken, strToken1, strToken2, strToken3, strToken4, strToken5];
+    
+    //Now create a request to the URL
+    NSURL *url = [NSURL URLWithString:_webServiceURL];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
+    
+    //ad required headers to the request
+    [theRequest addValue:_Host forHTTPHeaderField:@"Host"];
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest addValue: @"MobileService/wmGetCatalogItemsVtm" forHTTPHeaderField:@"SOAPAction"];
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSData *responseData = [NSURLConnection sendSynchronousRequest: theRequest returningResponse:nil error: nil];
+    
+    NSString *responseString;
+    
+    if (responseData == nil)
+    {
+        return strResult;
+        
+    }
+    else
+    {
+        
+        responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+        
+        //No hay error por lo que parseamos el xml para obtener el resultado de la ejecucion del web service.
+        RRWebServiceParser * parser = [[RRWebServiceParser alloc] initWithTokenResult:@"wmGetCatalogItemsVtmResult"];
+        
+        [parser startParse:responseString];
+        
+        strResult = parser.json;
+        
+        datos = [[RRDataSet alloc] initWithJSONString:parser.json];
+        
+    }
+    
+    
+    return datos;
+    
+    
+}
+
+-(RRDataSet *) wmGetFlightVtmTrans:(NSString*) iModo iOperator:(NSString*) iOperator sFlightTypeCode:(NSString*) sFlightTypeCode strToken1:(NSString*) strToken1 strToken2:(NSString*) strToken2 strToken3:(NSString*) strToken3 strToken4:(NSString*) strToken4 strToken5:(NSString*) strToken5
+{
+    NSString *strResult = @"";
+    RRDataSet *datos;
+    
+    //first create the soap envelope
+    soapMessage = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+                   "<soap:Body>"
+                   "<wmGetFlightVtmTrans xmlns=\"MobileService\">"
+                   "<iModo>%@</iModo>"
+                   "<iOperator>%@</iOperator>"
+                   "<sFlightTypeCode>%@</sFlightTypeCode>"
+                    "<strToken1>%@</strToken1>"
+                    "<strToken2>%@</strToken2>"
+                    "<strToken3>%@</strToken3>"
+                    "<strToken4>%@</strToken4>"
+                   "<strToken5>%@</strToken5>"
+                   "</wmGetFlightVtmTrans>"
+                   "</soap:Body>"
+                   "</soap:Envelope>", iModo, iOperator, sFlightTypeCode, strToken1, strToken2, strToken3, strToken4, strToken5];
+    
+    //Now create a request to the URL
+    NSURL *url = [NSURL URLWithString:_webServiceURL];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
+    
+    //ad required headers to the request
+    [theRequest addValue:_Host forHTTPHeaderField:@"Host"];
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest addValue: @"MobileService/wmGetFlightVtmTrans" forHTTPHeaderField:@"SOAPAction"];
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSData *responseData = [NSURLConnection sendSynchronousRequest: theRequest returningResponse:nil error: nil];
+    
+    NSString *responseString;
+    
+    if (responseData == nil)
+    {
+        return strResult;
+        
+    }
+    else
+    {
+        
+        responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+        
+        //No hay error por lo que parseamos el xml para obtener el resultado de la ejecucion del web service.
+        RRWebServiceParser * parser = [[RRWebServiceParser alloc] initWithTokenResult:@"wmGetFlightVtmTransResult"];
+        
+        [parser startParse:responseString];
+        
+        strResult = parser.json;
+        
+        datos = [[RRDataSet alloc] initWithJSONString:parser.json];
+        
+    }
+    
+    
+    return datos;
+    
+    
+}
+
+-(RRDataSet *) wmAddReservation:(NSString*) sResTypeCode sLanguageCode:(NSString*) sLanguageCode sSourceCode:(NSString*) sSourceCode iPeopleFromCDRID:(NSString*) iPeopleFromCDRID sFname:(NSString*) sFname sLname1:(NSString*) sLname1 sEmailAddress:(NSString*) sEmailAddress sTerminalCode:(NSString*) sTerminalCode sWorkStationCode:(NSString*) sWorkStationCode sUserLogin:(NSString*) sUserLogin iApplicationClient:(NSString*) iApplicationClient IItemVariantID:(NSString*) IItemVariantID iPax:(NSString*) iPax sArrivalHotelCode:(NSString*) sArrivalHotelCode sDepartureHotelCode:(NSString*) sDepartureHotelCode SPaymentTypeCode:(NSString*) SPaymentTypeCode sRoom:(NSString*) sRoom SConfirmationCode:(NSString*) SConfirmationCode dtArrivalDate:(NSString*) dtArrivalDate sArrivalFlightCode:(NSString*) sArrivalFlightCode sArrivalComment:(NSString*) sArrivalComment dtDepartureDate:(NSString*) dtDepartureDate sDepartureFlightCode:(NSString*) sDepartureFlightCode ynArrival:(NSString*) ynArrival iArrivalHotelID:(NSString*) iArrivalHotelID iDepartureHotelID:(NSString*) iDepartureHotelID ynIncludeDetail:(NSString*) ynIncludeDetail SLimitDate:(NSString*) SLimitDate DtDateIn:(NSString*) DtDateIn DtDateOut:(NSString*) DtDateOut STransferTypeCode:(NSString*) STransferTypeCode SWebDocumentCode:(NSString*) SWebDocumentCode SOrigin:(NSString*) SOrigin SDestiny:(NSString*) SDestiny strToken1:(NSString*) strToken1 strToken2:(NSString*) strToken2 strToken3:(NSString*) strToken3 strToken4:(NSString*) strToken4 strToken5:(NSString*) strToken5
+{
+    
+    NSString *strResult = @"";
+    RRDataSet *datos;
+    
+    //first create the soap envelope
+    soapMessage = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+                   "<soap:Body>"
+                   "<wmAddReservation xmlns=\"MobileService\">"
+                   "<sResTypeCode>%@</sResTypeCode>"
+                   "<sLanguageCode>%@</sLanguageCode>"
+                   "<sSourceCode>%@</sSourceCode>"
+                   "<iPeopleFromCDRID>%@</iPeopleFromCDRID>"
+                   "<sFname>%@</sFname>"
+                   "<sLname1>%@</sLname1>"
+                   "<sEmailAddress>%@</sEmailAddress>"
+                   "<sTerminalCode>%@</sTerminalCode>"
+                   "<sWorkStationCode>%@</sWorkStationCode>"
+                   "<sUserLogin>%@</sUserLogin>"
+                   "<iApplicationClient>%@</iApplicationClient>"
+                   "<IItemVariantID>%@</IItemVariantID>"
+                   "<iPax>%@</iPax>"
+                   "<sArrivalHotelCode>%@</sArrivalHotelCode>"
+                   "<sDepartureHotelCode>%@</sDepartureHotelCode>"
+                   "<SPaymentTypeCode>%@</SPaymentTypeCode>"
+                   "<sRoom>%@</sRoom>"
+                   "<SConfirmationCode>%@</SConfirmationCode>"
+                   "<dtArrivalDate>%@</dtArrivalDate>"
+                   "<sArrivalFlightCode>%@</sArrivalFlightCode>"
+                   "<sArrivalComment>%@</sArrivalComment>"
+                   "<dtDepartureDate>%@</dtDepartureDate>"
+                   "<sDepartureFlightCode>%@</sDepartureFlightCode>"
+                   "<ynArrival>%@</ynArrival>"
+                   "<iArrivalHotelID>%@</iArrivalHotelID>"
+                   "<iDepartureHotelID>%@</iDepartureHotelID>"
+                   "<ynIncludeDetail>%@</ynIncludeDetail>"
+                   "<SLimitDate>%@</SLimitDate>"
+                   "<DtDateIn>%@</DtDateIn>"
+                   "<DtDateOut>%@</DtDateOut>"
+                   "<STransferTypeCode>%@</STransferTypeCode>"
+                   "<SWebDocumentCode>%@</SWebDocumentCode>"
+                   "<SOrigin>%@</SOrigin>"
+                   "<SDestiny>%@</SDestiny>"
+                   "<strToken1>%@</strToken1>"
+                   "<strToken2>%@</strToken2>"
+                   "<strToken3>%@</strToken3>"
+                   "<strToken4>%@</strToken4>"
+                   "<strToken5>%@</strToken5>"
+                   "</wmAddReservation>"
+                   "</soap:Body>"
+                   "</soap:Envelope>", sResTypeCode, sLanguageCode, sSourceCode, iPeopleFromCDRID, sFname, sLname1, sEmailAddress, sTerminalCode, sWorkStationCode, sUserLogin, iApplicationClient,
+                   IItemVariantID, iPax, sArrivalHotelCode, sDepartureHotelCode, SPaymentTypeCode, sRoom, SConfirmationCode, dtArrivalDate, sArrivalFlightCode, sArrivalComment,
+                   dtDepartureDate, sDepartureFlightCode, ynArrival, iArrivalHotelID, iDepartureHotelID, ynIncludeDetail, SLimitDate, DtDateIn,
+                   DtDateOut, STransferTypeCode, SWebDocumentCode, SOrigin, SDestiny, strToken1, strToken2, strToken3, strToken4, strToken5];
+    
+    //Now create a request to the URL
+    NSURL *url = [NSURL URLWithString:_webServiceURL];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
+    
+    //ad required headers to the request
+    [theRequest addValue:_Host forHTTPHeaderField:@"Host"];
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest addValue: @"MobileService/wmAddReservation" forHTTPHeaderField:@"SOAPAction"];
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSData *responseData = [NSURLConnection sendSynchronousRequest: theRequest returningResponse:nil error: nil];
+    
+    NSString *responseString;
+    
+    if (responseData == nil)
+    {
+        return strResult;
+        
+    }
+    else
+    {
+        
+        responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+        
+        //No hay error por lo que parseamos el xml para obtener el resultado de la ejecucion del web service.
+        RRWebServiceParser * parser = [[RRWebServiceParser alloc] initWithTokenResult:@"wmAddReservationResult"];
+        
+        [parser startParse:responseString];
+        
+        strResult = parser.json;
+        
+        datos = [[RRDataSet alloc] initWithJSONString:parser.json];
+        
+    }
+    
+    
+    return datos;
     
 }
 
@@ -821,6 +1162,16 @@
     [sp addParameterWithName:@"PersonalID" Direction:IN Type:VARCHAR Value:PersonalID Precision:@"60"];
     [sp addParameterWithName:@"StayInfoID" Direction:IN Type:VARCHAR Value:StayInfoID Precision:@"60"];
     
+    return [sp execMobileWithResult:&result];
+    
+}
+
+-(RRDataSet *) spGetCmbCountry:(NSString*) DataBase
+{
+    NSString *result;
+    
+    RRStoredProcedure *sp = [[RRStoredProcedure alloc] initWithName:@"spGetCmbCountryForApp" Schema:@"dbo" DataBase:DataBase WebServiceURL: _webServiceURL userNameMobile:_userNameMobile passwordMobile:_passwordMobile];
+
     return [sp execMobileWithResult:&result];
     
 }

@@ -288,6 +288,122 @@ class vcReservRestAvail: UIViewController, UITextFieldDelegate {
             
             lblStartTimeR.backgroundColor = UIColor.lightGray
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            var imgHdr = UIImage()
+            var imgHdrVw = UIImageView()
+            
+            imgHdr = UIImage(named:"Titlehdr.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.0, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.6
+            AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.03*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.58
+            AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.06*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.56
+            AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.09*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.54
+            AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.12*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.52
+            AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.15*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.52
+            AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.18*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.52
+            AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.21*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.52
+            AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlefooter.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.24*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.5
+            AccView.addSubview(imgHdrVw)
+            
+            Color = colorWithHexString("2e3634")
+            ColorR = colorWithHexString("2e3634")
+            
+            Colorbtn1 = colorWithHexString("ba8748")
+            Colorbtn2 = colorWithHexString("7c6a56")
+            Colorbtn3 = colorWithHexString("eee7dd")
+            
+            strFontTitleExtra = "Futura-CondensedExtraBold"
+            strFontTitleMedium = "Futura-CondensedMedium"
+            
+            mas = NSMutableAttributedString(string: NSLocalizedString("btnApplyReserv",comment:""), attributes: [
+                NSAttributedString.Key.font: UIFont(name:strFontTitleMedium, size:appDelegate.gblFont7 + appDelegate.gblDeviceFont3)!
+                ])
+            btnApply.setAttributedTitle(mas, for: UIControl.State())
+            btnApply.titleLabel?.textAlignment = NSTextAlignment.center
+            btnApply.titleLabel?.adjustsFontSizeToFitWidth = true
+            btnApply.setTitleColor(Colorbtn1, for: UIControl.State())
+            btnApply.layer.borderWidth = 4
+            btnApply.layer.borderColor = Colorbtn2.cgColor
+            btnApply.backgroundColor = Colorbtn3
+            btnApply.tintColor = Colorbtn1
+            btnApply.addTarget(self, action: #selector(vcReservRestAvail.Search(_:)), for: UIControl.Event.touchUpInside)
+            
+            lblUnit.textAlignment = NSTextAlignment.left
+            lblName.textAlignment = NSTextAlignment.left
+            lblLastName.textAlignment = NSTextAlignment.left
+            lblPeople.textAlignment = NSTextAlignment.left
+            lblChild.textAlignment = NSTextAlignment.left
+            lblDate.textAlignment = NSTextAlignment.left
+            lblStartTime.textAlignment = NSTextAlignment.left
+            
+            lblUnit.font = UIFont(name:strFontTitleExtra, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblName.font = UIFont(name:strFontTitleExtra, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblLastName.font = UIFont(name:strFontTitleExtra, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblPeople.font = UIFont(name:strFontTitleExtra, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblChild.font = UIFont(name:strFontTitleExtra, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblDate.font = UIFont(name:strFontTitleExtra, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblStartTime.font = UIFont(name:strFontTitleExtra, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            
+            lblUnitR.font = UIFont(name:strFontTitleMedium, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblNameR.font = UIFont(name:strFontTitleMedium, size:appDelegate.gblFont3 + appDelegate.gblDeviceFont3)
+            lblLastNameR.font = UIFont(name:strFontTitleMedium, size:appDelegate.gblFont3 + appDelegate.gblDeviceFont3)
+            lblPeopleR.font = UIFont(name:strFontTitleMedium, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblChildR.font = UIFont(name:strFontTitleMedium, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblStartTimeR.font = UIFont(name:strFontTitleMedium, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            
+            lblStartTimeR.backgroundColor = UIColor.lightGray
+            
         }
 
         lblUnit.text = NSLocalizedString("lblRestUnit",comment:"")

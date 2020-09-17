@@ -144,7 +144,7 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
         strDepartureDate = strFormatter.string(from: dtDepartureDate)
         strDepartureDatebb = strFormatter.string(from: dtDepartureDate)
         
-        strDataBase = "FDESK_CANCUN"
+        //strDataBase = "FDESK_CANCUN"
         
         self.tabBarController?.navigationController?.navigationBar.isHidden = true;
         
@@ -301,6 +301,27 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
             tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
             tableView.separatorColor = UIColor.clear
             
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            var imgBack = UIImage()
+            var imgvwBack = UIImageView()
+            
+            self.view.backgroundColor = UIColor.clear
+            //self.view.backgroundColor = colorWithHexString ("DDF4FF")
+            self.view.backgroundColor = UIColor.white
+            
+            imgBack = UIImage(named:"bg.png")!
+            imgvwBack = UIImageView(image: imgBack)
+            imgvwBack.frame = CGRect(x: 0.0, y: -0.05*height, width: width, height: height+(0.05*height));
+            imgvwBack.alpha = 0.3
+            imgvwBack.contentMode = UIView.ContentMode.scaleAspectFill
+            //self.view.addSubview(imgvwBack)
+            
+            lblFooter.textColor = colorWithHexString("2e3634")
+            
+            tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+            tableView.separatorColor = UIColor.clear
             
         }
         
@@ -606,6 +627,12 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
             //cell!.backgroundColor = colorWithHexString ("DDF4FF")
             cell!.backgroundColor = UIColor.white
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+
+            cell!.backgroundColor = UIColor.clear
+            //cell!.backgroundColor = colorWithHexString ("DDF4FF")
+            cell!.backgroundColor = UIColor.white
+            
         }
     
         if indexPath.row == 0 {
@@ -693,8 +720,23 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
                 
                 cell!.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                 
-                cell!.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("e4c29c"))
-                
+                if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
+                    
+                    
+                }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+                    
+                    cell!.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("e4c29c"))
+                    
+                }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
+
+                    cell!.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("e4c29c"))
+                    
+                }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+
+                    cell!.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("2e3634"))
+                    
+                }
+
             }
             if indexPath.row == 3 {
 
@@ -764,8 +806,23 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
 
                 cell!.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                 
-                cell!.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("e4c29c"))
-                
+                if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
+                    
+                    
+                }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+                    
+                    cell!.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("e4c29c"))
+                    
+                }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
+
+                    cell!.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("e4c29c"))
+                    
+                }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+                    
+                    cell!.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("2e3634"))
+                    
+                }
+
             }
 
         } else if cellID == "otherCell" {
@@ -790,6 +847,10 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
                 }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
 
                     cell?.textLabel?.textColor = colorWithHexString("00467f")
+                    
+                }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+                    
+                    cell?.textLabel?.textColor = colorWithHexString("2e3634")
                     
                 }
                 
@@ -825,16 +886,42 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
             
             cell!.backgroundView = gradientView
             
-            btnSave.backgroundColor = colorWithHexString("FFCC66")
+            
             btnSave.frame = CGRect(x: 0.4*width, y: 0.02*height, width: 0.2*width, height: 0.04*height)
             btnSave.layer.cornerRadius = 5
-            btnSave.setTitleColor(colorWithHexString ("007AFF"), for: UIControl.State())
             btnSave.setTitle(NSLocalizedString("btnSave",comment:""), for:UIControl.State())
             btnSave.titleLabel?.font = UIFont(name: "Helvetica", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont3)
             btnSave.titleLabel?.textAlignment = NSTextAlignment.left
-            btnSave.titleLabel?.numberOfLines = 5
-            btnSave.layer.borderColor = UIColor.clear.cgColor
             btnSave.addTarget(self, action: #selector(DateCellTableViewController.SaveAction(_:)), for: UIControl.Event.touchUpInside)
+
+            if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
+
+                btnSave.titleLabel?.numberOfLines = 5
+                btnSave.layer.borderColor = UIColor.clear.cgColor
+                btnSave.backgroundColor = colorWithHexString("FFCC66")
+                btnSave.setTitleColor(colorWithHexString ("007AFF"), for: UIControl.State())
+                
+            }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+
+                btnSave.titleLabel?.numberOfLines = 5
+                btnSave.layer.borderColor = UIColor.clear.cgColor
+                btnSave.backgroundColor = colorWithHexString("FFCC66")
+                btnSave.setTitleColor(colorWithHexString ("007AFF"), for: UIControl.State())
+                
+            }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
+
+                btnSave.titleLabel?.numberOfLines = 5
+                btnSave.layer.borderColor = UIColor.clear.cgColor
+                btnSave.backgroundColor = colorWithHexString("FFCC66")
+                btnSave.setTitleColor(colorWithHexString ("007AFF"), for: UIControl.State())
+                
+            }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+
+                btnSave.backgroundColor = colorWithHexString("f7941e")
+                btnSave.setTitleColor(colorWithHexString ("2e3634"), for: UIControl.State())
+                
+            }
+            
             cell?.addSubview(btnSave)
             
         } else if cellID == "otherSwitch" {
@@ -883,6 +970,11 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
                 runkeeperSwitch.backgroundColor = self.colorWithHexString ("a18015")
                 runkeeperSwitch.selectedTitleColor = self.colorWithHexString ("a18015")
                 
+            }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+                
+                runkeeperSwitch.backgroundColor = self.colorWithHexString ("004c50")
+                runkeeperSwitch.selectedTitleColor = self.colorWithHexString ("004c50")
+                
             }
  
             runkeeperSwitch.selectedBackgroundColor = .white
@@ -926,8 +1018,12 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
             lblBag.adjustsFontSizeToFitWidth = true;
             cell?.addSubview(lblBag)
             
+            let tap = UITapGestureRecognizer(target: self, action: #selector(DateCellTableViewController.txtClickBag))
+            tap.numberOfTapsRequired = 1
+            txtBag.addGestureRecognizer(tap)
+            
             txtBag.maskExpression = "{dd}"
-            txtBag.maskTemplate = " "
+            txtBag.maskTemplate = ""
             txtBag.maskDelegate = self
             txtBag.layer.borderColor = UIColor.black.cgColor
             txtBag.borderStyle = UITextField.BorderStyle.roundedRect
@@ -977,6 +1073,8 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
                 }
             }
 
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
         }
         
         lastIndex = IndexPath.init()
@@ -984,6 +1082,17 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
         return cell!
     }
     
+    @objc func txtClickBag() {
+        
+        let ccNumber = txtBag.text!.trimmingCharacters(in: .whitespaces)
+        if ccNumber == ""{
+            let newPosition = txtBag.beginningOfDocument
+            txtBag.selectedTextRange = txtBag.textRange(from: newPosition, to: newPosition)
+        }
+
+        txtBag.becomeFirstResponder()
+
+    }
     /*! Adds or removes a UIDatePicker cell below the given indexPath.
     
     @param indexPath The indexPath to reveal the UIDatePicker.
@@ -1175,6 +1284,24 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
                 
             }
 
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            if indexPath.row == 1 || indexPath.row == 3{
+                
+                if indexPath.row == 1{
+                
+                    tableView.cellForRow(at: IndexPath(row: 3, section: 0))?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("004c50"))
+                    
+                }else{
+                
+                    tableView.cellForRow(at: IndexPath(row: 1, section: 0))?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("004c50"))
+                
+                }
+                
+                tableView.cellForRow(at: indexPath)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("004c50"))
+                
+            }
+
         }
         
         if indexPath.row == 1 {
@@ -1246,7 +1373,14 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
                 var aRes = prepareOrderResult.components(separatedBy: separators)
                 
                 if(aRes[0]=="1"){
-                    GoogleWearAlert.showAlert(title: NSLocalizedString("msgCheckOut",comment:""), type: .success, duration: 4, iAction: 1, form:"Check Out")
+                    
+                    if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+                        GoogleWearAlert.showAlert(title: NSLocalizedString("msgCheckOutCLB",comment:""), type: .success, duration: 4, iAction: 1, form:"Check Out")
+                    }else
+                    {
+                        GoogleWearAlert.showAlert(title: NSLocalizedString("msgCheckOut",comment:""), type: .success, duration: 4, iAction: 1, form:"Check Out")
+                    }
+
                     self.appDelegate.gblCheckOutVw = true
                     self.appDelegate.gblCheckOUT = true
                     self.navigationController?.popViewController(animated: false)
@@ -1317,9 +1451,20 @@ class DateCellTableViewController: UITableViewController, UITextFieldDelegate {
         if self.hasInlineDatePicker() {
             targetedCellIndexPath = IndexPath(row: datePickerIndexPath!.row - 1, section: 0)
         } else {
-            targetedCellIndexPath = tableView.indexPathForSelectedRow!
-        }
 
+            if let IndexPath = tableView.indexPathForSelectedRow {
+                targetedCellIndexPath = tableView.indexPathForSelectedRow!
+            }else{
+                if IndexRow == 2 {
+                    targetedCellIndexPath = IndexPath(row: 0, section: 1)
+                }
+                if IndexRow == 4 {
+                    targetedCellIndexPath = IndexPath(row: 0, section: 3)
+                }
+            }
+            
+        }
+        
         let cell = tableView.cellForRow(at: targetedCellIndexPath!)
         let targetedDatePicker = sender
 
@@ -1466,6 +1611,10 @@ extension DateCellTableViewController: AKMaskFieldDelegate {
                             maskField.backgroundColor = UIColor.white
                             
                         }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
+                            
+                            maskField.backgroundColor = UIColor.white
+                            
+                        }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
                             
                             maskField.backgroundColor = UIColor.white
                             

@@ -506,6 +506,158 @@ class vcRequestDetail: UIViewController, UITableViewDelegate, UITableViewDataSou
                 }
             }
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            var imgBack = UIImage()
+            var imgvwBack = UIImageView()
+            
+            AccView.backgroundColor = UIColor.clear
+            
+            //AccView.backgroundColor = colorWithHexString ("DDF4FF")
+            //self.view.backgroundColor = colorWithHexString ("DDF4FF")
+            //tableView.backgroundColor = colorWithHexString ("DDF4FF")
+            
+            AccView.backgroundColor = UIColor.white
+            tableView.backgroundColor = UIColor.white
+            self.view.backgroundColor = UIColor.white
+            
+            imgBack = UIImage(named:"bg.png")!
+            imgvwBack = UIImageView(image: imgBack)
+            imgvwBack.frame = CGRect(x: 0.0, y: -0.05*height, width: width, height: height+(0.05*height));
+            imgvwBack.alpha = 0.3
+            imgvwBack.contentMode = UIView.ContentMode.scaleAspectFill
+            //self.view.addSubview(imgvwBack)
+            
+            var imgHdr = UIImage()
+            var imgHdrVw = UIImageView()
+            
+            imgHdr = UIImage(named:"Titlehdr.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.0, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.6
+            //AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.03*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.58
+            //AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.06*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.56
+            //AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlefooter.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.09*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.54
+            //AccView.addSubview(imgHdrVw)
+            
+            var strFontTitle: String = "Futura-CondensedExtraBold"
+            var Color: UIColor = colorWithHexString("004c50")
+            
+            lblDesc.textColor = Color
+            lblStay.textColor = Color
+            lblType.textColor = Color
+            lblStatus.textColor = Color
+            lblDesc.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblStay.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblType.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblStatus.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            strFontTitle = "Futura-CondensedMedium"
+            Color = colorWithHexString("2e3634")
+            
+            lblDescRes.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblStayRes.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblTypeRes.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblStatusRes.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblDescRes.textColor = Color
+            lblStayRes.textColor = Color
+            lblTypeRes.textColor = Color
+            lblStatusRes.textColor = Color
+            
+            lblDesc.textAlignment = NSTextAlignment.left
+            lblDesc.frame = CGRect(x: 0.02*width, y: 0.00001*height, width: 0.2*width, height: 0.03*height);
+            lblStay.textAlignment = NSTextAlignment.left
+            lblStay.frame = CGRect(x: 0.02*width, y: 0.029*height, width: 0.2*width, height: 0.03*height);
+            lblType.textAlignment = NSTextAlignment.left
+            lblType.frame = CGRect(x: 0.02*width, y: 0.058*height, width: 0.2*width, height: 0.03*height);
+            lblStatus.textAlignment = NSTextAlignment.left
+            lblStatus.frame = CGRect(x: 0.02*width, y: 0.087*height, width: 0.2*width, height: 0.03*height);
+            
+            lblDescRes.numberOfLines = 0
+            lblDescRes.frame = CGRect(x: 0.24*width, y: 0.0001*height, width: 0.45*width, height: 0.03*height);
+            lblStayRes.numberOfLines = 0
+            lblStayRes.frame = CGRect(x: 0.24*width, y: 0.0297*height, width: 0.45*width, height: 0.03*height);
+            lblTypeRes.numberOfLines = 0
+            lblTypeRes.frame = CGRect(x: 0.24*width, y: 0.059*height, width: 0.45*width, height: 0.03*height);
+            lblStatusRes.numberOfLines = 0
+            lblStatusRes.frame = CGRect(x: 0.24*width, y: 0.0885*height, width: 0.6*width, height: 0.03*height);
+            
+            
+            AccView.addSubview(lblDesc)
+            AccView.addSubview(lblStay)
+            AccView.addSubview(lblType)
+            AccView.addSubview(lblStatus)
+            
+            AccView.addSubview(lblDescRes)
+            AccView.addSubview(lblStayRes)
+            AccView.addSubview(lblTypeRes)
+            AccView.addSubview(lblStatusRes)
+            
+            self.view.addSubview(AccView)
+            
+            tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+            
+            if appDelegate.ynIPad {
+                switch appDelegate.Model {
+                case "iPad 2":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                case "iPad Air":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                case "iPad Air 2":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                case "iPad Pro":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                case "iPad Retina":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                default:
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                }
+            }else{
+                switch appDelegate.Model {
+                case "iPhone":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                case "iPhone 4":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                case "iPhone 4s":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                case "iPhone 5":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.4*height);
+                case "iPhone 5c":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                case "iPhone 5s":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.24*height, width: 0.9*width, height: 0.5*height);
+                case "iPhone 6":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                case "iPhone 6 Plus":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                case "iPhone 6s":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                case "iPhone 6s Plus":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                default:
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.26*height, width: 0.9*width, height: 0.5*height);
+                }
+            }
+            
         }
         
         self.tableView.reloadData()
@@ -793,6 +945,77 @@ class vcRequestDetail: UIViewController, UITableViewDelegate, UITableViewDataSou
                 cell.selectedBackgroundView = imgvwCell
                 
             }
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            cell.backgroundColor = UIColor.clear
+            cell.layer.masksToBounds = true
+            cell.layer.cornerRadius = 5
+            cell.layer.borderWidth = 1
+            cell.layer.shadowOffset = CGSize(width: -1, height: 1)
+            cell.layer.borderColor = UIColor.black.cgColor
+            
+            if lastIndex.count > 0 {
+                if indexPath.row != lastIndex.row{
+                    rowSelected = false
+                }else{
+                    rowSelected = true
+                }
+            }else{
+                rowSelected = false
+            }
+            
+            if lastIndex.count > 0 {
+                if indexPath.row != lastIndex.row{
+                    ynSelected = false
+                }else{
+                    if isSelected == rowSelected {
+                        ynSelected = true
+                    }else{
+                        ynSelected = false
+                    }
+                }
+            }else{
+                ynSelected = false
+            }
+            
+            /*if indexPath.row == 0{
+                imgCell = UIImage(named:"tblacchdr.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.backgroundView = imgvwCell
+                
+                imgCell = UIImage(named:"tblacchdrSel.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.selectedBackgroundView = imgvwCell
+            }else if (tblFollowUp.count-1) == indexPath.row{
+                imgCell = UIImage(named:"tblaccfooter.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.backgroundView = imgvwCell
+                
+                imgCell = UIImage(named:"tblaccfooterSel.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.selectedBackgroundView = imgvwCell
+            } else {
+                
+                imgCell = UIImage(named:"tblaccrow.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.backgroundView = imgvwCell
+                
+                imgCell = UIImage(named:"tblaccrowSel.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.selectedBackgroundView = imgvwCell
+            }
+            
+            if (tblFollowUp.count) == 1
+            {
+                imgCell = UIImage(named:"tblaccrowsingle.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.backgroundView = imgvwCell
+                
+                imgCell = UIImage(named:"tblaccrowsingleSel.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.selectedBackgroundView = imgvwCell
+                
+            }*/
         }
         
         if indexPath.row > 0 {

@@ -24,6 +24,8 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
     var tblFollowUp: [Dictionary<String, String>]!
     var tblFollowUpType: [Dictionary<String, String>]!
     var tblTransfer: [Dictionary<String, String>]!
+    var tblTransHourConf: [Dictionary<String, String>]!
+    var tblFollowUpTypeE: [Dictionary<String, String>]!
     
     var StayInfoID: String = ""
     var PeopleID: String = ""
@@ -42,16 +44,16 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
     var lastIndex = IndexPath()
     var ynActualiza: Bool = false
     var refreshControl: UIRefreshControl!
+    var refreshControlTransfer: UIRefreshControl!
     var runkeeperSwitch: DGRunkeeperSwitch!
     var imgBack = UIImage()
     var imgvwBack = UIImageView()
     var strFont: String = ""
     var imgCell = UIImage()
     var imgvwCell = UIImageView()
-    var tableView = UITableView()
+    var tableRequest = UITableView()
     var tableTransfer = UITableView()
-    
-    //@IBOutlet weak var tableView: UITableView!
+
     @IBOutlet var ViewItem: UINavigationItem!
     @IBOutlet weak var BodyView: UIView!
     @IBOutlet weak var AccView: UIView!
@@ -86,68 +88,70 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         runkeeperSwitch.addTarget(self, action: #selector(vcRequestFollowUp.switchValueDidChange(_:)), for: .valueChanged)
         AccView.addSubview(runkeeperSwitch)
         
-        tableView.tag = 1
+        tableRequest.tag = 1
         tableTransfer.tag = 2
         
-        //tableTransfer.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.4*height);
+        tableTransfer.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.38*height);
 
         if appDelegate.ynIPad {
             switch appDelegate.Model {
             case "iPad 2":
-                //tableView.frame = CGRect(x: 0.05*width, y: 0.45*height, width: 0.9*width, height: 0.4*height);
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.75*height);
-                AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.75*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.6*height, width: 0.9*width, height: 0.35*height);
             case "iPad Air":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.75*height);
-                AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.75*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.6*height, width: 0.9*width, height: 0.35*height);
             case "iPad Air 2":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.75*height);
-                AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.75*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.6*height, width: 0.9*width, height: 0.35*height);
             case "iPad Pro":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.75*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.75*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.6*height, width: 0.9*width, height: 0.35*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
             case "iPad Retina":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.75*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.75*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.6*height, width: 0.9*width, height: 0.35*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
             default:
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.75*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.75*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.6*height, width: 0.9*width, height: 0.35*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
             }
         }else{
             switch appDelegate.Model {
             case "iPhone":
-                //tableView.frame = CGRect(x: 0.05*width, y: 0.45*height, width: 0.9*width, height: 0.4*height);
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
-                AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.45*height, width: 0.9*width, height: 0.4*height);
             case "iPhone 4":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
-                AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.45*height, width: 0.9*width, height: 0.4*height);
             case "iPhone 4s":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
-                AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.45*height, width: 0.9*width, height: 0.4*height);
             case "iPhone 5":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
-                AccView.frame = CGRect(x: 0.05*width, y: 0.08*height, width: 0.9*width, height: 0.07*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.45*height, width: 0.9*width, height: 0.4*height);
             case "iPhone 5c":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
-                AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.45*height, width: 0.9*width, height: 0.4*height);
             case "iPhone 5s":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
-                AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.45*height, width: 0.9*width, height: 0.4*height);
             case "iPhone 6":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
-                AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.45*height, width: 0.9*width, height: 0.4*height);
             case "iPhone 6 Plus":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
-                AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.45*height, width: 0.9*width, height: 0.4*height);
             case "iPhone 6s":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
-                AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.45*height, width: 0.9*width, height: 0.4*height);
             case "iPhone 6s Plus":
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
-                AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.45*height, width: 0.9*width, height: 0.4*height);
             default:
-                tableView.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
+                //tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
+                tableRequest.frame = CGRect(x: 0.05*width, y: 0.55*height, width: 0.9*width, height: 0.35*height);
                 AccView.frame = CGRect(x: 0.05*width, y: 0.09*height, width: 0.9*width, height: 0.07*height);
             }
         }
@@ -198,9 +202,9 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
             AccView.backgroundColor = UIColor.clear
             
             //self.view.backgroundColor = colorWithHexString ("DDF4FF")
-            //tableView.backgroundColor = colorWithHexString ("DDF4FF")
+            //tableRequest.backgroundColor = colorWithHexString ("DDF4FF")
             
-            tableView.backgroundColor = UIColor.white
+            tableRequest.backgroundColor = UIColor.white
             self.view.backgroundColor = UIColor.white
             
             imgBack = UIImage(named:"bg.png")!
@@ -244,9 +248,9 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
             AccView.backgroundColor = UIColor.clear
             
             //self.view.backgroundColor = colorWithHexString ("DDF4FF")
-            //tableView.backgroundColor = colorWithHexString ("DDF4FF")
+            //tableRequest.backgroundColor = colorWithHexString ("DDF4FF")
             
-            tableView.backgroundColor = UIColor.white
+            tableRequest.backgroundColor = UIColor.white
             self.view.backgroundColor = UIColor.white
             
             imgBack = UIImage(named:"bg.png")!
@@ -261,34 +265,96 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
             
             ViewItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State())
             
+            //if self.appDelegate.gstrArrivalTransfer == ""{
+                //ViewItem.leftBarButtonItem?.isEnabled = false
+            //}
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            tableRequest.frame = CGRect(x: 0.05*width, y: 0.17*height, width: 0.9*width, height: 0.68*height);
+            tableTransfer.isHidden = true
+            
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
+            
+            strFont = "HelveticaNeue"
+            let img = UIImage(named:appDelegate.gstrNavImg)
+            let resizable = img!.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: .stretch)
+            self.navigationController?.navigationBar.setBackgroundImage(resizable, for: .default)
+            let navigationTitleFont = UIFont(name: strFont, size: appDelegate.gblFont10 + appDelegate.gblDeviceFont3)!
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: navigationTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white]
+            self.navigationController?.navigationBar.isTranslucent = true
+            self.navigationController?.navigationBar.alpha = 0.99
+            self.navigationController?.navigationBar.tintColor = UIColor.white
+            self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+            for parent in self.navigationController!.navigationBar.subviews {
+                for childView in parent.subviews {
+                    if(childView is UIImageView) {
+                        childView.removeFromSuperview()
+                    }
+                }
+            }
+            
+            var imgBack = UIImage()
+            var imgvwBack = UIImageView()
+            
+            AccView.backgroundColor = UIColor.clear
+            
+            //self.view.backgroundColor = colorWithHexString ("DDF4FF")
+            //tableRequest.backgroundColor = colorWithHexString ("DDF4FF")
+            
+            tableRequest.backgroundColor = UIColor.white
+            self.view.backgroundColor = UIColor.white
+            
+            imgBack = UIImage(named:"bg.png")!
+            imgvwBack = UIImageView(image: imgBack)
+            imgvwBack.frame = CGRect(x: 0.0, y: -0.05*height, width: width, height: height+(0.05*height));
+            imgvwBack.alpha = 0.3
+            imgvwBack.contentMode = UIView.ContentMode.scaleAspectFill
+            //self.view.addSubview(imgvwBack)
+            
+            runkeeperSwitch.backgroundColor = self.colorWithHexString ("004c50")
+            runkeeperSwitch.selectedTitleColor = self.colorWithHexString ("004c50")
+            
+            ViewItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State())
+            
+            strFont = "Helvetica"
+            self.navigationController?.navigationBar.tintColor = colorWithHexString("ffffff")
+            self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            
         }
 
         // (optional) include this line if you want to remove the extra empty cell divider lines
-        // self.tableView.tableFooterView = UIView()
+        // self.tableRequest.tableFooterView = UIView()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableRequest.delegate = self
+        tableRequest.dataSource = self
         
-        //tableTransfer.dataSource = self
+        tableTransfer.delegate = self
+        tableTransfer.dataSource = self
         
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor.clear
+        tableRequest.separatorStyle = .none
+        tableRequest.backgroundColor = UIColor.clear
         
-        //tableTransfer.separatorStyle = .none
-        //tableTransfer.backgroundColor = UIColor.clear
-        
-        //tableView.tableFooterView = UIView()
+        tableTransfer.separatorStyle = .none
+        tableTransfer.backgroundColor = UIColor.clear
         
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "")
         refreshControl.addTarget(self, action: #selector(vcRequestFollowUp.refresh(_:)), for: UIControl.Event.valueChanged)
-        tableView.addSubview(refreshControl) // not
+        tableRequest.addSubview(refreshControl) // not
         
-        self.tableView.register(tvcFollowUp.self, forCellReuseIdentifier: "tvcFollowUp")
-        //self.tableTransfer.register(tvcTransfer.self, forCellReuseIdentifier: "tvcTransfer")
+        refreshControlTransfer = UIRefreshControl()
+        refreshControlTransfer.attributedTitle = NSAttributedString(string: "")
+        refreshControlTransfer.addTarget(self, action: #selector(vcRequestFollowUp.refreshTransfer(_:)), for: UIControl.Event.valueChanged)
+        tableTransfer.addSubview(refreshControlTransfer) // not
         
-        self.view.addSubview(tableView)
-        //self.view.addSubview(tableTransfer)
+        self.tableRequest.register(tvcFollowUp.self, forCellReuseIdentifier: "tvcFollowUp")
+        self.tableTransfer.register(tvcTransfer.self, forCellReuseIdentifier: "tvcTransfer")
+        
+        self.view.addSubview(tableRequest)
+        self.view.addSubview(tableTransfer)
         
         if self.appDelegate.gtblStay != nil{
             if self.appDelegate.gtblStay.count > 0{
@@ -320,7 +386,30 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         
         recargarTablas()
         
+        self.tableRequest.reloadData()
+        
         refreshControl.endRefreshing()
+    }
+    
+    @objc func refreshTransfer(_ sender:AnyObject) {
+        // Code to refresh table view
+        
+        if runkeeperSwitch.selectedIndex == 1 {
+            ynShowHistory = true
+        } else {
+            ynShowHistory = false
+        }
+        
+        self.ynActualiza = true
+        
+        recargarTablas()
+        
+        if self.appDelegate.gstrAppName == "APPSTAY" || self.appDelegate.gstrAppName == "APPSTAYGRM" {
+            self.tableTransfer.reloadData()
+            
+        }
+        
+        refreshControlTransfer.endRefreshing()
     }
     
     @objc func switchValueDidChange(_ sender: DGRunkeeperSwitch!) {
@@ -345,6 +434,8 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         var tblFollow: Dictionary<String, String>!
         var tblFollowType: Dictionary<String, String>!
         var tblTrans: Dictionary<String, String>!
+        var tblTransHour: Dictionary<String, String>!
+        var tblFollowTypeE1: Dictionary<String, String>!
         
         if ynShowHistory {
             val = "1"
@@ -355,6 +446,8 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         tblFollowUp = []
         tblFollowUpType = []
         tblTransfer = []
+        tblTransHourConf = []
+        tblFollowUpTypeE = []
         
         var config : SwiftLoader.Config = SwiftLoader.Config()
         config.size = 100
@@ -412,6 +505,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                                     tblFollowType = [:]
                                     tblFollowType["pkFollowUpTypeID"] = (rType as AnyObject).getColumnByName("pkFollowUpTypeID").content as? String
                                     tblFollowType["DescriptionForExternal"] = (rType as AnyObject).getColumnByName("DescriptionForExternal").content as? String
+                                    tblFollowType["emailList"] = (rType as AnyObject).getColumnByName("emailList").content as? String
                                     self.tblFollowUpType.append(tblFollowType)
                                 }
                                 
@@ -447,7 +541,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                                     self.appDelegate.gtblFollowUp = self.tblFollowUp
                                 }
                                 
-                                /*if (tableItems.getTotalTables() > 4 ){
+                                if (tableItems.getTotalTables() > 4 ){
                                     var tableTransfer = RRDataTable()
                                     tableTransfer = tableItems.tables.object(at: 4) as! RRDataTable
                                     
@@ -461,12 +555,131 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                                             tblTrans["Arrivaldate"] = (r as AnyObject).getColumnByName("Arrivaldate").content as? String
                                             tblTrans["resConfCode"] = (r as AnyObject).getColumnByName("resConfCode").content as? String
                                             tblTrans["ConfirmationNo"] = (r as AnyObject).getColumnByName("ConfirmationNo").content as? String
+                                            tblTrans["DeparturePax"] = (r as AnyObject).getColumnByName("DeparturePax").content as? String
+                                            tblTrans["DepartureDate"] = (r as AnyObject).getColumnByName("DepartureDate").content as? String
+                                            tblTrans["ItemDesc"] = (r as AnyObject).getColumnByName("ItemDesc").content as? String
+                                            tblTrans["HotelName"] = (r as AnyObject).getColumnByName("HotelName").content as? String
+                                            tblTrans["Name"] = (r as AnyObject).getColumnByName("Name").content as? String
                                             self.tblTransfer.append(tblTrans)
+                                        }
+                                        
+                                    }
+
+                                }
+                                
+                                if (tableItems.getTotalTables() > 5 ){
+
+                                    var tableTransferHour = RRDataTable()
+                                    tableTransferHour = tableItems.tables.object(at: 5) as! RRDataTable
+                                    
+                                    if tableTransferHour.rows != nil{
+                                        var r = RRDataRow()
+                                        r = tableTransferHour.rows.object(at: 0) as! RRDataRow
+                                        
+                                        for r in tableTransferHour.rows{
+                                            tblTransHour = [:]
+                                            tblTransHour["fkPropertyID"] = (r as AnyObject).getColumnByName("fkPropertyID").content as? String
+                                            tblTransHour["Concept"] = (r as AnyObject).getColumnByName("Concept").content as? String
+                                            tblTransHour["ValDate"] = (r as AnyObject).getColumnByName("ValDate").content as? String
+                                            self.tblTransHourConf.append(tblTransHour)
+                                            
+                                            if (((r as AnyObject).getColumnByName("fkPropertyID").content as? String)! == self.appDelegate.gifkPropertyID.description){
+
+                                                if (((r as AnyObject).getColumnByName("Concept").content as? String)! == "MOBAPP_TRAFROM"){
+                                                    self.appDelegate.gMOBAPP_TRAFROM = ((r as AnyObject).getColumnByName("ValDate").content as? String)!
+                                                }
+                                                if (((r as AnyObject).getColumnByName("Concept").content as? String)! == "MOBAPP_TRATO"){
+                                                    self.appDelegate.gMOBAPP_TRATO = ((r as AnyObject).getColumnByName("ValDate").content as? String)!
+                                                }
+                                                if (((r as AnyObject).getColumnByName("Concept").content as? String)! == "MOBAPP_TRDFROM"){
+                                                    self.appDelegate.gMOBAPP_TRDFROM = ((r as AnyObject).getColumnByName("ValDate").content as? String)!
+                                                }
+                                                if (((r as AnyObject).getColumnByName("Concept").content as? String)! == "MOBAPP_TRDTO"){
+                                                    self.appDelegate.gMOBAPP_TRDTO = ((r as AnyObject).getColumnByName("ValDate").content as? String)!
+                                                }
+
+                                                
+                                            }
+
+                                        }
+                                        
+                                        if !(self.appDelegate.gMOBAPP_TRAFROM != "" && self.appDelegate.gMOBAPP_TRATO != "" && self.appDelegate.gMOBAPP_TRDFROM != "" && self.appDelegate.gMOBAPP_TRDTO != ""){
+                                            self.appDelegate.gMOBAPP_TRAFROM = "5:00:00"
+                                            self.appDelegate.gMOBAPP_TRATO = "23:30:00"
+                                            self.appDelegate.gMOBAPP_TRDFROM = "5:00:00"
+                                            self.appDelegate.gMOBAPP_TRDTO = "23:30:00"
+                                        }
+                                        
+                                        if self.tblTransHourConf.count > 0 && self.appDelegate.gifkPropertyID > 0{
+                                            self.appDelegate.gtblTransferHourConf = self.tblTransHourConf
+                                            
+                                            let todaysDate:Date = Date()
+                                            let dateFormatter:DateFormatter = DateFormatter()
+                                            dateFormatter.dateFormat = "yyyy-MM-dd"
+                                            let DateInFormat:String = dateFormatter.string(from: todaysDate)
+                                            
+                                            let dateFormatterMOBAPP_TRAFROM:DateFormatter = DateFormatter()
+                                            dateFormatterMOBAPP_TRAFROM.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                            dateFormatterMOBAPP_TRAFROM.timeZone = TimeZone(identifier: "UTC")
+                                            dateFormatterMOBAPP_TRAFROM.locale = Locale(identifier: "en_US")
+                                            dateFormatterMOBAPP_TRAFROM.timeZone = TimeZone(secondsFromGMT: 0)
+                                            let DateInFormatMOBAPP_TRAFROM:Date = dateFormatterMOBAPP_TRAFROM.date(from: (DateInFormat + " " + self.appDelegate.gMOBAPP_TRAFROM))!
+                                            
+                                            self.appDelegate.gdtMOBAPP_TRAFROM = DateInFormatMOBAPP_TRAFROM
+                                            
+                                            let dateFormatterMOBAPP_TRATO:DateFormatter = DateFormatter()
+                                            dateFormatterMOBAPP_TRATO.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                            dateFormatterMOBAPP_TRATO.timeZone = TimeZone(identifier: "UTC")
+                                            dateFormatterMOBAPP_TRATO.locale = Locale(identifier: "en_US")
+                                            dateFormatterMOBAPP_TRATO.timeZone = TimeZone(secondsFromGMT: 0)
+                                            let DateInFormatMOBAPP_TRATO:Date = dateFormatterMOBAPP_TRATO.date(from: (DateInFormat + " " + self.appDelegate.gMOBAPP_TRATO))!
+                                            
+                                            self.appDelegate.gdtMOBAPP_TRATO = DateInFormatMOBAPP_TRATO
+                                             
+                                            let dateFormatterMOBAPP_TRDFROM:DateFormatter = DateFormatter()
+                                            dateFormatterMOBAPP_TRDFROM.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                            dateFormatterMOBAPP_TRDFROM.timeZone = TimeZone(identifier: "UTC")
+                                            dateFormatterMOBAPP_TRDFROM.locale = Locale(identifier: "en_US")
+                                            dateFormatterMOBAPP_TRDFROM.timeZone = TimeZone(secondsFromGMT: 0)
+                                            let DateInFormatMOBAPP_TRDFROM:Date = dateFormatterMOBAPP_TRDFROM.date(from: (DateInFormat + " " + self.appDelegate.gMOBAPP_TRDFROM))!
+                                            
+                                            self.appDelegate.gdtMOBAPP_TRDFROM = DateInFormatMOBAPP_TRDFROM
+                                            
+                                            let dateFormatterMOBAPP_TRDTO:DateFormatter = DateFormatter()
+                                            dateFormatterMOBAPP_TRDTO.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                            dateFormatterMOBAPP_TRDTO.timeZone = TimeZone(identifier: "UTC")
+                                            dateFormatterMOBAPP_TRDTO.locale = Locale(identifier: "en_US")
+                                            dateFormatterMOBAPP_TRDTO.timeZone = TimeZone(secondsFromGMT: 0)
+                                            let DateInFormatMOBAPP_TRDTO:Date = dateFormatterMOBAPP_TRDTO.date(from: (DateInFormat + " " + self.appDelegate.gMOBAPP_TRDTO))!
+                                            
+                                            self.appDelegate.gdtMOBAPP_TRDTO = DateInFormatMOBAPP_TRDTO
                                             
                                         }
                                         
                                     }
-                                }*/
+                                    
+                                    
+                                }
+                                
+                                if (tableItems.getTotalTables() > 6 ){
+
+                                    var tblFollowUpTypeEmail = RRDataTable()
+                                    tblFollowUpTypeEmail = tableItems.tables.object(at: 6) as! RRDataTable
+                                    
+                                    for rType in tblFollowUpTypeEmail.rows{
+                                        tblFollowTypeE1 = [:]
+                                        tblFollowTypeE1["pkFollowUpTypeID"] = (rType as AnyObject).getColumnByName("pkFollowUpTypeID").content as? String
+                                        tblFollowTypeE1["DescriptionForExternal"] = (rType as AnyObject).getColumnByName("DescriptionForExternal").content as? String
+                                        tblFollowTypeE1["emailList"] = (rType as AnyObject).getColumnByName("emailList").content as? String
+                                        tblFollowTypeE1["fkPropertyID"] = (rType as AnyObject).getColumnByName("fkPropertyID").content as? String
+                                        self.tblFollowUpTypeE.append(tblFollowTypeE1)
+                                    }
+                                    
+                                    self.appDelegate.gtblFollowUpTypeEmail = self.tblFollowUpTypeE
+                                    
+                                }
+                                
+                                
 
                             }
                             
@@ -478,8 +691,11 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                                 RKDropdownAlert.title(NSLocalizedString("MsgError6",comment:""), backgroundColor: self.colorWithHexString ("5C9FCC"), textColor: UIColor.black)
                             }
                             
-                            self.tableView.reloadData()
-                            //self.tableTransfer.reloadData()
+                            self.tableRequest.reloadData()
+                            if self.appDelegate.gstrAppName == "APPSTAY" || self.appDelegate.gstrAppName == "APPSTAYGRM" {
+                                self.tableTransfer.reloadData()
+                            }
+                            
                             
                             SwiftLoader.hide()
                         }
@@ -494,6 +710,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         var iRes: String = ""
         var tblFollow: Dictionary<String, String>!
         var tblFollowType: Dictionary<String, String>!
+        var tblFollowTypeE1: Dictionary<String, String>!
         
         if ynShowHistory {
             val = "1"
@@ -503,6 +720,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         
         tblFollowUp = []
         tblFollowUpType = []
+        tblFollowUpTypeE = []
         
         var tableItems = RRDataSet()
         let service=RRRestaurantService(url: appDelegate.URLService as String, host: appDelegate.Host as String, userNameMobile : appDelegate.UserName, passwordMobile: appDelegate.Password);
@@ -534,6 +752,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                     tblFollowType = [:]
                     tblFollowType["pkFollowUpTypeID"] = (rType as AnyObject).getColumnByName("pkFollowUpTypeID").content as? String
                     tblFollowType["DescriptionForExternal"] = (rType as AnyObject).getColumnByName("DescriptionForExternal").content as? String
+                    tblFollowType["emailList"] = (rType as AnyObject).getColumnByName("emailList").content as? String
                     tblFollowUpType.append(tblFollowType)
                 }
                 
@@ -569,6 +788,25 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                     appDelegate.gtblFollowUp = tblFollowUp
                 }
                 
+                print(tableItems.getTotalTables())
+                
+                if (tableItems.getTotalTables() > 6 ){
+
+                    var tblFollowUpTypeEmail = RRDataTable()
+                    tblFollowUpTypeEmail = tableItems.tables.object(at: 6) as! RRDataTable
+                    
+                    for rType in tblFollowUpTypeEmail.rows{
+                        tblFollowTypeE1 = [:]
+                        tblFollowTypeE1["pkFollowUpTypeID"] = (rType as AnyObject).getColumnByName("pkFollowUpTypeID").content as? String
+                        tblFollowTypeE1["DescriptionForExternal"] = (rType as AnyObject).getColumnByName("DescriptionForExternal").content as? String
+                        tblFollowTypeE1["emailList"] = (rType as AnyObject).getColumnByName("emailList").content as? String
+                        tblFollowUpTypeE.append(tblFollowTypeE1)
+                    }
+                    
+                    appDelegate.gtblFollowUpTypeEmail = tblFollowUpTypeE
+                    
+                }
+                
             }
             
         }
@@ -598,57 +836,63 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         return hexInt
     }
     
-    /*func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-     return tblFollowUp.count;
-     }
-     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "CellFollowUp") as! tvcFollowUp
-     
-     cell.SetValues(String(tblFollowUp[indexPath.row]["Reqshort"]!), Status: String(tblFollowUp[indexPath.row]["Status"]!), AccCode: String(tblFollowUp[indexPath.row]["AccCode"]!), Date: String(tblFollowUp[indexPath.row]["CrDt"]!), width: width, height: height)
-     
-     cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-     
-     lastIndex = IndexPath.init()
-     
-     return cell
-     }*/
-    
-    /*func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-
-        if tableView.tag == 1{
-            return NSLocalizedString("lbltblRequest",comment:"");
-        }else{
-            return NSLocalizedString("lbltblTransfer",comment:"");
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
+        let title: UILabel = UILabel()
+        title.backgroundColor = UIColor.clear;
+        title.textAlignment = NSTextAlignment.left;
+        title.font = UIFont(name:"HelveticaNeue-Light", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont4)
+        title.numberOfLines = 0;
+        
+        if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
+            title.textColor = UIColor.gray;
+        }
+        else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+            title.textColor = colorWithHexString("ba8748")
+        }
+        else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            title.textColor = colorWithHexString("2e3634")
         }
         
-    }*/
-    
+        if tableView.tag == 1{
+                title.text = NSLocalizedString("lbltblRequest",comment:"");
+            }else{
+                title.text = NSLocalizedString("lbltblTransfer",comment:"");
+        }
+
+        return title
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        /*if tableView.tag == 1{*/
+        if tableView.tag == 1{
+        if tblFollowUp != nil{
             return tblFollowUp.count;
-        /*}else{
-            return tblTransfer.count;
-        }*/
+        }else{
+            return 0;
+        }
+
+        }else{
+            if tblTransfer != nil{
+                return tblTransfer.count;
+            }else{
+                return 0;
+            }
+        }
 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        //if tableView.tag == 1{
-            return 0.07*height
-        /*}else{
-            return 0.07*height
-        }*/
-        
+
+      return 0.07*height
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        //if tableView.tag == 1{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "tvcFollowUp", for: indexPath) as! tvcFollowUp
+        if tableView.tag == 1{
+            let cell = tableRequest.dequeueReusableCell(withIdentifier: "tvcFollowUp", for: indexPath) as! tvcFollowUp
             
             if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
                 
@@ -767,9 +1011,9 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
             
             return cell
             
-        /*}else{
+        }else{
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "tvcTransfer", for: indexPath) as! tvcTransfer
+            let cell = tableTransfer.dequeueReusableCell(withIdentifier: "tvcTransfer", for: indexPath) as! tvcTransfer
             
             if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
                 
@@ -804,7 +1048,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                     imgCell = UIImage(named:"tblacchdrSel.png")!
                     imgvwCell = UIImageView(image: imgCell)
                     cell.selectedBackgroundView = imgvwCell
-                }else if (tblFollowUp.count-1) == indexPath.row{
+                }else if (tblTransfer.count-1) == indexPath.row{
                     imgCell = UIImage(named:"tblaccfooter.png")!
                     imgvwCell = UIImageView(image: imgCell)
                     cell.backgroundView = imgvwCell
@@ -823,7 +1067,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                     cell.selectedBackgroundView = imgvwCell
                 }
                 
-                if (tblFollowUp.count) == 1
+                if (tblTransfer.count) == 1
                 {
                     imgCell = UIImage(named:"tblaccrowsingle.png")!
                     imgvwCell = UIImageView(image: imgCell)
@@ -848,7 +1092,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                     imgCell = UIImage(named:"tblacchdrSel.png")!
                     imgvwCell = UIImageView(image: imgCell)
                     cell.selectedBackgroundView = imgvwCell
-                }else if (tblFollowUp.count-1) == indexPath.row{
+                }else if (tblTransfer.count-1) == indexPath.row{
                     imgCell = UIImage(named:"tblaccfooter.png")!
                     imgvwCell = UIImageView(image: imgCell)
                     cell.backgroundView = imgvwCell
@@ -867,7 +1111,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                     cell.selectedBackgroundView = imgvwCell
                 }
                 
-                if (tblFollowUp.count) == 1
+                if (tblTransfer.count) == 1
                 {
                     imgCell = UIImage(named:"tblaccrowsingle.png")!
                     imgvwCell = UIImageView(image: imgCell)
@@ -880,7 +1124,13 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                 }
             }
             
-            cell.SetValues(String(tblTransfer[indexPath.row]["ConfirmationNo"]!), ArrivalDate: String(tblTransfer[indexPath.row]["Arrivaldate"]!), width: width, height: height)
+            var strArrivalDate: String = ""
+            let strdateFormatter = DateFormatter()
+            strdateFormatter.dateFormat = "MM/dd/yyyy";
+            let ArrivalDate = moment(String(tblTransfer[indexPath.row]["Arrivaldate"]!))
+            strArrivalDate = strdateFormatter.string(from: ArrivalDate!.date)
+            
+            cell.SetValues(String(tblTransfer[indexPath.row]["ConfirmationNo"]!), ArrivalDate: strArrivalDate, width: width, height: height)
             
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             
@@ -888,7 +1138,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
             
             return cell
             
-        }*/
+        }
 
 
     }
@@ -914,7 +1164,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                 
                 gradientView.bottomBorderColor = colorWithHexString ("C7C7CD")
                 
-                tableView.cellForRow(at: indexPath)?.backgroundView = gradientView
+                tableRequest.cellForRow(at: indexPath)?.backgroundView = gradientView
                 
                 // Initialize a gradient view
                 let gradientView2 = GradientView(frame: CGRect(x: 0, y: 0, width: 0.9*width, height: 0.12*height))
@@ -933,7 +1183,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                 
                 gradientView2.bottomBorderColor = colorWithHexString ("C7C7CD")
                 
-                tableView.cellForRow(at: lastIndex)?.backgroundView = gradientView2
+                tableRequest.cellForRow(at: lastIndex)?.backgroundView = gradientView2
                 
             }else{
                 if lastIndex != indexPath {
@@ -955,7 +1205,7 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
                     
                     gradientView.bottomBorderColor = colorWithHexString ("C7C7CD")
                     
-                    tableView.cellForRow(at: indexPath)?.backgroundView = gradientView
+                    tableRequest.cellForRow(at: indexPath)?.backgroundView = gradientView
                     
                 }
                 
@@ -963,18 +1213,18 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
             
             if lastIndex != indexPath && lastIndex.count > 0{
-                tableView.cellForRow(at: lastIndex)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("e4c29c"))
+                tableRequest.cellForRow(at: lastIndex)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("e4c29c"))
             }
             
-            tableView.cellForRow(at: indexPath)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("ba8748"))
+            tableRequest.cellForRow(at: indexPath)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("ba8748"))
             
         }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
             
             if lastIndex != indexPath && lastIndex.count > 0{
-                tableView.cellForRow(at: lastIndex)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("94cce5"))
+                tableRequest.cellForRow(at: lastIndex)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("94cce5"))
             }
             
-            tableView.cellForRow(at: indexPath)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("00467f"))
+            tableRequest.cellForRow(at: indexPath)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("00467f"))
             
         }
         
@@ -982,13 +1232,27 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
         
         appDelegate.gblAddFollow = false
         
-        let tercerViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcRequestDetail") as! vcRequestDetail
-        tercerViewController.FollowUpId = String(tblFollowUp[indexPath.row]["ID"]!)
-        tercerViewController.Reqshort = String(tblFollowUp[indexPath.row]["Reqshort"]!)
-        tercerViewController.AccCode = String(tblFollowUp[indexPath.row]["AccCode"]!)
-        tercerViewController.FType = String(tblFollowUp[indexPath.row]["FType"]!)
-        tercerViewController.Status = String(tblFollowUp[indexPath.row]["Status"]!)
-        self.navigationController?.pushViewController(tercerViewController, animated: true)
+        if tableView.tag == 1{
+            let tercerViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcRequestDetail") as! vcRequestDetail
+            tercerViewController.FollowUpId = String(tblFollowUp[indexPath.row]["ID"]!)
+            tercerViewController.Reqshort = String(tblFollowUp[indexPath.row]["Reqshort"]!)
+            tercerViewController.AccCode = String(tblFollowUp[indexPath.row]["AccCode"]!)
+            tercerViewController.FType = String(tblFollowUp[indexPath.row]["FType"]!)
+            tercerViewController.Status = String(tblFollowUp[indexPath.row]["Status"]!)
+            self.navigationController?.pushViewController(tercerViewController, animated: true)
+        }else{
+            let tercerViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcTransferReserv") as! vcTransferReserv
+            tercerViewController.strArrivaldate = String(tblTransfer[indexPath.row]["Arrivaldate"]!)
+            tercerViewController.strresConfCode = String(tblTransfer[indexPath.row]["resConfCode"]!)
+            tercerViewController.strConfirmationNo = String(tblTransfer[indexPath.row]["ConfirmationNo"]!)
+            tercerViewController.strDeparturePax = String(tblTransfer[indexPath.row]["DeparturePax"]!)
+            tercerViewController.strDepartureDate = String(tblTransfer[indexPath.row]["DepartureDate"]!)
+            tercerViewController.strItemDesc = String(tblTransfer[indexPath.row]["ItemDesc"]!)
+            tercerViewController.strHotelName = String(tblTransfer[indexPath.row]["HotelName"]!)
+            tercerViewController.strName = String(tblTransfer[indexPath.row]["Name"]!)
+            self.navigationController?.pushViewController(tercerViewController, animated: true)
+        }
+
         
     }
     
@@ -1018,17 +1282,21 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if self.appDelegate.iCountStayF > 1{
+        /*if self.appDelegate.iCountStayF > 1{
             appDelegate.strUnitStay = ""
             appDelegate.strUnitStayInfoID = ""
             appDelegate.strUnitCode = ""
             appDelegate.strFollowUpTypeID = ""
             appDelegate.strDescriptionForExternal = ""
-        }
+        }*/
         
         if appDelegate.gblAddFollow == true{
-            CargaFollowUp()
-            self.tableView.reloadData()
+            self.ynActualiza = true
+            recargarTablas()
+            self.tableRequest.reloadData()
+            if self.appDelegate.gstrAppName == "APPSTAY" || self.appDelegate.gstrAppName == "APPSTAYGRM" {
+            self.tableTransfer.reloadData()
+            }
             appDelegate.gblAddFollow = false
         }
         

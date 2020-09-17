@@ -94,6 +94,10 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
     var lastIndex = IndexPath()
     var ynCamera: Bool = false
     var btnBadge = UIButton()
+    var iTotalPeople: Int = 0
+    var ynAccessCamera: Bool = false
+    var lblFooter = UILabel()
+    var imgOutvw = UIImageView()
     
     @IBOutlet weak var bodyView: UIView!
     @IBOutlet weak var UserView: UIView!
@@ -127,7 +131,7 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
         lblEmail.font = UIFont(name:"Helvetica", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont5)
         lblGuestType.font = UIFont(name:"Helvetica", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont2)
 
-        let lblFooter = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: width, height: 0.1*height))
+        lblFooter = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: width, height: 0.1*height))
         lblFooter.backgroundColor = UIColor.clear;
         lblFooter.textAlignment = NSTextAlignment.left;
         lblFooter.textColor = UIColor.gray;
@@ -158,7 +162,10 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
         LastStayUpdate = tblLogin["LastStayUpdate"]!
         Gender = tblLogin["Gender"]!
         PeopleType = tblLogin["PeopleType"]!
-
+        
+        self.appDelegate.gstrPeopleFNameTransfer = tblLogin["FirstName"]!
+        self.appDelegate.gstrPeopleLNameTransfer = tblLogin["LastName"]!
+        
         lblName.text = FullName
         lblEmail.text = Email
         lblGuestType.text = PeopleType
@@ -448,6 +455,11 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                     self.imgvwTakePic.layer.cornerRadius = 38
                     LogOutView.layer.cornerRadius = 21.5
                 case "iPhone 5s":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.57*height);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
+                    LogOutView.layer.cornerRadius = 21.5
+                case "iPhone SE":
                     tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.57*height);
                     UploadView.layer.cornerRadius = 38
                     self.imgvwTakePic.layer.cornerRadius = 38
@@ -1188,12 +1200,13 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
             
+
             tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
 
             //Boton Refresh
             ViewItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(vcGuestInHouseMain.clickHome(_:)))
             
-            let imgtabbar = UIImage(named:"tabbar.png")
+            let imgtabbar = UIImage(named:"TabBar.png")
             let resizable2 = imgtabbar!.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: .stretch)
             self.tabBarController?.tabBar.backgroundImage = resizable2
             let TabTitleFont = UIFont(name: strFont, size: appDelegate.gblFont5 + appDelegate.gblDeviceFont)!
@@ -1240,6 +1253,380 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            var strFont: String = ""
+            
+            strFont = "HelveticaNeue"
+            
+            self.view.backgroundColor = UIColor.white//colorWithHexString ("DDF4FF")
+            
+            bodyView.isHidden = false
+            UserView.isHidden = true
+            //ImageView.hidden = true
+            //lblName.hidden = true
+            //lblGuestType.hidden = true
+            //lblEmail.hidden = true
+            //btnLogOut.hidden = true
+            
+            btnBack.frame = CGRect(x: 0.0, y: 0.12*height, width: 0.12*width, height: 0.06*height)
+            btnBack.backgroundColor = UIColor.clear
+            btnBack.setTitleColor(colorWithHexString("FFF8F0"), for: UIControl.State())
+            btnBack.setTitle(NSLocalizedString("btnHome",comment:""), for:UIControl.State())
+            btnBack.titleLabel?.font = UIFont(name: strFont, size: appDelegate.gblFont10 + appDelegate.gblDeviceFont2)
+            btnBack.titleLabel?.textAlignment = NSTextAlignment.left
+            btnBack.titleLabel?.numberOfLines = 5
+            btnBack.layer.borderColor = UIColor.clear.cgColor
+            
+            btnBack.addTarget(self, action: #selector(vcGuestInHouseMain.clickLogout(_:)), for: UIControl.Event.touchUpInside)
+            
+            btnHome.customView = btnBack
+            btnHome.customView?.sizeToFit()
+            
+            var img = UIImage(named:appDelegate.gstrNavImg)
+            var resizable = img!.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: .stretch)
+            self.navigationController?.navigationBar.setBackgroundImage(resizable, for: .default)
+            let navigationTitleFont = UIFont(name: strFont, size: appDelegate.gblFont10 + appDelegate.gblDeviceFont3)!
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: navigationTitleFont]
+            self.navigationController?.navigationBar.isTranslucent = true
+            self.navigationController?.navigationBar.alpha = 0.99
+            self.navigationController?.navigationBar.tintColor = UIColor.white
+            for parent in self.navigationController!.navigationBar.subviews {
+                for childView in parent.subviews {
+                    if(childView is UIImageView) {
+                        childView.removeFromSuperview()
+                    }
+                }
+            }
+            
+            strFont = "Helvetica"
+            self.navigationController?.navigationBar.tintColor = colorWithHexString("ffffff")
+            self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            
+            imgBack = UIImage(named:"bg.png")!
+            imgvwBack = UIImageView(image: imgBack)
+            imgvwBack.frame = CGRect(x: 0.0, y: -0.05*height, width: width, height: height+(0.05*height));
+            imgvwBack.alpha = 0.3
+            imgvwBack.contentMode = UIView.ContentMode.scaleAspectFill
+            //self.view.addSubview(imgvwBack)
+            
+            lblFooter.textColor = colorWithHexString("888888")
+            
+            var queueFM: FMDatabaseQueue?
+            
+            queueFM = FMDatabaseQueue(path: Util.getPath("GuestStay.sqlite"))
+            
+            var correctPicture: Data? = nil
+            
+            queueFM?.inDatabase() {
+                db in
+                
+                if let rs = db.executeQuery("SELECT UserImg FROM tblLogin WHERE PersonalID = ?", withArgumentsIn:[self.PersonalID]) {
+                    while rs.next() {
+                        correctPicture = rs.data(forColumn: "UserImg")
+                    }
+                } else {
+                    print("select failure: \(db.lastErrorMessage())")
+                }
+            }
+            
+            if correctPicture != nil {
+                
+                btnUploadImg.setBackgroundImage(imgTakePic, for: UIControl.State())
+                btnUploadImg.addTarget(self, action: #selector(vcGuestInHouseMain.buttonActionTakePicture(_:)), for: UIControl.Event.touchUpInside)
+                btnUploadImg.frame = CGRect(x: 0.025*width, y: 0.1*height, width: 0.2*width, height: 0.1*height);
+                btnUploadImg.setTitleColor(colorWithHexString("4daba0"), for: UIControl.State())
+                btnUploadImg.setTitle(NSLocalizedString("lblUpload",comment:""), for:UIControl.State())
+                btnUploadImg.titleLabel?.font = UIFont(name: strFont, size: appDelegate.gblFont2 + appDelegate.gblDeviceFont3)
+                btnUploadImg.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+                btnUploadImg.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -45, right: 0)
+                btnUploadImg.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
+                self.view.addSubview(btnUploadImg)
+                
+                self.imgvwTakePic = UIImageView(image: UIImage(data: correctPicture!))
+                self.imgvwTakePic.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: 0.2*self.width, height: 0.15*self.height);
+                self.imgvwTakePic.layer.cornerRadius = 41.4
+                self.imgvwTakePic.clipsToBounds = true
+                self.view.addSubview(self.imgvwTakePic)
+            }else{
+
+                imgTakePic = UIImage(named:"TomarFoto.png")!
+                imgTakePic = imgTakePic.imageWithColor(colorWithHexString("4daba0"))
+
+                btnUploadImg.setBackgroundImage(imgTakePic, for: UIControl.State())
+                btnUploadImg.addTarget(self, action: #selector(vcGuestInHouseMain.buttonActionTakePicture(_:)), for: UIControl.Event.touchUpInside)
+                if appDelegate.ynIPad == true{
+                    btnUploadImg.frame = CGRect(x: 0.003*width, y: 0.005*height, width: 0.2*width, height: 0.12*height);
+                    btnUploadImg.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -80, right: 0)
+                }else{
+                    btnUploadImg.frame = CGRect(x: 0.006*width, y: 0.0001*height, width: 0.2*width, height: 0.1*height);
+                    btnUploadImg.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -45, right: 0)
+                }
+                
+                //btnUploadImg.setTitleColor(colorWithHexString("4daba0"), forState: UIControlState.Normal)
+                btnUploadImg.setTitleColor(colorWithHexString("4daba0"), for: UIControl.State())
+                btnUploadImg.setTitle(NSLocalizedString("lblUpload",comment:""), for:UIControl.State())
+                btnUploadImg.titleLabel?.font = UIFont(name: strFont, size: appDelegate.gblFont2 + appDelegate.gblDeviceFont3)
+                btnUploadImg.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+                btnUploadImg.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
+                //btnUploadImg.alpha = 0.5
+                
+                //UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/7, height: self.height/12);
+                UploadView.layer.cornerRadius = 30
+                UploadView.clipsToBounds = true
+                UploadView.layer.borderWidth = 4
+                UploadView.layer.borderColor = colorWithHexString("c7e6e2").cgColor//colorWithHexString("94cce5").CGColor
+                UploadView.backgroundColor = colorWithHexString("ffffff")//colorWithHexString("ddf4ff")
+                appDelegate.gstrBorderColorImg = "c7e6e2"
+                UploadView.addSubview(btnUploadImg)
+                self.view.addSubview(UploadView)
+            }
+            
+            imgOut = UIImage(named:"signout.png")!//,colorWithHexString("4daba0")
+            imgOut = imgOut.imageWithColor(colorWithHexString("4daba0"))
+            btnLogOut.setBackgroundImage(imgOut, for: UIControl.State())
+            
+            /*imgOut = UIImage(named:"signoutsel.png")!
+             btnLogOut.setImage(imgOut, forState: UIControlState.Highlighted)*/
+            
+            btnLogOut.addTarget(self, action: #selector(vcGuestInHouseMain.LogOUT(_:)), for: UIControl.Event.touchUpInside)
+            btnLogOut.addTarget(self, action: #selector(vcGuestInHouseMain.butonSignOutEfect(_:)), for: UIControl.Event.touchDown)
+            if appDelegate.ynIPad == true{
+                btnLogOut.frame = CGRect(x: 0.004*width, y: 0.001*height, width: 0.12*width, height: 0.07*height);
+                btnLogOut.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -60, right: 0)
+            }else{
+                btnLogOut.frame = CGRect(x: 0.012*width, y: 0.001*height, width: 0.12*width, height: 0.06*height);
+                btnLogOut.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -33, right: 0)
+            }
+            btnLogOut.setTitleColor(colorWithHexString("4daba0"), for: UIControl.State())
+            btnLogOut.setTitle(NSLocalizedString("btnLogOut",comment:""), for:UIControl.State())
+            btnLogOut.titleLabel?.font = UIFont(name: strFont, size: (appDelegate.gblFont1) + appDelegate.gblDeviceFont1)
+            btnLogOut.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+            btnLogOut.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
+            //btnLogOut.alpha = 0.6
+            //self.view.addSubview(btnLogOut)
+            
+            LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: self.width/7, height: self.height/12);
+            LogOutView.layer.cornerRadius = 30
+            LogOutView.clipsToBounds = true
+            //LogOutView.backgroundColor = UIColor.redColor()
+            LogOutView.layer.borderWidth = 4
+            LogOutView.layer.borderColor = colorWithHexString("c7e6e2").cgColor
+            LogOutView.backgroundColor = colorWithHexString("ffffff")
+            LogOutView.addSubview(btnLogOut)
+            self.view.addSubview(LogOutView)
+            
+            lblName.frame = CGRect(x: 0.32*width, y: 0.09*height, width: 0.5*width, height: 0.12*height);
+            lblGuestType.frame = CGRect(x: 0.32*width, y: 0.175*height, width: 0.6*width, height: 0.03*height);
+            lblEmail.frame = CGRect(x: 0.32*width, y: 0.215*height, width: 0.6*width, height: 0.03*height);
+            
+            lblName.textColor = colorWithHexString("2e3634")
+            lblGuestType.textColor = colorWithHexString("2e3634")
+            lblEmail.textColor = colorWithHexString("2e3634")
+            
+            lblName.textAlignment = NSTextAlignment.left
+            lblGuestType.textAlignment = NSTextAlignment.left
+            lblEmail.textAlignment = NSTextAlignment.left
+            
+            lblName.font = UIFont(name:strFont, size:appDelegate.gblFont9 + appDelegate.gblDeviceFont5)
+            lblEmail.font = UIFont(name:strFont, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont2)
+            lblGuestType.font = UIFont(name:strFont, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont2)
+            
+            lblName.numberOfLines = 2
+            lblName.sizeToFit()
+            
+            lblGuestType.numberOfLines = 1
+            lblGuestType.sizeToFit()
+            
+            lblEmail.numberOfLines = 1
+            lblEmail.sizeToFit()
+            
+            self.view.addSubview(lblName)
+            self.view.addSubview(lblGuestType)
+            self.view.addSubview(lblEmail)
+            
+            if appDelegate.ynIPad {
+                switch appDelegate.Model {
+                case "iPad 2":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.63*height);
+                    UploadView.layer.cornerRadius = 75
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    LogOutView.layer.cornerRadius = 46
+                    LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: self.width/8.1, height: self.height/11);
+                    self.imgvwTakePic.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    self.imgvwTakePic.layer.cornerRadius = 75
+                case "iPad Air":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.63*height);
+                    UploadView.layer.cornerRadius = 75
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    LogOutView.layer.cornerRadius = 46
+                    LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: self.width/8.1, height: self.height/11);
+                    self.imgvwTakePic.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    self.imgvwTakePic.layer.cornerRadius = 75
+                case "iPad Air 2":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.63*height);
+                    UploadView.layer.cornerRadius = 75
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    LogOutView.layer.cornerRadius = 46
+                    LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: self.width/8.1, height: self.height/11);
+                    self.imgvwTakePic.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    self.imgvwTakePic.layer.cornerRadius = 75
+                case "iPad Pro":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.63*height);
+                    UploadView.layer.cornerRadius = 75
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    LogOutView.layer.cornerRadius = 46
+                    LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: self.width/8.1, height: self.height/11);
+                    self.imgvwTakePic.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    self.imgvwTakePic.layer.cornerRadius = 75
+                case "iPad Retina":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.63*height);
+                    UploadView.layer.cornerRadius = 75
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    LogOutView.layer.cornerRadius = 46
+                    LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: self.width/8.1, height: self.height/11);
+                    self.imgvwTakePic.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    self.imgvwTakePic.layer.cornerRadius = 75
+                default:
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.63*height);
+                    UploadView.layer.cornerRadius = 75
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    LogOutView.layer.cornerRadius = 46
+                    LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: self.width/8.1, height: self.height/11);
+                    self.imgvwTakePic.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    self.imgvwTakePic.layer.cornerRadius = 75
+                }
+            }else{
+                switch appDelegate.Model {
+                case "iPhone":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
+                case "iPhone 4":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
+                case "iPhone 4s":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
+                case "iPhone 5":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
+                case "iPhone 5c":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
+                case "iPhone 5s":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
+                case "iPhone 6":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
+                case "iPhone 6 Plus":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
+                case "iPhone 6s":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
+                    LogOutView.layer.cornerRadius = 28
+                case "iPhone 6s Plus":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
+                    LogOutView.layer.cornerRadius = 30
+                case "iPhone 7 Plus":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 41
+                    self.imgvwTakePic.layer.cornerRadius = 44
+                    LogOutView.layer.cornerRadius = 30
+                default:
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 41
+                    self.imgvwTakePic.layer.cornerRadius = 44
+                    LogOutView.layer.cornerRadius = 30
+                }
+            }
+            
+            tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+            
+            //Boton Refresh
+            ViewItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(vcGuestInHouseMain.clickHome(_:)))
+            
+            let imgtabbar = UIImage(named:"navBar.png")
+            let resizable2 = imgtabbar!.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: .stretch)
+            self.tabBarController?.tabBar.backgroundImage = resizable2
+            let TabTitleFont = UIFont(name: strFont, size: appDelegate.gblFont5 + appDelegate.gblDeviceFont)!
+            self.tabBarController?.tabBar.tintColor = UIColor.white
+            self.tabBarController?.tabBar.barTintColor = UIColor.white
+            
+            self.tabBarController!.tabBar.layer.borderWidth = 0.001
+            self.tabBarController!.tabBar.layer.borderColor = UIColor.white.cgColor
+            self.tabBarController?.tabBar.clipsToBounds = true
+            
+            self.tabBarController?.tabBar.items?[0].isEnabled = appDelegate.ynTabsEnabled
+            self.tabBarController?.tabBar.items?[0].title = NSLocalizedString("tabStay",comment:"")
+            self.tabBarController?.tabBar.items?[0].titlePositionAdjustment = UIOffset(horizontal: 0,vertical: -5)
+            self.tabBarController?.tabBar.items?[0].setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: colorWithHexString("c7e6e2")], for: UIControl.State())
+            self.tabBarController?.tabBar.items?[0].setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
+            
+            self.tabBarController?.tabBar.items?[1].isEnabled = appDelegate.ynTabsEnabled
+            self.tabBarController?.tabBar.items?[1].title = NSLocalizedString("tabRequest",comment:"")
+            self.tabBarController?.tabBar.items?[1].titlePositionAdjustment = UIOffset(horizontal: 0,vertical: -5)
+            self.tabBarController?.tabBar.items?[1].setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: colorWithHexString("c7e6e2")], for: UIControl.State())
+            self.tabBarController?.tabBar.items?[1].setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
+            
+            self.tabBarController?.tabBar.items?[2].isEnabled = appDelegate.ynTabsEnabled
+            self.tabBarController?.tabBar.items?[2].title = NSLocalizedString("tabActivity",comment:"")
+            self.tabBarController?.tabBar.items?[2].titlePositionAdjustment = UIOffset(horizontal: 0,vertical: -5)
+            self.tabBarController?.tabBar.items?[2].setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: colorWithHexString("c7e6e2")], for: UIControl.State())
+            self.tabBarController?.tabBar.items?[2].setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
+            
+            self.tabBarController?.tabBar.items?[3].isEnabled = appDelegate.ynTabsEnabled
+            self.tabBarController?.tabBar.items?[3].title = NSLocalizedString("tabRestaurant",comment:"")
+            self.tabBarController?.tabBar.items?[3].titlePositionAdjustment = UIOffset(horizontal: 0,vertical: -5)
+            self.tabBarController?.tabBar.items?[3].setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: colorWithHexString("c7e6e2")], for: UIControl.State())
+            self.tabBarController?.tabBar.items?[3].setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
+            
+            //self.tabBarController?.tabBar.items?[4].isEnabled = false
+            
+            if let tabBarController = self.tabBarController {
+                let indexToRemove = 4
+                if indexToRemove < tabBarController.viewControllers?.count {
+                    var viewControllers = tabBarController.viewControllers
+                    viewControllers?.remove(at: indexToRemove)
+                    tabBarController.viewControllers = viewControllers
+                }
+            }
+            
+            /*self.tabBarController?.tabBar.items?[4].isEnabled = appDelegate.ynTabsEnabled
+            self.tabBarController?.tabBar.items?[4].title = NSLocalizedString("tabNotification",comment:"")
+            self.tabBarController?.tabBar.items?[4].titlePositionAdjustment = UIOffset(horizontal: 0,vertical: -5)
+            self.tabBarController?.tabBar.items?[4].setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: colorWithHexString("f7941e")], for: UIControl.State())
+            self.tabBarController?.tabBar.items?[4].setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
+            */
+            
+            for item in (self.tabBarController?.tabBar.items)! as [UITabBarItem] {
+                if let image = item.image {
+                    item.image = image.imageWithColor(colorWithHexString("c7e6e2")).withRenderingMode(.alwaysOriginal)
+                }
+            }
+            
         }
         
         if (LastStayUpdate != "")
@@ -1275,9 +1662,7 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         Analytics.setScreenName("Stay", screenClass: appDelegate.gstrAppName)
-        
-        print("***Token***")
-        print(self.appDelegate.gstrToken)
+
     }
     
     func imageTapped()
@@ -1393,7 +1778,7 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
         {
             ynCamera = true
             
-            if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
+            /*if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
                 
                 picker!.sourceType = UIImagePickerController.SourceType.camera
                 self.present(picker!, animated: true, completion: nil)
@@ -1406,6 +1791,26 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                         self.picker!.dismiss(animated: false, completion: nil)
                     }
                 })
+            }*/
+            
+            picker!.sourceType = UIImagePickerController.SourceType.camera
+            
+            if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
+                // Already Authorized
+                self.present(self.picker!, animated: true, completion: nil)
+            } else {
+
+                     AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (granted: Bool) -> Void in
+                        if granted{
+                            DispatchQueue.main.async {
+                              self.present(self.picker!, animated: true, completion: nil)
+                            }
+                        }else{
+                              self.picker!.dismiss(animated: false, completion: nil)
+                        }
+
+                    })
+
             }
 
         }
@@ -1413,13 +1818,15 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
         {
             openGallary()
         }
+
+        
     }
 
     func openGallary()
     {
         ynCamera = false
         
-        switch PHPhotoLibrary.authorizationStatus() {
+        /*switch PHPhotoLibrary.authorizationStatus() {
         case .authorized:
             picker!.sourceType = UIImagePickerController.SourceType.photoLibrary
             self.present(picker!, animated: true, completion: nil)
@@ -1434,6 +1841,29 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                 self.picker!.sourceType = UIImagePickerController.SourceType.photoLibrary
                 self.present(self.picker!, animated: true, completion: nil)
             }
+        }*/
+        
+        let statusgal = PHPhotoLibrary.authorizationStatus()
+        switch statusgal {
+        case .authorized:
+            picker!.sourceType = UIImagePickerController.SourceType.photoLibrary
+            self.present(picker!, animated: true, completion: nil)
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization() { statusgal in
+                if statusgal == .authorized {
+                    DispatchQueue.main.async {
+                        self.picker!.sourceType = UIImagePickerController.SourceType.photoLibrary
+                        self.present(self.picker!, animated: true, completion: nil)
+                    }
+                }
+            }
+        case .restricted:
+            // do nothing
+            break
+        case .denied:
+            // do nothing, or beg the user to authorize us in Settings
+            break
+        @unknown default: fatalError()
         }
 
     }
@@ -1658,26 +2088,13 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                                 iRes = (r as AnyObject).getColumnByName("Result").content as! String
                                 
                                 if (Int(iRes) > 0){
-                                    
-                                    /*queueFM?.inTransaction() {
-                                        db, rollback in
-                                        
-                                        
-                                        for r in table.rows{
 
-                                            if db.executeUpdate("INSERT INTO tblStay (StayInfoID, DatabaseName, PropertyCode, UnitCode, StatusCode, StatusDesc, ArrivalDate, DepartureDate, PropertyName, PrimaryPeopleID, OrderNo, Intv, IntvYear, fkAccID, fkTrxTypeID, AccCode, USDExchange, UnitID, FloorPlanDesc, UnitViewDesc, ynPostCheckout, LastAccountUpdate, PrimAgeCFG, fkPlaceID, DepartureDateCheckOut, ConfirmationCode, fkCurrencyID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", withArgumentsIn: [((r as AnyObject).getColumnByName("StayInfoID").content as? String)!, ((r as AnyObject).getColumnByName("DatabaseName").content as? String)!, ((r as AnyObject).getColumnByName("PropertyCode").content as? String)!, ((r as AnyObject).getColumnByName("UnitCode").content as? String)!, ((r as AnyObject).getColumnByName("StatusCode").content as? String)!, ((r as AnyObject).getColumnByName("StatusDesc").content as? String)!, ((r as AnyObject).getColumnByName("ArrivalDate").content as? String)!, ((r as AnyObject).getColumnByName("DepartureDate").content as? String)!, ((r as AnyObject).getColumnByName("PropertyName").content as? String)!, ((r as AnyObject).getColumnByName("PrimaryPeopleID").content as? String)!, ((r as AnyObject).getColumnByName("OrderNo").content as? String)!, ((r as AnyObject).getColumnByName("Intv").content as? String)!, ((r as AnyObject).getColumnByName("IntvYear").content as? String)!, ((r as AnyObject).getColumnByName("fkAccID").content as? String)!, ((r as AnyObject).getColumnByName("fkTrxTypeCCID").content as? String)!, ((r as AnyObject).getColumnByName("AccCode").content as? String)!, ((r as AnyObject).getColumnByName("USDExchange").content as? String)!, ((r as AnyObject).getColumnByName("UnitID").content as? String)!, ((r as AnyObject).getColumnByName("FloorPlanDesc").content as? String)!, ((r as AnyObject).getColumnByName("UnitViewDesc").content as? String)!, "0", "", ((r as AnyObject).getColumnByName("PrimAgeCFG").content as? String)!, ((r as AnyObject).getColumnByName("fkPlaceID").content as? String)!, ((r as AnyObject).getColumnByName("DepartureDateCheckOut").content as? String)!, ((r as AnyObject).getColumnByName("ConfirmationCode").content as? String)!, ((r as AnyObject).getColumnByName("fkCurrencyID").content as? String)!]) {
-                                            
-                                            }
-                                            
-                                        }
-                                    }*/
-                                    
                                     queueFM?.inTransaction { db, rollback in
                                         do {
                                             
                                             for r in table.rows{
-                                                
-                                                try db.executeUpdate("INSERT INTO tblStay (StayInfoID, DatabaseName, PropertyCode, UnitCode, StatusCode, StatusDesc, ArrivalDate, DepartureDate, PropertyName, PrimaryPeopleID, OrderNo, Intv, IntvYear, fkAccID, fkTrxTypeID, AccCode, USDExchange, UnitID, FloorPlanDesc, UnitViewDesc, ynPostCheckout, LastAccountUpdate, PrimAgeCFG, fkPlaceID, DepartureDateCheckOut, ConfirmationCode, fkCurrencyID, PlaceCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", withArgumentsIn: [((r as AnyObject).getColumnByName("StayInfoID").content as? String)!, ((r as AnyObject).getColumnByName("DatabaseName").content as? String)!, ((r as AnyObject).getColumnByName("PropertyCode").content as? String)!, ((r as AnyObject).getColumnByName("UnitCode").content as? String)!, ((r as AnyObject).getColumnByName("StatusCode").content as? String)!, ((r as AnyObject).getColumnByName("StatusDesc").content as? String)!, ((r as AnyObject).getColumnByName("ArrivalDate").content as? String)!, ((r as AnyObject).getColumnByName("DepartureDate").content as? String)!, ((r as AnyObject).getColumnByName("PropertyName").content as? String)!, ((r as AnyObject).getColumnByName("PrimaryPeopleID").content as? String)!, ((r as AnyObject).getColumnByName("OrderNo").content as? String)!, ((r as AnyObject).getColumnByName("Intv").content as? String)!, ((r as AnyObject).getColumnByName("IntvYear").content as? String)!, ((r as AnyObject).getColumnByName("fkAccID").content as? String)!, ((r as AnyObject).getColumnByName("fkTrxTypeCCID").content as? String)!, ((r as AnyObject).getColumnByName("AccCode").content as? String)!, ((r as AnyObject).getColumnByName("USDExchange").content as? String)!, ((r as AnyObject).getColumnByName("UnitID").content as? String)!, ((r as AnyObject).getColumnByName("FloorPlanDesc").content as? String)!, ((r as AnyObject).getColumnByName("UnitViewDesc").content as? String)!, "0", "", ((r as AnyObject).getColumnByName("PrimAgeCFG").content as? String)!, ((r as AnyObject).getColumnByName("fkPlaceID").content as? String)!, ((r as AnyObject).getColumnByName("DepartureDateCheckOut").content as? String)!, ((r as AnyObject).getColumnByName("ConfirmationCode").content as? String)!, ((r as AnyObject).getColumnByName("fkCurrencyID").content as? String)!,((r as AnyObject).getColumnByName("PlaceCode").content as? String)!])
+
+                                                try db.executeUpdate("INSERT INTO tblStay (StayInfoID, DatabaseName, PropertyCode, UnitCode, StatusCode, StatusDesc, ArrivalDate, DepartureDate, PropertyName, PrimaryPeopleID, OrderNo, Intv, IntvYear, fkAccID, fkTrxTypeID, AccCode, USDExchange, UnitID, FloorPlanDesc, UnitViewDesc, ynPostCheckout, LastAccountUpdate, PrimAgeCFG, fkPlaceID, DepartureDateCheckOut, ConfirmationCode, fkCurrencyID, PlaceCode, fkPropertyID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", withArgumentsIn: [((r as AnyObject).getColumnByName("StayInfoID").content as? String)!, ((r as AnyObject).getColumnByName("DatabaseName").content as? String)!, ((r as AnyObject).getColumnByName("PropertyCode").content as? String)!, ((r as AnyObject).getColumnByName("UnitCode").content as? String)!, ((r as AnyObject).getColumnByName("StatusCode").content as? String)!, ((r as AnyObject).getColumnByName("StatusDesc").content as? String)!, ((r as AnyObject).getColumnByName("ArrivalDate").content as? String)!, ((r as AnyObject).getColumnByName("DepartureDate").content as? String)!, ((r as AnyObject).getColumnByName("PropertyName").content as? String)!, ((r as AnyObject).getColumnByName("PrimaryPeopleID").content as? String)!, ((r as AnyObject).getColumnByName("OrderNo").content as? String)!, ((r as AnyObject).getColumnByName("Intv").content as? String)!, ((r as AnyObject).getColumnByName("IntvYear").content as? String)!, ((r as AnyObject).getColumnByName("fkAccID").content as? String)!, ((r as AnyObject).getColumnByName("fkTrxTypeCCID").content as? String)!, ((r as AnyObject).getColumnByName("AccCode").content as? String)!, ((r as AnyObject).getColumnByName("USDExchange").content as? String)!, ((r as AnyObject).getColumnByName("UnitID").content as? String)!, ((r as AnyObject).getColumnByName("FloorPlanDesc").content as? String)!, ((r as AnyObject).getColumnByName("UnitViewDesc").content as? String)!, "0", "", ((r as AnyObject).getColumnByName("PrimAgeCFG").content as? String)!, ((r as AnyObject).getColumnByName("fkPlaceID").content as? String)!, ((r as AnyObject).getColumnByName("DepartureDateCheckOut").content as? String)!, ((r as AnyObject).getColumnByName("ConfirmationCode").content as? String)!, ((r as AnyObject).getColumnByName("fkCurrencyID").content as? String)!,((r as AnyObject).getColumnByName("PlaceCode").content as? String)!,((r as AnyObject).getColumnByName("fkPropertyID").content as? String)!])
                                                 
                                             }
                                             
@@ -1775,6 +2192,7 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                                                     DataStays["ConfirmationCode"] = String(describing: rs.string(forColumn: "ConfirmationCode")!)
                                                     DataStays["fkCurrencyID"] = String(describing: rs.string(forColumn: "fkCurrencyID")!)
                                                     DataStays["PlaceCode"] = String(describing: rs.string(forColumn: "PlaceCode")!)
+                                                    DataStays["fkPropertyID"] = String(describing: rs.string(forColumn: "fkPropertyID")!)
                                                     Stays[Index] = DataStays
                                                     
                                                     self.appDelegate.strCheckOutTimeAux = ""
@@ -1866,31 +2284,99 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                                         
                                         
                                         
-                                        if self.appDelegate.iCountStayF == 1{
+                                        /*if self.appDelegate.iCountStayF == 1{
                                             self.appDelegate.strUnitStay = String(self.StaysStatus[0][0]["PropertyCode"]!) + "/" + String(self.StaysStatus[0][0]["UnitCode"]!)
                                             self.appDelegate.strUnitStayInfoID = String(self.StaysStatus[0][0]["StayInfoID"]!)
                                             self.appDelegate.strUnitCode = String(self.StaysStatus[0][0]["UnitCode"]!)
                                             self.appDelegate.strStayInfoStatus = String(self.StaysStatus[0][0]["StatusCode"]!)
                                             self.appDelegate.strUnitArrivalDate = String(self.StaysStatus[0][0]["ArrivalDate"]!)
-                                        }
+                                        }*/
                                         
                                         queueFM?.inDatabase() {
                                             db in
                                             
-                                            if let rs = db.executeQuery("SELECT * FROM tblStay WHERE DepartureDate > strftime('%m/%d/%Y', date('now')) AND StatusCode = 'INHOUSE' LIMIT 1" as String,"" as AnyObject){
+                                            if let rs = db.executeQuery("SELECT * FROM tblStay WHERE date(strftime('%Y-%m-%d',date(substr(REPLACE(DepartureDate,'/','-'), 7, 4) || '-' || substr(REPLACE(DepartureDate,'/','-'), 1, 2) || '-' || substr(REPLACE(DepartureDate,'/','-'), 4, 2)))) > strftime('%Y-%m-%d', date('now')) AND OrderNo <= 2 ORDER BY date(strftime('%Y-%m-%d',date(substr(REPLACE(ArrivalDate,'/','-'), 7, 4) || '-' || substr(REPLACE(ArrivalDate,'/','-'), 1, 2) || '-' || substr(REPLACE(ArrivalDate,'/','-'), 4, 2)))) ASC LIMIT 1" as String,"" as AnyObject){
                                                 while rs.next() {
                                                     
                                                     self.appDelegate.RestStayInfoID = Int(rs.string(forColumn: "StayInfoID")!)!
                                                     self.appDelegate.strRestUnit = rs.string(forColumn: "UnitCode")! + " - " + rs.string(forColumn: "FloorPlanDesc")!
                                                     self.appDelegate.strRestUnitReserv = rs.string(forColumn: "UnitCode")!
                                                     self.appDelegate.strRestAccCode = rs.string(forColumn: "AccCode")!
+                                                    self.appDelegate.strUnitStay = rs.string(forColumn: "PropertyCode")! + "/" + rs.string(forColumn: "UnitCode")!
+                                                    self.appDelegate.strUnitStayInfoID = rs.string(forColumn: "StayInfoID")!
+                                                    self.appDelegate.strUnitCode = rs.string(forColumn: "UnitCode")!
+                                                    self.appDelegate.strStayInfoStatus = rs.string(forColumn: "StatusCode")!
+                                                    self.appDelegate.strUnitArrivalDate = rs.string(forColumn: "ArrivalDate")!
+                                                    self.appDelegate.strUnitPropertyID = rs.string(forColumn: "fkPropertyID")!
                                                 }
                                             } else {
                                                 self.appDelegate.RestStayInfoID = 0
                                             }
-                                            
+
                                         }
                                         
+                                        
+                                        self.appDelegate.gstrStayInfoTransfer = ""
+                                        
+                                        queueFM?.inDatabase() {
+                                            db in
+                                            
+                                            if let rs = db.executeQuery("SELECT * FROM tblStay WHERE date(strftime('%Y-%m-%d',date(substr(REPLACE(ArrivalDate,'/','-'), 7, 4) || '-' || substr(REPLACE(ArrivalDate,'/','-'), 1, 2) || '-' || substr(REPLACE(ArrivalDate,'/','-'), 4, 2) ,'-2 day'))) >= date(strftime('%Y-%m-%d', date(date('now')))) AND date(strftime('%Y-%m-%d',date(substr(REPLACE(DepartureDate,'/','-'), 7, 4) || '-' || substr(REPLACE(DepartureDate,'/','-'), 1, 2) || '-' || substr(REPLACE(DepartureDate,'/','-'), 4, 2) ,'-2 day'))) >= date(strftime('%Y-%m-%d', date(date('now')))) AND OrderNo < 2 ORDER BY date(strftime('%Y-%m-%d',date(substr(REPLACE(ArrivalDate,'/','-'), 7, 4) || '-' || substr(REPLACE(ArrivalDate,'/','-'), 1, 2) || '-' || substr(REPLACE(ArrivalDate,'/','-'), 4, 2)))) ASC LIMIT 1" as String,"" as AnyObject){
+                                                while rs.next() {
+                                                    self.appDelegate.ynTransferOutDate = false
+                                                    self.appDelegate.gstrArrivalTransfer = rs.string(forColumn: "ArrivalDate")!
+                                                    self.appDelegate.gstrStayInfoTransfer = rs.string(forColumn: "StayInfoID")!
+                                                    self.appDelegate.gstrDepartureTransfer = rs.string(forColumn: "DepartureDate")!
+                                                    self.appDelegate.gstrConfirmationCodeTransfer = rs.string(forColumn: "ConfirmationCode")!
+                                                    self.appDelegate.gstrPropertyTransfer = rs.string(forColumn: "PropertyName")!
+                                                    self.appDelegate.gifkPropertyID = Int(rs.string(forColumn: "fkPropertyID")!)!
+                                                    self.appDelegate.gResArrivalDate = moment(rs.string(forColumn: "ArrivalDate")!)!.date
+                                                    self.appDelegate.gResDepartureDate = moment(rs.string(forColumn: "DepartureDate")!)!.date
+                                                    self.appDelegate.strUnitCodeTransfer = rs.string(forColumn: "UnitCode")!
+                                                    self.appDelegate.gstrArrivalTransferAuxMin = rs.string(forColumn: "ArrivalDate")!
+                                                    self.appDelegate.gstrDepartureTransferAuxMax = rs.string(forColumn: "DepartureDate")!
+                                                    
+                                                    
+                                                    self.appDelegate.gstrArrivalTransferAux = self.appDelegate.gstrArrivalTransfer
+                                                    self.appDelegate.gstrDepartureTransferAux = self.appDelegate.gstrDepartureTransfer
+                                                    self.appDelegate.gstrConfirmationCodeTransferAux = self.appDelegate.gstrConfirmationCodeTransfer
+                                                    
+                                                }
+                                            }
+
+                                        }
+                                        
+                                        if self.appDelegate.gstrStayInfoTransfer == ""{
+                                            queueFM?.inDatabase() {
+                                                db in
+                                                
+                                                if let rs = db.executeQuery("select *, strftime('%m-%d-%Y',date(strftime('%Y-%m-%d', date('now')) ,'2 day')) as ArrivalDateTransfer, strftime('%m-%d-%Y',date(strftime('%Y-%m-%d',date(substr(REPLACE(DepartureDate,'/','-'), 7, 4) || '-' || substr(REPLACE(DepartureDate,'/','-'), 1, 2) || '-' || substr(REPLACE(DepartureDate,'/','-'), 4, 2))),'2 day')) as DepartureDateTransfer from tblStay  where date(strftime('%Y-%m-%d', date('now'))) BETWEEN date(strftime('%Y-%m-%d',date(substr(REPLACE(ArrivalDate,'/','-'), 7, 4) || '-' || substr(REPLACE(ArrivalDate,'/','-'), 1, 2) || '-' || substr(REPLACE(ArrivalDate,'/','-'), 4, 2))),'-2 day') and date(strftime('%Y-%m-%d',date(substr(REPLACE(DepartureDate,'/','-'), 7, 4) || '-' || substr(REPLACE(DepartureDate,'/','-'), 1, 2) || '-' || substr(REPLACE(DepartureDate,'/','-'), 4, 2))),'2 day') ORDER BY date(strftime('%Y-%m-%d',date(substr(REPLACE(ArrivalDate,'/','-'), 7, 4) || '-' || substr(REPLACE(ArrivalDate,'/','-'), 1, 2) || '-' || substr(REPLACE(ArrivalDate,'/','-'), 4, 2)))) ASC LIMIT 1" as String,"" as AnyObject){
+                                                    while rs.next() {
+                                                        self.appDelegate.ynTransferOutDate = true
+                                                        self.appDelegate.gstrArrivalTransfer = rs.string(forColumn: "ArrivalDate")!
+                                                        self.appDelegate.gstrStayInfoTransfer = rs.string(forColumn: "StayInfoID")!
+                                                        self.appDelegate.gstrDepartureTransfer = rs.string(forColumn: "DepartureDate")!
+                                                        self.appDelegate.gstrConfirmationCodeTransfer = rs.string(forColumn: "ConfirmationCode")!
+                                                        self.appDelegate.gstrPropertyTransfer = rs.string(forColumn: "PropertyName")!
+                                                        self.appDelegate.gifkPropertyID = Int(rs.string(forColumn: "fkPropertyID")!)!
+                                                        self.appDelegate.gResArrivalDate = moment(rs.string(forColumn: "ArrivalDate")!)!.date
+                                                        self.appDelegate.gResDepartureDate = moment(rs.string(forColumn: "DepartureDate")!)!.date
+                                                        self.appDelegate.strUnitCodeTransfer = rs.string(forColumn: "UnitCode")!
+                                                        self.appDelegate.gstrArrivalTransferAuxMin = rs.string(forColumn: "ArrivalDateTransfer")!
+                                                        self.appDelegate.gstrDepartureTransferAuxMax = rs.string(forColumn: "DepartureDateTransfer")!
+                                                        
+                                                        self.appDelegate.gstrArrivalTransferAux = self.appDelegate.gstrArrivalTransferAuxMin
+                                                        self.appDelegate.gstrDepartureTransferAux = self.appDelegate.gstrDepartureTransferAuxMax
+                                                        
+                                                        self.appDelegate.gstrConfirmationCodeTransferAux = self.appDelegate.gstrConfirmationCodeTransfer
+                                                        
+                                                    }
+                                                } else {
+                                                    self.appDelegate.RestStayInfoID = 0
+                                                }
+
+                                            }
+                                        }
 
                                     }
 
@@ -1927,6 +2413,8 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                         self.tableView.tableHeaderView = lblHeader
                         self.tableView.backgroundColor = UIColor.clear
                         
+                        self.cargarPeople()
+                        
                     }else{
                         
                         self.iseccion = 0
@@ -1944,6 +2432,9 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                         if !Reachability.isConnectedToNetwork(){
                             RKDropdownAlert.title(NSLocalizedString("MsgError6",comment:""), backgroundColor: self.colorWithHexString ("5C9FCC"), textColor: UIColor.black)
                         }
+                        
+                        self.tabBarController?.tabBar.items?[1].isEnabled = false
+                        self.tabBarController?.tabBar.items?[3].isEnabled = false
                         
                     }
                     
@@ -2096,13 +2587,13 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                 self.appDelegate.gStaysStatus = StaysStatus
                 self.StaysStatus = StaysStatus
                 
-                if self.appDelegate.iCountStayF == 1{
+                /*if self.appDelegate.iCountStayF == 1{
                     self.appDelegate.strUnitStay = String(self.StaysStatus[0][0]["PropertyCode"]!) + "/" + String(self.StaysStatus[0][0]["UnitCode"]!)
                     self.appDelegate.strUnitStayInfoID = String(self.StaysStatus[0][0]["StayInfoID"]!)
                     self.appDelegate.strUnitCode = String(self.StaysStatus[0][0]["UnitCode"]!)
                     self.appDelegate.strStayInfoStatus = String(self.StaysStatus[0][0]["StatusCode"]!)
                     self.appDelegate.strUnitArrivalDate = String(self.StaysStatus[0][0]["ArrivalDate"]!)
-                }
+                }*/
                 
             }
             
@@ -2141,6 +2632,7 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                     
                 }
 
+                self.cargarPeople()
                 
             }else{
                 
@@ -2174,7 +2666,184 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-   
+    func cargarPeople(){
+            var queueFM: FMDatabaseQueue?
+            
+            queueFM = FMDatabaseQueue(path: Util.getPath("GuestStay.sqlite"))
+
+            var tableItems = RRDataSet()
+            var iRes: String = ""
+            var strAge: String = ""
+            var iIndex: Int = 0
+            var resultAI: Int32 = 0
+            
+            let queue = OperationQueue()
+            
+            queue.addOperation() {//1
+                //accion base de datos
+                //print(1)
+                
+                if Reachability.isConnectedToNetwork(){
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+                    
+                    let service=RRRestaurantService(url: self.appDelegate.URLService as String, host: self.appDelegate.Host as String, userNameMobile:self.appDelegate.UserName, passwordMobile:self.appDelegate.Password);
+                    tableItems = (service?.spGetAppStayPeople("1", appCode: self.appDelegate.gstrAppName, personalID: self.PersonalID, stayInfoID: self.appDelegate.gstrStayInfoTransfer, dataBase: self.appDelegate.strDataBaseByStay))!
+                    
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                }
+                
+                OperationQueue.main.addOperation() {
+                    queue.addOperation() {//2
+                        //accion base de datos
+                        //print(2)
+                        
+                        if (tableItems.getTotalTables() > 0 ){
+                            
+                            var tableResult = RRDataTable()
+                            tableResult = tableItems.tables.object(at: 0) as! RRDataTable
+                            
+                            var rowResult = RRDataRow()
+                            rowResult = tableResult.rows.object(at: 0) as! RRDataRow
+                            
+                            if rowResult.getColumnByName("iResult") != nil{
+                                iRes = rowResult.getColumnByName("iResult").content as! String
+                            }else{
+                                iRes = "-1"
+                            }
+                            
+                            if (Int(iRes) > 0){
+                                
+                                var table = RRDataTable()
+                                table = tableItems.tables.object(at: 1) as! RRDataTable
+                                
+                                var r = RRDataRow()
+                                r = table.rows.object(at: 0) as! RRDataRow
+                                
+                                iRes = (r as AnyObject).getColumnByName("Result").content as! String
+                                
+                                if (Int(iRes) > 0){
+                                    
+                                    queueFM?.inTransaction { db, rollback in
+                                        do {
+                                            
+                                            try db.executeUpdate("DELETE FROM tblPerson WHERE StayInfoID=?", withArgumentsIn: [self.appDelegate.gstrStayInfoTransfer])
+                                            
+                                        } catch {
+                                            rollback.pointee = true
+                                        }
+                                    }
+
+                                        queueFM?.inTransaction() {
+                                            db, rollback in
+                                            
+                                            for r in table.rows{
+
+                                                //Contamos las persona que ya estan agregadas
+                                                self.iTotalPeople = self.iTotalPeople + 1
+
+                                                if db.executeUpdate("INSERT INTO tblPerson (StayInfoID,DatabaseName,PersonID,FullName,FirstName, MiddleName, LastName, SecondLName, EmailAddress, PeopleFDeskID, YearBirthDay, ynPrimary, ynPreRegisterAvailable, NumOfPeopleForStay, Age, pkPreRegisterID, PreRegisterTypeDesc, GuestType, DateLimit, ynValidDate, PhoneNo, dtExpectedArrival) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", withArgumentsIn: [
+                                                    ((r as AnyObject).getColumnByName("fkStayInfoID").content as? String)!,
+                                                    "FDESK_CANCUN",
+                                                    ((r as AnyObject).getColumnByName("fkPeopleFromCDRID").content as? String)!,
+                                                    (((r as AnyObject).getColumnByName("FirstName").content as? String)! + " " + ((r as AnyObject).getColumnByName("MiddleName").content as? String)! + " " + ((r as AnyObject).getColumnByName("LastName1").content as? String)! + " " + ((r as AnyObject).getColumnByName("LastName2").content as? String)!),
+                                                    ((r as AnyObject).getColumnByName("FirstName").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("MiddleName").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("LastName1").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("LastName2").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("EmailAddress").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("ID").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("YearBirthday").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("ynPrimary").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("ynPreRegisterAvailable").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("NumOfPeopleForStay").content as? String)!,
+                                                    strAge,
+                                                    ((r as AnyObject).getColumnByName("pkPreRegisterID").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("PreRegisterTypeDesc").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("GuestType").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("DateLimit").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("ynValidDate").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("PhoneNo").content as? String)!,
+                                                    ((r as AnyObject).getColumnByName("dtExpectedArrival").content as? String)!
+                                                    ]) {
+                                                    
+                                                }
+                                                
+                                            }
+                                            
+                                        }
+                                    
+                                    
+                                }
+                                
+                            }
+
+                            self.appDelegate.giPeopleNumTransfer = self.iTotalPeople
+                            self.appDelegate.giPeopleNumTransferAux = self.appDelegate.giPeopleNumTransfer
+
+                            var tableAI = RRDataTable()
+                            tableAI = tableItems.tables.object(at: 2) as! RRDataTable
+
+                            if (Int(iRes) > 0) && tableItems.getTotalTables() > 1 && tableAI.getTotalRows() > 0{
+
+                                var rAI = RRDataRow()
+                                rAI = tableAI.rows.object(at: 0) as! RRDataRow
+                                
+                                iRes = (rAI as AnyObject).getColumnByName("pkGuestAgeID").content as! String
+                                
+                                if (Int(iRes) > 0){
+                                
+                                self.appDelegate.gblPromoAI = true
+
+                                queueFM?.inTransaction { db, rollback in
+                                        do {
+                                            
+                                            try db.executeUpdate("DELETE FROM tblPersonAI", withArgumentsIn: [])
+                                            
+                                        } catch {
+                                            rollback.pointee = true
+                                        }
+                                }
+                                    
+                                queueFM?.inTransaction() {
+                                    db, rollback in
+                                    
+                                    for r in tableAI.rows{
+                                        
+                                        self.iTotalPeople = self.iTotalPeople + 1
+                                        
+                                        if db.executeUpdate("INSERT INTO tblPersonAI (StayInfoID,GuestSequence,Age,pkGuestAgeID,pkPeopleID,fkPromoID,AdultChildTeen,fkPeopleID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", withArgumentsIn: [
+                                            self.appDelegate.gstrStayInfoTransfer,
+                                            ((r as AnyObject).getColumnByName("GuestSequence").content as? String)!,
+                                            ((r as AnyObject).getColumnByName("Age").content as? String)!,
+                                            ((r as AnyObject).getColumnByName("pkGuestAgeID").content as? String)!,
+                                            ((r as AnyObject).getColumnByName("pkPeopleID").content as? String)!,
+                                            ((r as AnyObject).getColumnByName("fkPromoID").content as? String)!,
+                                            ((r as AnyObject).getColumnByName("AdultChildTeen").content as? String)!,
+                                            ((r as AnyObject).getColumnByName("fkPeopleID").content as? String)!]) {
+                                            
+                                        }
+
+                                        
+                                    }
+                                    
+                                }
+
+                                
+                            }
+                            
+                            
+                        }
+                        
+                            self.appDelegate.giPeopleNumAITransfer = self.iTotalPeople
+                            
+                        }
+                        OperationQueue.main.addOperation() {
+
+                        }
+                    }
+                }
+            }
+    }
     
     func colorWithHexString (_ hexString:String, alpha:CGFloat? = 1.0) -> UIColor {
         // Convert hex string to an integer
@@ -2362,6 +3031,15 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                     tblLogin["Field5"] = rs.string(forColumn: "Field5")!
                     tblLogin["LastStayUpdate"] = rs.string(forColumn: "LastStayUpdate")!
                     tblLogin["PeopleType"] = rs.string(forColumn: "PeopleType")!
+                    tblLogin["Address"] = rs.string(forColumn: "Address")!
+                    tblLogin["City"] = rs.string(forColumn: "City")!
+                    tblLogin["ZipCode"] = rs.string(forColumn: "ZipCode")!
+                    tblLogin["State"] = rs.string(forColumn: "State")!
+                    tblLogin["Country"] = rs.string(forColumn: "Country")!
+                    tblLogin["ISOCode"] = rs.string(forColumn: "ISOCode")!
+                    tblLogin["Phone"] = rs.string(forColumn: "Phone")!
+                    tblLogin["URLcxPay"] = rs.string(forColumn: "URLcxPay")!
+                    tblLogin["TokenCLBRPay"] = rs.string(forColumn: "TokenCLBRPay")!
                 }
             } else {
                 print("select failure: \(db.lastErrorMessage())")
@@ -2377,7 +3055,9 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
         appDelegate.gblGoHome = true
         appDelegate.RestStayInfoID = 0
         appDelegate.strRestStayInfoID = ""
-
+        appDelegate.gstrStayInfoTransfer = ""
+        self.appDelegate.ynLogInConf = false
+        
         var tableItemsPush = RRDataSet()
         
         let queuenew = OperationQueue()
@@ -2474,7 +3154,12 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
         let title: UILabel = UILabel()
         title.backgroundColor = UIColor.clear;
         title.textAlignment = NSTextAlignment.left;
-        title.textColor = UIColor.gray;
+        if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            title.textColor = colorWithHexString("4daba0")
+        }else{
+            title.textColor = UIColor.gray;
+        }
+
         title.font = UIFont(name:"HelveticaNeue-Light", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont4)
         title.numberOfLines = 0;
         
@@ -2620,6 +3305,14 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
             lastIndex = IndexPath.init()
             cell.textLabel?.textColor = colorWithHexString("00467f")
             cell.detailTextLabel?.textColor = colorWithHexString("00467f")
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            cell.backgroundColor = UIColor.clear
+            cell.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("004c50"))
+            cell.textLabel?.textColor = colorWithHexString("2e3634")
+            cell.detailTextLabel?.textColor = colorWithHexString("888888")
+            
         }
 
         if (String(StaysStatus[indexPath.section][indexPath.row]["OrderNo"]!) == "1"){
@@ -2705,6 +3398,8 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func clickLogout(_ sender: AnyObject) {
 
+        self.appDelegate.ynLogInConf = false
+        
         var tblLogin: Dictionary<String, String>
         var strQuery: String = ""
         
@@ -2740,6 +3435,15 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                     tblLogin["Field5"] = rs.string(forColumn: "Field5")!
                     tblLogin["LastStayUpdate"] = rs.string(forColumn: "LastStayUpdate")!
                     tblLogin["PeopleType"] = rs.string(forColumn: "PeopleType")!
+                    tblLogin["Address"] = rs.string(forColumn: "Address")!
+                    tblLogin["City"] = rs.string(forColumn: "City")!
+                    tblLogin["ZipCode"] = rs.string(forColumn: "ZipCode")!
+                    tblLogin["State"] = rs.string(forColumn: "State")!
+                    tblLogin["Country"] = rs.string(forColumn: "Country")!
+                    tblLogin["ISOCode"] = rs.string(forColumn: "ISOCode")!
+                    tblLogin["Phone"] = rs.string(forColumn: "Phone")!
+                    tblLogin["URLcxPay"] = rs.string(forColumn: "URLcxPay")!
+                    tblLogin["TokenCLBRPay"] = rs.string(forColumn: "TokenCLBRPay")!
                 }
             } else {
                 print("select failure: \(db.lastErrorMessage())")
@@ -2747,6 +3451,7 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
             
         }
         
+
         appDelegate.gtblLogin = tblLogin
         self.tabBarController?.navigationController?.navigationBar.isHidden = false;
 

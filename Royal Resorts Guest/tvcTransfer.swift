@@ -14,10 +14,32 @@ open class tvcTransfer: UITableViewCell {
     public var lblConfirmationCode = UILabel()
     public var lblArrivalDate = UILabel()
     public var img = UIImageView()
-
+    public var lblStatus = UILabel()
+    
     public func SetValues(_ ConfirmationCode: String?, ArrivalDate: String?, width: CGFloat?, height: CGFloat?) {
-
-        lblConfirmationCode.font = UIFont(name: "Helvetica", size: appDelegate.gblFont2 + appDelegate.gblDeviceFont3)
+        
+        //lblStatus.textColor = colorWithHexString("929292")
+        //img.image = UIImage(named:"ic_uncheck.png")!
+        
+        if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
+            
+            lblStatus.textColor = colorWithHexString("929292")
+            img.image = UIImage(named:"ic_uncheck.png")!
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+            
+            lblConfirmationCode.textColor = colorWithHexString("ba8748")
+            lblArrivalDate.textColor = colorWithHexString("ba8748")
+            lblStatus.textColor = colorWithHexString("ba8748")
+            
+            img.image = UIImage(named:"ic_uncheck.png")!
+            
+            img.image = img.image!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+            img.tintColor = colorWithHexString("e4c29c")
+            
+        }
+        
+        lblConfirmationCode.font = UIFont(name: "Helvetica", size: appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
         lblArrivalDate.font = UIFont(name: "Helvetica", size: appDelegate.gblFont2 + appDelegate.gblDeviceFont3)
         lblConfirmationCode.textAlignment = NSTextAlignment.left
         lblArrivalDate.textAlignment = NSTextAlignment.left
@@ -27,13 +49,13 @@ open class tvcTransfer: UITableViewCell {
         lblArrivalDate.text = ArrivalDate
 
         lblConfirmationCode.frame = CGRect(x: 0.2*width!, y: 0.001*height!, width: 0.6*width!, height: 0.025*height!);
-        lblArrivalDate.frame = CGRect(x: 0.2*width!, y: 0.021*height!, width: 0.3*width!, height: 0.025*height!);
+        lblArrivalDate.frame = CGRect(x: 0.2*width!, y: 0.03*height!, width: 0.3*width!, height: 0.025*height!);
         
-        //img.frame = CGRect(x: 0.05*width!, y: 0.014*height!, width: img.image!.size.width, height: img.image!.size.height);
+        img.frame = CGRect(x: 0.05*width!, y: 0.014*height!, width: img.image!.size.width, height: img.image!.size.height);
         
         self.addSubview(lblConfirmationCode)
         self.addSubview(lblArrivalDate)
-        //self.addSubview(img)
+        self.addSubview(img)
         
     }
     

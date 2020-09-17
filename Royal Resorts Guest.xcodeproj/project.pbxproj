@@ -66,11 +66,25 @@
 		5CDC3AB71AA0E0670083E718 /* TimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDC3AB11AA0E0670083E718 /* TimeUnit.swift */; };
 		5CDF92DE1A82BDCB00992D49 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF92DD1A82BDCB00992D49 /* Util.swift */; };
 		5CDF92E01A82BEE300992D49 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF92DF1A82BEE300992D49 /* ModelManager.swift */; };
+		6813475224ED73F700A575FB /* vcCLPaymentGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6813475124ED73F700A575FB /* vcCLPaymentGateway.swift */; };
+		681C862223CD0BB500DC9EB2 /* vcImgViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C862123CD0BB500DC9EB2 /* vcImgViewer.swift */; };
+		681DBCCD2388366C006050F6 /* vcTransferEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DBCCC2388366C006050F6 /* vcTransferEdit.swift */; };
+		68219B0423A2A05A00FD24B7 /* vcTransferSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68219B0323A2A05A00FD24B7 /* vcTransferSubmit.swift */; };
 		6821AB6E235E097F00D66D3A /* vcServicesNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6821AB6D235E097F00D66D3A /* vcServicesNav.swift */; };
+		6822F8C72399A8E200A46075 /* tvcTransferEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6822F8C62399A8E200A46075 /* tvcTransferEdit.swift */; };
+		682A90A6237DD6C600E19D70 /* vcTransferDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682A90A5237DD6C600E19D70 /* vcTransferDate.swift */; };
 		682BA5E7234E39AB00729F99 /* vcRRRewards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682BA5E6234E39AB00729F99 /* vcRRRewards.swift */; };
+		682DC49B239EB8E2005A8AFE /* tvcDynamicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682DC49A239EB8E2005A8AFE /* tvcDynamicCell.swift */; };
 		682E1564236397E00042CE07 /* tvcTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682E1563236397E00042CE07 /* tvcTransfer.swift */; };
+		6839A9E024B6256600941E82 /* vcConfLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6839A9DF24B6256600941E82 /* vcConfLogin.swift */; };
+		6839A9E224B6258E00941E82 /* vcConfLoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6839A9E124B6258E00941E82 /* vcConfLoginError.swift */; };
 		6839AB96235A19AF00B7A324 /* vcServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6839AB95235A19AF00B7A324 /* vcServices.swift */; };
-		84105BB31D50E5A4008CD1AD /* MyData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84105BB11D50E5A4008CD1AD /* MyData.plist */; };
+		6839EC6D23B27EFC00F796BC /* vcTransferReserv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6839EC6C23B27EFC00F796BC /* vcTransferReserv.swift */; };
+		6840314924FFFD9D003130C3 /* brand-amex.png in Resources */ = {isa = PBXBuildFile; fileRef = 6840314524FFFD9D003130C3 /* brand-amex.png */; };
+		6840314A24FFFD9D003130C3 /* brand-visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 6840314624FFFD9D003130C3 /* brand-visa.png */; };
+		6840314B24FFFD9D003130C3 /* brand-mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = 6840314724FFFD9D003130C3 /* brand-mastercard.png */; };
+		6840314C24FFFD9D003130C3 /* brand-discover.png in Resources */ = {isa = PBXBuildFile; fileRef = 6840314824FFFD9D003130C3 /* brand-discover.png */; };
+		68714B7524EC96CA008DDAAE /* Encrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68714B7424EC96CA008DDAAE /* Encrypt.swift */; };
 		84105BB41D50E5A4008CD1AD /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84105BB21D50E5A4008CD1AD /* PlistManager.swift */; };
 		8421FC6E1CA46EBC00B3E649 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8421FC641CA46EBC00B3E649 /* FMDatabase.m */; };
 		8421FC6F1CA46EBC00B3E649 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8421FC661CA46EBC00B3E649 /* FMDatabaseAdditions.m */; };
@@ -150,8 +164,6 @@
 		84E881C91C063C440017DB53 /* tvcPreDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E881C81C063C440017DB53 /* tvcPreDetail.swift */; };
 		84EC79861BFE2BFE0041E461 /* vcPreAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EC79851BFE2BFE0041E461 /* vcPreAuth.swift */; };
 		84F2003E1B03A97400D56FA8 /* DataCellTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2003D1B03A97400D56FA8 /* DataCellTableViewController.swift */; };
-		84F23B081C6E7AAF00B02B51 /* visa_37x25.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F23B071C6E7AAF00B02B51 /* visa_37x25.png */; };
-		84F23B0A1C6E7AD300B02B51 /* master_37x25.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F23B091C6E7AD300B02B51 /* master_37x25.png */; };
 		84F23B0E1C6E915400B02B51 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F23B0D1C6E915400B02B51 /* Gradient.swift */; };
 		84FB51131B90AC26009962FF /* RKNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FB51121B90AC26009962FF /* RKNotificationHub.m */; };
 		8D35790D1A1BBD3C009D27ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D35790C1A1BBD3C009D27ED /* AppDelegate.swift */; };
@@ -278,12 +290,26 @@
 		5CDC3AB11AA0E0670083E718 /* TimeUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUnit.swift; sourceTree = "<group>"; };
 		5CDF92DD1A82BDCB00992D49 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		5CDF92DF1A82BEE300992D49 /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
+		6813475124ED73F700A575FB /* vcCLPaymentGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcCLPaymentGateway.swift; sourceTree = "<group>"; };
+		681C862123CD0BB500DC9EB2 /* vcImgViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcImgViewer.swift; sourceTree = "<group>"; };
+		681DBCCC2388366C006050F6 /* vcTransferEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcTransferEdit.swift; sourceTree = "<group>"; };
+		68219B0323A2A05A00FD24B7 /* vcTransferSubmit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcTransferSubmit.swift; sourceTree = "<group>"; };
 		6821AB6D235E097F00D66D3A /* vcServicesNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcServicesNav.swift; sourceTree = "<group>"; };
+		6822F8C62399A8E200A46075 /* tvcTransferEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tvcTransferEdit.swift; sourceTree = "<group>"; };
+		682A90A5237DD6C600E19D70 /* vcTransferDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcTransferDate.swift; sourceTree = "<group>"; };
 		682B3264FA3A5193D0F4BBE0 /* Pods-Royal Resorts Guest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Royal Resorts Guest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Royal Resorts Guest/Pods-Royal Resorts Guest.debug.xcconfig"; sourceTree = "<group>"; };
 		682BA5E6234E39AB00729F99 /* vcRRRewards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcRRRewards.swift; sourceTree = "<group>"; };
+		682DC49A239EB8E2005A8AFE /* tvcDynamicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tvcDynamicCell.swift; sourceTree = "<group>"; };
 		682E1563236397E00042CE07 /* tvcTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tvcTransfer.swift; sourceTree = "<group>"; };
+		6839A9DF24B6256600941E82 /* vcConfLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcConfLogin.swift; sourceTree = "<group>"; };
+		6839A9E124B6258E00941E82 /* vcConfLoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcConfLoginError.swift; sourceTree = "<group>"; };
 		6839AB95235A19AF00B7A324 /* vcServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcServices.swift; sourceTree = "<group>"; };
-		84105BB11D50E5A4008CD1AD /* MyData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyData.plist; sourceTree = "<group>"; };
+		6839EC6C23B27EFC00F796BC /* vcTransferReserv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcTransferReserv.swift; sourceTree = "<group>"; };
+		6840314524FFFD9D003130C3 /* brand-amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-amex.png"; sourceTree = "<group>"; };
+		6840314624FFFD9D003130C3 /* brand-visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-visa.png"; sourceTree = "<group>"; };
+		6840314724FFFD9D003130C3 /* brand-mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-mastercard.png"; sourceTree = "<group>"; };
+		6840314824FFFD9D003130C3 /* brand-discover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-discover.png"; sourceTree = "<group>"; };
+		68714B7424EC96CA008DDAAE /* Encrypt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encrypt.swift; sourceTree = "<group>"; };
 		84105BB21D50E5A4008CD1AD /* PlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistManager.swift; sourceTree = "<group>"; };
 		8421FC631CA46EBC00B3E649 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		8421FC641CA46EBC00B3E649 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
@@ -372,12 +398,10 @@
 		84E881C81C063C440017DB53 /* tvcPreDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tvcPreDetail.swift; sourceTree = "<group>"; };
 		84EC79851BFE2BFE0041E461 /* vcPreAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcPreAuth.swift; sourceTree = "<group>"; };
 		84F2003D1B03A97400D56FA8 /* DataCellTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCellTableViewController.swift; sourceTree = "<group>"; };
-		84F23B071C6E7AAF00B02B51 /* visa_37x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visa_37x25.png; sourceTree = "<group>"; };
-		84F23B091C6E7AD300B02B51 /* master_37x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = master_37x25.png; sourceTree = "<group>"; };
 		84F23B0D1C6E915400B02B51 /* Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		84FB51111B90AC26009962FF /* RKNotificationHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKNotificationHub.h; sourceTree = "<group>"; };
 		84FB51121B90AC26009962FF /* RKNotificationHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKNotificationHub.m; sourceTree = "<group>"; };
-		8D3579071A1BBD3C009D27ED /* Royal Resorts Guest Services.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Royal Resorts Guest Services.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D3579071A1BBD3C009D27ED /* Costa Linda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Costa Linda.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D35790C1A1BBD3C009D27ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D3579111A1BBD3C009D27ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8D3579161A1BBD3C009D27ED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -477,6 +501,7 @@
 				5CA481921A89A07600ED5C0D /* FMDatabaseVariadic.swift */,
 				5CDF92DD1A82BDCB00992D49 /* Util.swift */,
 				5CDF92DF1A82BEE300992D49 /* ModelManager.swift */,
+				68714B7424EC96CA008DDAAE /* Encrypt.swift */,
 			);
 			name = DataAccess;
 			sourceTree = "<group>";
@@ -593,6 +618,16 @@
 				6839AB95235A19AF00B7A324 /* vcServices.swift */,
 				6821AB6D235E097F00D66D3A /* vcServicesNav.swift */,
 				682E1563236397E00042CE07 /* tvcTransfer.swift */,
+				682A90A5237DD6C600E19D70 /* vcTransferDate.swift */,
+				681DBCCC2388366C006050F6 /* vcTransferEdit.swift */,
+				6822F8C62399A8E200A46075 /* tvcTransferEdit.swift */,
+				682DC49A239EB8E2005A8AFE /* tvcDynamicCell.swift */,
+				68219B0323A2A05A00FD24B7 /* vcTransferSubmit.swift */,
+				6839EC6C23B27EFC00F796BC /* vcTransferReserv.swift */,
+				681C862123CD0BB500DC9EB2 /* vcImgViewer.swift */,
+				6839A9DF24B6256600941E82 /* vcConfLogin.swift */,
+				6839A9E124B6258E00941E82 /* vcConfLoginError.swift */,
+				6813475124ED73F700A575FB /* vcCLPaymentGateway.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -691,7 +726,7 @@
 		8D3579081A1BBD3C009D27ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D3579071A1BBD3C009D27ED /* Royal Resorts Guest Services.app */,
+				8D3579071A1BBD3C009D27ED /* Costa Linda.app */,
 				8D35791F1A1BBD3C009D27ED /* Royal Resorts GuestTests.xctest */,
 			);
 			name = Products;
@@ -701,7 +736,6 @@
 			isa = PBXGroup;
 			children = (
 				842FC8C61E9C300000917BBC /* Royal Resorts Guest Services.entitlements */,
-				84105BB11D50E5A4008CD1AD /* MyData.plist */,
 				84105BB21D50E5A4008CD1AD /* PlistManager.swift */,
 				5CDC3AAA1AA0E0660083E718 /* SwiftMoment */,
 				5C1D80DE1A96712A005DF7F8 /* GoogleWearAlertView */,
@@ -746,10 +780,12 @@
 			children = (
 				84CB977D1E60B8CA00FB3A3D /* ByApp */,
 				8452A4251E607126005966F5 /* BackAqua.png */,
+				6840314524FFFD9D003130C3 /* brand-amex.png */,
+				6840314824FFFD9D003130C3 /* brand-discover.png */,
+				6840314724FFFD9D003130C3 /* brand-mastercard.png */,
+				6840314624FFFD9D003130C3 /* brand-visa.png */,
 				8461D3DE1D022BB200BE8DD0 /* TomarFoto.png */,
 				8461D3DC1D022BAC00BE8DD0 /* signout.png */,
-				84F23B091C6E7AD300B02B51 /* master_37x25.png */,
-				84F23B071C6E7AAF00B02B51 /* visa_37x25.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -783,7 +819,7 @@
 			);
 			name = "Royal Resorts Guest";
 			productName = "Royal Resorts Guest";
-			productReference = 8D3579071A1BBD3C009D27ED /* Royal Resorts Guest Services.app */;
+			productReference = 8D3579071A1BBD3C009D27ED /* Costa Linda.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8D35791E1A1BBD3C009D27ED /* Royal Resorts GuestTests */ = {
@@ -866,18 +902,17 @@
 				84C59AE91C5ACDE300F4E408 /* Main.storyboard in Resources */,
 				84CB97A81E60B8F800FB3A3D /* tblrowSel.png in Resources */,
 				84CB97A21E60B8F800FB3A3D /* tblaccrowsingleSel.png in Resources */,
+				6840314A24FFFD9D003130C3 /* brand-visa.png in Resources */,
 				84CB97A11E60B8F800FB3A3D /* tblaccrowsingle.png in Resources */,
 				8461D3DD1D022BAC00BE8DD0 /* signout.png in Resources */,
 				84CB979C1E60B8F800FB3A3D /* tblaccfooterSel.png in Resources */,
 				84CB97961E60B8F800FB3A3D /* lock.png in Resources */,
-				84105BB31D50E5A4008CD1AD /* MyData.plist in Resources */,
 				5C1D80E91A96712A005DF7F8 /* messageIcon@2x.png in Resources */,
 				4D4013C322B992D900BC6AB6 /* Info.plist in Resources */,
 				5C1D80EB1A96712A005DF7F8 /* warningIcon@2x.png in Resources */,
 				4D4268DD22BA92F100337D89 /* InfoPlist.strings in Resources */,
 				84CB97981E60B8F800FB3A3D /* mail.png in Resources */,
 				84CB97B41E60CC8800FB3A3D /* female_avatar.png in Resources */,
-				84F23B0A1C6E7AD300B02B51 /* master_37x25.png in Resources */,
 				84CB979E1E60B8F800FB3A3D /* tblacchdrSel.png in Resources */,
 				84CB97B11E60CADE00FB3A3D /* left_Arrow.png in Resources */,
 				8461D3DF1D022BB200BE8DD0 /* TomarFoto.png in Resources */,
@@ -885,7 +920,9 @@
 				84CB979B1E60B8F800FB3A3D /* tblaccfooter.png in Resources */,
 				842FC8CF1E9D45B700917BBC /* GuestStay.sqlite in Resources */,
 				84CB97A31E60B8F800FB3A3D /* tblfooter.png in Resources */,
+				6840314B24FFFD9D003130C3 /* brand-mastercard.png in Resources */,
 				5CDC3AB41AA0E0670083E718 /* Info.plist in Resources */,
+				6840314C24FFFD9D003130C3 /* brand-discover.png in Resources */,
 				84CB97991E60B8F800FB3A3D /* navBar.png in Resources */,
 				84CB979A1E60B8F800FB3A3D /* TabBar.png in Resources */,
 				843D38031C98AFC800FC39C8 /* Podfile in Resources */,
@@ -900,12 +937,12 @@
 				84CB97AD1E60B8F800FB3A3D /* Titlerow.png in Resources */,
 				84CB97A01E60B8F800FB3A3D /* tblaccrowSel.png in Resources */,
 				84CB97A41E60B8F800FB3A3D /* tblfooterSel.png in Resources */,
-				84F23B081C6E7AAF00B02B51 /* visa_37x25.png in Resources */,
 				84CB97AF1E60CAA000FB3A3D /* bg.png in Resources */,
 				84CB97A91E60B8F800FB3A3D /* tblrowsingle.png in Resources */,
 				5C9D6A581AD88D9100C96F81 /* Localizable.strings in Resources */,
 				84CB97A71E60B8F800FB3A3D /* tblrow.png in Resources */,
 				8452A4261E607126005966F5 /* BackAqua.png in Resources */,
+				6840314924FFFD9D003130C3 /* brand-amex.png in Resources */,
 				5C1D80EA1A96712A005DF7F8 /* successIcon@2x.png in Resources */,
 				84CB97A61E60B8F800FB3A3D /* tblhdrSel.png in Resources */,
 				8D3579171A1BBD3C009D27ED /* Images.xcassets in Resources */,
@@ -976,25 +1013,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				843D38011C98AB9100FC39C8 /* vcGuestPreCheckin.swift in Sources */,
+				682DC49B239EB8E2005A8AFE /* tvcDynamicCell.swift in Sources */,
 				84C9A2A2208E602E000E4810 /* vcNotification.swift in Sources */,
 				5CDC3A951A9E89C80083E718 /* vcGuestAccount.swift in Sources */,
 				5C4A73981A64463500A86493 /* NSObject+SBJson.m in Sources */,
 				845C60221EF1905200FB79B4 /* AKMaskFieldPatternCharacter.swift in Sources */,
+				6839EC6D23B27EFC00F796BC /* vcTransferReserv.swift in Sources */,
 				845C60231EF1905200FB79B4 /* AKMaskFieldStatus.swift in Sources */,
 				847983421C160CBE00E68377 /* vcCheckOutSlip.swift in Sources */,
 				848AF24B1E707D8A0068EDE5 /* vcRestaurant.swift in Sources */,
 				5C4A73991A64463500A86493 /* SBJsonParser.m in Sources */,
 				84C9A2A0208E602E000E4810 /* vcMessage.swift in Sources */,
 				5CCD385E1A9CDA5700CE8DB2 /* tvcVoucherDetail.swift in Sources */,
+				6813475224ED73F700A575FB /* vcCLPaymentGateway.swift in Sources */,
 				5C4A739A1A64463500A86493 /* SBJsonStreamParser.m in Sources */,
+				6839A9E024B6256600941E82 /* vcConfLogin.swift in Sources */,
 				5CDC3AB61AA0E0670083E718 /* Operators.swift in Sources */,
 				845C60241EF1905200FB79B4 /* AKMaskFieldUtility.swift in Sources */,
+				681C862223CD0BB500DC9EB2 /* vcImgViewer.swift in Sources */,
 				5C1D80E61A96712A005DF7F8 /* GoogleWearAlert.swift in Sources */,
 				846ECFC91C5043A100608950 /* vcRequestFollowUp.swift in Sources */,
 				84DA75121E71FEB10053A83C /* vcReservRestAvail.swift in Sources */,
 				5C4A739B1A64463500A86493 /* SBJsonStreamParserAccumulator.m in Sources */,
 				5C4A739C1A64463500A86493 /* SBJsonStreamParserAdapter.m in Sources */,
 				5C1D80E71A96712A005DF7F8 /* GoogleWearAlertView.swift in Sources */,
+				682A90A6237DD6C600E19D70 /* vcTransferDate.swift in Sources */,
 				5C4A739D1A64463500A86493 /* SBJsonStreamParserState.m in Sources */,
 				5C4A739E1A64463500A86493 /* SBJsonStreamWriter.m in Sources */,
 				5C4A739F1A64463500A86493 /* SBJsonStreamWriterAccumulator.m in Sources */,
@@ -1023,9 +1066,11 @@
 				5C4A73381A643F8200A86493 /* RRStoredProcedure.m in Sources */,
 				5CA481941A89A07600ED5C0D /* FMDatabaseVariadic.swift in Sources */,
 				84599EED1BED092600384C1F /* String.swift in Sources */,
+				6822F8C72399A8E200A46075 /* tvcTransferEdit.swift in Sources */,
 				842EE6311E8436D600AAB3F0 /* tvcRestaurantReserv.swift in Sources */,
 				84FB51131B90AC26009962FF /* RKNotificationHub.m in Sources */,
 				5C4A733A1A643F8200A86493 /* RRRestaurantService.m in Sources */,
+				68714B7524EC96CA008DDAAE /* Encrypt.swift in Sources */,
 				5CDF92E01A82BEE300992D49 /* ModelManager.swift in Sources */,
 				8421FC701CA46EBC00B3E649 /* FMDatabasePool.m in Sources */,
 				6821AB6E235E097F00D66D3A /* vcServicesNav.swift in Sources */,
@@ -1034,9 +1079,11 @@
 				84105BB41D50E5A4008CD1AD /* PlistManager.swift in Sources */,
 				8461D3BF1CFCF5DD00BE8DD0 /* ImagePickerManager.swift in Sources */,
 				84C59AD61C582F2600F4E408 /* vcSelectRequestType.swift in Sources */,
+				6839A9E224B6258E00941E82 /* vcConfLoginError.swift in Sources */,
 				84E881C91C063C440017DB53 /* tvcPreDetail.swift in Sources */,
 				5C4A73361A643F8200A86493 /* RRDataTable.m in Sources */,
 				84C9A29F208E602E000E4810 /* settingCell.swift in Sources */,
+				681DBCCD2388366C006050F6 /* vcTransferEdit.swift in Sources */,
 				5C4A73331A643F8200A86493 /* RRDataColumn.m in Sources */,
 				84DA750C1E71C2D90053A83C /* tvcRestaurantList.swift in Sources */,
 				4D16052E22838E060050606B /* vcDigitalTicket.swift in Sources */,
@@ -1065,6 +1112,7 @@
 				4D0E399E22DD2A86003F5F18 /* vcResortCred.swift in Sources */,
 				A9D39C0C1A22EF600056F1E9 /* vcGuestPeopleEdit.swift in Sources */,
 				5C4A73351A643F8200A86493 /* RRDataSet.m in Sources */,
+				68219B0423A2A05A00FD24B7 /* vcTransferSubmit.swift in Sources */,
 				5C0C8A9A1A8D9CB700E576C2 /* HMSegmentedControl.m in Sources */,
 				4D0E399C22DD2A48003F5F18 /* vcSelectPayment.swift in Sources */,
 				84F2003E1B03A97400D56FA8 /* DataCellTableViewController.swift in Sources */,
@@ -1241,6 +1289,7 @@
 				"CODE_SIGN_IDENTITY[sdk=*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.21;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HM6U8T94R3;
 				ENABLE_BITCODE = NO;
@@ -1266,8 +1315,9 @@
 					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
 				);
 				INFOPLIST_FILE = "Royal Resorts Guest/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1319,8 +1369,8 @@
 					"-framework",
 					"\"nanopb\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.royalresorts.guestservices;
-				PRODUCT_NAME = "Royal Resorts Guest Services";
+				PRODUCT_BUNDLE_IDENTIFIER = com.royalresortscaribbean.clbrservices;
+				PRODUCT_NAME = "Costa Linda";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -1344,6 +1394,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.21;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HM6U8T94R3;
 				ENABLE_BITCODE = NO;
@@ -1369,8 +1420,9 @@
 					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
 				);
 				INFOPLIST_FILE = "Royal Resorts Guest/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1422,8 +1474,8 @@
 					"-framework",
 					"\"nanopb\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.royalresorts.guestservices;
-				PRODUCT_NAME = "Royal Resorts Guest Services";
+				PRODUCT_BUNDLE_IDENTIFIER = com.royalresortscaribbean.clbrservices;
+				PRODUCT_NAME = "Costa Linda";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;

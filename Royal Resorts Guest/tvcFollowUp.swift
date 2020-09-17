@@ -69,6 +69,24 @@ open class tvcFollowUp: UITableViewCell {
             img.image = img.image!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             img.tintColor = colorWithHexString("00467f")
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            lblComent.textColor = colorWithHexString("2e3634")
+            lblAccCode.textColor = colorWithHexString("2e3634")
+            lblDate.textColor = colorWithHexString("2e3634")
+
+            if Status != "Completed"
+            {
+                lblStatus.textColor = colorWithHexString("929292")
+                img.image = UIImage(named:"ic_uncheck.png")!
+            }else{
+                lblStatus.textColor = colorWithHexString("129C21")
+                img.image = UIImage(named:"ic_check.png")!
+            }
+            
+            img.image = img.image!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+            img.tintColor = colorWithHexString("f7941e")
+            
         }
         
         lblComent.font = UIFont(name: "Helvetica", size: appDelegate.gblFont2 + appDelegate.gblDeviceFont3)

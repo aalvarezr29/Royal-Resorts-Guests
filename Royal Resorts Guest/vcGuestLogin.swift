@@ -68,8 +68,12 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
     var imgvwPass = UIImageView()
     var linevw2: UIView = UIView()
     var linevw3: UIView = UIView()
+    var linevw4: UIView = UIView()
     var imgBack = UIImage()
     var imgvwBack = UIImageView()
+    var lblmsjor: UILabel = UILabel()
+    var lblmsjnotreg: UILabel = UILabel()
+    var btnConfCode: UIButton = UIButton()
     
     @IBOutlet weak var bodyView: UIView!
     @IBOutlet weak var txtEmail: UITextField!
@@ -394,6 +398,169 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             btnRequest.addTarget(self, action: #selector(vcGuestLogin.clickRequest(_:)), for: UIControl.Event.touchUpInside)
             //self.view.addSubview(btnRequest)
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            //self.view.backgroundColor = colorWithHexString ("DDF4FF")
+            self.view.backgroundColor = UIColor.white
+            
+            imgBack = UIImage(named:"BackAqua.png")!
+            imgvwBack = UIImageView(image: imgBack)
+            imgvwBack.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height);
+            imgvwBack.alpha = 0.2
+            //self.view.addSubview(imgvwBack)
+            
+            bodyView.isHidden = true
+            lblMsj.isHidden = true
+            
+            img = UIImage(named:"Logo.png")!
+            imgvw = UIImageView(image: img)
+            if appDelegate.ynIPad == true{
+                imgvw.frame = CGRect(x: 0.3*width, y: 0.2*height, width: 0.4*width, height: 0.12*height);
+            }else{
+                imgvw.frame = CGRect(x: 0.3*width, y: 0.2*height, width: 0.4*width, height: 0.1*height);
+            }
+            //imgvw.alpha = 0.4
+            self.view.addSubview(imgvw)
+            
+            lblHeader.frame = CGRect(x: 0.05*width, y: 0.345*height, width: 0.9*width, height: 0.1*height);
+            lblHeader.textColor = colorWithHexString ("2e3634")
+            lblHeader.numberOfLines = 0
+            lblHeader.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+            lblHeader.text = NSLocalizedString("lblHeader",comment:"")
+            lblHeader.textAlignment = NSTextAlignment.center
+            lblHeader.alpha = 0.6
+            //self.view.addSubview(lblTitleHdr)
+            
+            imgMail = UIImage(named:"mail.png")!
+            imgvwMail = UIImageView(image: imgMail)
+            if appDelegate.ynIPad == true{
+                imgvwMail.frame = CGRect(x: 0.05*width, y: 0.454*height, width: 0.08*width, height: 0.06*height);
+            }else{
+                imgvwMail.frame = CGRect(x: 0.05*width, y: 0.454*height, width: 0.09*width, height: 0.06*height);
+            }
+            imgvwMail.tintColor = colorWithHexString ("2e3634")
+            imgvwMail.alpha = 0.6
+            self.view.addSubview(imgvwMail)
+            
+            txtEmail.frame = CGRect(x: 0.15*width, y: 0.471*height, width: 0.7*width, height: 0.04*height);
+            txtEmail.font = UIFont(name:"Helvetica", size:appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
+            txtEmail.attributedPlaceholder = NSAttributedString(string:NSLocalizedString("txtEmail",comment:""),
+                                                                attributes:[NSAttributedString.Key.foregroundColor: colorWithHexString ("2e3634")])
+            txtEmail.tintColor = colorWithHexString ("2e3634")
+            txtEmail.textColor = colorWithHexString ("2e3634")
+            txtEmail.backgroundColor = UIColor.clear
+            txtEmail.layer.borderColor = UIColor.clear.cgColor
+            txtEmail.layer.borderWidth = 0
+            txtEmail.borderStyle = UITextField.BorderStyle.none
+            txtEmail.delegate = self
+            self.view.addSubview(txtEmail)
+            
+            linevw1.frame = CGRect(x: 0.05*width, y: 0.51*height, width: 0.9*width, height: 1);
+            linevw1.backgroundColor = colorWithHexString ("2e3634")
+            linevw1.alpha = 0.6
+            self.view.addSubview(linevw1)
+            
+            imgPass = UIImage(named:"lock.png")!
+            imgvwPass = UIImageView(image: imgPass)
+            if appDelegate.ynIPad == true{
+                imgvwPass.frame = CGRect(x: 0.03*width, y: 0.515*height, width: 0.11*width, height: 0.06*height);
+            }else{
+                imgvwPass.frame = CGRect(x: 0.03*width, y: 0.515*height, width: 0.12*width, height: 0.06*height);
+            }
+            imgvwPass.tintColor = colorWithHexString ("2e3634")
+            imgvwPass.alpha = 0.6
+            self.view.addSubview(imgvwPass)
+            
+            txtPin.frame = CGRect(x: 0.15*width, y: 0.534*height, width: 0.7*width, height: 0.04*height);
+            txtPin.font = UIFont(name:"Helvetica", size:appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
+            txtPin.attributedPlaceholder = NSAttributedString(string:NSLocalizedString("txtPIN",comment:""),
+                                                              attributes:[NSAttributedString.Key.foregroundColor: colorWithHexString ("2e3634")])
+            txtPin.tintColor = colorWithHexString ("2e3634")
+            txtPin.textColor = colorWithHexString ("2e3634")
+            txtPin.backgroundColor = UIColor.clear
+            txtPin.layer.borderColor = UIColor.clear.cgColor
+            txtPin.layer.borderWidth = 0
+            txtPin.borderStyle = UITextField.BorderStyle.none
+            txtPin.delegate = self
+            self.view.addSubview(txtPin)
+            
+            linevw2.frame = CGRect(x: 0.05*width, y: 0.573*height, width: 0.9*width, height: 1);
+            linevw2.backgroundColor = colorWithHexString ("2e3634")
+            linevw2.alpha = 0.6
+            self.view.addSubview(linevw2)
+            
+            btnAply.frame = CGRect(x: 0.05*width, y: 0.587*height, width: 0.9*width, height: 0.04*height);
+            mas = NSMutableAttributedString(string: NSLocalizedString("btnAply",comment:""), attributes: [
+                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont4)!,
+                NSAttributedString.Key.foregroundColor: colorWithHexString ("2e3634")
+                ])
+            btnAply.setAttributedTitle(mas, for: UIControl.State())
+            //btnAply.layer.borderColor = colorWithHexString ("2e3634").cgColor
+            //btnAply.layer.borderWidth = 1
+            //btnAply.alpha = 0.5
+            btnAply.addTarget(self, action: #selector(vcGuestLogin.clickSignIn(_:)), for: UIControl.Event.touchUpInside)
+            btnAply.backgroundColor = colorWithHexString ("f7941e")
+            btnAply.layer.cornerRadius = 0
+            self.view.addSubview(btnAply)
+            
+            lblMsjPin.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.1*height);
+            lblMsjPin.textColor = colorWithHexString ("2e3634")
+            lblMsjPin.numberOfLines = 1
+            lblMsjPin.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+            lblMsjPin.text = NSLocalizedString("lblMsjPin",comment:"")
+            lblMsjPin.textAlignment = NSTextAlignment.center
+            lblMsjPin.alpha = 0.6
+            lblMsjPin.adjustsFontSizeToFitWidth = true
+            
+            linevw3.frame = CGRect(x: 0.38*width, y: 0.73*height, width: 0.24*width, height: 1);
+            linevw3.backgroundColor = colorWithHexString ("2e3634")
+            linevw3.alpha = 0.6
+            //self.view.addSubview(linevw3)
+            
+            btnRequest.frame = CGRect(x: 0.05*width, y: 0.7*height, width: 0.9*width, height: 0.04*height);
+            mas = NSMutableAttributedString(string: NSLocalizedString("btnRequest",comment:""), attributes: [
+                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)!,
+                NSAttributedString.Key.foregroundColor: colorWithHexString ("2e3634"),
+                NSAttributedString.Key.underlineStyle : 1
+                ])
+            btnRequest.setAttributedTitle(mas, for: UIControl.State())
+            btnRequest.alpha = 0.5
+            btnRequest.addTarget(self, action: #selector(vcGuestLogin.clickRequest(_:)), for: UIControl.Event.touchUpInside)
+            
+            lblmsjor.frame = CGRect(x: 0.05*width, y: 0.75*height, width: 0.9*width, height: 0.04*height);
+            lblmsjor.textColor = colorWithHexString ("2e3634")
+            lblmsjor.numberOfLines = 0
+            lblmsjor.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+            lblmsjor.text = NSLocalizedString("lblOr",comment:"")
+            lblmsjor.textAlignment = NSTextAlignment.center
+            lblmsjor.alpha = 0.6
+            self.view.addSubview(lblmsjor)
+            
+            lblmsjnotreg.frame = CGRect(x: 0.05*width, y: 0.8*height, width: 0.9*width, height: 0.04*height);
+            lblmsjnotreg.textColor = colorWithHexString ("2e3634")
+            lblmsjnotreg.numberOfLines = 0
+            lblmsjnotreg.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+            lblmsjnotreg.text = NSLocalizedString("lblmsjnotreg",comment:"")
+            lblmsjnotreg.textAlignment = NSTextAlignment.center
+            lblmsjnotreg.alpha = 0.6
+            self.view.addSubview(lblmsjnotreg)
+            
+            btnConfCode.frame = CGRect(x: 0.05*width, y: 0.83*height, width: 0.9*width, height: 0.04*height);
+            mas = NSMutableAttributedString(string: NSLocalizedString("btnConfCode",comment:""), attributes: [
+                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)!,
+                NSAttributedString.Key.foregroundColor: colorWithHexString ("2e3634"),
+                NSAttributedString.Key.underlineStyle : 1
+                ])
+            btnConfCode.setAttributedTitle(mas, for: UIControl.State())
+            btnConfCode.alpha = 0.5
+            btnConfCode.addTarget(self, action: #selector(vcGuestLogin.clickLogInConf(_:)), for: UIControl.Event.touchUpInside)
+            self.view.addSubview(btnConfCode)
+
+            linevw4.frame = CGRect(x: 0.38*width, y: 0.85*height, width: 0.3*width, height: 1);
+            linevw4.backgroundColor = colorWithHexString ("2e3634")
+            linevw4.alpha = 0.6
+            //self.view.addSubview(linevw4)
+            
         }
         
         Analytics.setScreenName("Login", screenClass: appDelegate.gstrAppName)
@@ -445,7 +612,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
         /*print("***Token***")
         print(self.appDelegate.gstrToken)*/
         
-        if ValidaEmail() && ValidaPin(){
+        if (ValidaEmail() && ValidaPin()) || self.appDelegate.ynLogInConf{
             
             SwiftLoader.setConfig(config)
             SwiftLoader.show(animated: true)
@@ -458,9 +625,20 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
                 if Reachability.isConnectedToNetwork(){
                     UIApplication.shared.isNetworkActivityIndicatorVisible = true
                     
-                    let service=RRRestaurantService(url: self.appDelegate.URLServiceLogin as String, host: self.appDelegate.HostLogin as String, userNameMobile:self.appDelegate.UserName, passwordMobile:self.appDelegate.Password);
-                    //tableItems = (service?.spGetLogin(by: "1", param1: self.appDelegate.gstrAppName, param2: self.txtEmail.text, param3: self.txtPin.text, sNotificationToken: self.appDelegate.gstrToken))!;
-                    tableItems = (service?.spGetLogin(by: "1", param1: self.appDelegate.gstrAppName, param2: self.txtEmail.text, param3: self.txtPin.text))!;
+                    if self.appDelegate.ynLogInConf{
+                        
+                        self.appDelegate.ynLogInConf = false
+                        
+                        let service=RRRestaurantService(url: self.appDelegate.URLServiceLogin as String, host: self.appDelegate.HostLogin as String, userNameMobile:self.appDelegate.UserName, passwordMobile:self.appDelegate.Password);
+                        tableItems = (service?.spGetPeople("1", peopleID: self.appDelegate.gstrLoginPeopleID))!;
+                        
+                    }else{
+                        
+                        let service=RRRestaurantService(url: self.appDelegate.URLServiceLogin as String, host: self.appDelegate.HostLogin as String, userNameMobile:self.appDelegate.UserName, passwordMobile:self.appDelegate.Password);
+                        //tableItems = (service?.spGetLogin(by: "1", param1: self.appDelegate.gstrAppName, param2: self.txtEmail.text, param3: self.txtPin.text, sNotificationToken: self.appDelegate.gstrToken))!;
+                        tableItems = (service?.spGetLogin(by: "1", param1: self.appDelegate.gstrAppName, param2: self.txtEmail.text, param3: self.txtPin.text))!;
+                        
+                    }
                     
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
@@ -507,7 +685,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
                                             for r in table.rows{
                                                 strPeople = ((r as AnyObject).getColumnByName("PersonaID").content as? String)!
                                                 
-                                                try db.executeUpdate("INSERT INTO tblLogin (Email, PIN, PersonalID, Gender, Lenguage, FullName, FirstName, LastName, Field1, Field2, Field3, Field4, Field5, LastStayUpdate, PeopleType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", withArgumentsIn: [((r as AnyObject).getColumnByName("Email").content as? String)!, "0", ((r as AnyObject).getColumnByName("PersonaID").content as? String)!, ((r as AnyObject).getColumnByName("Gender").content as? String)!, ((r as AnyObject).getColumnByName("DefaultLaguage").content as? String)!, ((r as AnyObject).getColumnByName("FullName").content as? String)!, ((r as AnyObject).getColumnByName("FirstName").content as? String)!, ((r as AnyObject).getColumnByName("LastName").content as? String)!, ((r as AnyObject).getColumnByName("Field1").content as? String)!, ((r as AnyObject).getColumnByName("Field2").content as? String)!, ((r as AnyObject).getColumnByName("Field3").content as? String)!, ((r as AnyObject).getColumnByName("Field4").content as? String)!, ((r as AnyObject).getColumnByName("Field5").content as? String)!, "", ((r as AnyObject).getColumnByName("PeopleType").content as? String)!])
+                                                try db.executeUpdate("INSERT INTO tblLogin (Email, PIN, PersonalID, Gender, Lenguage, FullName, FirstName, LastName, Field1, Field2, Field3, Field4, Field5, LastStayUpdate, PeopleType, Address, City, ZipCode, State, Country, ISOCode, Phone, URLcxPay, TokenCLBRPay) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", withArgumentsIn: [((r as AnyObject).getColumnByName("Email").content as? String)!, "0", ((r as AnyObject).getColumnByName("PersonaID").content as? String)!, ((r as AnyObject).getColumnByName("Gender").content as? String)!, ((r as AnyObject).getColumnByName("DefaultLaguage").content as? String)!, ((r as AnyObject).getColumnByName("FullName").content as? String)!, ((r as AnyObject).getColumnByName("FirstName").content as? String)!, ((r as AnyObject).getColumnByName("LastName").content as? String)!, ((r as AnyObject).getColumnByName("Field1").content as? String)!, ((r as AnyObject).getColumnByName("Field2").content as? String)!, ((r as AnyObject).getColumnByName("Field3").content as? String)!, ((r as AnyObject).getColumnByName("Field4").content as? String)!, ((r as AnyObject).getColumnByName("Field5").content as? String)!, "", ((r as AnyObject).getColumnByName("PeopleType").content as? String)!, ((r as AnyObject).getColumnByName("Address").content as? String)!, ((r as AnyObject).getColumnByName("City").content as? String)!, ((r as AnyObject).getColumnByName("ZipCode").content as? String)!, ((r as AnyObject).getColumnByName("State").content as? String)!, ((r as AnyObject).getColumnByName("Country").content as? String)!, ((r as AnyObject).getColumnByName("ISOCode").content as? String)!, ((r as AnyObject).getColumnByName("Phone").content as? String)!, ((r as AnyObject).getColumnByName("WebPageURLCLBRPay").content as? String)!, ((r as AnyObject).getColumnByName("TokenCLBRPay").content as? String)!])
                                                 
                                                     isInserted = true
                                                 
@@ -519,23 +697,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
                                             print(error)
                                         }
                                     }
-                                    
-                                    /*queueFM?.inTransaction() {
-                                        db, rollback in
-                                        
-                                        for r in table.rows{
-                                            
-                                            strPeople = ((r as AnyObject).getColumnByName("PersonaID").content as? String)!
-                                            
-                                            if db.executeUpdate("INSERT INTO tblLogin (Email, PIN, PersonalID, Gender, Lenguage, FullName, FirstName, LastName, Field1, Field2, Field3, Field4, Field5, LastStayUpdate, PeopleType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", withArgumentsIn: [((r as AnyObject).getColumnByName("Email").content as? String)!, "0", ((r as AnyObject).getColumnByName("PersonaID").content as? String)!, ((r as AnyObject).getColumnByName("Gender").content as? String)!, ((r as AnyObject).getColumnByName("DefaultLaguage").content as? String)!, ((r as AnyObject).getColumnByName("FullName").content as? String)!, ((r as AnyObject).getColumnByName("FirstName").content as? String)!, ((r as AnyObject).getColumnByName("LastName").content as? String)!, ((r as AnyObject).getColumnByName("Field1").content as? String)!, ((r as AnyObject).getColumnByName("Field2").content as? String)!, ((r as AnyObject).getColumnByName("Field3").content as? String)!, ((r as AnyObject).getColumnByName("Field4").content as? String)!, ((r as AnyObject).getColumnByName("Field5").content as? String)!, "", ((r as AnyObject).getColumnByName("PeopleType").content as? String)!]) {
 
-                                                rollback.initialize(to: true)
-                                            }else{
-                                                isInserted = true
-                                            }
-                                        }
-                                    }*/
-                                    
                                     if isInserted{
                                         self.tblLogin = [:]
                                         
@@ -559,6 +721,15 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
                                                     self.tblLogin["Field5"] = rs.string(forColumn: "Field5")!
                                                     self.tblLogin["LastStayUpdate"] = rs.string(forColumn: "LastStayUpdate")!
                                                     self.tblLogin["PeopleType"] = rs.string(forColumn: "PeopleType")!
+                                                    self.tblLogin["Address"] = rs.string(forColumn: "Address")!
+                                                    self.tblLogin["City"] = rs.string(forColumn: "City")!
+                                                    self.tblLogin["ZipCode"] = rs.string(forColumn: "ZipCode")!
+                                                    self.tblLogin["State"] = rs.string(forColumn: "State")!
+                                                    self.tblLogin["Country"] = rs.string(forColumn: "Country")!
+                                                    self.tblLogin["ISOCode"] = rs.string(forColumn: "ISOCode")!
+                                                    self.tblLogin["Phone"] = rs.string(forColumn: "Phone")!
+                                                    self.tblLogin["URLcxPay"] = rs.string(forColumn: "URLcxPay")!
+                                                    self.tblLogin["TokenCLBRPay"] = rs.string(forColumn: "TokenCLBRPay")!
                                                 }
                                             } else {
                                                 print("select failure: \(db.lastErrorMessage())")
@@ -574,6 +745,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
                                     }
 
                                 }
+                                
                                 
                             }
                             
@@ -670,19 +842,32 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
         
     }
     
+    @IBAction func clickLogInConf(_ sender: AnyObject) {
+        
+        let NextViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcConfLogin") as! vcConfLogin
+        self.navigationController?.pushViewController(NextViewController, animated: true)
+        
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if self.appDelegate.gstrLoginPeopleID != ""{
-            self.navigationController?.popViewController(animated: false)
-        }
-        
-        if (appDelegate.gblGoHome == true){
-            self.navigationController?.popViewController(animated: false)
+        if self.appDelegate.ynLogInConf{
+            clickSignIn(btnAply)
         }else{
-            if (appDelegate.gstrRequestEmail != ""){
-                txtEmail.text = appDelegate.gstrRequestEmail
+            
+            if self.appDelegate.gstrLoginPeopleID != ""{
+                self.navigationController?.popViewController(animated: false)
             }
+            
+            if (appDelegate.gblGoHome == true){
+                self.navigationController?.popViewController(animated: false)
+            }else{
+                if (appDelegate.gstrRequestEmail != ""){
+                    txtEmail.text = appDelegate.gstrRequestEmail
+                }
+            }
+            
         }
         
     }

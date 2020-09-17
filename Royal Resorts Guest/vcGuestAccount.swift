@@ -190,6 +190,8 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                 tableView.frame = CGRect(x: 0.05*width, y: 0.42*height, width: 0.9*width, height: 0.45*height);
             case "iPhone 5s":
                 tableView.frame = CGRect(x: 0.05*width, y: 0.42*height, width: 0.9*width, height: 0.45*height);
+            case "iPhone SE":
+                tableView.frame = CGRect(x: 0.05*width, y: 0.42*height, width: 0.9*width, height: 0.45*height);
             case "iPhone 6":
                 tableView.frame = CGRect(x: 0.05*width, y: 0.42*height, width: 0.9*width, height: 0.47*height);
             case "iPhone 6 Plus":
@@ -812,6 +814,210 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
             
             lblUnitText.text = Stays["UnitCode"]!
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            var imgBack = UIImage()
+            var imgvwBack = UIImageView()
+            
+            AccView.backgroundColor = UIColor.clear
+            
+            tableView.backgroundColor = UIColor.white
+            self.view.backgroundColor = UIColor.white
+            
+            imgBack = UIImage(named:"bg.png")!
+            imgvwBack = UIImageView(image: imgBack)
+            imgvwBack.frame = CGRect(x: 0.0, y: -0.05*height, width: width, height: height+(0.05*height));
+            imgvwBack.alpha = 0.3
+            imgvwBack.contentMode = UIView.ContentMode.scaleAspectFill
+            //self.view.addSubview(imgvwBack)
+            
+            var imgHdr = UIImage()
+            var imgHdrVw = UIImageView()
+            
+            imgHdr = UIImage(named:"Titlehdr.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.0, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.6
+            //AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.03*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.58
+            //AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.06*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.56
+            //AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.09*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.54
+            //AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.12*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.54
+            //AccView.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlefooter.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.15*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.52
+            //AccView.addSubview(imgHdrVw)
+            
+            var strFontTitle: String = "Futura-CondensedExtraBold"
+            var Color: UIColor = colorWithHexString("004c50")
+            
+            lblResort.textColor = Color
+            lblUnit.textColor = Color
+            lblRRBalance.textColor = Color
+            lblView.textColor = Color
+            lblDates.textColor = Color
+            lblPrimary.textColor = Color
+            lblResort.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblUnit.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblRRBalance.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblView.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblDates.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblPrimary.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            strFontTitle = "Futura-CondensedMedium"
+            Color = colorWithHexString("2e3634")
+            
+            lblResortText.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblUnitText.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblRRBalanceTxt.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblViewText.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblFullName.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblDatesText.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblResortText.textColor = Color
+            lblUnitText.textColor = Color
+            lblRRBalanceTxt.textColor = Color
+            lblViewText.textColor = Color
+            lblDatesText.textColor = Color
+            lblFullName.textColor = Color
+            
+            lblResort.textAlignment = NSTextAlignment.left
+            lblResort.frame = CGRect(x: 0.02*width, y: 0.00001*height, width: 0.2*width, height: 0.03*height);
+            lblUnit.textAlignment = NSTextAlignment.left
+            lblUnit.frame = CGRect(x: 0.02*width, y: 0.029*height, width: 0.2*width, height: 0.03*height);
+            lblView.textAlignment = NSTextAlignment.left
+            lblView.frame = CGRect(x: 0.02*width, y: 0.058*height, width: 0.2*width, height: 0.03*height);
+            lblDates.textAlignment = NSTextAlignment.left
+            lblDates.frame = CGRect(x: 0.02*width, y: 0.087*height, width: 0.2*width, height: 0.03*height);
+            lblPrimary.textAlignment = NSTextAlignment.left
+            lblPrimary.frame = CGRect(x: 0.02*width, y: 0.116*height, width: 0.2*width, height: 0.03*height);
+            lblRRBalance.textAlignment = NSTextAlignment.left
+            lblRRBalance.frame = CGRect(x: 0.02*width, y: 0.145*height, width: 0.2*width, height: 0.03*height);
+            
+            lblResortText.numberOfLines = 0
+            lblResortText.frame = CGRect(x: 0.24*width, y: 0.0001*height, width: 0.45*width, height: 0.03*height);
+            lblUnitText.numberOfLines = 0
+            lblUnitText.frame = CGRect(x: 0.24*width, y: 0.0297*height, width: 0.45*width, height: 0.03*height);
+            lblViewText.numberOfLines = 0
+            lblViewText.frame = CGRect(x: 0.24*width, y: 0.059*height, width: 0.45*width, height: 0.03*height);
+            lblDatesText.numberOfLines = 0
+            lblDatesText.frame = CGRect(x: 0.24*width, y: 0.0885*height, width: 0.6*width, height: 0.03*height);
+            lblFullName.numberOfLines = 0
+            lblFullName.frame = CGRect(x: 0.24*width, y: 0.117*height, width: 0.6*width, height: 0.03*height);
+            lblRRBalanceTxt.numberOfLines = 0
+            lblRRBalanceTxt.frame = CGRect(x: 0.24*width, y: 0.147*height, width: 0.6*width, height: 0.03*height);
+            lblStatus.frame = CGRect(x: 0.01*width, y: 0.03*height, width: 0.133*width, height: 0.03*height);
+            
+            AccView.addSubview(lblResort)
+            AccView.addSubview(lblUnit)
+            AccView.addSubview(lblView)
+            AccView.addSubview(lblDates)
+            AccView.addSubview(lblPrimary)
+            //AccView.addSubview(lblRRBalance)
+            
+            AccView.addSubview(lblResortText)
+            AccView.addSubview(lblUnitText)
+            AccView.addSubview(lblViewText)
+            AccView.addSubview(lblDatesText)
+            AccView.addSubview(lblFullName)
+            //AccView.addSubview(lblRRBalanceTxt)
+            
+            itemsView.backgroundColor = UIColor.clear
+            
+            itemsView.frame = CGRect(x: 0.0, y: 44 + 0.001*height, width: width, height: 0.33*height);
+            
+            self.view.addSubview(itemsView)
+            
+            AccView.frame = CGRect(x: 0.05*width, y: 0.1*height, width: 0.9*width, height: 0.17*height);
+            
+            self.view.addSubview(AccView)
+            
+            lblStatus.textAlignment = NSTextAlignment.center
+            lblStatus.backgroundColor = UIColor.clear
+            lblStatus.text = Status
+            lblStatus.adjustsFontSizeToFitWidth = true
+            
+            strFontTitle = "MarkerFelt-Wide"
+            Color = colorWithHexString("2e3634")
+            
+            lblStatus.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblStatus.textColor = Color
+            
+            LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: 0.1562*self.width, height: 0.0881*self.height);
+            LogOutView.layer.cornerRadius = 25
+            LogOutView.clipsToBounds = true
+            LogOutView.layer.borderWidth = 3
+            LogOutView.layer.borderColor = colorWithHexString("c7e6e2").cgColor
+            LogOutView.backgroundColor = colorWithHexString("ffffff")
+            LogOutView.addSubview(lblStatus)
+            self.view.addSubview(LogOutView)
+            
+            tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+            
+            strFontTitle = "Futura-MediumItalic"
+            Color = colorWithHexString("888888")
+            
+            hdrlabel1 = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 0.9*width, height: 0.06*height));
+            hdrlabel1.textAlignment = NSTextAlignment.left;
+            hdrlabel1.numberOfLines = 0;
+            hdrlabel1.font = UIFont(name: strFontTitle, size: appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            hdrlabel1.textColor = Color
+            
+            strFontTitle = "Futura-CondensedMedium"
+            
+            hdrlabel.frame = CGRect(x: 0.0, y: 0.0, width: 0.9*width, height: 0.12*height)
+            
+            hdrlabel2 = UILabel(frame: CGRect(x: 0.0, y: 0.06*height, width: 0.9*width, height: 0.06*height));
+            hdrlabel2.textAlignment = NSTextAlignment.left;
+            hdrlabel2.numberOfLines = 0;
+            hdrlabel2.font = UIFont(name: strFontTitle, size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            hdrlabel2.font = UIFont.boldSystemFont(ofSize: appDelegate.gblFont5 + appDelegate.gblDeviceFont3);
+            hdrlabel2.textColor = Color
+            
+            hdrlabel1.text = NSLocalizedString("lblPartialEarly",comment:"")
+            
+            hdrlabel.addSubview(hdrlabel1)
+            hdrlabel.addSubview(hdrlabel2)
+            
+            btnApply.frame = CGRect(x: 0.628*width, y: 0.3*height, width: (CGFloat(length)*0.025)*width, height: 0.04*height);
+            btnCheckOutSlip.frame = CGRect(x: 0.7*width, y: 0.3*height, width: 0.25*width, height: 0.04*height);
+            
+            self.btnCheckOutSlip.setTitleColor(self.colorWithHexString("2e3634"), for: UIControl.State())
+            //self.btnCheckOutSlip.layer.borderWidth = 4
+            //self.btnCheckOutSlip.layer.borderColor = self.colorWithHexString("7c6a56").cgColor
+            self.btnCheckOutSlip.backgroundColor = self.colorWithHexString("f7941e")
+            
+            lblUnitText.text = Stays["UnitCode"]!
+            //lblRRBalanceTxt.text = Stays["RRRBalance"]!
+            
+            btnCheckOutSlip.isHidden = true
+            
         }
         
         //DeleteAccountData()
@@ -905,7 +1111,7 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                     }
                 }
                 
-            }
+            }else{
 
             queueFM?.inDatabase() {
                 db in
@@ -916,6 +1122,8 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                     }
                 } else {
                     print("select failure: \(db.lastErrorMessage())")
+                }
+                
                 }
                 
             }
@@ -1119,7 +1327,8 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                         var strInPostCheckOutProcess: String = ""
                         
                         strInPostCheckOutProcess = rowResPostCheckOut.getColumnByName("ynInPostCheckOutProcess").content as! String
-                        
+                        self.appDelegate.strCLBRTokenPay = rowResPostCheckOut.getColumnByName("CLBRTokenPay").content as! String
+                            
                         if strInPostCheckOutProcess == "False"{
                             self.ynInPostCheckOutProcess = false
                         }else{
@@ -1242,7 +1451,11 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                             
                             if let rs = db.executeQuery("SELECT p.* FROM tblPerson p where PeopleFdeskID = ?", withArgumentsIn: [self.appDelegate.gstrPrimaryPeopleFdeskID]){
                                 while rs.next() {
-                                    self.lblRRBalanceTxt.text = rs.string(forColumn: "RRRBalance")!
+                                    
+                                    if let strRRRBalance = rs.string(forColumn: "RRRBalance") {
+                                        self.lblRRBalanceTxt.text = rs.string(forColumn: "RRRBalance")!
+                                    }
+                                    
                                 }
                             } else {
                                 print("select failure: \(db.lastErrorMessage())")
@@ -1725,6 +1938,13 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                                         self.btnApply.layer.borderColor = self.colorWithHexString("a18015").cgColor
                                         self.btnApply.backgroundColor = self.colorWithHexString("c39b1a")
 
+                                    }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+
+                                        self.btnApply.setTitleColor(self.colorWithHexString("2e3634"), for: UIControl.State())
+                                        //self.btnApply.layer.borderWidth = 4
+                                        //self.btnApply.layer.borderColor = self.colorWithHexString("7c6a56").cgColor
+                                        self.btnApply.backgroundColor = self.colorWithHexString("f7941e")
+                                        
                                     }
 
                                     self.btnApply.frame = CGRect(x: 0.65*self.width, y: 0.3*self.height, width: 0.3*self.width, height: 0.04*self.height);
@@ -1738,6 +1958,8 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                                     }
                                     
                                     self.tableView.tableHeaderView = self.hdrlabel
+                                    
+                                    //self.Stays["ynPostCheckout"] = "0"
                                     
                                     if (self.Stays["ynPostCheckout"]==nil){
                                         self.btnApply.isEnabled = true
@@ -1800,6 +2022,13 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                                     self.btnApply.layer.borderColor = self.colorWithHexString("a18015").cgColor
                                     self.btnApply.backgroundColor = self.colorWithHexString("c39b1a")
                                     
+                                }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+
+                                    self.btnApply.setTitleColor(self.colorWithHexString("2e3634"), for: UIControl.State())
+                                    //self.btnApply.layer.borderWidth = 4
+                                    //self.btnApply.layer.borderColor = self.colorWithHexString("7c6a56").cgColor
+                                    self.btnApply.backgroundColor = self.colorWithHexString("f7941e")
+                                    
                                 }
                                 
                                 if (self.fAmount>0.1){
@@ -1851,6 +2080,10 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                                     self.segmentedControl.verticalDividerColor = self.colorWithHexString("94cce5")
                                     self.segmentedControl.frame = CGRect(x: 0.05*self.width, y: 0.23*self.height, width: 0.9*self.width, height: 0.04*self.height);
                                     self.segmentedControl.segmentEdgeInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10);
+                                }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+                                    self.segmentedControl.verticalDividerColor = self.colorWithHexString("2e3634")
+                                    self.segmentedControl.frame = CGRect(x: 0.05*self.width, y: 0.23*self.height, width: 0.9*self.width, height: 0.04*self.height);
+                                    self.segmentedControl.segmentEdgeInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10);
                                 }
                             
                                 self.segmentedControl.verticalDividerWidth = 0.1
@@ -1882,6 +2115,7 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                             self.tableView.reloadData()
                             
                         } else{
+                            
                             if (self.Status=="INHOUSE")&&(self.fTotalAmount<=0.01){
                                 if Reachability.isConnectedToNetwork(){
                                     if (self.fTotalAmount <= 0.01){
@@ -1916,6 +2150,13 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                                             self.btnApply.layer.borderWidth = 4
                                             self.btnApply.layer.borderColor = self.colorWithHexString("a18015").cgColor
                                             self.btnApply.backgroundColor = self.colorWithHexString("c39b1a")
+                                            
+                                        }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+
+                                            self.btnApply.setTitleColor(self.colorWithHexString("2e3634"), for: UIControl.State())
+                                            //self.btnApply.layer.borderWidth = 4
+                                            //self.btnApply.layer.borderColor = self.colorWithHexString("7c6a56").cgColor
+                                            self.btnApply.backgroundColor = self.colorWithHexString("f7941e")
                                             
                                         }
                                         
@@ -2037,12 +2278,12 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                          let DepartureDate = moment(self.Stays["DepartureDate"]!)
                          
                             if self.appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
-                                /*if endDate > DepartureDate{
+                                if endDate > DepartureDate{
                                     self.btnApply.isHidden = true
                                     self.btnCheckOutSlip.isHidden = true
                                     self.btnPayment.isHidden = true
                                     self.lblAmount.isHidden = true
-                                }*/
+                                }
                             }else if self.appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
                                 
                                 if endDate > DepartureDate{
@@ -2061,12 +2302,22 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                                     self.lblAmount.isHidden = true
                                 }
                                 
+                            }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+                                
+                                /*if endDate > DepartureDate{
+                                    self.btnApply.isHidden = true
+                                    self.btnCheckOutSlip.isHidden = true
+                                    self.btnPayment.isHidden = true
+                                    self.lblAmount.isHidden = true
+                                }*/
+                                
                             }
 
                         }
                         
                         SwiftLoader.hide()
                         
+                        self.tableView.reloadData()
                         self.ViewItem.rightBarButtonItem?.isEnabled = true
                         self.ViewItem.leftBarButtonItem?.isEnabled = true
                         self.btnApply.isEnabled = true
@@ -2478,6 +2729,14 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                             self.btnApply.layer.borderWidth = 4
                             self.btnApply.layer.borderColor = self.colorWithHexString("a18015").cgColor
                             self.btnApply.backgroundColor = self.colorWithHexString("c39b1a")
+                        }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+
+                            self.btnApply.setTitleColor(self.colorWithHexString("2e3634"), for: UIControl.State())
+                            //self.btnApply.layer.borderWidth = 4
+                            //self.btnApply.layer.borderColor = self.colorWithHexString("7c6a56").cgColor
+                            self.btnApply.backgroundColor = self.colorWithHexString("f7941e")
+                            
+                            
                         }
                         
                         self.btnApply.frame = CGRect(x: 0.65*self.width, y: 0.3*self.height, width: 0.3*self.width, height: 0.04*self.height);
@@ -2486,6 +2745,8 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                         self.hdrlabel2.text = NSLocalizedString("lblTotalAmount",comment:"") + String(format: "%.2f", (String(format: "%.2f0", (self.fTotalAmount.description as NSString).floatValue) as NSString).floatValue) + " " + self.Stays["fkCurrencyID"]!;
                         
                         self.tableView.tableHeaderView = self.hdrlabel
+                        
+                        //self.Stays["ynPostCheckout"] = "0"
                         
                         if (self.Stays["ynPostCheckout"]==nil){
                             self.btnApply.isEnabled = true
@@ -2548,6 +2809,14 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                         self.btnApply.layer.borderWidth = 4
                         self.btnApply.layer.borderColor = self.colorWithHexString("a18015").cgColor
                         self.btnApply.backgroundColor = self.colorWithHexString("c39b1a")
+                    }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+
+                        self.btnApply.setTitleColor(self.colorWithHexString("2e3634"), for: UIControl.State())
+                        //self.btnApply.layer.borderWidth = 4
+                        //self.btnApply.layer.borderColor = self.colorWithHexString("7c6a56").cgColor
+                        self.btnApply.backgroundColor = self.colorWithHexString("f7941e")
+                        
+                        
                     }
                     
                     if (self.fAmount>0.1){
@@ -2595,7 +2864,12 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                     self.segmentedControl.verticalDividerColor = self.colorWithHexString("94cce5")
                     self.segmentedControl.frame = CGRect(x: 0.05*self.width, y: 0.23*self.height, width: 0.9*self.width, height: 0.04*self.height);
                     self.segmentedControl.segmentEdgeInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10);
+                }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+                    self.segmentedControl.verticalDividerColor = self.colorWithHexString("2e3634")
+                    self.segmentedControl.frame = CGRect(x: 0.05*self.width, y: 0.23*self.height, width: 0.9*self.width, height: 0.04*self.height);
+                    self.segmentedControl.segmentEdgeInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10);
                 }
+                
                 self.segmentedControl.verticalDividerWidth = 0.1
                 self.segmentedControl.segmentWidthStyle = HMSegmentedControlSegmentWidthStyleDynamic
                 self.segmentedControl.fontDevice = self.appDelegate.gblFont5 + self.appDelegate.gblDeviceFont4
@@ -2660,6 +2934,13 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                                 self.btnApply.layer.borderWidth = 4
                                 self.btnApply.layer.borderColor = self.colorWithHexString("a18015").cgColor
                                 self.btnApply.backgroundColor = self.colorWithHexString("c39b1a")
+                            }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+
+                                self.btnApply.setTitleColor(self.colorWithHexString("2e3634"), for: UIControl.State())
+                                //self.btnApply.layer.borderWidth = 4
+                                //self.btnApply.layer.borderColor = self.colorWithHexString("7c6a56").cgColor
+                                self.btnApply.backgroundColor = self.colorWithHexString("f7941e")
+
                             }
                             
                             self.btnApply.frame = CGRect(x: 0.65*self.width, y: 0.3*self.height, width: 0.3*self.width, height: 0.04*self.height);
@@ -2667,6 +2948,8 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                             self.hdrlabel2.text = NSLocalizedString("lblTotalAmount",comment:"") + String(format: "%.2f", (String(format: "%.2f0", (self.fTotalAmount.description as NSString).floatValue) as NSString).floatValue) + " " + self.Stays["fkCurrencyID"]!;
                             self.tableView.tableHeaderView = self.hdrlabel
                             self.lblAmount.isHidden = true
+                            
+                            //self.Stays["ynPostCheckout"] = "0"
                             
                             if (self.Stays["ynPostCheckout"]==nil){
                                 self.btnApply.isEnabled = true
@@ -2710,7 +2993,7 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
             if self.ynClickPay
             {
                 self.ynClickPay = false
-                
+
                 if (self.fTotalAmount<=0.01){
                     
                     self.appDelegate.gblCheckOutVw = true
@@ -2750,12 +3033,12 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
             let DepartureDate = moment(self.Stays["DepartureDate"]!)
             
             if self.appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
-                /*if endDate > DepartureDate{
+                if endDate > DepartureDate{
                     self.btnApply.isHidden = true
                     self.btnCheckOutSlip.isHidden = true
                     self.btnPayment.isHidden = true
                     self.lblAmount.isHidden = true
-                }*/
+                }
             }else if self.appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
                 
                 if endDate > DepartureDate{
@@ -2766,6 +3049,15 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                 }
                 
             }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
+                
+                if endDate > DepartureDate{
+                    self.btnApply.isHidden = true
+                    self.btnCheckOutSlip.isHidden = true
+                    self.btnPayment.isHidden = true
+                    self.lblAmount.isHidden = true
+                }
+                
+            }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
                 
                 if endDate > DepartureDate{
                     self.btnApply.isHidden = true
@@ -2836,7 +3128,9 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
         if !Reachability.isConnectedToNetwork(){
             RKDropdownAlert.title(NSLocalizedString("MsgError6",comment:""), backgroundColor: self.colorWithHexString ("5C9FCC"), textColor: UIColor.black)
         }else{
-        if (appDelegate.gblPay == true) || (self.appDelegate.gblCheckOutVw == true) {
+        if (appDelegate.gblPay == true) || (self.appDelegate.gblCheckOutVw == true) || (appDelegate.yncxPayClose == true) {
+            
+            ynForceDelete = true
             ynActualiza = true
             recargarTablas()
 
@@ -2887,7 +3181,13 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
         let title: UILabel = UILabel()
         title.backgroundColor = UIColor.clear;
         title.textAlignment = NSTextAlignment.left;
-        title.textColor = UIColor.gray;
+        
+        if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            title.textColor = colorWithHexString("888888")
+        }else{
+            title.textColor = UIColor.gray;
+        }
+        
         title.font = UIFont(name:"HelveticaNeue-Light", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont4)
         title.numberOfLines = 0;
         
@@ -3053,19 +3353,72 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
             
             lastIndex = IndexPath.init()
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            cell.backgroundColor = UIColor.clear
+            
+
+            if (fAmount > 0.1)
+            {
+                cell.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("4daba0"))
+            }else{
+                cell.accessoryView = STKColorAccessoryView.init(color: UIColor.clear)
+            }
+
+            /*if indexPath.row == 0{
+                imgCell = UIImage(named:"tblacchdr.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.backgroundView = imgvwCell
+                
+                imgCell = UIImage(named:"tblacchdrSel.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.selectedBackgroundView = imgvwCell
+            }else if (DateAccountInfo[indexPath.section].count-1) == indexPath.row{
+                imgCell = UIImage(named:"tblaccfooter.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.backgroundView = imgvwCell
+                
+                imgCell = UIImage(named:"tblaccfooterSel.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.selectedBackgroundView = imgvwCell
+            } else {
+                imgCell = UIImage(named:"tblaccrow.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.backgroundView = imgvwCell
+                
+                imgCell = UIImage(named:"tblaccrowSel.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.selectedBackgroundView = imgvwCell
+            }
+            
+            if (DateAccountInfo[indexPath.section].count) == 1
+            {
+                imgCell = UIImage(named:"tblaccrowsingle.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.backgroundView = imgvwCell
+                
+                imgCell = UIImage(named:"tblaccrowsingleSel.png")!
+                imgvwCell = UIImageView(image: imgCell)
+                cell.selectedBackgroundView = imgvwCell
+                
+            }*/
+            
+            lastIndex = IndexPath.init()
+            
         }
 
         cell.frame = CGRect(x: 0, y: 0, width: 0.9*width, height: 0.05*height)
         
         cell.SetValues(Voucher: String(DateAccountInfo[indexPath.section][indexPath.row]["Voucher"]!), Place: String(DateAccountInfo[indexPath.section][indexPath.row]["PlaceDesc"]!), Amount: str, width: width, height: height)
 
-        if (fAmount > 0.1)
-        {
-            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-        }else{
-            cell.accessoryType = UITableViewCell.AccessoryType.none
-        }
-        
+
+            if (fAmount > 0.1)
+            {
+                cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+            }else{
+                cell.accessoryType = UITableViewCell.AccessoryType.none
+            }
+
         return cell
     }
     
@@ -3084,6 +3437,10 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                 }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
   
                     tableView.cellForRow(at: indexPath)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("00467f"))
+                    
+                }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+                
+                    tableView.cellForRow(at: indexPath)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("2e3634"))
                 }
                 
                 let tercerViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcGuestAccountTrxViewController") as! vcGuestAccountTrxViewController
@@ -3104,6 +3461,9 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                 }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
                     
                     tableView.cellForRow(at: indexPath)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("94cce5"))
+                }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+                    
+                    tableView.cellForRow(at: indexPath)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("2e3634"))
                 }
                 
             }else{
@@ -3379,6 +3739,13 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                     self.btnApply.layer.borderWidth = 4
                     self.btnApply.layer.borderColor = self.colorWithHexString("a18015").cgColor
                     self.btnApply.backgroundColor = self.colorWithHexString("c39b1a")
+                }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+                    
+                    self.btnApply.setTitleColor(self.colorWithHexString("2e3634"), for: UIControl.State())
+                    //self.btnApply.layer.borderWidth = 4
+                    //self.btnApply.layer.borderColor = self.colorWithHexString("a18015").cgColor
+                    self.btnApply.backgroundColor = self.colorWithHexString("f7941e")
+                    
                 }
                 
                 btnApply.frame = CGRect(x: 0.65*width, y: 0.3*height, width: 0.3*width, height: 0.04*height);
@@ -3519,13 +3886,23 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                         self.btnApply.layer.borderWidth = 4
                         self.btnApply.layer.borderColor = self.colorWithHexString("a18015").cgColor
                         self.btnApply.backgroundColor = self.colorWithHexString("c39b1a")
+                    }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+                        
+                        self.btnApply.setTitleColor(self.colorWithHexString("2e3634"), for: UIControl.State())
+                        //self.btnApply.layer.borderWidth = 4
+                        //self.btnApply.layer.borderColor = self.colorWithHexString("a18015").cgColor
+                        self.btnApply.backgroundColor = self.colorWithHexString("f7941e")
+                        
                     }
+                    
                     self.btnApply.frame = CGRect(x: 0.65*self.width, y: 0.3*self.height, width: 0.3*self.width, height: 0.04*self.height);
                     self.lblAmount.text = "0.00 USD"
                     self.lblAmount.isHidden = true
                     self.hdrlabel2.text = NSLocalizedString("lblTotalAmount",comment:"") + String(format: "%.2f", (String(format: "%.2f0", (self.fTotalAmount.description as NSString).floatValue) as NSString).floatValue) + " " + self.Stays["fkCurrencyID"]!;
                     
                     self.tableView.tableHeaderView = self.hdrlabel
+                    
+                    //self.Stays["ynPostCheckout"] = "0"
                     
                     if (self.Stays["ynPostCheckout"]==nil){
                         self.btnApply.isEnabled = true
@@ -3665,6 +4042,10 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                     }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
 
                         self.btnApply.setTitleColor(self.colorWithHexString("ffffff"), for: UIControl.State())
+
+                    }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+
+                        self.btnApply.setTitleColor(self.colorWithHexString("2e3634"), for: UIControl.State())
 
                     }
                     
@@ -3821,7 +4202,15 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                         self.btnApply.layer.borderWidth = 4
                         self.btnApply.layer.borderColor = self.colorWithHexString("a18015").cgColor
                         self.btnApply.backgroundColor = self.colorWithHexString("c39b1a")
+                    }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+
+                        self.btnApply.setTitleColor(self.colorWithHexString("2e3634"), for: UIControl.State())
+                        //self.btnApply.layer.borderWidth = 4
+                        //self.btnApply.layer.borderColor = self.colorWithHexString("a18015").cgColor
+                        self.btnApply.backgroundColor = self.colorWithHexString("f7941e")
+                        
                     }
+                    
                     btnApply.frame = CGRect(x: 0.65*width, y: 0.3*height, width: 0.3*width, height: 0.04*height);
                     lblAmount.text = "0.00 USD"
                     self.lblAmount.isHidden = true
@@ -3840,28 +4229,7 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                     self.tableView.reloadData()
                 
                 }else{
-            
-                    /*tblAccountInfo = nil
-                    DateAccountInfo = nil
-                    strDinamicMonto = NSLocalizedString("Pay",comment:"") + " 0.00"
-                    length = strDinamicMonto.characters.count
-                    btnApply.frame = CGRectMake(0.628*width, 0.25*height, (CGFloat(length)*0.025)*width, 0.04*height);
-                    btnApply.setTitle(NSLocalizedString("Pay",comment:"") + " 0.00", forState: UIControlState.Normal)
-                    btnApply.enabled = true
-                    btnApply.setTitleColor(colorWithHexString("0080FF"), forState: UIControlState.Normal)
-                    lblAmount.text = "0.00 USD"
-                    CountGroupTrx = 0
-                    self.lblAmount.hidden = true
-                    hdrlabel2.text = NSLocalizedString("lblPersonAmount",comment:"") + strFullName + ":\n 0.00" ;
-                
-                    tableView.tableHeaderView = hdrlabel
-                    
-                    if ((Status=="OUT")){
-                        self.btnApply.enabled = false
-                    }else{
-                        self.btnApply.enabled = true
-                    }*/
-                    
+
                     if (Status=="OUT")&&(fTotalAmount<=0.01){
                         self.btnApply.setTitle(NSLocalizedString("Checkout",comment:""), for: UIControl.State())
                         self.btnApply.titleLabel?.font = UIFont(name: "Helvetica", size: self.appDelegate.gblFont5 + self.appDelegate.gblDeviceFont4)
@@ -3894,7 +4262,15 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                             self.btnApply.layer.borderWidth = 4
                             self.btnApply.layer.borderColor = self.colorWithHexString("a18015").cgColor
                             self.btnApply.backgroundColor = self.colorWithHexString("c39b1a")
+                        }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+
+                            self.btnApply.setTitleColor(self.colorWithHexString("2e3634"), for: UIControl.State())
+                            //self.btnApply.layer.borderWidth = 4
+                            //self.btnApply.layer.borderColor = self.colorWithHexString("a18015").cgColor
+                            self.btnApply.backgroundColor = self.colorWithHexString("f7941e")
+                            
                         }
+                        
                         self.btnApply.frame = CGRect(x: 0.65*width, y: 0.3*height, width: 0.3*width, height: 0.04*height);
                         self.lblAmount.text = "0.00 USD"
                         self.lblAmount.isHidden = true
@@ -3910,6 +4286,8 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                         CountGroupTrx = 0
                         
                         self.tableView.tableHeaderView = self.hdrlabel
+                        
+                        //self.Stays["ynPostCheckout"] = "0"
                         
                         if (self.Stays["ynPostCheckout"]==nil){
                             self.btnApply.isEnabled = true
@@ -3957,6 +4335,10 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                             
                             self.btnApply.setTitleColor(self.colorWithHexString("ffffff"), for: UIControl.State())
                             
+                        }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+                            
+                            self.btnApply.setTitleColor(self.colorWithHexString("2e3634"), for: UIControl.State())
+                            
                         }
                         lblAmount.text = "0.00 " + self.Stays["fkCurrencyID"]!
                         CountGroupTrx = 0
@@ -3994,12 +4376,12 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
         let DepartureDate = moment(self.Stays["DepartureDate"]!)
         
         if self.appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
-            /*if endDate > DepartureDate{
+            if endDate > DepartureDate{
                 self.btnApply.isHidden = true
                 self.btnCheckOutSlip.isHidden = true
                 self.btnPayment.isHidden = true
                 self.lblAmount.isHidden = true
-            }*/
+            }
         }else if self.appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
             
             if endDate > DepartureDate{
@@ -4017,6 +4399,14 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                 self.btnPayment.isHidden = true
                 self.lblAmount.isHidden = true
             }
+        }else if self.appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            /*if endDate > DepartureDate{
+                self.btnApply.isHidden = true
+                self.btnCheckOutSlip.isHidden = true
+                self.btnPayment.isHidden = true
+                self.lblAmount.isHidden = true
+            }*/
         }
 
     

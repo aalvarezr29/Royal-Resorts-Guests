@@ -139,6 +139,7 @@ class vcGuestPeopleEdit: UIViewController, UITextFieldDelegate {
         lblPrimaryPeople.frame = CGRect(x: 0.05*width, y: 0.31*height, width: 0.3*width, height: 0.04*height);
         lblPrimaryPeople.textAlignment = NSTextAlignment.left
         edtPrimary.frame = CGRect(x: 0.35*width, y: 0.31*height, width: 0.1*width, height: 0.04*height);
+        dtExpectPicker.frame = CGRect(x: 0.05*width, y: 0.38*height, width: 0.33*width, height: 0.1*height);
         
         //Titulo de la vista
         ViewItem.title = NSLocalizedString("lblGuestInfo",comment:"")
@@ -165,25 +166,6 @@ class vcGuestPeopleEdit: UIViewController, UITextFieldDelegate {
         
         edtAge.keyboardType = .numberPad
         edtPhoneNo.keyboardType = .numberPad
-
-        ContentView.addSubview(edtFName)
-        ContentView.addSubview(edtMName)
-        ContentView.addSubview(edtLName)
-        ContentView.addSubview(edtSLName)
-        ContentView.addSubview(edtAge)
-        ContentView.addSubview(edtEmail)
-        ContentView.addSubview(edtPhoneNo)
-        ContentView.addSubview(lblexpected)
-        
-        dtExpectPicker.frame = CGRect(x: 0.05*width, y: 0.38*height, width: 0.33*width, height: 0.1*height);
-        ContentView.addSubview(dtExpectPicker)
-        
-        /*let dateFormatterdp: DateFormatter = DateFormatter()
-        dateFormatterdp.dateFormat = "MM/dd/yyyy h:mm:ss a"
-        dateFormatterdp.timeZone = TimeZone(identifier: "UTC")
-        dateFormatterdp.locale = Locale(identifier: "en_US")
-        dateFormatterdp.timeZone = TimeZone(secondsFromGMT: 0)
-        dtExpectedArrivalDate = dateFormatterdp.date(from: dtExpectedArrival)!*/
         
         let dateFormatterdp: DateFormatter = DateFormatter()
         dateFormatterdp.dateFormat = "MM/dd/yyyy h:mm:ss a"
@@ -289,11 +271,7 @@ class vcGuestPeopleEdit: UIViewController, UITextFieldDelegate {
         self.scrollView.setContentOffset(CGPoint.zero, animated: true)
         
         ViewItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(vcGuestPeopleEdit.clickSave(_:)))
-        /*self.btnApply.setTitleColor(self.colorWithHexString("ffffff"), forState: UIControlState.Normal)
-        self.btnApply.layer.borderWidth = 4
-        self.btnApply.layer.borderColor = self.colorWithHexString("a18015").CGColor
-        self.btnApply.backgroundColor = self.colorWithHexString("c39b1a")*/
-        
+
         if ynPrimary == "True"{
             dtExpectPicker.isEnabled = true
         } else {
@@ -374,9 +352,7 @@ class vcGuestPeopleEdit: UIViewController, UITextFieldDelegate {
             
             scrollView.backgroundColor = UIColor.clear
             scrollView.frame = CGRect(x: 0.0, y: 0.08*height, width: width, height: 0.8*height);
-            
-            //self.view.backgroundColor = colorWithHexString ("DDF4FF")
-            //ContentView.backgroundColor = colorWithHexString ("DDF4FF")
+
             self.view.backgroundColor = UIColor.white
             ContentView.backgroundColor = UIColor.white
             
@@ -386,13 +362,6 @@ class vcGuestPeopleEdit: UIViewController, UITextFieldDelegate {
             imgvwBack.alpha = 0.3
             imgvwBack.contentMode = UIView.ContentMode.scaleAspectFill
             //self.view.addSubview(imgvwBack)
-            
-            ContentView.addSubview(edtFName)
-            ContentView.addSubview(edtMName)
-            ContentView.addSubview(edtLName)
-            ContentView.addSubview(edtSLName)
-            ContentView.addSubview(edtAge)
-            ContentView.addSubview(edtEmail)
             
             //Si FirstName no es vacio se esta editando
             if (FirstName != ""){
@@ -405,9 +374,6 @@ class vcGuestPeopleEdit: UIViewController, UITextFieldDelegate {
                 edtPhoneNo.text = PhoneNo
                 
                 if ynPrimary == "True"{
-                    //edtPrimary.setOn(true, animated: true)
-                    //Si es Primary people, se desabilitara para q no se pueda cambiar
-                    //edtPrimary.enabled = false
                     runkeeperSwitchPrim.isEnabled = false
                     runkeeperSwitchPrim.setSelectedIndex(1, animated: false)
                     runkeeperSwitchPrim.backgroundColor = self.colorWithHexString ("C7C7CD")
@@ -480,13 +446,6 @@ class vcGuestPeopleEdit: UIViewController, UITextFieldDelegate {
             imgvwBack.alpha = 0.3
             imgvwBack.contentMode = UIView.ContentMode.scaleAspectFill
             //self.view.addSubview(imgvwBack)
-
-            ContentView.addSubview(edtFName)
-            ContentView.addSubview(edtMName)
-            ContentView.addSubview(edtLName)
-            ContentView.addSubview(edtSLName)
-            ContentView.addSubview(edtAge)
-            ContentView.addSubview(edtEmail)
             
             //Si FirstName no es vacio se esta editando
             if (FirstName != ""){
@@ -555,7 +514,101 @@ class vcGuestPeopleEdit: UIViewController, UITextFieldDelegate {
             
             edtFName.canBecomeFirstResponder
 
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            var imgBack = UIImage()
+            var imgvwBack = UIImageView()
+            
+            scrollView.backgroundColor = UIColor.clear
+            scrollView.frame = CGRect(x: 0.0, y: 0.08*height, width: width, height: 0.8*height);
+            
+            self.view.backgroundColor = UIColor.white
+            ContentView.backgroundColor = UIColor.white
+            edtFName.textColor = colorWithHexString("2e3634")
+            edtMName.textColor = colorWithHexString("2e3634")
+            edtLName.textColor = colorWithHexString("2e3634")
+            edtSLName.textColor = colorWithHexString("2e3634")
+            edtAge.textColor = colorWithHexString("2e3634")
+            edtEmail.textColor = colorWithHexString("2e3634")
+            lblPrimaryPeople.textColor = colorWithHexString("2e3634")
+            edtPhoneNo.textColor = colorWithHexString("2e3634")
+            lblexpected.textColor = colorWithHexString("2e3634")
+            
+            //Si FirstName no es vacio se esta editando
+            if (FirstName != ""){
+                edtFName.text = FirstName
+                edtMName.text = MiddleName
+                edtLName.text = LastName
+                edtSLName.text = SecondLName
+                edtAge.text = Age
+                edtEmail.text = EmailAddress
+                edtPhoneNo.text = PhoneNo
+                
+                if ynPrimary == "True"{
+                    runkeeperSwitchPrim.isEnabled = false
+                    runkeeperSwitchPrim.setSelectedIndex(1, animated: false)
+                    runkeeperSwitchPrim.backgroundColor = self.colorWithHexString ("888888")
+                    runkeeperSwitchPrim.selectedTitleColor = self.colorWithHexString ("888888")
+                }
+                else{
+                    runkeeperSwitchPrim.isEnabled = true
+                    runkeeperSwitchPrim.setSelectedIndex(0, animated: false)
+                    runkeeperSwitchPrim.backgroundColor = self.colorWithHexString ("004c50")
+                    runkeeperSwitchPrim.selectedTitleColor = self.colorWithHexString ("004c50")
+                }
+                
+                if fkPeopleFromCDRID != "0"{
+                    
+                    edtFName.isEnabled = false
+                    edtMName.isEnabled = false
+                    edtLName.isEnabled = false
+                    edtSLName.isEnabled = false
+                    
+                    
+                }
+                
+            }else{
+                //Cuando se esta agregando apagamos el switch
+                //edtPrimary.setOn(false, animated: false)
+                runkeeperSwitchPrim.isEnabled = true
+                runkeeperSwitchPrim.setSelectedIndex(0, animated: false)
+                runkeeperSwitchPrim.backgroundColor = self.colorWithHexString ("004c50")
+                runkeeperSwitchPrim.selectedTitleColor = self.colorWithHexString ("004c50")
+            }
+            
+            if self.strStayType == "OW"{
+                if self.appDelegate.gstrLoginPeopleID != self.appDelegate.gstrPrimaryPeopleID{
+                    runkeeperSwitchPrim.isEnabled = false
+                    runkeeperSwitchPrim.backgroundColor = self.colorWithHexString ("888888")
+                    runkeeperSwitchPrim.selectedTitleColor = self.colorWithHexString ("888888")
+                }else{
+                    if strPeopleType == "NON-MEMBER"{
+                        runkeeperSwitchPrim.isEnabled = false
+                        runkeeperSwitchPrim.backgroundColor = self.colorWithHexString ("888888")
+                        runkeeperSwitchPrim.selectedTitleColor = self.colorWithHexString ("888888")
+                    }
+                }
+            }else{
+                if self.appDelegate.gstrLoginPeopleID != self.appDelegate.gstrPrimaryPeopleID{
+                    runkeeperSwitchPrim.isEnabled = false
+                    runkeeperSwitchPrim.backgroundColor = self.colorWithHexString ("888888")
+                    runkeeperSwitchPrim.selectedTitleColor = self.colorWithHexString ("888888")
+                }
+            }
+            
+            edtFName.canBecomeFirstResponder
+            
         }
+        
+        ContentView.addSubview(edtFName)
+        ContentView.addSubview(edtMName)
+        ContentView.addSubview(edtLName)
+        ContentView.addSubview(edtSLName)
+        ContentView.addSubview(edtAge)
+        ContentView.addSubview(edtEmail)
+        ContentView.addSubview(edtPhoneNo)
+        ContentView.addSubview(lblexpected)
+        ContentView.addSubview(dtExpectPicker)
 
     }
     @objc func switchValueDidChangePrim(_ sender: DGRunkeeperSwitch!) {

@@ -229,6 +229,7 @@ class vcSelectRequestType: UIViewController, UITableViewDelegate, UITableViewDat
                                 tblFollowType = [:]
                                 tblFollowType["pkFollowUpTypeID"] = (rType as AnyObject).getColumnByName("pkFollowUpTypeID").content as? String
                                 tblFollowType["DescriptionForExternal"] = (rType as AnyObject).getColumnByName("DescriptionForExternal").content as? String
+                                tblFollowType["emailList"] = (rType as AnyObject).getColumnByName("emailList").content as? String
                                 self.tblFollowUpType.append(tblFollowType)
                             }
                             
@@ -358,6 +359,7 @@ class vcSelectRequestType: UIViewController, UITableViewDelegate, UITableViewDat
                                     tblFollowType = [:]
                                     tblFollowType["pkFollowUpTypeID"] = (rType as AnyObject).getColumnByName("pkFollowUpTypeID").content as? String
                                     tblFollowType["DescriptionForExternal"] = (rType as AnyObject).getColumnByName("DescriptionForExternal").content as? String
+                                    tblFollowType["emailList"] = (rType as AnyObject).getColumnByName("emailList").content as? String
                                     self.tblFollowUpType.append(tblFollowType)
                                 }
                                 
@@ -496,23 +498,30 @@ class vcSelectRequestType: UIViewController, UITableViewDelegate, UITableViewDat
             cell.textLabel?.textColor = colorWithHexString("ba8748")
             cell.detailTextLabel?.textColor = colorWithHexString("ba8748")
             
-        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
             
             
-            cell.backgroundColor = UIColor.clear
-            cell.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("94cce5"))
+            //cell.backgroundColor = UIColor.clear
             
-            imgCell = UIImage(named:"tblrowsingle.png")!
+            cell.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("004c50"))
+            
+            //cell.backgroundColor = UIColor.clear
+            cell.layer.masksToBounds = true
+            cell.layer.cornerRadius = 5
+            cell.layer.borderWidth = 1
+            cell.layer.shadowOffset = CGSize(width: -1, height: 1)
+            cell.layer.borderColor = UIColor.black.cgColor
+            
+            /*imgCell = UIImage(named:"tblrowsingle.png")!
             imgvwCell = UIImageView(image: imgCell)
-            cell.backgroundView = imgvwCell
-                
+            cell!.backgroundView = imgvwCell
+            
             imgCell = UIImage(named:"tblrowsingleSel.png")!
             imgvwCell = UIImageView(image: imgCell)
-            cell.selectedBackgroundView = imgvwCell
-
-            lastIndex = IndexPath.init()
-            cell.textLabel?.textColor = colorWithHexString("00467f")
-            cell.detailTextLabel?.textColor = colorWithHexString("00467f")
+            cell!.selectedBackgroundView = imgvwCell*/
+            
+            cell.textLabel?.textColor = colorWithHexString("2e3634")
+            cell.detailTextLabel?.textColor = colorWithHexString("2e3634")
             
         }
 
@@ -552,6 +561,8 @@ class vcSelectRequestType: UIViewController, UITableViewDelegate, UITableViewDat
         
         appDelegate.strFollowUpTypeID = String(appDelegate.gtblFollowUpType[indexPath.row]["pkFollowUpTypeID"]!)
         appDelegate.strDescriptionForExternal = String(appDelegate.gtblFollowUpType[indexPath.row]["DescriptionForExternal"]!)
+        appDelegate.strEmailList = String(appDelegate.gtblFollowUpType[indexPath.row]["emailList"]!)
+        
         self.navigationController?.popViewController(animated: true)
         
     }

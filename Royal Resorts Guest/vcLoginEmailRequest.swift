@@ -220,7 +220,7 @@ class vcLoginEmailRequest: UIViewController, UITextFieldDelegate {
         }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
             
             strDocumentCode = "APP_RECOVERYPINRRC"
-            DataBaseMail = "FDESK_PELICAN"
+            DataBaseMail = "CDRPRD"
             //appDelegate.strLenguaje = "ENG"
             
             //self.view.backgroundColor = colorWithHexString ("DDF4FF")
@@ -327,6 +327,97 @@ class vcLoginEmailRequest: UIViewController, UITextFieldDelegate {
             lblfoo4.text = NSLocalizedString("lblfoo4",comment:"")
             lblfoo4.textAlignment = NSTextAlignment.center
             lblfoo4.alpha = 0.6
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            strDocumentCode = "APP_RECOVERYPINCL"
+            DataBaseMail = "CDRPRD"
+            //appDelegate.strLenguaje = "ENG"
+            
+            //self.view.backgroundColor = colorWithHexString ("DDF4FF")
+            self.view.backgroundColor = UIColor.white
+            
+            imgBack = UIImage(named:"BackAqua.png")!
+            imgvwBack = UIImageView(image: imgBack)
+            imgvwBack.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height);
+            imgvwBack.alpha = 0.2
+            //self.view.addSubview(imgvwBack)
+            
+            bodyView.isHidden = true
+            lblMsj.isHidden = true
+            
+            img = UIImage(named:"Logo.png")!
+            imgvw = UIImageView(image: img)
+            if appDelegate.ynIPad == true{
+                imgvw.frame = CGRect(x: 0.3*width, y: 0.2*height, width: 0.4*width, height: 0.12*height);
+            }else{
+                imgvw.frame = CGRect(x: 0.3*width, y: 0.2*height, width: 0.4*width, height: 0.1*height);
+            }
+            //imgvw.alpha = 0.5
+            self.view.addSubview(imgvw)
+            
+            lblHdr1.frame = CGRect(x: 0.05*width, y: 0.345*height, width: 0.9*width, height: 0.1*height);
+            lblHdr1.textColor = colorWithHexString ("2e3634")
+            lblHdr1.numberOfLines = 0
+            lblHdr1.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+            lblHdr1.text = NSLocalizedString("lblHdr1",comment:"")
+            lblHdr1.textAlignment = NSTextAlignment.center
+            lblHdr1.alpha = 0.6
+            
+            imgMail = UIImage(named:"mail.png")!
+            imgvwMail = UIImageView(image: imgMail)
+            if appDelegate.ynIPad == true{
+                imgvwMail.frame = CGRect(x: 0.05*width, y: 0.454*height, width: 0.08*width, height: 0.06*height);
+            }else{
+                imgvwMail.frame = CGRect(x: 0.05*width, y: 0.454*height, width: 0.09*width, height: 0.06*height);
+            }
+            imgvwMail.tintColor = UIColor.white
+            imgvwMail.alpha = 0.6
+            self.view.addSubview(imgvwMail)
+            
+            txtEmail.frame = CGRect(x: 0.15*width, y: 0.471*height, width: 0.7*width, height: 0.04*height);
+            txtEmail.font = UIFont(name:"Helvetica", size:appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
+            txtEmail.attributedPlaceholder = NSAttributedString(string:NSLocalizedString("txtEmail",comment:""),
+                                                                attributes:[NSAttributedString.Key.foregroundColor: colorWithHexString ("2e3634")])
+            txtEmail.tintColor = colorWithHexString ("2e3634")
+            txtEmail.textColor = colorWithHexString ("2e3634")
+            txtEmail.backgroundColor = UIColor.clear
+            txtEmail.layer.borderColor = UIColor.clear.cgColor
+            txtEmail.layer.borderWidth = 0
+            txtEmail.borderStyle = UITextField.BorderStyle.none
+            txtEmail.delegate = self
+            self.view.addSubview(txtEmail)
+            
+            linevw1.frame = CGRect(x: 0.05*width, y: 0.51*height, width: 0.9*width, height: 1);
+            linevw1.backgroundColor = colorWithHexString ("2e3634")
+            linevw1.alpha = 0.6
+            self.view.addSubview(linevw1)
+            
+            btnRequest.frame = CGRect(x: 0.05*width, y: 0.525*height, width: 0.9*width, height: 0.04*height);
+            mas = NSMutableAttributedString(string: NSLocalizedString("btnRequestPIN",comment:""), attributes: [
+                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont4)!,
+                NSAttributedString.Key.foregroundColor: colorWithHexString ("2e3634")
+                ])
+            btnRequest.setAttributedTitle(mas, for: UIControl.State())
+            //btnRequest.layer.borderColor = colorWithHexString ("f7941e").cgColor
+            //btnRequest.layer.borderWidth = 1
+            //btnRequest.alpha = 0.5
+            btnRequest.addTarget(self, action: #selector(vcLoginEmailRequest.clickRequest(_:)), for: UIControl.Event.touchUpInside)
+            btnRequest.backgroundColor = colorWithHexString ("f7941e")
+            btnRequest.layer.cornerRadius = 0
+            self.view.addSubview(btnRequest)
+            
+            lblfoo1.frame = CGRect(x: 0.1*width, y: 0.6*height, width: 0.8*width, height: 0.2*height);
+            lblfoo1.textColor = colorWithHexString ("2e3634")
+            lblfoo1.numberOfLines = 0
+            lblfoo1.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+            lblfoo1.text = NSLocalizedString("lblfooCLBR",comment:"")
+            lblfoo1.textAlignment = NSTextAlignment.center
+            lblfoo1.alpha = 0.6
+
+            lblfoo2.removeFromSuperview()
+            lblfoo3.removeFromSuperview()
+            lblfoo4.removeFromSuperview()
             
         }
         

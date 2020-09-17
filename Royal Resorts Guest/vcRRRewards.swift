@@ -177,7 +177,7 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
             queueFM?.inDatabase() {
                 db in
                 
-                if let rs = db.executeQuery("SELECT p.* FROM tblPerson p inner join tblStay s on s.StayInfoID = ? AND p.personID = ?", withArgumentsIn: [self.StayInfoID, self.appDelegate.gstrLoginPeopleID]){
+                if let rs = db.executeQuery("SELECT p.* FROM tblPerson p inner join tblStay s on s.StayInfoID = p.StayInfoID WHERE s.StayInfoID = ? AND p.personID = ? AND p.iKeycardid > 0", withArgumentsIn: [self.StayInfoID, self.appDelegate.gstrLoginPeopleID]){
                     while rs.next() {
                         self.iKeycardid = rs.string(forColumn: "iKeycardid")!
                     }
@@ -192,7 +192,7 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
             queueFM?.inDatabase() {
                 db in
                 
-                if let rs = db.executeQuery("SELECT p.* FROM tblPerson p inner join tblStay s on s.StayInfoID = ? AND p.PeopleFDeskID = ?", withArgumentsIn: [self.StayInfoID, PeopleFDeskID]){
+                if let rs = db.executeQuery("SELECT p.* FROM tblPerson p inner join tblStay s on s.StayInfoID = p.StayInfoID WHERE s.StayInfoID = ? AND p.PeopleFDeskID = ? AND p.iKeycardid > 0", withArgumentsIn: [self.StayInfoID, PeopleFDeskID]){
                     while rs.next() {
                         self.iKeycardid = rs.string(forColumn: "iKeycardid")!
                     }
@@ -208,11 +208,12 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         bodyView.frame = CGRect(x: 0.0, y: 44, width: width, height: height);
         itemsView.frame = CGRect(x: 0.05*width, y: 0.01*height, width: 0.9*width, height: 0.35*height);
         ResCredView.frame = CGRect(x: 0.05*width, y: 0.34*height, width: 0.9*width, height: 0.45*height);
+
+        self.dblMaxAmount = (self.fAmount/self.fDollar) * self.appDelegate.RewardPerDollar
         
         let lblHuesped = UILabel(frame: CGRect(x: 0.01*width, y: 0.01*height, width: 0.25*width, height: 0.04*height));
         lblHuesped.backgroundColor = UIColor.clear;
         lblHuesped.textAlignment = NSTextAlignment.left;
-        lblHuesped.textColor = colorWithHexString("206ec6")
         lblHuesped.numberOfLines = 1;
         lblHuesped.font = UIFont(name: "Verdana-Bold", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblHuesped.text = NSLocalizedString("lblKeys",comment:"") + ":";
@@ -221,7 +222,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         let lblHuespedNames = UILabel(frame: CGRect(x: 0.27*width, y: 0, width: 0.65*width, height: 0.08*height));
         lblHuespedNames.backgroundColor = UIColor.clear;
         lblHuespedNames.textAlignment = NSTextAlignment.left;
-        lblHuespedNames.textColor = colorWithHexString("465261")
         lblHuespedNames.numberOfLines = 0;
         lblHuespedNames.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblHuespedNames.text = strPeopleName;
@@ -237,7 +237,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         let lblBalance = UILabel(frame: CGRect(x: 0.3*width, y: 0.09*height, width: 0.3*width, height: 0.03*height));
         lblBalance.backgroundColor = UIColor.clear;
         lblBalance.textAlignment = NSTextAlignment.center;
-        lblBalance.textColor = colorWithHexString("a6a6a6")
         lblBalance.numberOfLines = 1;
         lblBalance.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblBalance.text = NSLocalizedString("strBalance",comment:"");
@@ -246,7 +245,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         let lblMontoPesos = UILabel(frame: CGRect(x: 0.0, y: 0.12*height, width: 0.4*width, height: 0.06*height));
         lblMontoPesos.backgroundColor = UIColor.clear;
         lblMontoPesos.textAlignment = NSTextAlignment.center;
-        lblMontoPesos.textColor = colorWithHexString("011125")
         lblMontoPesos.numberOfLines = 1;
         lblMontoPesos.font = UIFont(name: "Verdana", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
         lblMontoPesos.text = "$" + String(format: "%.2f", (String(format: "%.2f0", ((fAmount).description as NSString).floatValue) as NSString).floatValue);
@@ -255,7 +253,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         let lblMontoDolares = UILabel(frame: CGRect(x: 0.5*width, y: 0.12*height, width: 0.4*width, height: 0.06*height));
         lblMontoDolares.backgroundColor = UIColor.clear;
         lblMontoDolares.textAlignment = NSTextAlignment.center;
-        lblMontoDolares.textColor = colorWithHexString("011125")
         lblMontoDolares.numberOfLines = 1;
         lblMontoDolares.font = UIFont(name: "Verdana", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
         lblMontoDolares.text = "$" + String(format: "%.2f", (String(format: "%.2f0", ((fAmount/fDollar).description as NSString).floatValue) as NSString).floatValue);
@@ -264,7 +261,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         let lblPesos = UILabel(frame: CGRect(x: 0.0, y: 0.16*height, width: 0.4*width, height: 0.06*height));
         lblPesos.backgroundColor = UIColor.clear;
         lblPesos.textAlignment = NSTextAlignment.center;
-        lblPesos.textColor = colorWithHexString("011125")
         lblPesos.numberOfLines = 1;
         lblPesos.font = UIFont(name: "Verdana", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
         lblPesos.text = "MXN";
@@ -273,7 +269,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         let lblDolares = UILabel(frame: CGRect(x: 0.5*width, y: 0.16*height, width: 0.4*width, height: 0.06*height));
         lblDolares.backgroundColor = UIColor.clear;
         lblDolares.textAlignment = NSTextAlignment.center;
-        lblDolares.textColor = colorWithHexString("011125")
         lblDolares.numberOfLines = 1;
         lblDolares.font = UIFont(name: "Verdana", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
         lblDolares.text = "USD";
@@ -282,7 +277,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         let lblTipoCambio = UILabel(frame: CGRect(x: 0.0, y: 0.25*height, width: 0.9*width, height: 0.03*height));
         lblTipoCambio.backgroundColor = UIColor.clear;
         lblTipoCambio.textAlignment = NSTextAlignment.center;
-        lblTipoCambio.textColor = colorWithHexString("a6a6a6")
         lblTipoCambio.numberOfLines = 1;
         lblTipoCambio.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblTipoCambio.text = "$" + String(format: "%.2f", (String(format: "%.2f0", ((fDollar).description as NSString).floatValue) as NSString).floatValue) + " MXN = 1 USD";
@@ -291,7 +285,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         let lblFormaPago = UILabel(frame: CGRect(x: 0.0, y: 0.28*height, width: 0.9*width, height: 0.04*height));
         lblFormaPago.backgroundColor = UIColor.clear;
         lblFormaPago.textAlignment = NSTextAlignment.center;
-        lblFormaPago.textColor = colorWithHexString("a6a6a6")
         lblFormaPago.numberOfLines = 1;
         lblFormaPago.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblFormaPago.text = NSLocalizedString("strPayment",comment:"") + ":";
@@ -302,12 +295,10 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         imgvw = UIImageView(image: imgResCred)
         imgvw.frame = CGRect(x: 0.17*width, y: 0.01*height, width: imgvw.image!.size.width, height: imgvw.image!.size.height);
         imgvw.image = imgvw.image?.withRenderingMode(.alwaysTemplate)
-        imgvw.tintColor = colorWithHexString("206ec6")
         
         lblRewards = UILabel(frame: CGRect(x: 0.25*width, y: 0.01*height, width: 0.5*width, height: 0.03*height));
         lblRewards.backgroundColor = UIColor.clear;
         lblRewards.textAlignment = NSTextAlignment.left;
-        lblRewards.textColor = colorWithHexString("465261")
         lblRewards.numberOfLines = 1;
         lblRewards.font = UIFont(name: "Verdana", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
         lblRewards.text = "RR REWARDS";
@@ -316,7 +307,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         lblAvailRewards = UILabel(frame: CGRect(x: 0.01*width, y: 0.06*height, width: 0.5*width, height: 0.03*height));
         lblAvailRewards.backgroundColor = UIColor.clear;
         lblAvailRewards.textAlignment = NSTextAlignment.left;
-        lblAvailRewards.textColor = colorWithHexString("206ec6")
         lblAvailRewards.numberOfLines = 1;
         lblAvailRewards.font = UIFont(name: "Verdana", size: appDelegate.gblFont7 + appDelegate.gblDeviceFont7)
         lblAvailRewards.text = NSLocalizedString("strAvailRewards",comment:"");
@@ -325,7 +315,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         lblAvailRewardsAmount = UILabel(frame: CGRect(x: 0.6*width, y: 0.06*height, width: 0.2*width, height: 0.03*height));
         lblAvailRewardsAmount.backgroundColor = UIColor.clear;
         lblAvailRewardsAmount.textAlignment = NSTextAlignment.right;
-        lblAvailRewardsAmount.textColor = colorWithHexString("465261")
         lblAvailRewardsAmount.numberOfLines = 1;
         lblAvailRewardsAmount.font = UIFont(name: "Verdana", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
         lblAvailRewardsAmount.text = String(format: "%.2f", (String(format: "%.2f0", 0.0) as NSString).floatValue);
@@ -334,7 +323,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         lblAmountRewardsText = UILabel(frame: CGRect(x: 0.01*width, y: 0.1*height, width: 0.5*width, height: 0.03*height));
         lblAmountRewardsText.backgroundColor = UIColor.clear;
         lblAmountRewardsText.textAlignment = NSTextAlignment.left;
-        lblAmountRewardsText.textColor = colorWithHexString("206ec6")
         lblAmountRewardsText.numberOfLines = 1;
         lblAmountRewardsText.font = UIFont(name: "Verdana", size: appDelegate.gblFont7 + appDelegate.gblDeviceFont7)
         lblAmountRewardsText.text = NSLocalizedString("strAmountRewards",comment:"");
@@ -343,18 +331,16 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         txtAmountRewards = UITextField(frame: CGRect(x: 0.6*width, y: 0.1*height, width: 0.2*width, height: 0.03*height));
         txtAmountRewards.backgroundColor = UIColor.clear;
         txtAmountRewards.textAlignment = NSTextAlignment.right;
-        txtAmountRewards.textColor = colorWithHexString("465261")
         txtAmountRewards.font = UIFont(name: "Verdana", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
         txtAmountRewards.layer.borderColor = UIColor.black.cgColor
         txtAmountRewards.borderStyle = UITextField.BorderStyle.roundedRect
         txtAmountRewards.keyboardType = UIKeyboardType.numberPad
-        txtAmountRewards.text = String(format: "%.2f", (String(format: "%.2f0", 0.0) as NSString).floatValue);
+        txtAmountRewards.text = String(format: "%.2f", (String(format: "%.2f0", self.dblMaxAmount) as NSString).floatValue);
         txtAmountRewards.delegate = self
-        
+
         lblAmountRewardsUSDText = UILabel(frame: CGRect(x: 0.01*width, y: 0.14*height, width: 0.5*width, height: 0.03*height));
         lblAmountRewardsUSDText.backgroundColor = UIColor.clear;
         lblAmountRewardsUSDText.textAlignment = NSTextAlignment.left;
-        lblAmountRewardsUSDText.textColor = colorWithHexString("206ec6")
         lblAmountRewardsUSDText.numberOfLines = 1;
         lblAmountRewardsUSDText.font = UIFont(name: "Verdana", size: appDelegate.gblFont7 + appDelegate.gblDeviceFont7)
         lblAmountRewardsUSDText.text = NSLocalizedString("strUSDAmountRewards",comment:"")
@@ -363,7 +349,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         lblAmountRewardsUSD = UILabel(frame: CGRect(x: 0.6*width, y: 0.14*height, width: 0.2*width, height: 0.03*height));
         lblAmountRewardsUSD.backgroundColor = UIColor.clear;
         lblAmountRewardsUSD.textAlignment = NSTextAlignment.left;
-        lblAmountRewardsUSD.textColor = colorWithHexString("465261")
         lblAmountRewardsUSD.numberOfLines = 1;
         lblAmountRewardsUSD.font = UIFont(name: "Verdana", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
         lblAmountRewardsUSD.text = "$" + String(format: "%.2f", (String(format: "%.2f0", 0.0) as NSString).floatValue) + " USD";
@@ -372,7 +357,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         lblAmountRewardsMXNText = UILabel(frame: CGRect(x: 0.01*width, y: 0.18*height, width: 0.5*width, height: 0.03*height));
         lblAmountRewardsMXNText.backgroundColor = UIColor.clear;
         lblAmountRewardsMXNText.textAlignment = NSTextAlignment.left;2
-        lblAmountRewardsMXNText.textColor = colorWithHexString("206ec6")
         lblAmountRewardsMXNText.numberOfLines = 1;
         lblAmountRewardsMXNText.font = UIFont(name: "Verdana", size: appDelegate.gblFont7 + appDelegate.gblDeviceFont7)
         lblAmountRewardsMXNText.text = NSLocalizedString("strMXNAmountRewards",comment:"")
@@ -381,7 +365,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         lblAmountRewardsMXN = UILabel(frame: CGRect(x: 0.6*width, y: 0.18*height, width: 0.2*width, height: 0.03*height));
         lblAmountRewardsMXN.backgroundColor = UIColor.clear;
         lblAmountRewardsMXN.textAlignment = NSTextAlignment.left;
-        lblAmountRewardsMXN.textColor = colorWithHexString("465261")
         lblAmountRewardsMXN.numberOfLines = 1;
         lblAmountRewardsMXN.font = UIFont(name: "Verdana", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
         lblAmountRewardsMXN.text = "$" + String(format: "%.2f", (String(format: "%.2f0", 0.0) as NSString).floatValue) + " MXN";
@@ -390,7 +373,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         lblResCredNota = UILabel(frame: CGRect(x: 0.01*width, y: 0.26*height, width: 0.9*width, height: 0.1*height));
         lblResCredNota.backgroundColor = UIColor.clear;
         lblResCredNota.textAlignment = NSTextAlignment.left;
-        lblResCredNota.textColor = colorWithHexString("465261")
         lblResCredNota.numberOfLines = 0;
         lblResCredNota.font = UIFont(name: "Verdana", size: appDelegate.gblFont7 + appDelegate.gblDeviceFont7)
         lblResCredNota.text = NSLocalizedString("strRewardsText",comment:"");
@@ -399,9 +381,7 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         btnResCredApply.frame = CGRect(x: 0.01*width, y: 0.42*height, width: 0.9*width, height: 0.05*height);
         btnResCredApply.setTitle(NSLocalizedString("strPagar",comment:""), for: UIControl.State())
         btnResCredApply.titleLabel?.font = UIFont(name: "Helvetica", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont4)
-        btnResCredApply.backgroundColor = colorWithHexString("206ec6")
         btnResCredApply.layer.borderWidth = 0.8
-        btnResCredApply.setTitleColor(UIColor.white, for: UIControl.State())
         btnResCredApply.titleLabel?.textAlignment = NSTextAlignment.center
         
         itemsView.addSubview(lblHuesped)
@@ -427,6 +407,59 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         ResCredView.addSubview(lblResCredNota)
         ResCredView.addSubview(btnResCredApply)
         
+        if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
+            
+            lblHuesped.textColor = colorWithHexString("206ec6")
+            lblHuespedNames.textColor = colorWithHexString("465261")
+            lblBalance.textColor = colorWithHexString("a6a6a6")
+            lblMontoPesos.textColor = colorWithHexString("011125")
+            lblMontoDolares.textColor = colorWithHexString("011125")
+            lblPesos.textColor = colorWithHexString("011125")
+            lblDolares.textColor = colorWithHexString("011125")
+            lblTipoCambio.textColor = colorWithHexString("a6a6a6")
+            lblFormaPago.textColor = colorWithHexString("a6a6a6")
+            imgvw.tintColor = colorWithHexString("206ec6")
+            lblRewards.textColor = colorWithHexString("465261")
+            lblAvailRewards.textColor = colorWithHexString("206ec6")
+            lblAvailRewardsAmount.textColor = colorWithHexString("465261")
+            lblAmountRewardsText.textColor = colorWithHexString("206ec6")
+            txtAmountRewards.textColor = colorWithHexString("465261")
+            lblAmountRewardsUSDText.textColor = colorWithHexString("206ec6")
+            lblAmountRewardsUSD.textColor = colorWithHexString("465261")
+            lblAmountRewardsMXNText.textColor = colorWithHexString("206ec6")
+            lblAmountRewardsMXN.textColor = colorWithHexString("465261")
+            lblResCredNota.textColor = colorWithHexString("465261")
+            btnResCredApply.backgroundColor = colorWithHexString("206ec6")
+            btnResCredApply.setTitleColor(UIColor.white, for: UIControl.State())
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+            
+            lblHuesped.textColor = colorWithHexString("ba8748")
+            lblHuespedNames.textColor = colorWithHexString("ba8748")
+            lblBalance.textColor = colorWithHexString("ba8748")
+            lblMontoPesos.textColor = colorWithHexString("ba8748")
+            lblMontoDolares.textColor = colorWithHexString("ba8748")
+            lblPesos.textColor = colorWithHexString("ba8748")
+            lblDolares.textColor = colorWithHexString("ba8748")
+            lblTipoCambio.textColor = colorWithHexString("ba8748")
+            lblFormaPago.textColor = colorWithHexString("ba8748")
+            imgvw.tintColor = colorWithHexString("ba8748")
+            lblRewards.textColor = colorWithHexString("ba8748")
+            lblAvailRewards.textColor = colorWithHexString("ba8748")
+            lblAvailRewardsAmount.textColor = colorWithHexString("ba8748")
+            lblAmountRewardsText.textColor = colorWithHexString("ba8748")
+            txtAmountRewards.textColor = colorWithHexString("ba8748")
+            lblAmountRewardsUSDText.textColor = colorWithHexString("ba8748")
+            lblAmountRewardsUSD.textColor = colorWithHexString("ba8748")
+            lblAmountRewardsMXNText.textColor = colorWithHexString("ba8748")
+            lblAmountRewardsMXN.textColor = colorWithHexString("ba8748")
+            lblResCredNota.textColor = colorWithHexString("ba8748")
+            btnResCredApply.setTitleColor(self.colorWithHexString("ba8748"), for: UIControl.State())
+            btnResCredApply.layer.borderWidth = 4
+            btnResCredApply.layer.borderColor = self.colorWithHexString("7c6a56").cgColor
+            btnResCredApply.backgroundColor = self.colorWithHexString("eee7dd")
+        }
+        
         bodyView.addSubview(itemsView)
         bodyView.addSubview(ResCredView)
         
@@ -436,9 +469,7 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         txtAmountRewards.addTarget(self, action: #selector(vcRRRewards.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
         btnResCredApply.isEnabled = false
-        
-        dblMaxAmount = (fAmount/fDollar) * self.appDelegate.RewardPerDollar
-        
+
         recargarCCNumber()
     }
     
@@ -454,7 +485,6 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
                 if Double((textField.text! as NSString).floatValue) > dblMaxAmount{
                     RKDropdownAlert.title(NSLocalizedString("strRewardsAvail",comment:""), backgroundColor: self.colorWithHexString ("5C9FCC"), textColor: UIColor.black)
                     textField.text = String(format: "%.2f0", self.dblMaxAmount)
-                    btnResCredApply.isEnabled = false
                 }else{
                     btnResCredApply.isEnabled = true
                 }
@@ -485,8 +515,8 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
         SwiftLoader.show(animated: true)
         SwiftLoader.show(title: NSLocalizedString("lblLoading",comment:""), animated: true)
         
-        appDelegate.gtblStay = nil
-        appDelegate.gStaysStatus = nil
+        /*appDelegate.gtblStay = nil
+        appDelegate.gStaysStatus = nil*/
 
         var prepareOrderResult:NSString="";
         
@@ -528,10 +558,16 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
                         
                         //self.lblAmountRewardsUSD.text = "$" + String(format: "%.2f", (String(format: "%.2f0", self.fRewardsAmount/self.appDelegate.RewardPerDollar) as NSString).floatValue) + " USD";
                         //self.lblAmountRewardsMXN.text = "$" + String(format: "%.2f", (String(format: "%.2f0", (self.fRewardsAmount/self.appDelegate.RewardPerDollar) * self.fDollar) as NSString).floatValue) + " MXN"
-                        
-                        self.lblAmountRewardsUSD.text = "$ 0.00 USD";
-                        self.lblAmountRewardsMXN.text = "$ 0.00 MXN";
-                        
+                        if self.dblMaxAmount > self.fRewardsAmount{
+                            self.txtAmountRewards.text = String(format: "%.2f", (String(format: "%.2f0", self.fRewardsAmount) as NSString).floatValue);
+                            self.lblAmountRewardsUSD.text = "$" + String(format: "%.2f", (String(format: "%.2f0", self.fRewardsAmount/self.appDelegate.RewardPerDollar) as NSString).floatValue) + " USD";
+                            self.lblAmountRewardsMXN.text = "$" + String(format: "%.2f", (String(format: "%.2f0", (self.fRewardsAmount/self.appDelegate.RewardPerDollar) * self.fDollar) as NSString).floatValue) + " MXN"
+                        }else{
+                            self.lblAmountRewardsUSD.text = "$" + String(format: "%.2f", (String(format: "%.2f0", self.dblMaxAmount/self.appDelegate.RewardPerDollar) as NSString).floatValue) + " USD";
+                            self.lblAmountRewardsMXN.text = "$" + String(format: "%.2f", (String(format: "%.2f0", (self.dblMaxAmount/self.appDelegate.RewardPerDollar) * self.fDollar) as NSString).floatValue) + " MXN"
+                        }
+
+
                     }else{
                         
                         self.fRewardsAmount = 0.0
@@ -540,7 +576,7 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
                         self.lblAmountRewardsMXN.text = "$ 0.00 MXN";
                         
                     }
-                    
+                    self.btnResCredApply.isEnabled = true
                 }
                 
                 SwiftLoader.hide()

@@ -7,52 +7,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3E392A0B-2252-4F2E-9527-00012D016E55"
-            shouldBeEnabled = "No"
+            uuid = "496917E5-9FD3-4E84-884F-7FA5FF55DF14"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Royal Resorts Guest/vcGuestAccount.swift"
-            timestampString = "594240791.63877"
+            filePath = "Royal Resorts Guest/vcTransferDate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2620"
-            endingLineNumber = "2620"
-            landmarkName = "recargarTablas()"
+            startingLineNumber = "1230"
+            endingLineNumber = "1230"
+            landmarkName = "recargarHotelItems()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "259380C1-A3D5-4E49-A4BA-5D12575CAB8F"
+            uuid = "4B812B68-44AF-44B9-8BA1-8B38C5B8F365"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Royal Resorts Guest/vcSelectPayment.swift"
-            timestampString = "593563970.522851"
+            filePath = "Royal Resorts Guest/vcRestaurantList.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "691"
+            endingLineNumber = "691"
+            landmarkName = "cropToBounds(image:width:height:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1DAC1012-01C0-42A9-87FE-82ED05DAC63F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Royal Resorts Guest/vcAddFolloUp.swift"
-            timestampString = "594241254.3158261"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "501"
-            endingLineNumber = "501"
-            landmarkName = "unknown"
-            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

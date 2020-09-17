@@ -329,6 +329,15 @@ class ModelManager: NSObject {
                 tblLogin["Field5"] = resultSet.string(forColumn: "Field5")
                 tblLogin["LastStayUpdate"] = resultSet.string(forColumn: "LastStayUpdate")
                 tblLogin["PeopleType"] = resultSet.string(forColumn: "PeopleType")
+                tblLogin["Address"] = resultSet.string(forColumn: "Address")!
+                tblLogin["City"] = resultSet.string(forColumn: "City")!
+                tblLogin["ZipCode"] = resultSet.string(forColumn: "ZipCode")!
+                tblLogin["State"] = resultSet.string(forColumn: "State")!
+                tblLogin["Country"] = resultSet.string(forColumn: "Country")!
+                tblLogin["ISOCode"] = resultSet.string(forColumn: "ISOCode")!
+                tblLogin["Phone"] = resultSet.string(forColumn: "Phone")!
+                tblLogin["URLcxPay"] = resultSet.string(forColumn: "URLcxPay")!
+                tblLogin["TokenCLBRPay"] = resultSet.string(forColumn: "TokenCLBRPay")!
                 
             }
         }

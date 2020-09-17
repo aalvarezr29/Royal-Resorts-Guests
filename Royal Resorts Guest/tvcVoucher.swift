@@ -31,6 +31,12 @@ open class tvcVoucher: UITableViewCell {
             lblPlace.textColor = colorWithHexString("00467f")
             lblAmount.textColor = colorWithHexString("00467f")
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            lblVoucher.textColor = colorWithHexString("2e3634")
+            lblPlace.textColor = colorWithHexString("2e3634")
+            lblAmount.textColor = colorWithHexString("2e3634")
+            
         }
         
         lblVoucher.font = UIFont(name: "Helvetica", size: appDelegate.gblFont2 + appDelegate.gblDeviceFont3)

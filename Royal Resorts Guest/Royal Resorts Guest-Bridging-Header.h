@@ -22,3 +22,4 @@
 #import <objc/runtime.h>
 
 #import "STKColorAccessoryView.h"
+#import <CommonCrypto/CommonCrypto.h>

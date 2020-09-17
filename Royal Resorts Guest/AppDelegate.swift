@@ -79,6 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     var strStayInfoStatus: String = ""
     var strUnitCode: String = ""
     var strUnitArrivalDate: String = ""
+    var strUnitPropertyID: String = ""
     var strFollowUpTypeID: String = ""
     var strDescriptionForExternal: String = ""
     var gblAddFollow: Bool = false
@@ -108,6 +109,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     var strCheckOutDate: String = ""
     var strCheckOutTimeAux: String = ""
     var strCheckOutDateAux: String = ""
+    var strArrivalFlightHourAux: String = ""
+    var strDepartureFlightHourAux: String = ""
+    var strArrivalHotelID: String = ""
+    var strDepartureHotelID: String = ""
+    var strArrivalHotelIDAux: String = ""
+    var strDepartureHotelIDAux: String = ""
+    var strUnitCodeTransfer: String = ""
+    var iArrOperator: String = ""
+    var iDepOperator: String = ""
+    var strArrivalFlightCode: String = ""
+    var strDepartureFlightCode: String = ""
     
     //Variables de configuracion
     var URLService: NSString = ""
@@ -143,9 +155,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     var gblFont10: CGFloat = 0.0
     var gblFont11: CGFloat = 0.0
     
+    var gblBrillo: CGFloat = 0.0
+    
     var UserName: String = "cqsCMUTp8V8wld6dDBoBTw=="
     var Password: String = "Rhw267Y5Pfkk1SOtnGpwZA=="
-    var AppAmb: Int = 1
+    var AppAmb: Int = 4
     
     //Arreglos
     var gtblLogin: Dictionary<String, String>! //tabla de Login
@@ -156,6 +170,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     var gtblFollowUp: [Dictionary<String, String>]! //tabla de FollowUp
     var gtblFollowUpType: [Dictionary<String, String>]!
     var gtblPeople: Dictionary<String, String>! //tabla de People
+    var gtblFollowUpTypeEmail: [Dictionary<String, String>]!
     
     var gstrToken: String = ""
     var gstrMessageID: String = ""
@@ -168,6 +183,81 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     var gblChargesApplied: Double = 0.0
     var gblRRRewards: Double = 0.0
     var RewardPerDollar: Double = 0
+    var gstrArrivalTransfer: String = ""
+    var gstrDepartureTransfer: String = ""
+    var gstrConfirmationCodeTransfer: String = ""
+    var gstrPropertyTransfer: String = ""
+    var giPeopleNumTransfer: Int = 0
+    var gstrStayInfoTransfer: String = ""
+    var giPeopleNumAITransfer: Int = 0
+    var gstrPeopleFNameTransfer: String = ""
+    var gstrPeopleLNameTransfer: String = ""
+    var gifkPropertyID: Int = 0
+    var gstrHotelName: String = ""
+    var gstrHotelCode: String = ""
+    var gtblhotel: [Dictionary<String, String>]!
+    var gResArrivalDate: Date = Date()
+    var gResDepartureDate: Date = Date()
+    var gstrDepHotelName: String = ""
+    var gstrDepHotelCode: String = ""
+    var gtblTransferConf: [Dictionary<String, String>]!
+    var gsTerminalCode: String = ""
+    var gsWorkStationCode: String = ""
+    var giApplicationClient: String = ""
+    var gpkItemVariantID: String = ""
+    var gstrConfirmationCodeTransferAux: String = ""
+    var gstrHotelCodeAux: String = ""
+    var gstrHotelNameAux: String = ""
+    var gstrDepHotelCodeAux: String = ""
+    var gstrDepHotelNameAux: String = ""
+    var gstrArrivalTransferAux: String = ""
+    var gstrDepartureTransferAux: String = ""
+    var giPeopleNumTransferAux: Int = 0
+    var ynCalcTransfer: Bool = false
+    var ynUpdTransfer: Bool = false
+    var gItemClassCode: String = ""
+    var gItemTypeCode: String = ""
+    var gblTotalReserv: Double = 0.0
+    var gtblAerolinea: [Dictionary<String, String>]!
+    var gstrOperatorNameArrival: String = ""
+    var gstrOperatorNameDeparture: String = ""
+    var gstrOperatorNameCodeArrival: String = ""
+    var gstrOperatorNameCodeDeparture: String = ""
+    var gtblFlight: [Dictionary<String, String>]!
+    var ynCargaFlightArr: Bool = false
+    var ynCargaFlightDep: Bool = false
+    var gtblTransferHourConf: [Dictionary<String, String>]!
+    var ynTransferOutDate: Bool = false
+    var gstrArrivalTransferAuxMin: String = ""
+    var gstrDepartureTransferAuxMax: String = ""
+    var ynOtherHotel: Bool = false
+    var gtblCountry: [Dictionary<String, String>]!
+    var gstrCountry: String = ""
+    var gstrISOCountryCode: String = ""
+    
+    var gdtMOBAPP_TRAFROM: Date = Date()
+    var gdtMOBAPP_TRATO: Date = Date()
+    var gdtMOBAPP_TRDFROM: Date = Date()
+    var gdtMOBAPP_TRDTO: Date = Date()
+    
+    var gMOBAPP_TRAFROM: String = ""
+    var gMOBAPP_TRATO: String = ""
+    var gMOBAPP_TRDFROM: String = ""
+    var gMOBAPP_TRDTO: String = ""
+    
+    var gItemClassCodeSel: String = ""
+    var gItemTypeCodeSel: String = ""
+    
+    var gPropertyCode: String = ""
+    var gstrCheckin: String = ""
+    var gstrCheckinAux: String = ""
+    var gdtCheckin: Date = Date()
+    var gdtCheckinAux: Date = Date()
+    var ynLogInConf: Bool = false
+    var gstrURLcxpay: String = ""
+    var yncxPayClose: Bool = false
+    var strEmailList: String = ""
+    var strCLBRTokenPay: String = ""
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -176,15 +266,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         
         let bundleID = Bundle.main.bundleIdentifier
         
-        if let text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+        /*if let text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             iVersion = Double(text)!
-        }
+        }*/
         
         strBundleIdentifier = bundleID!
         
         //strBundleIdentifier = "com.royalresortscaribbean.guestservices"
         //strBundleIdentifier = "com.royalresorts.guestservices"
         //strBundleIdentifier = "com.royalresorts.guestservicesgrm"
+
+        if #available(iOS 13.0, *) {
+            UIApplication.shared.delegate?.window??.overrideUserInterfaceStyle = .light
+        }
         
         if strBundleIdentifier == "com.royalresorts.guestservices"{
             
@@ -299,6 +393,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
                 HostLogin = "wdev.rrgapps.com"
             }
             
+        }else if strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            UIApplication.shared.statusBarStyle = .lightContent
+            gstrAppName = "APPSTAYCLB"
+            strDataBaseByStay = "FDESK_CLBR"
+            urlHome = "https://www.costalinda-aruba.com/webapptest/"
+            urlActiv = "https://www.costalinda-aruba.com/webapptest/activities.html"
+            gstrNavImg = "navBar.png"
+            gPropertyCode = "CLB"
+
+            switch AppAmb {
+            case 1:
+                URLService = "http://wdev.rrgapps.com/MobileService/MobileService.asmx"
+                URLServiceLogin = "http://wdev.rrgapps.com/MobileService/MobileService.asmx"
+                Host = "wdev.rrgapps.com"
+                HostLogin = "wdev.rrgapps.com"
+            case 2:
+                URLService = "http://wqas.royalresorts.com/mobileservice/mobileservice.asmx"
+                URLServiceLogin = "http://wqas.royalresorts.com/mobileservice/mobileservice.asmx"
+                Host = "wqas.royalresorts.com"
+                HostLogin = "wqas.royalresorts.com"
+            case 3:
+                URLService = "http://wqasweb.royalresorts.com/mobileservice/mobileservice.asmx"
+                URLServiceLogin = "http://wqasweb.royalresorts.com/mobileservice/mobileservice.asmx"
+                Host = "wqasweb.royalresorts.com"
+                HostLogin = "wqasweb.royalresorts.com"
+            case 4:
+                URLService = "https://wprdinternet.costalinda-aruba.com:8443/mobileservice/mobileservice.asmx"
+                URLServiceLogin = "https://wprdinternet.servicesrr.com:444/mobileservice/MobileService.asmx"
+                Host = "wprdinternet.costalinda-aruba.com"
+                HostLogin = "wprdinternet.servicesrr.com"
+            default:
+                URLService = "https://wdev.rrgapps.com/MobileService/MobileService.asmx"
+                URLServiceLogin = "https://wdev.rrgapps.com/MobileService/MobileService.asmx"
+                Host = "wdev.rrgapps.com"
+                HostLogin = "wdev.rrgapps.com"
+            }
+            
         }
         
         //strDataBaseByStay = "FDESK_CANCUN"
@@ -306,9 +438,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         Util.copyFile("GuestStay.sqlite") //Se copia la base de datos al dispositivo
         
         var path = Util.getPath("GuestStay.sqlite")
-        
-        self.Device = UIDevice.current.modelDevice
-        self.Model = UIDevice.current.modelName
+        print(path)
+        self.Device = UIDevice.current.model
+        self.Model = UIDevice.current.name
 
         switch self.Device {
 
@@ -384,11 +516,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         default:
 
             ynIPad = false
-            self.Model = "iPhone X"
+            self.Model = "iPhone 8"
 
             switch self.Model {
  
-            case "iPhone X":
+            case "iPhone 8":
                 self.gblDeviceFont = 0.0
                 self.gblDeviceFont1 = 0.0
                 self.gblDeviceFont2 = 0.0
@@ -691,6 +823,171 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
                 do {
                     
                     try db.executeUpdate("ALTER TABLE tblStay ADD COLUMN PlaceCode VARCHAR(10)", withArgumentsIn: [])
+                    
+                } catch {
+                    rollback.pointee = true
+                }
+            }
+            
+        }
+        
+        if ((db!.columnExists("fkPropertyID", inTableWithName: "tblStay")) == false){
+            
+            queueFM?.inTransaction { db, rollback in
+                do {
+                    
+                    try db.executeUpdate("ALTER TABLE tblStay ADD COLUMN fkPropertyID INTEGER", withArgumentsIn: [])
+                    
+                } catch {
+                    rollback.pointee = true
+                }
+            }
+            
+        }
+        
+        /*if (db!.tableExists("tblCountry")){
+            queueFM?.inTransaction { db, rollback in
+                do {
+                    
+                    try db.executeUpdate("DROP TABLE `tblCountry`", withArgumentsIn: [])
+                    
+                } catch {
+                    rollback.pointee = true
+                }
+            }
+        }*/
+        
+        if !(db!.tableExists("tblCountry")){
+            
+            queueFM?.inTransaction { db, rollback in
+                do {
+                    try db.executeUpdate("CREATE TABLE `tblCountry` (`ISOCode` varchar(3),`Description` varchar(60), `SeqNo` INTEGER)", withArgumentsIn: [])
+                    
+                } catch {
+                    rollback.pointee = true
+                }
+            }
+            
+        }
+        
+        if ((db!.columnExists("Address", inTableWithName: "tblLogin")) == false){
+            
+            queueFM?.inTransaction { db, rollback in
+                do {
+                    
+                    try db.executeUpdate("ALTER TABLE tblLogin ADD COLUMN Address varchar(200)", withArgumentsIn: [])
+                    
+                } catch {
+                    rollback.pointee = true
+                }
+            }
+            
+        }
+        
+        if ((db!.columnExists("City", inTableWithName: "tblLogin")) == false){
+            
+            queueFM?.inTransaction { db, rollback in
+                do {
+                    
+                    try db.executeUpdate("ALTER TABLE tblLogin ADD COLUMN City varchar(100)", withArgumentsIn: [])
+                    
+                } catch {
+                    rollback.pointee = true
+                }
+            }
+            
+        }
+        
+        if ((db!.columnExists("ZipCode", inTableWithName: "tblLogin")) == false){
+            
+            queueFM?.inTransaction { db, rollback in
+                do {
+                    
+                    try db.executeUpdate("ALTER TABLE tblLogin ADD COLUMN ZipCode varchar(20)", withArgumentsIn: [])
+                    
+                } catch {
+                    rollback.pointee = true
+                }
+            }
+            
+        }
+        
+        if ((db!.columnExists("State", inTableWithName: "tblLogin")) == false){
+            
+            queueFM?.inTransaction { db, rollback in
+                do {
+                    
+                    try db.executeUpdate("ALTER TABLE tblLogin ADD COLUMN State varchar(100)", withArgumentsIn: [])
+                    
+                } catch {
+                    rollback.pointee = true
+                }
+            }
+            
+        }
+        
+        if ((db!.columnExists("Country", inTableWithName: "tblLogin")) == false){
+            
+            queueFM?.inTransaction { db, rollback in
+                do {
+                    
+                    try db.executeUpdate("ALTER TABLE tblLogin ADD COLUMN Country varchar(100)", withArgumentsIn: [])
+                    
+                } catch {
+                    rollback.pointee = true
+                }
+            }
+            
+        }
+        
+        if ((db!.columnExists("ISOCode", inTableWithName: "tblLogin")) == false){
+            
+            queueFM?.inTransaction { db, rollback in
+                do {
+                    
+                    try db.executeUpdate("ALTER TABLE tblLogin ADD COLUMN ISOCode varchar(3)", withArgumentsIn: [])
+                    
+                } catch {
+                    rollback.pointee = true
+                }
+            }
+            
+        }
+        
+        if ((db!.columnExists("Phone", inTableWithName: "tblLogin")) == false){
+            
+            queueFM?.inTransaction { db, rollback in
+                do {
+                    
+                    try db.executeUpdate("ALTER TABLE tblLogin ADD COLUMN Phone varchar(20)", withArgumentsIn: [])
+                    
+                } catch {
+                    rollback.pointee = true
+                }
+            }
+            
+        }
+        
+        if ((db!.columnExists("URLcxPay", inTableWithName: "tblLogin")) == false){
+            
+            queueFM?.inTransaction { db, rollback in
+                do {
+                    
+                    try db.executeUpdate("ALTER TABLE tblLogin ADD COLUMN URLcxPay varchar(300)", withArgumentsIn: [])
+                    
+                } catch {
+                    rollback.pointee = true
+                }
+            }
+            
+        }
+        
+        if ((db!.columnExists("TokenCLBRPay", inTableWithName: "tblLogin")) == false){
+            
+            queueFM?.inTransaction { db, rollback in
+                do {
+                    
+                    try db.executeUpdate("ALTER TABLE tblLogin ADD COLUMN TokenCLBRPay varchar(100)", withArgumentsIn: [])
                     
                 } catch {
                     rollback.pointee = true
@@ -1176,8 +1473,8 @@ extension AppDelegate : MessagingDelegate {
 }
 
 public extension UIDevice {
-    
-    var modelName: String {
+
+    static let modelName: String = {
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
@@ -1185,86 +1482,73 @@ public extension UIDevice {
             guard let value = element.value as? Int8, value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
-        
-        switch identifier {
-        case "iPod5,1":                                 return "iPod Touch 5"
-        case "iPod7,1":                                 return "iPod Touch 6"
-        case "iPhone3,1", "iPhone3,2", "iPhone3,3":     return "iPhone 4"
-        case "iPhone4,1":                               return "iPhone 4s"
-        case "iPhone5,1", "iPhone5,2":                  return "iPhone 5"
-        case "iPhone5,3", "iPhone5,4":                  return "iPhone 5c"
-        case "iPhone6,1", "iPhone6,2":                  return "iPhone 5s"
-        case "iPhone7,2":                               return "iPhone 6"
-        case "iPhone7,1":                               return "iPhone 6 Plus"
-        case "iPhone8,1":                               return "iPhone 6s"
-        case "iPhone8,2":                               return "iPhone 6s Plus"
-        case "iPhone9,1", "iPhone9,3":                  return "iPhone 7"
-        case "iPhone9,2", "iPhone9,4":                  return "iPhone 7 Plus"
-        case "iPhone8,4":                               return "iPhone SE"
-        case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return "iPad 2"
-        case "iPad3,1", "iPad3,2", "iPad3,3":           return "iPad 3"
-        case "iPad3,4", "iPad3,5", "iPad3,6":           return "iPad 4"
-        case "iPad4,1", "iPad4,2", "iPad4,3":           return "iPad Air"
-        case "iPad5,3", "iPad5,4":                      return "iPad Air 2"
-        case "iPad6,11", "iPad6,12":                    return "iPad 5"
-        case "iPad2,5", "iPad2,6", "iPad2,7":           return "iPad Mini"
-        case "iPad4,4", "iPad4,5", "iPad4,6":           return "iPad Mini 2"
-        case "iPad4,7", "iPad4,8", "iPad4,9":           return "iPad Mini 3"
-        case "iPad5,1", "iPad5,2":                      return "iPad Mini 4"
-        case "iPad6,3", "iPad6,4":                      return "iPad Pro 9.7 Inch"
-        case "iPad6,7", "iPad6,8":                      return "iPad Pro 12.9 Inch"
-        case "iPad7,1", "iPad7,2":                      return "iPad Pro 12.9 Inch 2. Generation"
-        case "iPad7,3", "iPad7,4":                      return "iPad Pro 10.5 Inch"
-        case "AppleTV5,3":                              return "Apple TV"
-        case "i386", "x86_64":                          return "Simulator"
-        default:                                        return identifier
+
+        func mapToDevice(identifier: String) -> String { // swiftlint:disable:this cyclomatic_complexity
+            #if os(iOS)
+            switch identifier {
+            case "iPod5,1":                                 return "iPod touch (5th generation)"
+            case "iPod7,1":                                 return "iPod touch (6th generation)"
+            case "iPod9,1":                                 return "iPod touch (7th generation)"
+            case "iPhone3,1", "iPhone3,2", "iPhone3,3":     return "iPhone 4"
+            case "iPhone4,1":                               return "iPhone 4s"
+            case "iPhone5,1", "iPhone5,2":                  return "iPhone 5"
+            case "iPhone5,3", "iPhone5,4":                  return "iPhone 5c"
+            case "iPhone6,1", "iPhone6,2":                  return "iPhone 5s"
+            case "iPhone7,2":                               return "iPhone 6"
+            case "iPhone7,1":                               return "iPhone 6 Plus"
+            case "iPhone8,1":                               return "iPhone 6s"
+            case "iPhone8,2":                               return "iPhone 6s Plus"
+            case "iPhone9,1", "iPhone9,3":                  return "iPhone 7"
+            case "iPhone9,2", "iPhone9,4":                  return "iPhone 7 Plus"
+            case "iPhone8,4":                               return "iPhone SE"
+            case "iPhone10,1", "iPhone10,4":                return "iPhone 8"
+            case "iPhone10,2", "iPhone10,5":                return "iPhone 8 Plus"
+            case "iPhone10,3", "iPhone10,6":                return "iPhone X"
+            case "iPhone11,2":                              return "iPhone XS"
+            case "iPhone11,4", "iPhone11,6":                return "iPhone XS Max"
+            case "iPhone11,8":                              return "iPhone XR"
+            case "iPhone12,1":                              return "iPhone 11"
+            case "iPhone12,3":                              return "iPhone 11 Pro"
+            case "iPhone12,5":                              return "iPhone 11 Pro Max"
+            case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return "iPad 2"
+            case "iPad3,1", "iPad3,2", "iPad3,3":           return "iPad (3rd generation)"
+            case "iPad3,4", "iPad3,5", "iPad3,6":           return "iPad (4th generation)"
+            case "iPad6,11", "iPad6,12":                    return "iPad (5th generation)"
+            case "iPad7,5", "iPad7,6":                      return "iPad (6th generation)"
+            case "iPad7,11", "iPad7,12":                    return "iPad (7th generation)"
+            case "iPad4,1", "iPad4,2", "iPad4,3":           return "iPad Air"
+            case "iPad5,3", "iPad5,4":                      return "iPad Air 2"
+            case "iPad11,4", "iPad11,5":                    return "iPad Air (3rd generation)"
+            case "iPad2,5", "iPad2,6", "iPad2,7":           return "iPad mini"
+            case "iPad4,4", "iPad4,5", "iPad4,6":           return "iPad mini 2"
+            case "iPad4,7", "iPad4,8", "iPad4,9":           return "iPad mini 3"
+            case "iPad5,1", "iPad5,2":                      return "iPad mini 4"
+            case "iPad11,1", "iPad11,2":                    return "iPad mini (5th generation)"
+            case "iPad6,3", "iPad6,4":                      return "iPad Pro (9.7-inch)"
+            case "iPad6,7", "iPad6,8":                      return "iPad Pro (12.9-inch)"
+            case "iPad7,1", "iPad7,2":                      return "iPad Pro (12.9-inch) (2nd generation)"
+            case "iPad7,3", "iPad7,4":                      return "iPad Pro (10.5-inch)"
+            case "iPad8,1", "iPad8,2", "iPad8,3", "iPad8,4":return "iPad Pro (11-inch)"
+            case "iPad8,5", "iPad8,6", "iPad8,7", "iPad8,8":return "iPad Pro (12.9-inch) (3rd generation)"
+            case "AppleTV5,3":                              return "Apple TV"
+            case "AppleTV6,2":                              return "Apple TV 4K"
+            case "AudioAccessory1,1":                       return "HomePod"
+            case "i386", "x86_64":                          return "Simulator \(mapToDevice(identifier: ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] ?? "iOS"))"
+            default:                                        return identifier
+            }
+            #elseif os(tvOS)
+            switch identifier {
+            case "AppleTV5,3": return "Apple TV 4"
+            case "AppleTV6,2": return "Apple TV 4K"
+            case "i386", "x86_64": return "Simulator \(mapToDevice(identifier: ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] ?? "tvOS"))"
+            default: return identifier
+            }
+            #endif
         }
-    }
-    
-    var modelDevice: String {
-        var systemInfo = utsname()
-        uname(&systemInfo)
-        let machineMirror = Mirror(reflecting: systemInfo.machine)
-        let identifier = machineMirror.children.reduce("") { identifier, element in
-            guard let value = element.value as? Int8, value != 0 else { return identifier }
-            return identifier + String(UnicodeScalar(UInt8(value)))
-        }
-        
-        switch identifier {
-        case "iPod5,1":                                 return "iPod "
-        case "iPod7,1":                                 return "iPod"
-        case "iPhone3,1", "iPhone3,2", "iPhone3,3":     return "iPhone"
-        case "iPhone4,1":                               return "iPhone"
-        case "iPhone5,1", "iPhone5,2":                  return "iPhone"
-        case "iPhone5,3", "iPhone5,4":                  return "iPhone"
-        case "iPhone6,1", "iPhone6,2":                  return "iPhone"
-        case "iPhone7,2":                               return "iPhone"
-        case "iPhone7,1":                               return "iPhone"
-        case "iPhone8,1":                               return "iPhone"
-        case "iPhone8,2":                               return "iPhone"
-        case "iPhone9,1", "iPhone9,3":                  return "iPhone"
-        case "iPhone9,2", "iPhone9,4":                  return "iPhone"
-        case "iPhone8,4":                               return "iPhone"
-        case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return "iPad"
-        case "iPad3,1", "iPad3,2", "iPad3,3":           return "iPad"
-        case "iPad3,4", "iPad3,5", "iPad3,6":           return "iPad"
-        case "iPad4,1", "iPad4,2", "iPad4,3":           return "iPad"
-        case "iPad5,3", "iPad5,4":                      return "iPad"
-        case "iPad6,11", "iPad6,12":                    return "iPad"
-        case "iPad2,5", "iPad2,6", "iPad2,7":           return "iPad"
-        case "iPad4,4", "iPad4,5", "iPad4,6":           return "iPad"
-        case "iPad4,7", "iPad4,8", "iPad4,9":           return "iPad"
-        case "iPad5,1", "iPad5,2":                      return "iPad"
-        case "iPad6,3", "iPad6,4":                      return "iPad"
-        case "iPad6,7", "iPad6,8":                      return "iPad"
-        case "iPad7,1", "iPad7,2":                      return "iPad"
-        case "iPad7,3", "iPad7,4":                      return "iPad"
-        case "AppleTV5,3":                              return "Apple TV"
-        case "i386", "x86_64":                          return "Simulator"
-        default:                                        return identifier
-        }
-    }
-    
+
+        return mapToDevice(identifier: identifier)
+    }()
+
 }
 
 

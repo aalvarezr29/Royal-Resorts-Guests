@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D3579061A1BBD3C009D27ED"
-               BuildableName = "Royal Resorts Guest Services.app"
+               BuildableName = "Costa Linda.app"
                BlueprintName = "Royal Resorts Guest"
                ReferencedContainer = "container:Royal Resorts Guest.xcodeproj">
             </BuildableReference>
@@ -27,6 +27,15 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "8D3579061A1BBD3C009D27ED"
+            BuildableName = "Costa Linda.app"
+            BlueprintName = "Royal Resorts Guest"
+            ReferencedContainer = "container:Royal Resorts Guest.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -39,17 +48,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8D3579061A1BBD3C009D27ED"
-            BuildableName = "Royal Resorts Guest Services.app"
-            BlueprintName = "Royal Resorts Guest"
-            ReferencedContainer = "container:Royal Resorts Guest.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -66,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D3579061A1BBD3C009D27ED"
-            BuildableName = "Royal Resorts Guest Services.app"
+            BuildableName = "Costa Linda.app"
             BlueprintName = "Royal Resorts Guest"
             ReferencedContainer = "container:Royal Resorts Guest.xcodeproj">
          </BuildableReference>
@@ -77,8 +75,6 @@
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -91,7 +87,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D3579061A1BBD3C009D27ED"
-            BuildableName = "Royal Resorts Guest Services.app"
+            BuildableName = "Costa Linda.app"
             BlueprintName = "Royal Resorts Guest"
             ReferencedContainer = "container:Royal Resorts Guest.xcodeproj">
          </BuildableReference>

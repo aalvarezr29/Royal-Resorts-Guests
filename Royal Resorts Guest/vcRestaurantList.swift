@@ -51,15 +51,16 @@ class vcRestaurantList: UIViewController, UITableViewDelegate, UITableViewDataSo
         //Titulo de la vista
         ViewItem.title = NSLocalizedString("lblTitleRestaurant",comment:"");
         
-        //Boton Reserve
-        ViewItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("btnReservations",comment:""), style: .plain, target: self, action: #selector(vcRestaurantList.clickReservations(_:)))
-        
         //Boton Home
         ViewItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("btnHome",comment:""), style: .plain, target: self, action: #selector(vcRestaurantList.clickHome(_:)))
         
         let TabTitleFont = UIFont(name: "HelveticaNeue", size: appDelegate.gblFont10 + appDelegate.gblDeviceFont2)!
 
         if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
+            
+            //Boton Reserve
+            ViewItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("btnReservations",comment:""), style: .plain, target: self, action: #selector(vcRestaurantList.clickReservations(_:)))
+            
             strFont = "Helvetica"
             self.navigationController?.navigationBar.tintColor = colorWithHexString("0D94FC")
             self.navigationController?.navigationBar.barStyle = UIBarStyle.default
@@ -68,6 +69,9 @@ class vcRestaurantList: UIViewController, UITableViewDelegate, UITableViewDataSo
             ViewItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: colorWithHexString("0D94FC")], for: UIControl.State())
             
         }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+            
+            //Boton Reserve
+            ViewItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("btnReservations",comment:""), style: .plain, target: self, action: #selector(vcRestaurantList.clickReservations(_:)))
             
             self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
             self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -119,6 +123,34 @@ class vcRestaurantList: UIViewController, UITableViewDelegate, UITableViewDataSo
             }
             
             ViewItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State())
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
+            
+            strFont = "HelveticaNeue"
+            var img = UIImage(named:appDelegate.gstrNavImg)
+            var resizable = img!.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: .stretch)
+            self.navigationController?.navigationBar.setBackgroundImage(resizable, for: .default)
+            let navigationTitleFont = UIFont(name: strFont, size: appDelegate.gblFont10 + appDelegate.gblDeviceFont3)!
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: navigationTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white]
+            self.navigationController?.navigationBar.isTranslucent = true
+            self.navigationController?.navigationBar.alpha = 0.99
+            self.navigationController?.navigationBar.tintColor = UIColor.white
+            self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+            for parent in self.navigationController!.navigationBar.subviews {
+                for childView in parent.subviews {
+                    if(childView is UIImageView) {
+                        childView.removeFromSuperview()
+                    }
+                }
+            }
+            
+            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+            
+            ViewItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State())
+
             
         }
         
@@ -315,6 +347,7 @@ class vcRestaurantList: UIViewController, UITableViewDelegate, UITableViewDataSo
                             
                             if rowResult.getColumnByName("iResult") != nil{
                                 iRes = rowResult.getColumnByName("iResult").content as! String
+                                print(rowResult.getColumnByName("sResult").content as! String)
                             }else{
                                 iRes = "-1"
                             }
@@ -451,9 +484,9 @@ class vcRestaurantList: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        hImg = (hTable*height)/CGFloat(totalRest)
+        hImg = 0.3*height//(hTable*height)/CGFloat(totalRest)
         
-        return ((hTable*height)/CGFloat(totalRest))
+        return hImg//((hTable*height)/CGFloat(totalRest))
         
     }
     
@@ -602,6 +635,46 @@ class vcRestaurantList: UIViewController, UITableViewDelegate, UITableViewDataSo
             lastIndex = IndexPath.init()
             cell.textLabel?.textColor = colorWithHexString("00467f")
             cell.detailTextLabel?.textColor = colorWithHexString("00467f")
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            cell.backgroundColor = UIColor.clear
+
+            if indexImg > totalRest{
+                indexImg = 1
+            }
+
+            imgvwCell = UIImageView(image: imgCell)
+            if let url = URL.init(string: String(tblRestaurantListPropGroup[indexPath.section][indexPath.row]["URLBanner"]!)) {
+                imgvwCell.downloadedFrom(url: url)
+            }
+            
+            imgvwCell.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            imgvwCell.translatesAutoresizingMaskIntoConstraints = true
+            imgvwCell.contentMode = .scaleToFill
+            
+            cell.backgroundView = imgvwCell
+            
+            //let newImage = cropToBounds(image: imgvwCell.image!, width: width, height: hImg)
+            //imgvwCell = UIImageView(image: newImage)
+            //cell.backgroundView = imgvwCell
+                
+            imgvwCell = UIImageView(image: imgCell)
+            if let url = URL.init(string: String(tblRestaurantListPropGroup[indexPath.section][indexPath.row]["URLBanner"]!)) {
+                imgvwCell.downloadedFrom(url: url)
+            }
+            
+            imgvwCell.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            imgvwCell.translatesAutoresizingMaskIntoConstraints = true
+            imgvwCell.contentMode = .scaleToFill
+            
+            cell.selectedBackgroundView = imgvwCell
+            
+            indexImg = indexImg + 1
+            
+            lastIndex = IndexPath.init()
+            
+            cell.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("94cce5"))
+            
         }
         
         cell.SetValues(String(tblRestaurantListPropGroup[indexPath.section][indexPath.row]["RestaurantName"]!), width: width, height: height, cellh: hImg)
@@ -611,6 +684,40 @@ class vcRestaurantList: UIViewController, UITableViewDelegate, UITableViewDataSo
         lastIndex = IndexPath.init()
         
         return cell
+    }
+    
+    func cropToBounds(image: UIImage, width: CGFloat, height: CGFloat) -> UIImage {
+
+        let cgimage = image.cgImage!
+        let contextImage: UIImage = UIImage(cgImage: cgimage)
+        let contextSize: CGSize = contextImage.size
+        var posX: CGFloat = 0.0
+        var posY: CGFloat = 0.0
+        var cgwidth: CGFloat = width
+        var cgheight: CGFloat = height
+
+        // See what size is longer and create the center off of that
+        if contextSize.width > contextSize.height {
+            posX = ((contextSize.width - contextSize.height) / 2)
+            posY = 0
+            cgwidth = contextSize.height
+            cgheight = contextSize.height
+        } else {
+            posX = 0
+            posY = ((contextSize.height - contextSize.width) / 2)
+            cgwidth = contextSize.width
+            cgheight = contextSize.width
+        }
+
+        let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
+
+        // Create bitmap image from context using the rect
+        let imageRef: CGImage = cgimage.cropping(to: rect)!
+
+        // Create a new image based on the imageRef and rotate back to the original orientation
+        let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
+
+        return image
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -637,6 +744,14 @@ class vcRestaurantList: UIViewController, UITableViewDelegate, UITableViewDataSo
             lastIndex = indexPath
             
         }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
+            
+            if lastIndex != indexPath && lastIndex.count > 0{
+                tableView.cellForRow(at: lastIndex)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("94cce5"))
+            }
+            
+            tableView.cellForRow(at: indexPath)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("00467f"))
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
             
             if lastIndex != indexPath && lastIndex.count > 0{
                 tableView.cellForRow(at: lastIndex)?.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("94cce5"))

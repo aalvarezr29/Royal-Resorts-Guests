@@ -11,6 +11,7 @@ import Firebase
 import FirebaseInstanceID
 import UserNotifications
 import FirebaseMessaging
+import WebKit
 
 class vcDigitalTicket: UIViewController {
     
@@ -31,7 +32,7 @@ class vcDigitalTicket: UIViewController {
     var StayInfoID: String = ""
     var Stays: Dictionary<String, String>!
     var Peoples: Dictionary<String, String>!
-    var myWebView = UIWebView()
+    var myWebView: WKWebView! //= UIWebView()
     var URLTicket: String = ""
     
     override func viewDidLoad() {
@@ -46,9 +47,9 @@ class vcDigitalTicket: UIViewController {
         //Titulo de la vista
         self.title = NSLocalizedString("lbltitleDigitalTicket",comment:"");
         
-        myWebView = UIWebView(frame: CGRect(x: 0.0, y: 0.08*height, width: width, height: height))
-        myWebView.loadRequest(URLRequest(url: URL(string: URLTicket)!))
-        myWebView.scalesPageToFit = true
+        myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.08*height, width: width, height: height))
+        myWebView.load(URLRequest(url: URL(string: URLTicket)!))
+        //myWebView.scalesPageToFit = true
         self.view.addSubview(myWebView)
         
         

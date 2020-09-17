@@ -115,6 +115,35 @@ open class tvcFollowUpDetail: UITableViewCell {
                 lblName.font = UIFont.boldSystemFont(ofSize: appDelegate.gblFont2 + appDelegate.gblDeviceFont3);
             }
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            lblName.textColor = colorWithHexString("2e3634")
+            lblDate.textColor = colorWithHexString("2e3634")
+            lblDesc.textColor = colorWithHexString("2e3634")
+            
+
+            lblName.font = UIFont(name: "Helvetica", size: appDelegate.gblFont2 + appDelegate.gblDeviceFont3)
+            lblDate.font = UIFont(name: "Helvetica", size: appDelegate.gblFont2 + appDelegate.gblDeviceFont3)
+            lblDesc.font = UIFont(name: "Helvetica", size: appDelegate.gblFont2 + appDelegate.gblDeviceFont3)
+            
+            if (blnRes == true) {
+                lblName.text = Date
+                lblName.textColor = colorWithHexString("2e3634")
+                lblDate.text = Name
+                lblDate.textColor = colorWithHexString("2e3634")
+                lblName.frame = CGRect(x: 0.05*width!, y: 0.001*height!, width: 0.4*width!, height: 0.025*height!);
+                lblDate.frame = CGRect(x: 0.2*width!, y: 0.001*height!, width: 0.6*width!, height: 0.025*height!);
+                lblDate.font = UIFont.boldSystemFont(ofSize: appDelegate.gblFont2 + appDelegate.gblDeviceFont3);
+            }else{
+                lblName.text = Name
+                lblName.textColor = colorWithHexString("2e3634")
+                lblDate.text = Date
+                lblDate.textColor = colorWithHexString("2e3634")
+                lblName.frame = CGRect(x: 0.05*width!, y: 0.001*height!, width: 0.6*width!, height: 0.025*height!);
+                lblDate.frame = CGRect(x: 0.4*width!, y: 0.001*height!, width: 0.4*width!, height: 0.025*height!);
+                lblName.font = UIFont.boldSystemFont(ofSize: appDelegate.gblFont2 + appDelegate.gblDeviceFont3);
+            }
+            
         }
 
         return lblDesc.frame.size.height

@@ -148,7 +148,6 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
         let lblHuesped = UILabel(frame: CGRect(x: 0.01*width, y: 0.01*height, width: 0.25*width, height: 0.04*height));
         lblHuesped.backgroundColor = UIColor.clear;
         lblHuesped.textAlignment = NSTextAlignment.left;
-        lblHuesped.textColor = colorWithHexString("206ec6")
         lblHuesped.numberOfLines = 1;
         lblHuesped.font = UIFont(name: "Verdana-Bold", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblHuesped.text = NSLocalizedString("lblKeys",comment:"") + ":";
@@ -157,7 +156,6 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
         let lblHuespedNames = UILabel(frame: CGRect(x: 0.27*width, y: 0, width: 0.65*width, height: 0.08*height));
         lblHuespedNames.backgroundColor = UIColor.clear;
         lblHuespedNames.textAlignment = NSTextAlignment.left;
-        lblHuespedNames.textColor = colorWithHexString("465261")
         lblHuespedNames.numberOfLines = 0;
         lblHuespedNames.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblHuespedNames.text = strPeopleName;
@@ -173,7 +171,6 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
         let lblBalance = UILabel(frame: CGRect(x: 0.3*width, y: 0.09*height, width: 0.3*width, height: 0.03*height));
         lblBalance.backgroundColor = UIColor.clear;
         lblBalance.textAlignment = NSTextAlignment.center;
-        lblBalance.textColor = colorWithHexString("a6a6a6")
         lblBalance.numberOfLines = 1;
         lblBalance.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblBalance.text = NSLocalizedString("strBalance",comment:"");
@@ -182,7 +179,6 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
         let lblMontoPesos = UILabel(frame: CGRect(x: 0.0, y: 0.12*height, width: 0.4*width, height: 0.06*height));
         lblMontoPesos.backgroundColor = UIColor.clear;
         lblMontoPesos.textAlignment = NSTextAlignment.center;
-        lblMontoPesos.textColor = colorWithHexString("011125")
         lblMontoPesos.numberOfLines = 1;
         lblMontoPesos.font = UIFont(name: "Verdana", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
         lblMontoPesos.text = "$" + String(format: "%.2f", (String(format: "%.2f0", ((fAmount).description as NSString).floatValue) as NSString).floatValue);
@@ -191,7 +187,6 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
         let lblMontoDolares = UILabel(frame: CGRect(x: 0.5*width, y: 0.12*height, width: 0.4*width, height: 0.06*height));
         lblMontoDolares.backgroundColor = UIColor.clear;
         lblMontoDolares.textAlignment = NSTextAlignment.center;
-        lblMontoDolares.textColor = colorWithHexString("011125")
         lblMontoDolares.numberOfLines = 1;
         lblMontoDolares.font = UIFont(name: "Verdana", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
         lblMontoDolares.text = "$" + String(format: "%.2f", (String(format: "%.2f0", ((fAmount/fDollar).description as NSString).floatValue) as NSString).floatValue);
@@ -200,7 +195,6 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
         let lblPesos = UILabel(frame: CGRect(x: 0.0, y: 0.16*height, width: 0.4*width, height: 0.06*height));
         lblPesos.backgroundColor = UIColor.clear;
         lblPesos.textAlignment = NSTextAlignment.center;
-        lblPesos.textColor = colorWithHexString("011125")
         lblPesos.numberOfLines = 1;
         lblPesos.font = UIFont(name: "Verdana", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
         lblPesos.text = "MXN";
@@ -209,7 +203,6 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
         let lblDolares = UILabel(frame: CGRect(x: 0.5*width, y: 0.16*height, width: 0.4*width, height: 0.06*height));
         lblDolares.backgroundColor = UIColor.clear;
         lblDolares.textAlignment = NSTextAlignment.center;
-        lblDolares.textColor = colorWithHexString("011125")
         lblDolares.numberOfLines = 1;
         lblDolares.font = UIFont(name: "Verdana", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont4)
         lblDolares.text = "USD";
@@ -218,7 +211,6 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
         let lblTipoCambio = UILabel(frame: CGRect(x: 0.0, y: 0.27*height, width: 0.9*width, height: 0.03*height));
         lblTipoCambio.backgroundColor = UIColor.clear;
         lblTipoCambio.textAlignment = NSTextAlignment.center;
-        lblTipoCambio.textColor = colorWithHexString("a6a6a6")
         lblTipoCambio.numberOfLines = 1;
         lblTipoCambio.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblTipoCambio.text = "$" + String(format: "%.2f", (String(format: "%.2f0", ((fDollar).description as NSString).floatValue) as NSString).floatValue) + " MXN = 1 USD";
@@ -227,7 +219,6 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
         let lblFormaPago = UILabel(frame: CGRect(x: 0.0, y: 0.3*height, width: 0.9*width, height: 0.04*height));
         lblFormaPago.backgroundColor = UIColor.clear;
         lblFormaPago.textAlignment = NSTextAlignment.center;
-        lblFormaPago.textColor = colorWithHexString("a6a6a6")
         lblFormaPago.numberOfLines = 1;
         lblFormaPago.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblFormaPago.text = NSLocalizedString("strPayment",comment:"") + ":";
@@ -253,7 +244,6 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
         let lblFooterMsg = UILabel(frame: CGRect(x: 0.05*width, y: 0.7*height, width: 0.9*width, height: 0.1*height));
         lblFooterMsg.backgroundColor = UIColor.clear;
         lblFooterMsg.textAlignment = NSTextAlignment.left;
-        lblFooterMsg.textColor = colorWithHexString("a6a6a6")
         lblFooterMsg.numberOfLines = 0;
         lblFooterMsg.font = UIFont(name: "Verdana", size: appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
         lblFooterMsg.text = NSLocalizedString("strRewardsMsj",comment:"");
@@ -262,6 +252,34 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
         bodyView.addSubview(itemsView)
         bodyView.addSubview(tblFormaPago)
         //bodyView.addSubview(lblFooterMsg)
+        
+        if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
+            
+            lblHuesped.textColor = colorWithHexString("206ec6")
+            lblHuespedNames.textColor = colorWithHexString("465261")
+            lblBalance.textColor = colorWithHexString("a6a6a6")
+            lblMontoPesos.textColor = colorWithHexString("011125")
+            lblMontoDolares.textColor = colorWithHexString("011125")
+            lblPesos.textColor = colorWithHexString("011125")
+            lblDolares.textColor = colorWithHexString("011125")
+            lblTipoCambio.textColor = colorWithHexString("a6a6a6")
+            lblFormaPago.textColor = colorWithHexString("a6a6a6")
+            lblFooterMsg.textColor = colorWithHexString("a6a6a6")
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+            
+            lblHuesped.textColor = colorWithHexString("ba8748")
+            lblHuespedNames.textColor = colorWithHexString("ba8748")
+            lblBalance.textColor = colorWithHexString("ba8748")
+            lblMontoPesos.textColor = colorWithHexString("ba8748")
+            lblMontoDolares.textColor = colorWithHexString("ba8748")
+            lblPesos.textColor = colorWithHexString("ba8748")
+            lblDolares.textColor = colorWithHexString("ba8748")
+            lblTipoCambio.textColor = colorWithHexString("ba8748")
+            lblFormaPago.textColor = colorWithHexString("ba8748")
+            lblFooterMsg.textColor = colorWithHexString("ba8748")
+            
+        }
         
         self.view.addSubview(bodyView)
         
@@ -377,14 +395,27 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
         cell.layer.masksToBounds = true
         cell.layer.cornerRadius = 5
-        cell.layer.borderWidth = 1
+        cell.layer.borderWidth = 0.05
         cell.layer.shadowOffset = CGSize(width: -1, height: 1)
-        cell.layer.borderColor = colorWithHexString("2b3b6a").cgColor
         cell.textLabel!.text = "\(myArray[indexPath.row])"
-        cell.tintColor = colorWithHexString("2b3b6a")
         cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         //appDelegate.gblynPreAuth
         //appDelegate.gblynResortCredits
+        
+        if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
+            
+            cell.layer.borderColor = colorWithHexString("2b3b6a").cgColor
+            cell.tintColor = colorWithHexString("2b3b6a")
+            cell.textLabel?.textColor = UIColor.black
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresorts.guestservicesgrm"{
+            
+            cell.layer.borderColor = colorWithHexString("ba8748").cgColor
+            cell.tintColor = colorWithHexString("ba8748")
+            cell.textLabel?.textColor = colorWithHexString("ba8748")
+            
+        }
+        
         switch myArray[indexPath.row] as! String {
         case NSLocalizedString("strCreditCard",comment:""):
             if (fAmount > 0.1)
@@ -408,6 +439,7 @@ class vcSelectPayment: UIViewController, UITableViewDelegate, UITableViewDataSou
                 cell.accessoryType = UITableViewCell.AccessoryType.none
             }
         case NSLocalizedString("strRewards",comment:""):
+
             if appDelegate.gblRRRewards > 0
             {
                 cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator

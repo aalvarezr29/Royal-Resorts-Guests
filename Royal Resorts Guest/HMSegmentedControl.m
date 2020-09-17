@@ -7,7 +7,6 @@
 //
 
 #import "HMSegmentedControl.h"
-#import "Royal_Resorts_Guest_Services-Swift.h"
 #import <QuartzCore/QuartzCore.h>
 #import <math.h>
 
@@ -143,6 +142,8 @@
             _backgroundColor = [UIColor colorWithRed:0.9 green:0.91 blue:0.91 alpha:1.0];
         }else if ([self.strBundleIdentifier.description  isEqual: @"com.royalresortscaribbean.guestservices"]){
             _backgroundColor = [UIColor colorWithRed:0.867 green:0.957 blue:1 alpha:1.0f];
+        }else if ([self.strBundleIdentifier.description  isEqual: @"com.royalresortscaribbean.clbrservices"]){
+            _backgroundColor = [UIColor whiteColor];
         }
     }
 
@@ -156,6 +157,8 @@
          _selectionIndicatorColor = [UIColor colorWithRed:0.89 green:0.76 blue:0.61 alpha:1.0];
          }else if ([self.strBundleIdentifier  isEqual: @"com.royalresortscaribbean.guestservices"]){
          _selectionIndicatorColor = [UIColor colorWithRed:52.0f/255.0f green:181.0f/255.0f blue:229.0f/255.0f alpha:1.0f];
+         }else if ([self.strBundleIdentifier  isEqual: @"com.royalresortscaribbean.clbrservices"]){
+         _selectionIndicatorColor = [UIColor colorWithRed:0/255.0f green:76/255.0f blue:80/255.0f alpha:1.0f];
          }
     }
     
@@ -331,6 +334,8 @@
                         rectDiv = CGRectMake(xOffset, (self.selectionIndicatorHeight * 2)-8, 2, (self.frame.size.height - (self.selectionIndicatorHeight * 4))+8);
                     }else if ([self.strBundleIdentifier  isEqual: @"com.royalresortscaribbean.guestservices"]){
                         rectDiv = CGRectMake(xOffset, (self.selectionIndicatorHeight * 2)-8, 2, (self.frame.size.height - (self.selectionIndicatorHeight * 4))+8);
+                    }else if ([self.strBundleIdentifier  isEqual: @"com.royalresortscaribbean.clbrservices"]){
+                        rectDiv = CGRectMake(xOffset, (self.selectionIndicatorHeight * 2)-8, 2, (self.frame.size.height - (self.selectionIndicatorHeight * 4))+8);
                     }
                 }
 
@@ -359,6 +364,8 @@
                     }else if ([self.strBundleIdentifier  isEqual: @"com.royalresorts.guestservicesgrm"]){
                         rectDiv.origin.x = (rectDiv.origin.x - 2);
                     }else if ([self.strBundleIdentifier  isEqual: @"com.royalresortscaribbean.guestservices"]){
+                        rectDiv.origin.x = (rectDiv.origin.x - 2);
+                    }else if ([self.strBundleIdentifier  isEqual: @"com.royalresortscaribbean.clbrservices"]){
                         rectDiv.origin.x = (rectDiv.origin.x - 2);
                     }
                 }
@@ -918,6 +925,11 @@
             defaults = @{
                          NSFontAttributeName : [UIFont fontWithName:@"Futura-CondensedExtraBold" size:_fontDevice],
                          NSForegroundColorAttributeName : [UIColor colorWithRed:0.361 green:0.624 blue:0.8 alpha:1],
+                         };
+        }else if ([self.strBundleIdentifier  isEqual: @"com.royalresortscaribbean.clbrservices"]){
+            defaults = @{
+                         NSFontAttributeName : [UIFont fontWithName:@"Futura-CondensedExtraBold" size:_fontDevice],
+                         NSForegroundColorAttributeName : [UIColor colorWithRed:0/255.0f green:76/255.0f blue:80/255.0f alpha:1.0f],
                          };
         }
     }

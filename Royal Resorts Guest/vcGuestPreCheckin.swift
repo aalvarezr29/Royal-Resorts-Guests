@@ -630,6 +630,118 @@ class vcGuestPreCheckin: UIViewController , UITableViewDelegate, UITableViewData
             
             tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
             
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            imageView.isHidden = true
+            
+            var imgBack = UIImage()
+            var imgvwBack = UIImageView()
+            
+            userView2.backgroundColor = UIColor.clear
+            userView2.frame = CGRect(x: 0.05*width, y: 0.1*height, width: 0.9*width, height: 0.11*height);
+            
+            userView2.backgroundColor = UIColor.white
+            tableView.backgroundColor = UIColor.white
+            userView1.backgroundColor = UIColor.white
+            self.view.backgroundColor = UIColor.white
+
+            var imgHdr = UIImage()
+            var imgHdrVw = UIImageView()
+            
+            imgHdr = UIImage(named:"Titlehdr.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.0, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.6
+            //userView2.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.03*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.58
+            //userView2.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlerow.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.06*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.56
+            //userView2.addSubview(imgHdrVw)
+            
+            imgHdr = UIImage(named:"Titlefooter.png")!
+            imgHdrVw = UIImageView(image: imgHdr)
+            imgHdrVw.frame = CGRect(x: 0.0, y: 0.09*height, width: 0.9*width, height: 0.03*height);
+            imgHdrVw.contentMode = UIView.ContentMode.scaleToFill
+            imgHdrVw.alpha = 0.54
+            //userView2.addSubview(imgHdrVw)
+            
+            var strFontTitle: String = "Futura-CondensedExtraBold"
+            var Color: UIColor = colorWithHexString("004c50")
+            
+            lblResort1.textColor = Color
+            lblView1.textColor = Color
+            lblDates1.textColor = Color
+            lblPreregister.textColor = Color
+            lblResort1.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblView1.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblDates1.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblPreregister.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            
+            strFontTitle = "Futura-CondensedMedium"
+            Color = colorWithHexString("2e3634")
+            
+            lblResortText.textColor = Color
+            lblViewText.textColor = Color
+            lblDatesText.textColor = Color
+            lblPreArrival.textColor = Color
+            lblPreregisterText.textColor = Color
+            lblResortText.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblViewText.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblDatesText.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblPreArrival.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblPreregisterText.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            
+            lblResort1.textAlignment = NSTextAlignment.left
+            lblResort1.frame = CGRect(x: 0.015*width, y: 0.00001*height, width: 0.2*width, height: 0.03*height);
+            //lblView1.textAlignment = NSTextAlignment.left
+            //lblView1.frame = CGRect(x: 0.015*width, y: 0.029*height, width: 0.2*width, height: 0.03*height);
+            lblDates1.textAlignment = NSTextAlignment.left
+            lblDates1.frame = CGRect(x: 0.015*width, y: 0.029*height, width: 0.2*width, height: 0.03*height);
+            lblPreregister.textAlignment = NSTextAlignment.left
+            lblPreregister.frame = CGRect(x: 0.015*width, y: 0.058*height, width: 0.23*width, height: 0.03*height);
+            
+            lblResortText.numberOfLines = 0
+            lblResortText.frame = CGRect(x: 0.24*width, y: 0.0001*height, width: 0.45*width, height: 0.03*height);
+            //lblViewText.numberOfLines = 0
+            //lblViewText.frame = CGRect(x: 0.24*width, y: 0.0297*height, width: 0.45*width, height: 0.03*height);
+            lblDatesText.numberOfLines = 0
+            lblDatesText.frame = CGRect(x: 0.24*width, y: 0.0297*height, width: 0.45*width, height: 0.03*height);
+            lblPreArrival.numberOfLines = 0
+            lblPreArrival.frame = CGRect(x: 0.24*width, y: 0.059*height, width: 0.6*width, height: 0.03*height);
+            lblPreregisterText.numberOfLines = 0
+            lblPreregisterText.frame = CGRect(x: 0.24*width, y: 0.059*height, width: 0.6*width, height: 0.03*height);
+            
+            userView2.addSubview(lblResort1)
+            //userView2.addSubview(lblView1)
+            userView2.addSubview(lblDates1)
+            userView2.addSubview(lblResortText)
+            //userView2.addSubview(lblViewText)
+            userView2.addSubview(lblDatesText)
+            userView2.addSubview(lblPreArrival)
+            userView2.addSubview(lblPreregister)
+            userView2.addSubview(lblPreregisterText)
+            
+            self.view.addSubview(userView1)
+            self.view.addSubview(userView2)
+            
+            lblNota.frame = CGRect(x: 0.05*width, y: 0.22*height, width: 0.9*width, height: 0.2*height);
+            lblNota.textColor = colorWithHexString("2e3634")
+            
+            self.view.addSubview(lblNota)
+            
+            tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+            
         }
 
     }
@@ -1382,6 +1494,15 @@ class vcGuestPreCheckin: UIViewController , UITableViewDelegate, UITableViewData
             lastIndex = IndexPath.init()
             cell.textLabel?.textColor = colorWithHexString("00467f")
             cell.detailTextLabel?.textColor = colorWithHexString("00467f")
+            
+        }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+            cell.backgroundColor = UIColor.clear
+            cell.accessoryView = STKColorAccessoryView.init(color: colorWithHexString("4daba0"))
+            
+            lastIndex = IndexPath.init()
+            cell.textLabel?.textColor = colorWithHexString("2e3634")
+            cell.detailTextLabel?.textColor = colorWithHexString("2e3634")
         }
         
         cell.textLabel?.text = tblPersonInfoAux[indexPath.row]["FullName"]!

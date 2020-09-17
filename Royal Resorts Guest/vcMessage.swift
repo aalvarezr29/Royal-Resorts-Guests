@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import WebKit
 
-class vcMessage: UIViewController, UIWebViewDelegate{
+class vcMessage: UIViewController{
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -95,8 +96,7 @@ class vcMessage: UIViewController, UIWebViewDelegate{
             
         }
         
-        let myWebView = UIWebView()
-        myWebView.delegate = self
+        let myWebView = WKWebView()
         myWebView.loadHTMLString(strHTMLMessage, baseURL: nil)
         
         myWebView.frame = CGRect(x: 0.05*width, y: 0.15*height, width: 0.9*width, height: 0.6*height)
@@ -206,7 +206,20 @@ class vcMessage: UIViewController, UIWebViewDelegate{
         
     }
     
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if navigationAction.navigationType == WKNavigationType.linkActivated {
+            //print("link")
+            guard let url = navigationAction.request.url else {return}
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            decisionHandler(WKNavigationActionPolicy.cancel)
+            return
+        }
+        //print("no link")
+        decisionHandler(WKNavigationActionPolicy.allow)
+
+    }
+    
+    /*func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         
         if navigationType == .linkClicked {
             
@@ -215,6 +228,6 @@ class vcMessage: UIViewController, UIWebViewDelegate{
             return false
         }
         return true
-    }
+    }*/
     
 }
