@@ -7,7 +7,7 @@
 */
 //"Titulo" = "Huésped Royal Resorts";
 "Titulo" = "Royal Resorts";
-"TituloSBR" = "Royal Resorts Caribbean";
+"TituloSBR" = "Simpson Bay";
 "TituloGRM" = "Grand Residences";
 "Iniciar" = "Iniciar";
 "lblHeader" = "Por favor proporcione su dirección de correo electrónico o su Personal ID y su PIN (Número personal de identificación).";
@@ -378,3 +378,5 @@
 "lblEmail" = "Correo Electronico";
 "lblProcessPay" = "Procesando su pago";
 "msgCheckOutCLB" = "Gracias por vacacionar en Costa Linda Beach Resort. Deseamos que usted haya tenido una estancia maravillosa y esperamos tener la oportunidad de darle la bienvenida otra vez muy pronto.";
+"validStay" = "No se encontro una estancia valida";
+"goingOutSide" = "Usted se está dirigiendo a un sitio seguro de Royal Resorts fuera de la app. Sus transacciones no se reflejarán aquí.";

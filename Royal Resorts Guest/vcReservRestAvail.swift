@@ -638,6 +638,9 @@ class vcReservRestAvail: UIViewController, UITextFieldDelegate {
         
         let components = (cal as NSCalendar).component(unit, from: lblDateR.date)
         
+        var iResFin: Int = 0
+        var sResFin: String = ""
+        
         /*var strNameDate: String = ""
         
         if components == 1{
@@ -687,6 +690,7 @@ class vcReservRestAvail: UIViewController, UITextFieldDelegate {
             var strAdult: String = ""
             var indexThem: Int = 0
             var strInitHour: String = ""
+            var sRes: String = ""
             
             self.btnApply.isUserInteractionEnabled = false
             self.btnApply.isEnabled = false
@@ -793,58 +797,83 @@ class vcReservRestAvail: UIViewController, UITextFieldDelegate {
                                     var r = RRDataRow()
                                     r = table.rows.object(at: 0) as! RRDataRow
                                     
-                                    for r in table.rows{
-                                        
-                                        if indexThem == 0{
-                                            iSection = 0
-                                            iSectionArea = 0
-                                            iSectionTheme = 0
-                                            tblRestAvail.append([[[:]]])
-                                        }else if ThemeDescriptionEng != ((r as AnyObject).getColumnByName("ThemeDescriptionEng").content as? String)!{
-                                            iSection = 0
-                                            iSectionArea = 0
-                                            iSectionTheme = iSectionTheme + 1
-                                            tblRestAvail.append([[[:]]])
-                                        }else{
-                                            if ZoneDescription != ((r as AnyObject).getColumnByName("ZoneDescriptionEng").content as? String)!{
-                                                iSection = 0
-                                                iSectionArea = iSectionArea + 1
-                                                tblRestAvail[iSectionTheme].append([[:]])
-                                            }else{
-                                                iSection = iSection + 1
-                                                tblRestAvail[iSectionTheme][iSectionArea].append([:])
-                                            }
-                                        }
-                                        
-                                        tblRestAvailTemp = [:]
-                                        
-                                        ThemeDescriptionEng = ((r as AnyObject).getColumnByName("ThemeDescriptionEng").content as? String)!
-                                        ZoneDescription = ((r as AnyObject).getColumnByName("ZoneDescriptionEng").content as? String)!
-                                        
-                                        tblRestAvailTemp["ID"] = (r as AnyObject).getColumnByName("ID").content as? String
-                                        tblRestAvailTemp["EventDescription"] = (r as AnyObject).getColumnByName("EventDescription").content as? String
-                                        tblRestAvailTemp["ThemeDescriptionEng"] = (r as AnyObject).getColumnByName("ThemeDescriptionEng").content as? String
-                                        tblRestAvailTemp["ThemeDescriptionSpa"] = (r as AnyObject).getColumnByName("ThemeDescriptionSpa").content as? String
-                                        tblRestAvailTemp["ZoneDescriptionEng"] = (r as AnyObject).getColumnByName("ZoneDescriptionEng").content as? String
-                                        tblRestAvailTemp["ZoneDescriptionEsp"] = (r as AnyObject).getColumnByName("ZoneDescriptionEsp").content as? String
-                                        tblRestAvailTemp["IntervalTime"] = (r as AnyObject).getColumnByName("IntervalTime").content as? String
-                                        tblRestAvailTemp["SearAvailable"] = (r as AnyObject).getColumnByName("SearAvailable").content as? String
-                                        tblRestAvailTemp["AvailableLevel"] = (r as AnyObject).getColumnByName("AvailableLevel").content as? String
-                                        tblRestAvailTemp["RestCode"] = (r as AnyObject).getColumnByName("RestCode").content as? String
-                                        tblRestAvailTemp["pkZoneID"] = (r as AnyObject).getColumnByName("pkZoneID").content as? String
-                                        tblRestAvailTemp["pkEventID"] = (r as AnyObject).getColumnByName("pkEventID").content as? String
-                                        tblRestAvailTemp["pkRestaurantEventID"] = (r as AnyObject).getColumnByName("pkRestaurantEventID").content as? String
-                                        tblRestAvailTemp["ZoneCode"] = (r as AnyObject).getColumnByName("ZoneCode").content as? String
-                                        tblRestAvailAll.append(tblRestAvailTemp)
-                                        tblRestAvail[iSectionTheme][iSectionArea][iSection] = tblRestAvailTemp
-                                        
-                                        indexThem = indexThem + 1
-                                        
+                                    if r.getColumnByName("iResult") != nil{
+                                        iRes = r.getColumnByName("iResult").content as! String
+                                        sRes = r.getColumnByName("sResult").content as! String
+                                    }else{
+                                        iRes = "1"
                                     }
                                     
-                                    self.tblRestAvailAll = tblRestAvailAll
-                                    self.tblRestAvail = tblRestAvail
-                                    self.iseccion = self.tblRestAvail.count
+                                    let iResAux = (iRes as NSString).integerValue
+                                    
+                                    iResFin = iResAux
+                                    sResFin = sRes
+                                    
+                                    if iResAux > 0 {
+                                    
+                                            for r in table.rows{
+                                                
+                                                if indexThem == 0{
+                                                    iSection = 0
+                                                    iSectionArea = 0
+                                                    iSectionTheme = 0
+                                                    tblRestAvail.append([[[:]]])
+                                                }else if ThemeDescriptionEng != ((r as AnyObject).getColumnByName("ThemeDescriptionEng").content as? String)!{
+                                                    iSection = 0
+                                                    iSectionArea = 0
+                                                    iSectionTheme = iSectionTheme + 1
+                                                    tblRestAvail.append([[[:]]])
+                                                }else{
+                                                    if ZoneDescription != ((r as AnyObject).getColumnByName("ZoneDescriptionEng").content as? String)!{
+                                                        iSection = 0
+                                                        iSectionArea = iSectionArea + 1
+                                                        tblRestAvail[iSectionTheme].append([[:]])
+                                                    }else{
+                                                        iSection = iSection + 1
+                                                        tblRestAvail[iSectionTheme][iSectionArea].append([:])
+                                                    }
+                                                }
+                                                
+                                                tblRestAvailTemp = [:]
+                                                
+                                                ThemeDescriptionEng = ((r as AnyObject).getColumnByName("ThemeDescriptionEng").content as? String)!
+                                                ZoneDescription = ((r as AnyObject).getColumnByName("ZoneDescriptionEng").content as? String)!
+                                                
+                                                tblRestAvailTemp["ID"] = (r as AnyObject).getColumnByName("ID").content as? String
+                                                tblRestAvailTemp["EventDescription"] = (r as AnyObject).getColumnByName("EventDescription").content as? String
+                                                tblRestAvailTemp["ThemeDescriptionEng"] = (r as AnyObject).getColumnByName("ThemeDescriptionEng").content as? String
+                                                tblRestAvailTemp["ThemeDescriptionSpa"] = (r as AnyObject).getColumnByName("ThemeDescriptionSpa").content as? String
+                                                tblRestAvailTemp["ZoneDescriptionEng"] = (r as AnyObject).getColumnByName("ZoneDescriptionEng").content as? String
+                                                tblRestAvailTemp["ZoneDescriptionEsp"] = (r as AnyObject).getColumnByName("ZoneDescriptionEsp").content as? String
+                                                tblRestAvailTemp["IntervalTime"] = (r as AnyObject).getColumnByName("IntervalTime").content as? String
+                                                tblRestAvailTemp["SearAvailable"] = (r as AnyObject).getColumnByName("SearAvailable").content as? String
+                                                tblRestAvailTemp["AvailableLevel"] = (r as AnyObject).getColumnByName("AvailableLevel").content as? String
+                                                tblRestAvailTemp["RestCode"] = (r as AnyObject).getColumnByName("RestCode").content as? String
+                                                tblRestAvailTemp["pkZoneID"] = (r as AnyObject).getColumnByName("pkZoneID").content as? String
+                                                tblRestAvailTemp["pkEventID"] = (r as AnyObject).getColumnByName("pkEventID").content as? String
+                                                tblRestAvailTemp["pkRestaurantEventID"] = (r as AnyObject).getColumnByName("pkRestaurantEventID").content as? String
+                                                tblRestAvailTemp["ZoneCode"] = (r as AnyObject).getColumnByName("ZoneCode").content as? String
+                                                tblRestAvailAll.append(tblRestAvailTemp)
+                                                tblRestAvail[iSectionTheme][iSectionArea][iSection] = tblRestAvailTemp
+                                                
+                                                indexThem = indexThem + 1
+                                                
+                                            }
+                                            
+                                            self.tblRestAvailAll = tblRestAvailAll
+                                            self.tblRestAvail = tblRestAvail
+                                            self.iseccion = self.tblRestAvail.count
+                                        
+                                    } else {
+
+                                           
+                                           DispatchQueue.main.async {
+                                             
+                                               RKDropdownAlert.title(sResFin.description, backgroundColor: UIColor.red, textColor: UIColor.black)
+                                             
+                                           }
+
+                                    }
                                     
                                 }
                                 
@@ -852,6 +881,7 @@ class vcReservRestAvail: UIViewController, UITextFieldDelegate {
                             
                         }
                         
+
                         OperationQueue.main.addOperation() {
                             //accion
                             if !Reachability.isConnectedToNetwork(){
@@ -1092,11 +1122,17 @@ class vcReservRestAvail: UIViewController, UITextFieldDelegate {
                             self.btnApply.isUserInteractionEnabled = true
                             self.btnApply.isEnabled = true
                             SwiftLoader.hide()
+                            
+                            
+                            
                         }
+
                     }//2
+ 
                 }//1
+
             }
-            
+
         }
 
     }

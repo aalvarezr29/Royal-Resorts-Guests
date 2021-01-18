@@ -121,19 +121,19 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
         txtEmail.placeholder = NSLocalizedString("txtEmail",comment:"");
         txtPin.placeholder = NSLocalizedString("txtPIN",comment:"");
         lblHeader.numberOfLines = 0
-        lblHeader.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+        lblHeader.font = UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)
         lblHeader.text = NSLocalizedString("lblHeader",comment:"")
-        lblMsjPin.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+        lblMsjPin.font = UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)
         lblMsjPin.text = NSLocalizedString("lblMsjPin",comment:"")
 
         mas = NSMutableAttributedString(string: NSLocalizedString("btnRequest",comment:""), attributes: [
-            NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)!,
+            NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)!,
             NSAttributedString.Key.foregroundColor: colorWithHexString ("5C9FCC")
             ])
         btnRequest.setAttributedTitle(mas, for: UIControl.State())
         
         mas = NSMutableAttributedString(string: NSLocalizedString("btnAply",comment:""), attributes: [
-            NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont4)!,
+            NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont4)!,
             NSAttributedString.Key.foregroundColor: colorWithHexString ("007AFF")
             ])
         btnAply.setAttributedTitle(mas, for: UIControl.State())
@@ -169,7 +169,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             lblHeader.frame = CGRect(x: 0.05*width, y: 0.345*height, width: 0.9*width, height: 0.1*height);
             lblHeader.textColor = colorWithHexString ("ba8748")
             lblHeader.numberOfLines = 0
-            lblHeader.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+            lblHeader.font = UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)
             lblHeader.text = NSLocalizedString("lblHeader",comment:"")
             lblHeader.textAlignment = NSTextAlignment.center
             lblHeader.alpha = 0.9
@@ -235,7 +235,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             
             btnAply.frame = CGRect(x: 0.05*width, y: 0.587*height, width: 0.9*width, height: 0.04*height);
             mas = NSMutableAttributedString(string: NSLocalizedString("btnAply",comment:""), attributes: [
-                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont4)!,
+                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont4)!,
                 NSAttributedString.Key.foregroundColor: colorWithHexString ("ba8748")
                 ])
             btnAply.setAttributedTitle(mas, for: UIControl.State())
@@ -250,7 +250,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             lblMsjPin.frame = CGRect(x: 0.05*width, y: 0.83*height, width: 0.9*width, height: 0.1*height);
             lblMsjPin.textColor = colorWithHexString ("ba8748")
             lblMsjPin.numberOfLines = 0
-            lblMsjPin.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+            lblMsjPin.font = UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)
             lblMsjPin.text = NSLocalizedString("lblMsjPin",comment:"")
             lblMsjPin.textAlignment = NSTextAlignment.center
             lblMsjPin.alpha = 0.9
@@ -263,7 +263,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             
             btnRequest.frame = CGRect(x: 0.05*width, y: 0.92*height, width: 0.9*width, height: 0.04*height);
             mas = NSMutableAttributedString(string: NSLocalizedString("btnRequest",comment:""), attributes: [
-                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)!,
+                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)!,
                 NSAttributedString.Key.foregroundColor: colorWithHexString ("ba8748")
                 ])
             btnRequest.setAttributedTitle(mas, for: UIControl.State())
@@ -296,7 +296,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             lblHeader.frame = CGRect(x: 0.05*width, y: 0.345*height, width: 0.9*width, height: 0.1*height);
             lblHeader.textColor = colorWithHexString ("00467f")
             lblHeader.numberOfLines = 0
-            lblHeader.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+            lblHeader.font = UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)
             lblHeader.text = NSLocalizedString("lblHeader",comment:"")
             lblHeader.textAlignment = NSTextAlignment.center
             lblHeader.alpha = 0.6
@@ -362,7 +362,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             
             btnAply.frame = CGRect(x: 0.05*width, y: 0.587*height, width: 0.9*width, height: 0.04*height);
             mas = NSMutableAttributedString(string: NSLocalizedString("btnAply",comment:""), attributes: [
-                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont4)!,
+                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont4)!,
                 NSAttributedString.Key.foregroundColor: colorWithHexString ("00467f")
                 ])
             btnAply.setAttributedTitle(mas, for: UIControl.State())
@@ -377,7 +377,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             lblMsjPin.frame = CGRect(x: 0.05*width, y: 0.83*height, width: 0.9*width, height: 0.1*height);
             lblMsjPin.textColor = colorWithHexString ("00467f")
             lblMsjPin.numberOfLines = 0
-            lblMsjPin.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+            lblMsjPin.font = UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)
             lblMsjPin.text = NSLocalizedString("lblMsjPin",comment:"")
             lblMsjPin.textAlignment = NSTextAlignment.center
             lblMsjPin.alpha = 0.6
@@ -390,7 +390,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             
             btnRequest.frame = CGRect(x: 0.05*width, y: 0.92*height, width: 0.9*width, height: 0.04*height);
             mas = NSMutableAttributedString(string: NSLocalizedString("btnRequest",comment:""), attributes: [
-                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)!,
+                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)!,
                 NSAttributedString.Key.foregroundColor: colorWithHexString ("00467f")
                 ])
             btnRequest.setAttributedTitle(mas, for: UIControl.State())
@@ -425,7 +425,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             lblHeader.frame = CGRect(x: 0.05*width, y: 0.345*height, width: 0.9*width, height: 0.1*height);
             lblHeader.textColor = colorWithHexString ("2e3634")
             lblHeader.numberOfLines = 0
-            lblHeader.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+            lblHeader.font = UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)
             lblHeader.text = NSLocalizedString("lblHeader",comment:"")
             lblHeader.textAlignment = NSTextAlignment.center
             lblHeader.alpha = 0.6
@@ -491,7 +491,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             
             btnAply.frame = CGRect(x: 0.05*width, y: 0.587*height, width: 0.9*width, height: 0.04*height);
             mas = NSMutableAttributedString(string: NSLocalizedString("btnAply",comment:""), attributes: [
-                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont4)!,
+                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont4)!,
                 NSAttributedString.Key.foregroundColor: colorWithHexString ("2e3634")
                 ])
             btnAply.setAttributedTitle(mas, for: UIControl.State())
@@ -506,7 +506,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             lblMsjPin.frame = CGRect(x: 0.05*width, y: 0.64*height, width: 0.9*width, height: 0.1*height);
             lblMsjPin.textColor = colorWithHexString ("2e3634")
             lblMsjPin.numberOfLines = 1
-            lblMsjPin.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+            lblMsjPin.font = UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)
             lblMsjPin.text = NSLocalizedString("lblMsjPin",comment:"")
             lblMsjPin.textAlignment = NSTextAlignment.center
             lblMsjPin.alpha = 0.6
@@ -519,7 +519,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             
             btnRequest.frame = CGRect(x: 0.05*width, y: 0.7*height, width: 0.9*width, height: 0.04*height);
             mas = NSMutableAttributedString(string: NSLocalizedString("btnRequest",comment:""), attributes: [
-                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)!,
+                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)!,
                 NSAttributedString.Key.foregroundColor: colorWithHexString ("2e3634"),
                 NSAttributedString.Key.underlineStyle : 1
                 ])
@@ -530,7 +530,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             lblmsjor.frame = CGRect(x: 0.05*width, y: 0.75*height, width: 0.9*width, height: 0.04*height);
             lblmsjor.textColor = colorWithHexString ("2e3634")
             lblmsjor.numberOfLines = 0
-            lblmsjor.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+            lblmsjor.font = UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)
             lblmsjor.text = NSLocalizedString("lblOr",comment:"")
             lblmsjor.textAlignment = NSTextAlignment.center
             lblmsjor.alpha = 0.6
@@ -539,7 +539,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             lblmsjnotreg.frame = CGRect(x: 0.05*width, y: 0.8*height, width: 0.9*width, height: 0.04*height);
             lblmsjnotreg.textColor = colorWithHexString ("2e3634")
             lblmsjnotreg.numberOfLines = 0
-            lblmsjnotreg.font = UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)
+            lblmsjnotreg.font = UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)
             lblmsjnotreg.text = NSLocalizedString("lblmsjnotreg",comment:"")
             lblmsjnotreg.textAlignment = NSTextAlignment.center
             lblmsjnotreg.alpha = 0.6
@@ -547,7 +547,7 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
             
             btnConfCode.frame = CGRect(x: 0.05*width, y: 0.83*height, width: 0.9*width, height: 0.04*height);
             mas = NSMutableAttributedString(string: NSLocalizedString("btnConfCode",comment:""), attributes: [
-                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont5 + appDelegate.gblDeviceFont5)!,
+                NSAttributedString.Key.font: UIFont(name:"Helvetica", size:appDelegate.gblFont7 + appDelegate.gblDeviceFont5)!,
                 NSAttributedString.Key.foregroundColor: colorWithHexString ("2e3634"),
                 NSAttributedString.Key.underlineStyle : 1
                 ])
@@ -801,6 +801,13 @@ class vcGuestLogin: UIViewController, UITextFieldDelegate {
                         
                     }else{
                         //GoogleWearAlert.showAlert(title: "Login Error", type: .Error, iAction: 1, form:"LoginE")
+                        
+                        if sRes == ""{
+                            RKDropdownAlert.title(NSLocalizedString("MsgError5",comment:""), backgroundColor: self.colorWithHexString ("5C9FCC"), textColor: UIColor.black)
+                        }else{
+                            RKDropdownAlert.title(sRes, backgroundColor: self.colorWithHexString ("5C9FCC"), textColor: UIColor.black)
+                        }
+
                         RKDropdownAlert.title(sRes, backgroundColor: self.colorWithHexString ("5C9FCC"), textColor: UIColor.black)
                         self.txtPin.resignFirstResponder()
                         self.txtEmail.resignFirstResponder()

@@ -106,6 +106,7 @@ class vcRRRewards: UIViewController, UITextFieldDelegate {
                     StaysAux["ConfirmationCode"] = rs.string(forColumn: "ConfirmationCode")!
                     StaysAux["fkCurrencyID"] = String(describing: rs.string(forColumn: "fkCurrencyID")!)
                     StaysAux["PlaceCode"] = String(describing: rs.string(forColumn: "PlaceCode")!)
+                    StaysAux["fkPropertyID"] = String(describing: rs.string(forColumn: "fkPropertyID")!)
                 }
             } else {
                 print("select failure: \(db.lastErrorMessage())")

@@ -1327,6 +1327,7 @@ class vcGuestAccount: UIViewController , UITableViewDelegate, UITableViewDataSou
                         var strInPostCheckOutProcess: String = ""
                         
                         strInPostCheckOutProcess = rowResPostCheckOut.getColumnByName("ynInPostCheckOutProcess").content as! String
+                            
                         self.appDelegate.strCLBRTokenPay = rowResPostCheckOut.getColumnByName("CLBRTokenPay").content as! String
                             
                         if strInPostCheckOutProcess == "False"{

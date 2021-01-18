@@ -159,7 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     
     var UserName: String = "cqsCMUTp8V8wld6dDBoBTw=="
     var Password: String = "Rhw267Y5Pfkk1SOtnGpwZA=="
-    var AppAmb: Int = 4
+    var AppAmb: Int = 3
     
     //Arreglos
     var gtblLogin: Dictionary<String, String>! //tabla de Login

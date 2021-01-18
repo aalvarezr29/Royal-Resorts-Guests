@@ -588,57 +588,70 @@ class vcServices: UIViewController {
                 strFont = "Helvetica"
                 self.navigationController?.navigationBar.tintColor = colorWithHexString("ffffff")
                 self.navigationController?.navigationBar.barStyle = UIBarStyle.default
-                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
                 
                 ViewItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: colorWithHexString("ffffff")], for: UIControl.State())
                 
             }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
 
-                //Boton Add
-                ViewItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(vcRequestFollowUp.clickAdd(_:)))
-                
-                AccView.addSubview(runkeeperSwitch)
-                
-                self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-                self.navigationController?.navigationBar.shadowImage = UIImage()
-                
-                strFont = "HelveticaNeue"
-                let img = UIImage(named:appDelegate.gstrNavImg)
-                let resizable = img!.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: .stretch)
-                self.navigationController?.navigationBar.setBackgroundImage(resizable, for: .default)
-                let navigationTitleFont = UIFont(name: strFont, size: appDelegate.gblFont10 + appDelegate.gblDeviceFont3)!
-                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: navigationTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white]
-                self.navigationController?.navigationBar.isTranslucent = true
-                self.navigationController?.navigationBar.alpha = 0.99
                 self.navigationController?.navigationBar.tintColor = UIColor.white
-                self.navigationController?.navigationBar.barStyle = UIBarStyle.default
-                for parent in self.navigationController!.navigationBar.subviews {
-                    for childView in parent.subviews {
-                        if(childView is UIImageView) {
-                            childView.removeFromSuperview()
-                        }
-                    }
-                }
                 
-                var imgBack = UIImage()
-                var imgvwBack = UIImageView()
+                self.AccView.addSubview(self.imgvwHouse)
                 
-                AccView.backgroundColor = UIColor.clear
+                lblHouse = UILabel(frame: CGRect(x: 0.05*self.width, y: 0.12*height, width: 0.22*width, height: 0.03*height));
+                lblHouse.backgroundColor = UIColor.clear;
+                lblHouse.textAlignment = NSTextAlignment.center;
+                lblHouse.textColor = colorWithHexString("2e3634")
+                lblHouse.numberOfLines = 1;
+                lblHouse.font = UIFont(name: "Verdana", size: appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+                lblHouse.text = NSLocalizedString("lblHouse",comment:"");
+                self.AccView.addSubview(self.lblHouse)
+                
+                var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TapHouse(tapGestureRecognizer:)))
+                self.imgvwHouse.isUserInteractionEnabled = true
+                self.imgvwHouse.addGestureRecognizer(tapGestureRecognizer)
+                
+                
+                self.AccView.addSubview(self.imgvwMant)
+                
+                lblMant = UILabel(frame: CGRect(x: 0.35*self.width, y: 0.12*height, width: 0.22*width, height: 0.03*height));
+                lblMant.backgroundColor = UIColor.clear;
+                lblMant.textAlignment = NSTextAlignment.center;
+                lblMant.textColor = colorWithHexString("2e3634")
+                lblMant.numberOfLines = 1;
+                lblMant.font = UIFont(name: "Verdana", size: appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+                lblMant.text = NSLocalizedString("lblMant",comment:"");
+                self.AccView.addSubview(self.lblMant)
+                
+                tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TapMant(tapGestureRecognizer:)))
+                self.imgvwMant.isUserInteractionEnabled = true
+                self.imgvwMant.addGestureRecognizer(tapGestureRecognizer)
+                
+                
+                self.AccView.addSubview(self.imgvwFdesk)
+                
+                lblFdesk = UILabel(frame: CGRect(x: 0.65*self.width, y: 0.12*height, width: 0.22*width, height: 0.03*height));
+                lblFdesk.backgroundColor = UIColor.clear;
+                lblFdesk.textAlignment = NSTextAlignment.center;
+                lblFdesk.textColor = colorWithHexString("2e3634")
+                lblFdesk.numberOfLines = 1;
+                lblFdesk.font = UIFont(name: "Verdana", size: appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+                lblFdesk.text = NSLocalizedString("lblFdesk",comment:"");
+                self.AccView.addSubview(self.lblFdesk)
+                
+                tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TapFdesk(tapGestureRecognizer:)))
+                self.imgvwFdesk.isUserInteractionEnabled = true
+                self.imgvwFdesk.addGestureRecognizer(tapGestureRecognizer)
+                
+                lineView.layer.borderWidth = 1.0
+                lineView.layer.borderColor = UIColor.black.cgColor
+                self.view.addSubview(lineView)
+                
+                self.AccView.addSubview(self.imgvwSep)
+                
+                cargarDatos()
 
-                self.view.backgroundColor = UIColor.white
-                
-                imgBack = UIImage(named:"bg.png")!
-                imgvwBack = UIImageView(image: imgBack)
-                imgvwBack.frame = CGRect(x: 0.0, y: -0.05*height, width: width, height: height+(0.05*height));
-                imgvwBack.alpha = 0.3
-                imgvwBack.contentMode = UIView.ContentMode.scaleAspectFill
-                //self.view.addSubview(imgvwBack)
-                
-                runkeeperSwitch.backgroundColor = self.colorWithHexString ("a18015")
-                runkeeperSwitch.selectedTitleColor = self.colorWithHexString ("a18015")
-                
-                ViewItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State())
-                
+                ViewItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: colorWithHexString("ffffff")], for: UIControl.State())
             }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
 
                 self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -708,7 +721,7 @@ class vcServices: UIViewController {
     {
 
         if self.appDelegate.strUnitStayInfoID == ""{
-            RKDropdownAlert.title("No se encontro una estancia valida", backgroundColor: UIColor.red, textColor: UIColor.black)
+            RKDropdownAlert.title(NSLocalizedString("validStay",comment:""), backgroundColor: UIColor.red, textColor: UIColor.black)
         }else{
             let tercerViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcAddFolloUp") as! vcAddFolloUp
             appDelegate.strFollowUpTypeID = self.HouseID
@@ -722,7 +735,7 @@ class vcServices: UIViewController {
     @objc func TapMant(tapGestureRecognizer: UITapGestureRecognizer)
     {
         if self.appDelegate.strUnitStayInfoID == ""{
-            RKDropdownAlert.title("No se encontro una estancia valida", backgroundColor: UIColor.red, textColor: UIColor.black)
+            RKDropdownAlert.title(NSLocalizedString("validStay",comment:""), backgroundColor: UIColor.red, textColor: UIColor.black)
         }else{
             let tercerViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcAddFolloUp") as! vcAddFolloUp
             if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
@@ -746,7 +759,7 @@ class vcServices: UIViewController {
     @objc func TapFdesk(tapGestureRecognizer: UITapGestureRecognizer)
     {
         if self.appDelegate.strUnitStayInfoID == ""{
-            RKDropdownAlert.title("No se encontro una estancia valida", backgroundColor: UIColor.red, textColor: UIColor.black)
+            RKDropdownAlert.title(NSLocalizedString("validStay",comment:""), backgroundColor: UIColor.red, textColor: UIColor.black)
         }else{
             let tercerViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcAddFolloUp") as! vcAddFolloUp
             if appDelegate.strBundleIdentifier == "com.royalresorts.guestservices"{
@@ -789,7 +802,7 @@ class vcServices: UIViewController {
         self.present(alert, animated: true, completion: nil)*/
 
         if self.appDelegate.gstrStayInfoTransfer == ""{
-            RKDropdownAlert.title("No se encontro una estancia valida", backgroundColor: UIColor.red, textColor: UIColor.black)
+            RKDropdownAlert.title(NSLocalizedString("validStay",comment:""), backgroundColor: UIColor.red, textColor: UIColor.black)
         }else{
             let tercerViewController = self.storyboard?.instantiateViewController(withIdentifier: "vcTransferDate") as! vcTransferDate
             tercerViewController.urlHome = self.URLTransfer
@@ -802,7 +815,7 @@ class vcServices: UIViewController {
     @objc func TapOnLine(tapGestureRecognizer: UITapGestureRecognizer)
     {
         
-        let alert = UIAlertController(title: NSLocalizedString("lblRequestFollowUp",comment:""), message: "Usted se está dirigiendo a un sitio seguro de Royal Resorts fuera de la app. Sus transacciones no se reflejarán aquí.", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("lblRequestFollowUp",comment:""), message: NSLocalizedString("goingOutSide",comment:""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
             case .default:
@@ -827,7 +840,7 @@ class vcServices: UIViewController {
     @objc func TapRent(tapGestureRecognizer: UITapGestureRecognizer)
     {
 
-        let alert = UIAlertController(title: NSLocalizedString("lblRequestFollowUp",comment:""), message: "Usted se está dirigiendo a un sitio seguro de Royal Resorts fuera de la app. Sus transacciones no se reflejarán aquí.", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("goingOutSide",comment:""), message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
             case .default:
@@ -852,7 +865,7 @@ class vcServices: UIViewController {
     @objc func TapGift(tapGestureRecognizer: UITapGestureRecognizer)
     {
         
-        let alert = UIAlertController(title: NSLocalizedString("lblRequestFollowUp",comment:""), message: "Usted se está dirigiendo a un sitio seguro de Royal Resorts fuera de la app. Sus transacciones no se reflejarán aquí.", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("lblRequestFollowUp",comment:""), message: NSLocalizedString("goingOutSide",comment:""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
             case .default:
@@ -877,7 +890,7 @@ class vcServices: UIViewController {
     @objc func TapMarket(tapGestureRecognizer: UITapGestureRecognizer)
     {
         
-        let alert = UIAlertController(title: NSLocalizedString("lblRequestFollowUp",comment:""), message: "Usted se está dirigiendo a un sitio seguro de Royal Resorts fuera de la app. Sus transacciones no se reflejarán aquí.", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("lblRequestFollowUp",comment:""), message: NSLocalizedString("goingOutSide",comment:""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
             case .default:

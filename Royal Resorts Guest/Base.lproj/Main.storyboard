@@ -10,7 +10,7 @@
         <!--Activity View-->
         <scene sceneID="haG-g9-PWa">
             <objects>
-                <viewController storyboardIdentifier="vcActivity" title="Activity View" id="BH2-za-V3R" customClass="vcActivity" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcActivity" title="Activity View" id="BH2-za-V3R" customClass="vcActivity" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ahL-Ab-SKZ"/>
                         <viewControllerLayoutGuide type="bottom" id="W2b-l4-qJI"/>
@@ -57,7 +57,7 @@
         <!--Home-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="main" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="ViewController" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="ViewController" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e3F-W7-I1P"/>
                         <viewControllerLayoutGuide type="bottom" id="d55-jm-pDy"/>
@@ -94,7 +94,7 @@
         <!--Login-->
         <scene sceneID="Svv-86-dlI">
             <objects>
-                <viewController storyboardIdentifier="vcGuestLogin" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NF3-JV-Rdv" customClass="vcGuestLogin" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcGuestLogin" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NF3-JV-Rdv" customClass="vcGuestLogin" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Omr-5Z-0Vu"/>
                         <viewControllerLayoutGuide type="bottom" id="8h9-n8-cnn"/>
@@ -195,7 +195,7 @@
         <!--vcPreAuth-->
         <scene sceneID="vDb-Du-je1">
             <objects>
-                <viewController storyboardIdentifier="vcPreAuth" title="vcPreAuth" automaticallyAdjustsScrollViewInsets="NO" id="WjA-XK-aZd" customClass="vcPreAuth" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcPreAuth" title="vcPreAuth" automaticallyAdjustsScrollViewInsets="NO" id="WjA-XK-aZd" customClass="vcPreAuth" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0n4-L0-0HS"/>
                         <viewControllerLayoutGuide type="bottom" id="lBH-an-8S0"/>
@@ -209,7 +209,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CellPreAuth" textLabel="5ze-Is-6tm" style="IBUITableViewCellStyleDefault" id="9UV-AQ-YV5" customClass="tvcPreDetail" customModule="Costa_Linda" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CellPreAuth" textLabel="5ze-Is-6tm" style="IBUITableViewCellStyleDefault" id="9UV-AQ-YV5" customClass="tvcPreDetail" customModule="GResidences" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9UV-AQ-YV5" id="A2p-1f-KGg">
@@ -284,7 +284,7 @@
         <!--Guest Stays-->
         <scene sceneID="zWI-Xc-2ph">
             <objects>
-                <viewController storyboardIdentifier="vcGuestMain" id="rLC-vw-WV9" customClass="vcGuestInHouseMain" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcGuestMain" id="rLC-vw-WV9" customClass="vcGuestInHouseMain" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Hq-AA-Llv"/>
                         <viewControllerLayoutGuide type="bottom" id="kzg-rA-cBI"/>
@@ -414,7 +414,7 @@
         <!--Acount-->
         <scene sceneID="ayv-E3-H5h">
             <objects>
-                <viewController storyboardIdentifier="vcGuestAccount" title="Acount" id="eOe-y1-3Eq" customClass="vcGuestAccount" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcGuestAccount" title="Acount" id="eOe-y1-3Eq" customClass="vcGuestAccount" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tma-Sn-c3U"/>
                         <viewControllerLayoutGuide type="bottom" id="LL7-D9-EyB"/>
@@ -438,7 +438,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellAccountTrx" textLabel="OYl-ro-36D" style="IBUITableViewCellStyleDefault" id="3cc-7e-WV8" customClass="tvcVoucher" customModule="Costa_Linda" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellAccountTrx" textLabel="OYl-ro-36D" style="IBUITableViewCellStyleDefault" id="3cc-7e-WV8" customClass="tvcVoucher" customModule="GResidences" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="20"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3cc-7e-WV8" id="koM-GG-7An">
@@ -585,7 +585,7 @@
         <!--vcServices-->
         <scene sceneID="EbE-IY-ju0">
             <objects>
-                <viewController storyboardIdentifier="vcServices" title="vcServices" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oeY-NT-jn5" customClass="vcServices" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcServices" title="vcServices" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oeY-NT-jn5" customClass="vcServices" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8z5-Sd-NTb"/>
                         <viewControllerLayoutGuide type="bottom" id="WWg-Ha-873"/>
@@ -618,7 +618,7 @@
         <!--DateCell-->
         <scene sceneID="dkG-Z8-bYu">
             <objects>
-                <tableViewController storyboardIdentifier="tvcPosCheckOut" automaticallyAdjustsScrollViewInsets="NO" id="0uH-2X-UGh" userLabel="DateCell" customClass="DateCellTableViewController" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="tvcPosCheckOut" automaticallyAdjustsScrollViewInsets="NO" id="0uH-2X-UGh" userLabel="DateCell" customClass="DateCellTableViewController" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Cnd-f4-q16">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -764,7 +764,7 @@
         <!--Vc Guest Account Payment-->
         <scene sceneID="Z0i-nG-REV">
             <objects>
-                <viewController storyboardIdentifier="vcGuestAccountPayment" automaticallyAdjustsScrollViewInsets="NO" id="tGJ-Oq-yK5" customClass="vcGuestAccountPayment" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcGuestAccountPayment" automaticallyAdjustsScrollViewInsets="NO" id="tGJ-Oq-yK5" customClass="vcGuestAccountPayment" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FF9-Et-sXg"/>
                         <viewControllerLayoutGuide type="bottom" id="oO1-xo-5Mm"/>
@@ -806,7 +806,7 @@
                                                     <action selector="clickPayment:" destination="tGJ-Oq-yK5" eventType="touchUpInside" id="u4T-zv-49b"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pA6-tG-9id" customClass="AKMaskField" customModule="Costa_Linda" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pA6-tG-9id" customClass="AKMaskField" customModule="GResidences" customModuleProvider="target">
                                                 <rect key="frame" x="21" y="73" width="302" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -924,7 +924,7 @@
         <!--Voucher-->
         <scene sceneID="Bc1-EG-epZ">
             <objects>
-                <viewController storyboardIdentifier="vcGuestAccountTrxViewController" title="Voucher" automaticallyAdjustsScrollViewInsets="NO" id="4if-dk-hJG" customClass="vcGuestAccountTrxViewController" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcGuestAccountTrxViewController" title="Voucher" automaticallyAdjustsScrollViewInsets="NO" id="4if-dk-hJG" customClass="vcGuestAccountTrxViewController" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Oku-OJ-Pp9"/>
                         <viewControllerLayoutGuide type="bottom" id="4kL-0M-d5j"/>
@@ -1029,7 +1029,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellVoucher" textLabel="GLf-co-1mn" rowHeight="28" style="IBUITableViewCellStyleDefault" id="K9B-Y2-uBe" customClass="tvcVoucherDetail" customModule="Costa_Linda" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellVoucher" textLabel="GLf-co-1mn" rowHeight="28" style="IBUITableViewCellStyleDefault" id="K9B-Y2-uBe" customClass="tvcVoucherDetail" customModule="GResidences" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="28"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K9B-Y2-uBe" id="8x7-aS-e09">
@@ -1133,7 +1133,7 @@
         <!--Pin Request-->
         <scene sceneID="r7Q-qC-RFe">
             <objects>
-                <viewController storyboardIdentifier="vcLoginEmailRequest" id="o9h-AI-AX3" customClass="vcLoginEmailRequest" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcLoginEmailRequest" id="o9h-AI-AX3" customClass="vcLoginEmailRequest" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6fm-zh-jqH"/>
                         <viewControllerLayoutGuide type="bottom" id="kV7-N3-OnB"/>
@@ -1317,7 +1317,7 @@
         <!--PRE ARRIVAL-->
         <scene sceneID="JIt-oe-bVM">
             <objects>
-                <viewController storyboardIdentifier="vcGuestPreCheckin" title="PRE ARRIVAL" id="dqj-eE-Adf" customClass="vcGuestPreCheckin" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcGuestPreCheckin" title="PRE ARRIVAL" id="dqj-eE-Adf" customClass="vcGuestPreCheckin" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KIf-Dz-yZA"/>
                         <viewControllerLayoutGuide type="bottom" id="75i-9M-uLf"/>
@@ -1475,7 +1475,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Vc Guest People Edit-->
         <scene sceneID="JQ9-R1-YFh">
             <objects>
-                <viewController storyboardIdentifier="vcGuestPeopleEdit" automaticallyAdjustsScrollViewInsets="NO" id="zgl-Yn-KcI" customClass="vcGuestPeopleEdit" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcGuestPeopleEdit" automaticallyAdjustsScrollViewInsets="NO" id="zgl-Yn-KcI" customClass="vcGuestPeopleEdit" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2L7-bg-Z1z"/>
                         <viewControllerLayoutGuide type="bottom" id="3kr-k2-rcT"/>
@@ -1625,7 +1625,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Request Detail-->
         <scene sceneID="3QI-b3-3py">
             <objects>
-                <viewController storyboardIdentifier="vcRequestDetail" title="Request Detail" automaticallyAdjustsScrollViewInsets="NO" id="mmf-1Y-8OL" customClass="vcRequestDetail" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcRequestDetail" title="Request Detail" automaticallyAdjustsScrollViewInsets="NO" id="mmf-1Y-8OL" customClass="vcRequestDetail" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fog-8R-biK"/>
                         <viewControllerLayoutGuide type="bottom" id="xCt-bG-SxD"/>
@@ -1644,7 +1644,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CellFollowUpDetail" textLabel="gEQ-RF-pQ4" style="IBUITableViewCellStyleDefault" id="fYH-IT-xTW" customClass="tvcFollowUpDetail" customModule="Costa_Linda" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CellFollowUpDetail" textLabel="gEQ-RF-pQ4" style="IBUITableViewCellStyleDefault" id="fYH-IT-xTW" customClass="tvcFollowUpDetail" customModule="GResidences" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fYH-IT-xTW" id="B7l-Lc-T91">
@@ -1710,7 +1710,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Add Request-->
         <scene sceneID="m2J-6L-reS">
             <objects>
-                <viewController storyboardIdentifier="vcAddFolloUp" title="Add Request" id="EnO-Cg-QGB" customClass="vcAddFolloUp" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcAddFolloUp" title="Add Request" id="EnO-Cg-QGB" customClass="vcAddFolloUp" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RdR-x6-Tlz"/>
                         <viewControllerLayoutGuide type="bottom" id="8tS-ff-CG4"/>
@@ -1729,7 +1729,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="cell" textLabel="6uY-KL-FpH" detailTextLabel="Pw5-5J-f15" style="IBUITableViewCellStyleValue1" id="MX9-Gs-XtW" customClass="tvcFollowUp" customModule="Costa_Linda" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="cell" textLabel="6uY-KL-FpH" detailTextLabel="Pw5-5J-f15" style="IBUITableViewCellStyleValue1" id="MX9-Gs-XtW" customClass="tvcFollowUp" customModule="GResidences" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="28"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MX9-Gs-XtW" id="VVt-ae-8Dl">
@@ -1776,7 +1776,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Select Stay-->
         <scene sceneID="E7t-Ls-ktJ">
             <objects>
-                <viewController storyboardIdentifier="vcSelectStay" title="Select Stay" automaticallyAdjustsScrollViewInsets="NO" id="gDC-mF-Maq" customClass="vcSelectStay" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcSelectStay" title="Select Stay" automaticallyAdjustsScrollViewInsets="NO" id="gDC-mF-Maq" customClass="vcSelectStay" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dLG-JC-up5"/>
                         <viewControllerLayoutGuide type="bottom" id="XZh-m9-pS2"/>
@@ -1836,7 +1836,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Select Request Type-->
         <scene sceneID="eAf-4b-Y1B">
             <objects>
-                <viewController storyboardIdentifier="vcSelectRequestType" title="Select Request Type" id="cs9-Aa-E8J" customClass="vcSelectRequestType" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcSelectRequestType" title="Select Request Type" id="cs9-Aa-E8J" customClass="vcSelectRequestType" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="asJ-r7-xKs"/>
                         <viewControllerLayoutGuide type="bottom" id="naH-qz-Evw"/>
@@ -1920,7 +1920,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Request View-->
         <scene sceneID="GAa-AD-SMH">
             <objects>
-                <viewController title="Request View" id="cRp-Id-POK" customClass="vcRequestFollowUp" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Request View" id="cRp-Id-POK" customClass="vcRequestFollowUp" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GFQ-ay-w98"/>
                         <viewControllerLayoutGuide type="bottom" id="9kh-hn-Lq6"/>
@@ -1973,7 +1973,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Restaurant View-->
         <scene sceneID="5f4-Vk-1FJ">
             <objects>
-                <viewController storyboardIdentifier="vcRestaurant" title="Restaurant View" id="rRA-R0-fFF" customClass="vcRestaurant" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcRestaurant" title="Restaurant View" id="rRA-R0-fFF" customClass="vcRestaurant" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WSC-tN-EOu"/>
                         <viewControllerLayoutGuide type="bottom" id="ko2-lC-NBj"/>
@@ -1997,7 +1997,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Restaurant List View-->
         <scene sceneID="qbN-NX-zwE">
             <objects>
-                <viewController storyboardIdentifier="vcRestaurantList" title="Restaurant List View" id="i2D-6E-ail" customClass="vcRestaurantList" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcRestaurantList" title="Restaurant List View" id="i2D-6E-ail" customClass="vcRestaurantList" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NQq-0C-J7Q"/>
                         <viewControllerLayoutGuide type="bottom" id="upq-rm-XwZ"/>
@@ -2016,7 +2016,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellRestaurantList" textLabel="Iuj-30-IP2" style="IBUITableViewCellStyleDefault" id="klW-ws-QYz" customClass="tvcRestaurantList" customModule="Costa_Linda" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellRestaurantList" textLabel="Iuj-30-IP2" style="IBUITableViewCellStyleDefault" id="klW-ws-QYz" customClass="tvcRestaurantList" customModule="GResidences" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="28"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="klW-ws-QYz" id="m19-1V-vJo">
@@ -2065,7 +2065,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Restaurant Reserv View-->
         <scene sceneID="XWR-Zi-Hep">
             <objects>
-                <viewController storyboardIdentifier="vcReservRestAvail" title="Restaurant Reserv View" id="2FX-TF-Vam" customClass="vcReservRestAvail" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcReservRestAvail" title="Restaurant Reserv View" id="2FX-TF-Vam" customClass="vcReservRestAvail" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BEo-pq-knI"/>
                         <viewControllerLayoutGuide type="bottom" id="bDK-l9-YwA"/>
@@ -2101,7 +2101,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Restaurant Reserv View-->
         <scene sceneID="Hv1-jl-myc">
             <objects>
-                <viewController storyboardIdentifier="vcReservRest" title="Restaurant Reserv View" id="cGG-5Z-S6m" customClass="vcReservRest" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcReservRest" title="Restaurant Reserv View" id="cGG-5Z-S6m" customClass="vcReservRest" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u5h-mX-j5X"/>
                         <viewControllerLayoutGuide type="bottom" id="kxX-UD-hhy"/>
@@ -2137,7 +2137,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Rest Reserv List-->
         <scene sceneID="B44-Or-KMY">
             <objects>
-                <viewController storyboardIdentifier="vcRestReservList" title="Rest Reserv List" id="mrF-UN-kdt" customClass="vcRestReservList" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcRestReservList" title="Rest Reserv List" id="mrF-UN-kdt" customClass="vcRestReservList" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EOf-v3-ly8"/>
                         <viewControllerLayoutGuide type="bottom" id="WFC-5y-DWw"/>
@@ -2156,7 +2156,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellRestaurantReserv" textLabel="PZH-5f-Arm" style="IBUITableViewCellStyleDefault" id="zJg-T7-wu1" customClass="tvcRestaurantReserv" customModule="Costa_Linda" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellRestaurantReserv" textLabel="PZH-5f-Arm" style="IBUITableViewCellStyleDefault" id="zJg-T7-wu1" customClass="tvcRestaurantReserv" customModule="GResidences" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="28"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zJg-T7-wu1" id="gHH-8s-CTr">
@@ -2221,7 +2221,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Notification-->
         <scene sceneID="0ki-SI-Ogi">
             <objects>
-                <viewController storyboardIdentifier="vcNotification" title="Notification" automaticallyAdjustsScrollViewInsets="NO" id="POh-5D-3ES" customClass="vcNotification" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcNotification" title="Notification" automaticallyAdjustsScrollViewInsets="NO" id="POh-5D-3ES" customClass="vcNotification" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wt6-mA-eiA"/>
                         <viewControllerLayoutGuide type="bottom" id="YAn-1U-2Ge"/>
@@ -2235,7 +2235,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellNotification" textLabel="aFo-rS-KoH" detailTextLabel="nea-Tw-PtB" style="IBUITableViewCellStyleValue1" id="x81-Mb-jSj" customClass="tvcNotifications" customModule="Costa_Linda" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellNotification" textLabel="aFo-rS-KoH" detailTextLabel="nea-Tw-PtB" style="IBUITableViewCellStyleValue1" id="x81-Mb-jSj" customClass="tvcNotifications" customModule="GResidences" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="160" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x81-Mb-jSj" id="Vgr-gO-hxh">
@@ -2317,7 +2317,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Message-->
         <scene sceneID="qLl-b5-NJZ">
             <objects>
-                <viewController storyboardIdentifier="vcMessage" title="Message" id="N81-wa-0fM" customClass="vcMessage" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcMessage" title="Message" id="N81-wa-0fM" customClass="vcMessage" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="03J-1o-Ude"/>
                         <viewControllerLayoutGuide type="bottom" id="huD-DZ-tRy"/>
@@ -2342,7 +2342,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Notification Config-->
         <scene sceneID="2c2-ao-eLT">
             <objects>
-                <viewController storyboardIdentifier="vcNotificationConf" title="Notification Config" automaticallyAdjustsScrollViewInsets="NO" id="gJ0-gA-hKb" customClass="vcConfNotification" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcNotificationConf" title="Notification Config" automaticallyAdjustsScrollViewInsets="NO" id="gJ0-gA-hKb" customClass="vcConfNotification" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0g8-rR-c2d"/>
                         <viewControllerLayoutGuide type="bottom" id="DH3-gt-vGq"/>
@@ -2356,7 +2356,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellNotificationType" textLabel="DKa-gf-vzB" style="IBUITableViewCellStyleDefault" id="zay-UE-Tk9" customClass="SettingCell" customModule="Costa_Linda" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellNotificationType" textLabel="DKa-gf-vzB" style="IBUITableViewCellStyleDefault" id="zay-UE-Tk9" customClass="SettingCell" customModule="GResidences" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="160" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zay-UE-Tk9" id="Krc-9j-Bzr">
@@ -2436,7 +2436,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--vcSelectPayment-->
         <scene sceneID="Vcm-qU-XQ0">
             <objects>
-                <viewController storyboardIdentifier="vcSelectPayment" title="vcSelectPayment" automaticallyAdjustsScrollViewInsets="NO" id="UFf-yS-QmT" customClass="vcSelectPayment" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcSelectPayment" title="vcSelectPayment" automaticallyAdjustsScrollViewInsets="NO" id="UFf-yS-QmT" customClass="vcSelectPayment" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Iy-SR-fzr"/>
                         <viewControllerLayoutGuide type="bottom" id="p7i-k3-AEk"/>
@@ -2457,7 +2457,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--vcResortCred-->
         <scene sceneID="93E-3m-B22">
             <objects>
-                <viewController storyboardIdentifier="vcResortCred" title="vcResortCred" automaticallyAdjustsScrollViewInsets="NO" id="KYg-N9-h2I" customClass="vcResortCred" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcResortCred" title="vcResortCred" automaticallyAdjustsScrollViewInsets="NO" id="KYg-N9-h2I" customClass="vcResortCred" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sqi-ph-fQc"/>
                         <viewControllerLayoutGuide type="bottom" id="m12-7B-sv4"/>
@@ -2478,7 +2478,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--vcRRRewards-->
         <scene sceneID="Jeh-ul-b9C">
             <objects>
-                <viewController storyboardIdentifier="vcRRRewards" title="vcRRRewards" automaticallyAdjustsScrollViewInsets="NO" id="Owa-OO-x0e" customClass="vcRRRewards" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcRRRewards" title="vcRRRewards" automaticallyAdjustsScrollViewInsets="NO" id="Owa-OO-x0e" customClass="vcRRRewards" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7QH-Xe-RuQ"/>
                         <viewControllerLayoutGuide type="bottom" id="Ak3-SQ-kXR"/>
@@ -2499,7 +2499,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--vcServicesNav-->
         <scene sceneID="rsp-IT-iNb">
             <objects>
-                <viewController storyboardIdentifier="vcServicesNav" title="vcServicesNav" automaticallyAdjustsScrollViewInsets="NO" id="agB-Vt-C49" customClass="vcServicesNav" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcServicesNav" title="vcServicesNav" automaticallyAdjustsScrollViewInsets="NO" id="agB-Vt-C49" customClass="vcServicesNav" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oB4-hE-58M"/>
                         <viewControllerLayoutGuide type="bottom" id="Vjg-UW-1qy"/>
@@ -2523,7 +2523,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--vcTransferDate-->
         <scene sceneID="vW1-gX-aTn">
             <objects>
-                <viewController storyboardIdentifier="vcTransferDate" title="vcTransferDate" automaticallyAdjustsScrollViewInsets="NO" id="zB2-zv-VQr" customClass="vcTransferDate" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcTransferDate" title="vcTransferDate" automaticallyAdjustsScrollViewInsets="NO" id="zB2-zv-VQr" customClass="vcTransferDate" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CD6-BJ-q12"/>
                         <viewControllerLayoutGuide type="bottom" id="aYL-xp-Fd5"/>
@@ -2547,7 +2547,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--vcTransferEdit-->
         <scene sceneID="TXN-W1-5Qe">
             <objects>
-                <viewController storyboardIdentifier="vcTransferEdit" title="vcTransferEdit" automaticallyAdjustsScrollViewInsets="NO" id="jbE-Ca-D5i" customClass="vcTransferEdit" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcTransferEdit" title="vcTransferEdit" automaticallyAdjustsScrollViewInsets="NO" id="jbE-Ca-D5i" customClass="vcTransferEdit" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y6I-iY-a52"/>
                         <viewControllerLayoutGuide type="bottom" id="nkn-uU-cI2"/>
@@ -2571,7 +2571,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--vcTransferSubmit-->
         <scene sceneID="F9n-Sl-tGE">
             <objects>
-                <viewController storyboardIdentifier="vcTransferSubmit" title="vcTransferSubmit" automaticallyAdjustsScrollViewInsets="NO" id="3PE-b7-P1K" customClass="vcTransferSubmit" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcTransferSubmit" title="vcTransferSubmit" automaticallyAdjustsScrollViewInsets="NO" id="3PE-b7-P1K" customClass="vcTransferSubmit" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8XB-J6-bLO"/>
                         <viewControllerLayoutGuide type="bottom" id="RzB-Md-31u"/>
@@ -2595,7 +2595,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--vcTransferReserv-->
         <scene sceneID="guj-D3-HFk">
             <objects>
-                <viewController storyboardIdentifier="vcTransferReserv" title="vcTransferReserv" automaticallyAdjustsScrollViewInsets="NO" id="G2b-y8-pc7" customClass="vcTransferReserv" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcTransferReserv" title="vcTransferReserv" automaticallyAdjustsScrollViewInsets="NO" id="G2b-y8-pc7" customClass="vcTransferReserv" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZKZ-dO-g5L"/>
                         <viewControllerLayoutGuide type="bottom" id="2ZA-51-Akz"/>
@@ -2619,7 +2619,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--vcImgViewer-->
         <scene sceneID="q0V-6B-pI7">
             <objects>
-                <viewController storyboardIdentifier="vcImgViewer" title="vcImgViewer" automaticallyAdjustsScrollViewInsets="NO" id="bu5-NK-lwg" customClass="vcImgViewer" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcImgViewer" title="vcImgViewer" automaticallyAdjustsScrollViewInsets="NO" id="bu5-NK-lwg" customClass="vcImgViewer" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mwU-jw-KpH"/>
                         <viewControllerLayoutGuide type="bottom" id="Vyc-n9-6zN"/>
@@ -2643,7 +2643,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Confirmation Login-->
         <scene sceneID="gRW-9m-611">
             <objects>
-                <viewController storyboardIdentifier="vcConfLogin" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="B4s-cB-aXi" customClass="vcConfLogin" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcConfLogin" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="B4s-cB-aXi" customClass="vcConfLogin" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qXM-ed-ymO"/>
                         <viewControllerLayoutGuide type="bottom" id="wHL-kZ-vBq"/>
@@ -2668,7 +2668,7 @@ definidos por la recepción. El número máximo de ocupantes es de </string>
         <!--Confirmation Invalid-->
         <scene sceneID="csL-VJ-V40">
             <objects>
-                <viewController storyboardIdentifier="vcConfLoginError" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ikv-VD-Y5W" customClass="vcConfLoginError" customModule="Costa_Linda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcConfLoginError" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ikv-VD-Y5W" customClass="vcConfLoginError" customModule="GResidences" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aY7-dA-vRK"/>
                         <viewControllerLayoutGuide type="bottom" id="oa3-gJ-4Uv"/>

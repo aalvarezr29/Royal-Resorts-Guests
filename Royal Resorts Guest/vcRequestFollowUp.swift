@@ -219,6 +219,10 @@ class vcRequestFollowUp: UIViewController, UITableViewDelegate, UITableViewDataS
             
             ViewItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: TabTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State())
             
+            self.navigationController?.navigationBar.tintColor = colorWithHexString("ffffff")
+            self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            
         }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
             
             self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)

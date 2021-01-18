@@ -292,54 +292,203 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             self.view.addSubview(myWebView)
             self.view.backgroundColor = UIColor.black
             
+            self.navigationController?.navigationBar.tintColor = colorWithHexString("ffffff")
+            self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            
             //appDelegate.strLenguaje = "ENG"
             
         }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
             //Titulo de la vista
             ViewItem.title = NSLocalizedString("TituloSBR",comment:"Royal Resorts")
+            strFont = "HelveticaNeue"
             
             self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
             self.navigationController?.navigationBar.shadowImage = UIImage()
             
-            strFont = "HelveticaNeue"
             var img = UIImage(named:appDelegate.gstrNavImg)
             var resizable = img!.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: .stretch)
             self.navigationController?.navigationBar.setBackgroundImage(resizable, for: .default)
             let navigationTitleFont = UIFont(name: strFont, size: appDelegate.gblFont10 + appDelegate.gblDeviceFont3)!
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: navigationTitleFont, NSAttributedString.Key.foregroundColor: UIColor.white]
             self.navigationController?.navigationBar.isTranslucent = true
-            self.navigationController?.navigationBar.alpha = 0.99
+            //self.navigationController?.navigationBar.alpha = 0.99
             self.navigationController?.navigationBar.tintColor = UIColor.white
             self.navigationController?.navigationBar.barStyle = UIBarStyle.default
-            for parent in self.navigationController!.navigationBar.subviews {
-                for childView in parent.subviews {
-                    if(childView is UIImageView) {
-                        childView.removeFromSuperview()
-                    }
-                }
-            }
-
-            imgBack = UIImage(named:"BackAqua.png")!
-            imgvwBack = UIImageView(image: imgBack)
-            imgvwBack.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height);
-            imgvwBack.alpha = 0.2
-            self.view.addSubview(imgvwBack)
+            
+            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
             
             btnNext.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
             btnNext.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
             
+            var image3 = UIImage()
+            image3 = UIImage(named:"Logo.png")!
+            
+            imgvw = UIImageView(image: image3)
+            
             //UIWebView
             urlHome = appDelegate.urlHome
-            if appDelegate.ynIPad == true{
-                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.05*height, width: width, height: height))
+            /*if appDelegate.ynIPad == true{
+                myWebView = UIWebView(frame: CGRectMake(0.0, 0.12*height, width, 0.88*height))
+                viewBar.frame = CGRectMake(0.0, 0.05*height, width, 0.1*height);
+                btnPageBack.frame = CGRectMake(0.0, 0.02*height, 0.07*width, 0.04*height);
+                btnMenu.frame = CGRectMake(0.9*width, 0.02*height, 0.07*width, 0.04*height);
+                imgvw.frame = CGRectMake(0.47*width, 0.015*height, 0.07*width, 0.05*height);
             }else{
-                myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.08*height, width: width, height: height))
+                myWebView = UIWebView(frame: CGRectMake(0.0, 0.18*height, width, 0.82*height))
+                viewBar.frame = CGRectMake(0.0, 0.08*height, width, 0.1*height);
+                btnPageBack.frame = CGRectMake(0.0, 0.04*height, 0.07*width, 0.04*height);
+                btnMenu.frame = CGRectMake(0.9*width, 0.04*height, 0.07*width, 0.04*height);
+                imgvw.frame = CGRectMake(0.45*width, 0.04*height, 0.1*width, 0.05*height);
+            }*/
+            
+            if appDelegate.ynIPad {
+                switch appDelegate.Model {
+                case "iPad 2":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.12*height, width: width, height: 0.88*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.05*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.02*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.02*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.47*width, y: 0.015*height, width: 0.15*width, height: 0.1*height);
+                case "iPad Air":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.12*height, width: width, height: 0.88*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.05*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.02*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.02*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.47*width, y: 0.015*height, width: 0.07*width, height: 0.05*height);
+                case "iPad Air 2":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.12*height, width: width, height: 0.88*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.05*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.02*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.02*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.47*width, y: 0.015*height, width: 0.07*width, height: 0.05*height);
+                case "iPad Pro":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.12*height, width: width, height: 0.88*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.05*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.02*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.02*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.47*width, y: 0.015*height, width: 0.07*width, height: 0.05*height);
+                case "iPad Retina":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.12*height, width: width, height: 0.88*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.05*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.02*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.02*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.47*width, y: 0.015*height, width: 0.07*width, height: 0.05*height);
+                default:
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.12*height, width: width, height: 0.88*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.05*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.02*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.02*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.4*width, y: 0.02*height, width: 0.2*width, height: 0.08*height);
+                }
+            }else{
+                switch appDelegate.Model {
+                case "iPhone":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.18*height, width: width, height: 0.82*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.08*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
+                case "iPhone 4":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.18*height, width: width, height: 0.82*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.08*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
+                case "iPhone 4s":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.18*height, width: width, height: 0.82*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.08*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
+                case "iPhone 5":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.18*height, width: width, height: 0.82*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.08*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
+                case "iPhone 5c":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.18*height, width: width, height: 0.82*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.08*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
+                case "iPhone 5s":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.18*height, width: width, height: 0.82*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.08*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
+                case "iPhone 6":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.18*height, width: width, height: 0.82*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.08*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
+                case "iPhone 6 Plus":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.16*height, width: width, height: 0.84*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.06*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
+                case "iPhone 6s":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.18*height, width: width, height: 0.82*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.08*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
+                case "iPhone 6s Plus":
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.18*height, width: width, height: 0.82*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.08*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.45*width, y: 0.04*height, width: 0.1*width, height: 0.05*height);
+                default:
+                    myWebView = WKWebView(frame: CGRect(x: 0.0, y: 0.18*height, width: width, height: 0.82*height))
+                    viewBar.frame = CGRect(x: 0.0, y: 0.08*height, width: width, height: 0.1*height);
+                    btnPageBack.frame = CGRect(x: 0.0, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    btnMenu.frame = CGRect(x: 0.9*width, y: 0.04*height, width: 0.07*width, height: 0.04*height);
+                    imgvw.frame = CGRect(x: 0.4*width, y: 0.02*height, width: 0.2*width, height: 0.08*height);
+                }
             }
+            
             myWebView.load(URLRequest(url: URL(string: urlHome)!))
             //myWebView.scalesPageToFit = true
-            self.view.addSubview(myWebView)
             
-            //appDelegate.strLenguaje = "ENG"
+            var image = UIImage()
+            image = UIImage(named:"ic_navigate_before")!
+            
+            let stencil = image.withRenderingMode(UIImage.RenderingMode.alwaysTemplate) // use your UIImage here
+            btnPageBack.setImage(stencil, for: UIControl.State()) // assign it to your UIButton
+            btnPageBack.tintColor = UIColor.gray // set a color
+            btnPageBack.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+            btnPageBack.addTarget(self, action: #selector(ViewController.GoBack(_:)), for: UIControl.Event.touchUpInside)
+            
+            var image2 = UIImage()
+            image2 = UIImage(named:"ic_dehaze")!
+            
+            let stencil2 = image2.withRenderingMode(UIImage.RenderingMode.alwaysTemplate) // use your UIImage here
+            btnMenu.setImage(stencil2, for: UIControl.State())
+            btnMenu.tintColor = UIColor.gray // set a color
+            btnMenu.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
+            btnMenu.addTarget(self, action: #selector(ViewController.GoPagMenu(_:)), for: UIControl.Event.touchUpInside)
+            
+            viewBar.backgroundColor = UIColor.white
+            
+            viewBar.addSubview(btnPageBack)
+            viewBar.addSubview(btnMenu)
+            viewBar.addSubview(imgvw)
+            
+            self.view.addSubview(viewBar)
+            self.view.addSubview(myWebView)
+            self.view.backgroundColor = UIColor.black
+
+            self.view.backgroundColor = colorWithHexString("004c50")
+            
+            strFont = "Helvetica"
+            self.navigationController?.navigationBar.tintColor = colorWithHexString("ffffff")
+            self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             
         }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
             

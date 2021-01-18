@@ -1051,25 +1051,25 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             imgHdrVw.alpha = 0.5
             //viewAccount.addSubview(imgHdrVw)
             
-            var strFontTitle: String = "Futura-CondensedExtraBold"
+            var strFontTitle: String = "HelveticaNeue-Bold"
             var Color: UIColor = colorWithHexString("004c50")
             
             lblKeys.textColor = Color
             lblBalance.textColor = Color
-            lblKeys.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
-            lblBalance.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblKeys.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
+            lblBalance.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             
-            strFontTitle = "Futura-CondensedMedium"
+            strFontTitle = "Helvetica"
             Color = colorWithHexString("2e3634")
             
             lblNames.textColor = Color
             lblamount.textColor = Color
             labelUSD.textColor = Color
             lblExchange.textColor = Color
-            lblNames.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
-            lblamount.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
-            labelUSD.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
-            lblExchange.font = UIFont(name:strFontTitle, size:appDelegate.gblFont4 + appDelegate.gblDeviceFont3)
+            lblNames.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            lblamount.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
+            labelUSD.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
+            lblExchange.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             
             lblKeys.textAlignment = NSTextAlignment.left
             lblKeys.frame = CGRect(x: 0.02*width, y: 0.00001*height, width: 0.2*width, height: 0.03*height);
@@ -1109,42 +1109,42 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             
             //runkeeperSwitch.frame = CGRectMake(0.14*width, 0.19*height, 0.6*width, 0.04*height)
             
-            strFontTitle = "Futura-CondensedExtraBold"
+            strFontTitle = "HelveticaNeue-Bold"
             Color = colorWithHexString("004c50")
             
             labelccNumber.backgroundColor = UIColor.clear;
             labelccNumber.textColor = Color
-            labelccNumber.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            labelccNumber.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             
-            card.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            card.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             
             labelExpdate.backgroundColor = UIColor.clear;
             labelExpdate.textColor = Color
-            labelExpdate.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            labelExpdate.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             
             labelExpMonth.backgroundColor = UIColor.clear;
             labelExpMonth.textColor = Color
-            labelExpMonth.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            labelExpMonth.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             
-            txtExpMonth.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            txtExpMonth.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             
             labelExpYear.backgroundColor = UIColor.clear;
             labelExpYear.textColor = Color
-            labelExpYear.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            labelExpYear.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             
-            txtExpYear.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            txtExpYear.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             
             labelcvv.backgroundColor = UIColor.clear;
             labelcvv.textColor = Color
-            labelcvv.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            labelcvv.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             
             labelAmount.backgroundColor = UIColor.clear;
             labelAmount.textColor = Color
-            labelAmount.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            labelAmount.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             
-            txtAmountToPay.font = UIFont(name:strFontTitle, size:appDelegate.gblFont5 + appDelegate.gblDeviceFont3)
+            txtAmountToPay.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             
-            strFontTitle = "HelveticaNeue"
+            strFontTitle = "Helvetica"
             
             label.textColor = UIColor.white
             label.font = UIFont(name:strFontTitle, size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
@@ -1155,14 +1155,14 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             labelAmount.frame = CGRect(x: 0.04*width, y: 0.2*height, width: 0.37*width, height: 0.05*height)
             txtAmountToPay.frame = CGRect(x: 0.04*width, y: 0.25*height, width: 0.8*width, height: 0.05*height);
             
-            txtFirstName.frame = CGRect(x: 0.0, y: 0.01*height, width: 0.4*width, height: 0.05*height);
+            txtFirstName.frame = CGRect(x: 0.04*width, y: 0.01*height, width: 0.4*width, height: 0.05*height);
             txtLastName.frame = CGRect(x: 0.45*width, y: 0.01*height, width: 0.4*width, height: 0.05*height);
-            txtAddress.frame = CGRect(x: 0.0, y: 0.07*height, width: 0.85*width, height: 0.05*height);
-            txtCity.frame = CGRect(x: 0.0, y: 0.13*height, width: 0.4*width, height: 0.05*height);
+            txtAddress.frame = CGRect(x: 0.04*width, y: 0.07*height, width: 0.8*width, height: 0.05*height);
+            txtCity.frame = CGRect(x: 0.04*width, y: 0.13*height, width: 0.4*width, height: 0.05*height);
             btnCountry.frame = CGRect(x: 0.45*width, y: 0.13*height, width: 0.4*width, height: 0.05*height);
-            txtState.frame = CGRect(x: 0.0, y: 0.19*height, width: 0.4*width, height: 0.05*height);
+            txtState.frame = CGRect(x: 0.04*width, y: 0.19*height, width: 0.4*width, height: 0.05*height);
             txtZipCode.frame = CGRect(x: 0.45*width, y: 0.19*height, width: 0.4*width, height: 0.05*height);
-            txtTel.frame = CGRect(x: 0.0, y: 0.25*height, width: 0.4*width, height: 0.05*height);
+            txtTel.frame = CGRect(x: 0.04*width, y: 0.25*height, width: 0.4*width, height: 0.05*height);
             txtEmail.frame = CGRect(x: 0.45*width, y: 0.25*height, width: 0.4*width, height: 0.05*height);
             
             /*if appDelegate.ynIPad {
@@ -1175,7 +1175,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
 
             txtFirstName.backgroundColor = UIColor.clear;
             txtFirstName.textAlignment = NSTextAlignment.left;
-            txtFirstName.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtFirstName.font = UIFont(name: "HelveticaNeue-Bold", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             txtFirstName.layer.borderColor = UIColor.black.cgColor
             txtFirstName.borderStyle = UITextField.BorderStyle.roundedRect
             txtFirstName.keyboardType = UIKeyboardType.alphabet
@@ -1186,7 +1186,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             
             txtLastName.backgroundColor = UIColor.clear;
             txtLastName.textAlignment = NSTextAlignment.left;
-            txtLastName.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtLastName.font = UIFont(name: "HelveticaNeue-Bold", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             txtLastName.layer.borderColor = UIColor.black.cgColor
             txtLastName.borderStyle = UITextField.BorderStyle.roundedRect
             txtLastName.keyboardType = UIKeyboardType.alphabet
@@ -1197,7 +1197,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             
             txtAddress.backgroundColor = UIColor.clear;
             txtAddress.textAlignment = NSTextAlignment.left;
-            txtAddress.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtAddress.font = UIFont(name: "HelveticaNeue-Bold", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             txtAddress.layer.borderColor = UIColor.black.cgColor
             txtAddress.borderStyle = UITextField.BorderStyle.roundedRect
             txtAddress.keyboardType = UIKeyboardType.alphabet
@@ -1208,7 +1208,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             
             txtCity.backgroundColor = UIColor.clear;
             txtCity.textAlignment = NSTextAlignment.left;
-            txtCity.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtCity.font = UIFont(name: "HelveticaNeue-Bold", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             txtCity.layer.borderColor = UIColor.black.cgColor
             txtCity.borderStyle = UITextField.BorderStyle.roundedRect
             txtCity.keyboardType = UIKeyboardType.alphabet
@@ -1221,12 +1221,12 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             
             if appDelegate.gstrCountry == ""{
                 mas = NSMutableAttributedString(string: NSLocalizedString("lblCountry",comment:""), attributes: [
-                    NSAttributedString.Key.font: UIFont(name:"Futura-CondensedMedium", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont7)!,
+                    NSAttributedString.Key.font: UIFont(name:"HelveticaNeue-Bold", size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)!,
                     NSAttributedString.Key.foregroundColor: colorWithHexString ("000000")
                     ])
             }else{
                 mas = NSMutableAttributedString(string: appDelegate.gstrCountry, attributes: [
-                    NSAttributedString.Key.font: UIFont(name:"Futura-CondensedMedium", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont7)!,
+                    NSAttributedString.Key.font: UIFont(name:"HelveticaNeue-Bold", size:appDelegate.gblFont6 + appDelegate.gblDeviceFont3)!,
                     NSAttributedString.Key.foregroundColor: colorWithHexString ("000000")
                     ])
             }
@@ -1246,7 +1246,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             
             txtState.backgroundColor = UIColor.clear;
             txtState.textAlignment = NSTextAlignment.left;
-            txtState.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtState.font = UIFont(name: "HelveticaNeue-Bold", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             txtState.layer.borderColor = UIColor.black.cgColor
             txtState.borderStyle = UITextField.BorderStyle.roundedRect
             txtState.keyboardType = UIKeyboardType.alphabet
@@ -1257,7 +1257,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             
             txtZipCode.backgroundColor = UIColor.clear;
             txtZipCode.textAlignment = NSTextAlignment.left;
-            txtZipCode.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtZipCode.font = UIFont(name: "HelveticaNeue-Bold", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             txtZipCode.layer.borderColor = UIColor.black.cgColor
             txtZipCode.borderStyle = UITextField.BorderStyle.roundedRect
             txtZipCode.keyboardType = UIKeyboardType.alphabet
@@ -1268,7 +1268,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             
             txtTel.backgroundColor = UIColor.clear;
             txtTel.textAlignment = NSTextAlignment.left;
-            txtTel.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtTel.font = UIFont(name: "HelveticaNeue-Bold", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             txtTel.layer.borderColor = UIColor.black.cgColor
             txtTel.borderStyle = UITextField.BorderStyle.roundedRect
             txtTel.keyboardType = UIKeyboardType.alphabet
@@ -1279,7 +1279,7 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             
             txtEmail.backgroundColor = UIColor.clear;
             txtEmail.textAlignment = NSTextAlignment.left;
-            txtEmail.font = UIFont(name: "Futura-CondensedMedium", size: appDelegate.gblFont8 + appDelegate.gblDeviceFont7)
+            txtEmail.font = UIFont(name: "HelveticaNeue-Bold", size: appDelegate.gblFont6 + appDelegate.gblDeviceFont3)
             txtEmail.layer.borderColor = UIColor.black.cgColor
             txtEmail.borderStyle = UITextField.BorderStyle.roundedRect
             txtEmail.keyboardType = UIKeyboardType.alphabet
@@ -1763,12 +1763,12 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
         
        if appDelegate.gstrCountry == ""{
            mas = NSMutableAttributedString(string: NSLocalizedString("lblCountry",comment:""), attributes: [
-               NSAttributedString.Key.font: UIFont(name:"Futura-CondensedMedium", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont7)!,
+               NSAttributedString.Key.font: UIFont(name:"HelveticaNeue-Bold", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont7)!,
                NSAttributedString.Key.foregroundColor: colorWithHexString ("000000")
                ])
        }else{
            mas = NSMutableAttributedString(string: appDelegate.gstrCountry, attributes: [
-               NSAttributedString.Key.font: UIFont(name:"Futura-CondensedMedium", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont7)!,
+               NSAttributedString.Key.font: UIFont(name:"HelveticaNeue-Bold", size:appDelegate.gblFont8 + appDelegate.gblDeviceFont7)!,
                NSAttributedString.Key.foregroundColor: colorWithHexString ("000000")
                ])
        }
@@ -2993,51 +2993,55 @@ class vcGuestAccountPayment: UIViewController, UITextFieldDelegate {
             }
         }
         
-        if txtFirstName.text == ""{
-            strValidError = "First Name is required"
-            return false;
+        if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.clbrservices"{
+            
+                if txtFirstName.text == ""{
+                    strValidError = "First Name is required"
+                    return false;
+                }
+                
+                if txtLastName.text == ""{
+                    strValidError = "Last Name is required"
+                    return false;
+                }
+                
+                if txtAddress.text == ""{
+                    strValidError = "Address is required"
+                    return false;
+                }
+                
+                if txtCity.text == ""{
+                    strValidError = "City is required"
+                    return false;
+                }
+                
+                if appDelegate.gstrCountry == ""{
+                    strValidError = "Country is required"
+                    return false;
+                }
+                
+                if txtState.text == ""{
+                    strValidError = "State is required"
+                    return false;
+                }
+                
+                if txtZipCode.text == ""{
+                    strValidError = "Zip Code is required"
+                    return false;
+                }
+                
+                if txtTel.text == ""{
+                    strValidError = "Telephone is required"
+                    return false;
+                }
+                
+                if txtEmail.text == ""{
+                    strValidError = "Email is required"
+                    return false;
+                }
+            
         }
         
-        if txtLastName.text == ""{
-            strValidError = "Last Name is required"
-            return false;
-        }
-        
-        if txtAddress.text == ""{
-            strValidError = "Address is required"
-            return false;
-        }
-        
-        if txtCity.text == ""{
-            strValidError = "City is required"
-            return false;
-        }
-        
-        if appDelegate.gstrCountry == ""{
-            strValidError = "Country is required"
-            return false;
-        }
-        
-        if txtState.text == ""{
-            strValidError = "State is required"
-            return false;
-        }
-        
-        if txtZipCode.text == ""{
-            strValidError = "Zip Code is required"
-            return false;
-        }
-        
-        if txtTel.text == ""{
-            strValidError = "Telephone is required"
-            return false;
-        }
-        
-        if txtEmail.text == ""{
-            strValidError = "Email is required"
-            return false;
-        }
-
         return true;
     }
 

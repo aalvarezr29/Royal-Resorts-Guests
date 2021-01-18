@@ -166,7 +166,7 @@ class vcAddFolloUp: UIViewController, UITableViewDelegate, UITextViewDelegate, U
             
             txtShortDesc.textColor = colorWithHexString("ba8748")
             //txtCommentRequest.textColor = colorWithHexString ("ba8748")
-            
+
         }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
             strFont = "HelveticaNeue"
             

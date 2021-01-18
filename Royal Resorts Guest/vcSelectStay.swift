@@ -399,6 +399,8 @@ class vcSelectStay: UIViewController, UITableViewDelegate, UITableViewDataSource
                                         DataStays["DepartureDateCheckOut"] = String(describing: rs.string(forColumn: "DepartureDateCheckOut")!)
                                         DataStays["ConfirmationCode"] = String(describing: rs.string(forColumn: "ConfirmationCode")!)
                                         DataStays["fkCurrencyID"] = String(describing: rs.string(forColumn: "fkCurrencyID")!)
+                                        DataStays["PlaceCode"] = String(describing: rs.string(forColumn: "PlaceCode")!)
+                                        DataStays["fkPropertyID"] = String(describing: rs.string(forColumn: "fkPropertyID")!)
                                         Stays[Index] = DataStays
                                         
                                         Index = Index + 1

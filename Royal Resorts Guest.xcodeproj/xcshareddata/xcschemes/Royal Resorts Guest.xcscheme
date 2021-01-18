@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D3579061A1BBD3C009D27ED"
-               BuildableName = "Costa Linda.app"
+               BuildableName = "SimpsonBay.app"
                BlueprintName = "Royal Resorts Guest"
                ReferencedContainer = "container:Royal Resorts Guest.xcodeproj">
             </BuildableReference>
@@ -31,7 +31,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D3579061A1BBD3C009D27ED"
-            BuildableName = "Costa Linda.app"
+            BuildableName = "SimpsonBay.app"
             BlueprintName = "Royal Resorts Guest"
             ReferencedContainer = "container:Royal Resorts Guest.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D3579061A1BBD3C009D27ED"
-            BuildableName = "Costa Linda.app"
+            BuildableName = "SimpsonBay.app"
             BlueprintName = "Royal Resorts Guest"
             ReferencedContainer = "container:Royal Resorts Guest.xcodeproj">
          </BuildableReference>
@@ -87,7 +87,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D3579061A1BBD3C009D27ED"
-            BuildableName = "Costa Linda.app"
+            BuildableName = "SimpsonBay.app"
             BlueprintName = "Royal Resorts Guest"
             ReferencedContainer = "container:Royal Resorts Guest.xcodeproj">
          </BuildableReference>

@@ -975,6 +975,10 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
             
+            self.navigationController?.navigationBar.tintColor = colorWithHexString("ffffff")
+            self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            
         }else if appDelegate.strBundleIdentifier == "com.royalresortscaribbean.guestservices"{
             
             var strFont: String = ""
@@ -1020,6 +1024,11 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }
             }
+            
+            strFont = "Helvetica"
+            self.navigationController?.navigationBar.tintColor = colorWithHexString("ffffff")
+            self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             
             imgBack = UIImage(named:"bg.png")!
             imgvwBack = UIImageView(image: imgBack)
@@ -1070,10 +1079,10 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                 btnUploadImg.setBackgroundImage(imgTakePic, for: UIControl.State())
                 btnUploadImg.addTarget(self, action: #selector(vcGuestInHouseMain.buttonActionTakePicture(_:)), for: UIControl.Event.touchUpInside)
                 if appDelegate.ynIPad == true{
-                    btnUploadImg.frame = CGRect(x: 0.025*width, y: 0.015*height, width: 0.2*width, height: 0.12*height);
+                    btnUploadImg.frame = CGRect(x: 0.003*width, y: 0.005*height, width: 0.2*width, height: 0.12*height);
                     btnUploadImg.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -80, right: 0)
                 }else{
-                    btnUploadImg.frame = CGRect(x: 0.025*width, y: 0.015*height, width: 0.2*width, height: 0.1*height);
+                    btnUploadImg.frame = CGRect(x: 0.006*width, y: 0.0001*height, width: 0.2*width, height: 0.1*height);
                     btnUploadImg.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -45, right: 0)
                 }
 
@@ -1105,10 +1114,10 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
             btnLogOut.addTarget(self, action: #selector(vcGuestInHouseMain.LogOUT(_:)), for: UIControl.Event.touchUpInside)
             btnLogOut.addTarget(self, action: #selector(vcGuestInHouseMain.butonSignOutEfect(_:)), for: UIControl.Event.touchDown)
             if appDelegate.ynIPad == true{
-                btnLogOut.frame = CGRect(x: 0.02*width, y: 0.001*height, width: 0.12*width, height: 0.07*height);
+                btnLogOut.frame = CGRect(x: 0.004*width, y: 0.001*height, width: 0.12*width, height: 0.07*height);
                 btnLogOut.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -60, right: 0)
             }else{
-                btnLogOut.frame = CGRect(x: 0.02*width, y: 0.001*height, width: 0.12*width, height: 0.06*height);
+                btnLogOut.frame = CGRect(x: 0.012*width, y: 0.001*height, width: 0.12*width, height: 0.06*height);
                 btnLogOut.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -33, right: 0)
             }
             btnLogOut.setTitleColor(UIColor.black, for: UIControl.State())
@@ -1119,8 +1128,8 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
             btnLogOut.alpha = 0.5
             //self.view.addSubview(btnLogOut)
             
-            LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: 0.1562*self.width, height: 0.0881*self.height);
-            LogOutView.layer.cornerRadius = 25
+            LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: self.width/7, height: self.height/12);
+            LogOutView.layer.cornerRadius = 30
             LogOutView.clipsToBounds = true
             //LogOutView.backgroundColor = UIColor.redColor()
             LogOutView.layer.borderWidth = 4
@@ -1162,41 +1171,116 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                 switch appDelegate.Model {
                 case "iPad 2":
                     tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.63*height);
+                    UploadView.layer.cornerRadius = 75
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    LogOutView.layer.cornerRadius = 46
+                    LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: self.width/8.1, height: self.height/11);
+                    self.imgvwTakePic.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    self.imgvwTakePic.layer.cornerRadius = 75
                 case "iPad Air":
                     tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.63*height);
+                    UploadView.layer.cornerRadius = 75
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    LogOutView.layer.cornerRadius = 46
+                    LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: self.width/8.1, height: self.height/11);
+                    self.imgvwTakePic.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    self.imgvwTakePic.layer.cornerRadius = 75
                 case "iPad Air 2":
                     tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.63*height);
+                    UploadView.layer.cornerRadius = 75
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    LogOutView.layer.cornerRadius = 46
+                    LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: self.width/8.1, height: self.height/11);
+                    self.imgvwTakePic.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    self.imgvwTakePic.layer.cornerRadius = 75
                 case "iPad Pro":
                     tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.63*height);
+                    UploadView.layer.cornerRadius = 75
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    LogOutView.layer.cornerRadius = 46
+                    LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: self.width/8.1, height: self.height/11);
+                    self.imgvwTakePic.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    self.imgvwTakePic.layer.cornerRadius = 75
                 case "iPad Retina":
                     tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.63*height);
+                    UploadView.layer.cornerRadius = 75
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    LogOutView.layer.cornerRadius = 46
+                    LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: self.width/8.1, height: self.height/11);
+                    self.imgvwTakePic.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    self.imgvwTakePic.layer.cornerRadius = 75
                 default:
                     tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.63*height);
+                    UploadView.layer.cornerRadius = 75
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    LogOutView.layer.cornerRadius = 46
+                    LogOutView.frame = CGRect(x: 0.81*width, y: 0.08*height, width: self.width/8.1, height: self.height/11);
+                    self.imgvwTakePic.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/5, height: self.height/6.5);
+                    self.imgvwTakePic.layer.cornerRadius = 75
                 }
             }else{
                 switch appDelegate.Model {
                 case "iPhone":
                     tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
                 case "iPhone 4":
                     tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
                 case "iPhone 4s":
                     tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
                 case "iPhone 5":
-                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.57*height);
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
                 case "iPhone 5c":
-                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.57*height);
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
                 case "iPhone 5s":
-                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.57*height);
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
                 case "iPhone 6":
-                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.6*height);
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
                 case "iPhone 6 Plus":
-                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.6*height);
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
                 case "iPhone 6s":
-                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.6*height);
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
+                    LogOutView.layer.cornerRadius = 28
                 case "iPhone 6s Plus":
-                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.6*height);
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 38
+                    self.imgvwTakePic.layer.cornerRadius = 38
+                    LogOutView.layer.cornerRadius = 30
+                case "iPhone 7 Plus":
+                    tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 41
+                    self.imgvwTakePic.layer.cornerRadius = 44
+                    LogOutView.layer.cornerRadius = 30
                 default:
                     tableView.frame = CGRect(x: 0.05*width, y: 0.3*height, width: 0.9*width, height: 0.55*height);
+                    UploadView.frame = CGRect(x: 0.05*self.width, y: 0.08*self.height, width: self.width/4.9, height: self.height/9);
+                    UploadView.layer.cornerRadius = 41
+                    self.imgvwTakePic.layer.cornerRadius = 44
+                    LogOutView.layer.cornerRadius = 30
                 }
             }
             
@@ -2173,7 +2257,7 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                                                 Stays.append([:])
                                             }
 
-                                            if let rs = db.executeQuery("SELECT * FROM tblStay ORDER BY ArrivalDate DESC", withArgumentsIn: []){
+                                            if let rs = db.executeQuery("SELECT * FROM tblStay ORDER BY ArrivalDate ASC", withArgumentsIn: []){
                                                 while rs.next() {
                                                     DataStays["StayInfoID"] = String(describing: rs.string(forColumn: "StayInfoID")!)
                                                     DataStays["DatabaseName"] = String(describing: rs.string(forColumn: "DatabaseName")!)
@@ -2291,6 +2375,30 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                                             self.appDelegate.strStayInfoStatus = String(self.StaysStatus[0][0]["StatusCode"]!)
                                             self.appDelegate.strUnitArrivalDate = String(self.StaysStatus[0][0]["ArrivalDate"]!)
                                         }*/
+                                        
+                                        self.appDelegate.RestStayInfoID = 0
+                                        self.appDelegate.strRestUnit = ""
+                                        self.appDelegate.strRestUnitReserv = ""
+                                        self.appDelegate.strRestAccCode = ""
+                                        self.appDelegate.strUnitStay = ""
+                                        self.appDelegate.strUnitStayInfoID = ""
+                                        self.appDelegate.strUnitCode = ""
+                                        self.appDelegate.strStayInfoStatus = ""
+                                        self.appDelegate.strUnitArrivalDate = ""
+                                        self.appDelegate.strUnitPropertyID = ""
+                                        self.appDelegate.ynTransferOutDate = false
+                                        self.appDelegate.gstrArrivalTransfer = ""
+                                        self.appDelegate.gstrStayInfoTransfer = ""
+                                        self.appDelegate.gstrDepartureTransfer = ""
+                                        self.appDelegate.gstrConfirmationCodeTransfer = ""
+                                        self.appDelegate.gstrPropertyTransfer = ""
+                                        self.appDelegate.gifkPropertyID = 0
+                                        self.appDelegate.strUnitCodeTransfer = ""
+                                        self.appDelegate.gstrArrivalTransferAuxMin = ""
+                                        self.appDelegate.gstrDepartureTransferAuxMax = ""
+                                        self.appDelegate.gstrArrivalTransferAux = ""
+                                        self.appDelegate.gstrDepartureTransferAux = ""
+                                        self.appDelegate.gstrConfirmationCodeTransferAux = ""
                                         
                                         queueFM?.inDatabase() {
                                             db in
@@ -2433,8 +2541,8 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                             RKDropdownAlert.title(NSLocalizedString("MsgError6",comment:""), backgroundColor: self.colorWithHexString ("5C9FCC"), textColor: UIColor.black)
                         }
                         
-                        self.tabBarController?.tabBar.items?[1].isEnabled = false
-                        self.tabBarController?.tabBar.items?[3].isEnabled = false
+                        //self.tabBarController?.tabBar.items?[1].isEnabled = false
+                        //self.tabBarController?.tabBar.items?[3].isEnabled = false
                         
                     }
                     
@@ -2480,7 +2588,7 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                         Stays.append([:])
                     }
                     
-                    if let rs = db.executeQuery("SELECT * FROM tblStay ORDER BY ArrivalDate DESC", withArgumentsIn: []){
+                    if let rs = db.executeQuery("SELECT * FROM tblStay ORDER BY ArrivalDate ASC", withArgumentsIn: []){
                         while rs.next() {
                             DataStays["StayInfoID"] = String(describing: rs.string(forColumn: "StayInfoID")!)
                             DataStays["DatabaseName"] = String(describing: rs.string(forColumn: "DatabaseName")!)
@@ -2499,6 +2607,7 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
                             DataStays["ConfirmationCode"] = String(describing: rs.string(forColumn: "ConfirmationCode")!)
                             DataStays["fkCurrencyID"] = String(describing: rs.string(forColumn: "fkCurrencyID")!)
                             DataStays["PlaceCode"] = String(describing: rs.string(forColumn: "PlaceCode")!)
+                            DataStays["fkPropertyID"] = String(describing: rs.string(forColumn: "fkPropertyID")!)
                             Stays[Index] = DataStays
                             
                             self.appDelegate.strCheckOutTimeAux = ""
@@ -3057,6 +3166,30 @@ class vcGuestInHouseMain: UIViewController, UITableViewDelegate, UITableViewData
         appDelegate.strRestStayInfoID = ""
         appDelegate.gstrStayInfoTransfer = ""
         self.appDelegate.ynLogInConf = false
+        
+        self.appDelegate.RestStayInfoID = 0
+        self.appDelegate.strRestUnit = ""
+        self.appDelegate.strRestUnitReserv = ""
+        self.appDelegate.strRestAccCode = ""
+        self.appDelegate.strUnitStay = ""
+        self.appDelegate.strUnitStayInfoID = ""
+        self.appDelegate.strUnitCode = ""
+        self.appDelegate.strStayInfoStatus = ""
+        self.appDelegate.strUnitArrivalDate = ""
+        self.appDelegate.strUnitPropertyID = ""
+        self.appDelegate.ynTransferOutDate = false
+        self.appDelegate.gstrArrivalTransfer = ""
+        self.appDelegate.gstrStayInfoTransfer = ""
+        self.appDelegate.gstrDepartureTransfer = ""
+        self.appDelegate.gstrConfirmationCodeTransfer = ""
+        self.appDelegate.gstrPropertyTransfer = ""
+        self.appDelegate.gifkPropertyID = 0
+        self.appDelegate.strUnitCodeTransfer = ""
+        self.appDelegate.gstrArrivalTransferAuxMin = ""
+        self.appDelegate.gstrDepartureTransferAuxMax = ""
+        self.appDelegate.gstrArrivalTransferAux = ""
+        self.appDelegate.gstrDepartureTransferAux = ""
+        self.appDelegate.gstrConfirmationCodeTransferAux = ""
         
         var tableItemsPush = RRDataSet()
         
